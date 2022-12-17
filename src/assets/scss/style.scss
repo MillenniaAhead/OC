@@ -1,0 +1,121 @@
+/*================================================================================
+	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+	Version: 2.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+.py-50{
+	border:0px;
+	background:#425D7B;
+	color:white;
+}
+.mar_l-10{
+	margin-left: 10px;
+}
+.mar_r-10{
+	margin-right: 10px;
+}
+.mar_t-10{
+	margin-top: 10px;
+}
+.mar_t-30{
+	margin-top: 30px;
+}
+.mar_b-10{
+	margin-bottom: 10px;
+}
+.pad_l-10{
+	padding-left: 10px;
+}
+.pad_r-10{
+	padding-right: 10px;
+}
+.pad_t-10{
+	padding-top: 10px;
+}
+.pad_b-10{
+	padding-bottom: 10px;
+}
+
+.mar_l-5{
+	margin-left: 5px;
+}
+.mar_r-5{
+	margin-right: 5px;
+}
+.mar_t-5{
+	margin-top: 5px;
+}
+.mar_b-5{
+	margin-bottom: 5px;
+}
+.pad_l-5{
+	padding-left: 5px;
+}
+.pad_r-5{
+	padding-right: 5px;
+}
+.pad_t-5{
+	padding-top: 5px;
+}
+.pad_b-5{
+	padding-bottom: 5px;
+}
+.myTextColor{
+	color:#276385;
+}
+.overview_vaccination_cardtext
+{
+	font-size: 13px;
+	margin-bottom: 30px;
+}
+.progress-bar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	color: #4C9AFF;
+	text-align: center;
+	white-space: nowrap;
+	background-color:#4C9AFF;
+  }
+  .overview_detail_text
+  {
+	  color:#FFFFFF;
+	  font-size: 24px;
+  }
+  .overview_title_img
+  {
+	  width:40px;
+	  height:40px;
+  }
+
+
+/*
+	custom css by P2
+*/
+
+
+.content-header-title {
+	border-right: 0px !important ;
+}
+
+.breadcrumb{
+	float: right;
+	.breadcrumb-item{
+		color: #6d62e4;
+	}
+	.active{
+		font-weight: 600;
+	}
+}
