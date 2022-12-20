@@ -8,6 +8,7 @@ import DashboardRoutes from './Dashboards'
 import UiElementRoutes from './UiElements'
 import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
+import Appointment from './Appointment'
 
 /*
 Customization Routes
@@ -27,6 +28,7 @@ const DefaultRoute = '/overview'
 
 // ** Merge Routes
 const Routes = [
+  ...Appointment,
   ...OverviewRoutes,
   ...GroupRoutes,
   ...OrganizationRoutes,

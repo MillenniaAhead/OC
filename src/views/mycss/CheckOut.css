@@ -1,9 +1,15 @@
 /* code aa5 */
+
+.check-out-main-container{
+    display:grid
+}
 .check-out-container{
     display: flex;
     flex-direction: column;
     align-content: center;
     margin:20px;
+  grid-column-start: 1; 
+  grid-column-end: 10;
 }
 .search-container-aa5{
     width:100%;
@@ -25,7 +31,7 @@
     width:45%;
 }
 .filter-option-aa5,.sort-by-option-aa5{
-    padding:10px 25px;
+    padding:10px 20px;
     border: 1px solid #0000002E;
     border-radius:40px;
     background-color: white;
@@ -35,8 +41,8 @@
     width:100%;
 }
 .text-aa5{
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 17px;
+    line-height: 21px;
     font-weight: 500;
 }
 .text-dd5{

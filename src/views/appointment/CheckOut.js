@@ -1,10 +1,12 @@
 import React from "react"
 import "../mycss/CheckOut.css"
 import { MoreVertical, Search, Filter, AlignCenter } from "react-feather"
+import Detail from "./Detail"
 
 const CheckOut = () => {
     return (
-       <div className="check-out-container">
+        <div className="add-tip-container">
+       <div className="check-out-container left-container-aa3">
         <div className="search-container-aa5">
             <div className="search-field-aa5 text-bb5">
                 <span className="search-icon-aa5 ps-2 pe-2"><Search/></span><input type="text" name="new-sale" id="" placeholder="Search by client, team member or service name"/>
@@ -42,6 +44,8 @@ const CheckOut = () => {
             </div>
         </div>
        </div>
+        <Detail/>
+        </div>
     )
 }
 

@@ -119,7 +119,7 @@ const ViewAppointment = () => {
                     <div className='text-gg3'>Facial</div>
                     <div className='text-vv2'>1*₹115</div>
                 </div>
-                <div className='text-ee3' style={{marginTop:"5px"}}> 12:00pm, 13 Oct 2022 with Kondeti Anusha </div>
+                <div className='text-ee3' style={{marginTop:"5px", width:"60%"}}> 12:00pm, 13 Oct 2022 with Kondeti Anusha </div>
                 </div>
                 </div>
                 <div className='right-child-bb2'>
@@ -137,7 +137,7 @@ const ViewAppointment = () => {
                     <div className='text-ee3'>₹11.50</div>
                 </div>
                 <div className="tip d-flex justify-content-between">
-                    <div className='text-uu2 d-flex'><span style={{padding:"1px 3px 0 0", cursor:"pointer"}} className='d-flex'>Cash payment on Saturday, 15 Oct
+                    <div className='text-uu2 d-flex'><span style={{padding:"1px 3px 0 0", cursor:"pointer", width:"60%"}} className='d-flex'>Cash payment on Saturday, 15 Oct
 2022 at 11:19am</span></div>
                     <div className='text-ee3'>₹126.50</div>
                 </div>
