@@ -31,6 +31,14 @@ import { Row, Col, Form, Input, Label, Alert, Button, CardText, CardTitle, Uncon
 // ** Styles
 import '@styles/react/pages/page-authentication.scss'
 
+import Logo from '../../../assets/images/pages/logo.png'
+import Fb from "../../../assets/images/pages/fb.png"
+import Google from "../../../assets/images/pages/google.png"
+import Apple from "../../../assets/images/pages/apple.png"
+import Dot from "../../../assets/images/pages/Ellipse.png"
+import Web from "../../../assets/images/pages/Web Help.png"
+
+
 const ToastContent = ({ name, role }) => (
   <Fragment>
     <div className='toastify-header'>
@@ -62,7 +70,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors }
   } = useForm({ defaultValues })
-  const illustration = skin === 'dark' ? 'login-v2-dark.svg' : 'login-v2.svg',
+  const illustration = skin === 'dark' ? 'image-1.png' : 'image-1.png',
     source = require(`@src/assets/images/pages/${illustration}`).default
 
   const onSubmit = data => {
@@ -92,94 +100,48 @@ const Login = () => {
   }
 
   return (
-    <div className='auth-wrapper auth-cover'>
-      <Row className='auth-inner m-0'>
-        <Link className='brand-logo' to='/' onClick={e => e.preventDefault()}>
-          <svg viewBox='0 0 139 95' version='1.1' height='28'>
-            <defs>
-              <linearGradient x1='100%' y1='10.5120544%' x2='50%' y2='89.4879456%' id='linearGradient-1'>
-                <stop stopColor='#000000' offset='0%'></stop>
-                <stop stopColor='#FFFFFF' offset='100%'></stop>
-              </linearGradient>
-              <linearGradient x1='64.0437835%' y1='46.3276743%' x2='37.373316%' y2='100%' id='linearGradient-2'>
-                <stop stopColor='#EEEEEE' stopOpacity='0' offset='0%'></stop>
-                <stop stopColor='#FFFFFF' offset='100%'></stop>
-              </linearGradient>
-            </defs>
-            <g id='Page-1' stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
-              <g id='Artboard' transform='translate(-400.000000, -178.000000)'>
-                <g id='Group' transform='translate(400.000000, 178.000000)'>
-                  <path
-                    d='M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z'
-                    id='Path'
-                    className='text-primary'
-                    style={{ fill: 'currentColor' }}
-                  ></path>
-                  <path
-                    d='M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z'
-                    id='Path'
-                    fill='url(#linearGradient-1)'
-                    opacity='0.2'
-                  ></path>
-                  <polygon
-                    id='Path-2'
-                    fill='#000000'
-                    opacity='0.049999997'
-                    points='69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325'
-                  ></polygon>
-                  <polygon
-                    id='Path-2'
-                    fill='#000000'
-                    opacity='0.099999994'
-                    points='69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338'
-                  ></polygon>
-                  <polygon
-                    id='Path-3'
-                    fill='url(#linearGradient-2)'
-                    opacity='0.099999994'
-                    points='101.428699 0 83.0667527 94.1480575 130.378721 47.0740288'
-                  ></polygon>
-                </g>
-              </g>
-            </g>
-          </svg>
-          <h2 className='brand-text text-primary ms-1'>Vuexy</h2>
-        </Link>
-        <Col className='d-none d-lg-flex align-items-center p-5' lg='8' sm='12'>
-          <div className='w-100 d-lg-flex align-items-center justify-content-center px-5'>
-            <img className='img-fluid' src={source} alt='Login Cover' />
-          </div>
+    <div style={{background: 'white' }}>
+      <Row style={{marginTop: '-3px'}} className='auth-inner'>
+        <Col style={{marginRight: '-100px'}} className='d-none d-lg-flex' lg='8' sm='12'>
+            <img style={{height: '665px', width: '740px', marginLeft: '-10px', objectFit: 'cover', objectPosition:'left'}} className='img-fluid' src={source} alt='Login Cover' />
         </Col>
-        <Col className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>
+        <Col style={{marginTop: '-40px'}} className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>
           <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
-            <CardTitle tag='h2' className='fw-bold mb-1'>
-              Welcome to Vuexy! 👋
-            </CardTitle>
-            <CardText className='mb-2'>Please sign-in to your account and start the adventure</CardText>
+            <div className='text-center'
+        >
+          <img
+            width={50}
+            src={Logo}
+            alt="logo"
+          />
+          <h4
+          className='fs-3 mt-1 fw-bolder'
+          >
+            <span
+              style={{ color: ["#1BB70B"]}}
+            >
+              OUTLET
+            </span>
+            CONTROL
+          </h4>
+          <p>
+            Create an account or log in to manage your Salon business.
+          </p>
+          </div>
+           
             <Alert color='primary'>
-              <div className='alert-body font-small-2'>
-                <p>
-                  <small className='me-50'>
-                    <span className='fw-bold'>Admin:</span> admin@demo.com | admin
-                  </small>
-                </p>
-                <p>
-                  <small className='me-50'>
-                    <span className='fw-bold'>Client:</span> client@demo.com | client
-                  </small>
-                </p>
-              </div>
+              
               <HelpCircle
                 id='login-tip'
                 className='position-absolute'
                 size={18}
-                style={{ top: '10px', right: '10px' }}
+                style={{ top: '2px', right: '10px' }}
               />
               <UncontrolledTooltip target='login-tip' placement='left'>
                 This is just for ACL demo purpose.
               </UncontrolledTooltip>
             </Alert>
-            <Form className='auth-login-form mt-2' onSubmit={handleSubmit(onSubmit)}>
+            <Form className='auth-login-form' onSubmit={handleSubmit(onSubmit)}>
               <div className='mb-1'>
                 <Label className='form-label' for='login-email'>
                   Email
@@ -205,7 +167,7 @@ const Login = () => {
                     Password
                   </Label>
                   <Link to='/forgot-password'>
-                    <small>Forgot Password?</small>
+                    <small style={{color: '#1E49E2'}}>Forgot Password?</small>
                   </Link>
                 </div>
                 <Controller
@@ -217,38 +179,123 @@ const Login = () => {
                   )}
                 />
               </div>
-              <div className='form-check mb-1'>
+              <div style={{marginTop: '-2px'}} className='form-check mb-1'>
                 <Input type='checkbox' id='remember-me' />
                 <Label className='form-check-label' for='remember-me'>
                   Remember Me
                 </Label>
               </div>
-              <Button type='submit' color='primary' block>
+              <button className='btn' style={{ marginTop: '-6px', background: '#4E4E4E', color: 'white', width: '300px'}} type='submit' block>
                 Sign in
-              </Button>
+              </button>
+              <div style={{marginTop: '4px'}} className='divider'>
+              <div className='divider-text'>OR</div>
+              </div>
+              <button
+              style={{ width: "300px", height: "45px", marginTop: '-9px' }}
+              className="card border"
+            >
+              <div className="card-body d-flex">
+                <img
+                  style={{ width: "28px", height: "22px", marginTop: "-8px" }}
+                  src={Fb}
+                  alt="fb"
+                />
+                <p className='px-2' style={{marginTop: "-8px"}}>
+                  Continue with Facebook
+                </p>
+              </div>
+            </button>
+            <button
+              style={{ width: "300px", height: "45px", marginTop: '-10px' }}
+              className="card border"
+            >
+              <div className="card-body d-flex">
+                <img
+                  style={{
+                    marginTop: "-10px",
+                    marginLeft: "-8px",
+                    width: "42px",
+                    height: "28px"
+                  }}
+                  src={Google}
+                  alt="google"
+                />
+                <p
+                  className="px-2"
+                  style={{
+                    marginTop: "-8px"
+                  }}
+                >
+                  Continue with Google
+                </p>
+              </div>
+            </button>
+            <button
+              style={{ width: "300px", height: "45px", marginTop: '-10px' }}
+              className="card border"
+            >
+              <div className="card-body d-flex">
+                <img
+                  style={{
+                    width: "16px",
+                    height: "16px",
+                    marginTop: "-8px",
+                    marginLeft: "3px"
+                  }}
+                  src={Apple}
+                  alt="apple"
+                />
+                <p
+                  className="px-3"
+                  style={{
+                    marginTop: "-8px"
+                  }}
+                >
+                  Continue with Apple
+                </p>
+              </div>
+            </button>
+
             </Form>
-            <p className='text-center mt-2'>
+            <p style={{marginTop: '-8px'}} className='text-center'>
               <span className='me-25'>New on our platform?</span>
               <Link to='/register'>
-                <span>Create an account</span>
+                <span style={{color: '#1E49E2'}}>Create an account</span>
               </Link>
             </p>
-            <div className='divider my-2'>
-              <div className='divider-text'>or</div>
-            </div>
-            <div className='auth-footer-btn d-flex justify-content-center'>
-              <Button color='facebook'>
-                <Facebook size={14} />
-              </Button>
-              <Button color='twitter'>
-                <Twitter size={14} />
-              </Button>
-              <Button color='google'>
-                <Mail size={14} />
-              </Button>
-              <Button className='me-0' color='github'>
-                <GitHub size={14} />
-              </Button>
+            <div style={{marginLeft: '45px', marginTop: '-10px', marginBottom: '-58px' }} className="d-flex">
+              <div>
+                <p style={{fontSize: '12px'}}>
+                  GB
+                  <span
+                    style={{
+                      marginLeft: "5px",
+                      color: ["#1E49E2"],
+                      fontSize: "14px"
+                    }}
+                  >
+                    English
+                  </span>
+                </p>
+              </div>
+              <div>
+                <img style={{ marginLeft: "30px" }} src={Dot} alt="dot" />
+              </div>
+              <div style={{ marginLeft: "25px" }} className="d-flex">
+                <img
+                  style={{ width: "20px", height: "20px", marginRight: "8px", marginTop: '1px' }}
+                  src={Web}
+                  alt="web"
+                />
+                <p
+                  style={{
+                    color: ["#1E49E2"]
+                  }}
+                >
+                  Support
+                </p>
+              </div>
             </div>
           </Col>
         </Col>
