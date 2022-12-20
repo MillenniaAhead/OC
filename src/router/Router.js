@@ -6,7 +6,7 @@ import { isUserLoggedIn } from '@utils'
 import { useLayout } from '@hooks/useLayout'
 import { AbilityContext } from '@src/utility/context/Can'
 import { useRouterTransition } from '@hooks/useRouterTransition'
-
+import NewAppointment from '../views/appointment/NewAppointment'
 // ** Custom Components
 import LayoutWrapper from '@layouts/components/layout-wrapper'
 
@@ -20,6 +20,11 @@ import { DefaultRoute, Routes } from './routes'
 import BlankLayout from '@layouts/BlankLayout'
 import VerticalLayout from '@src/layouts/VerticalLayout'
 import HorizontalLayout from '@src/layouts/HorizontalLayout'
+import ViewAppointment from '../views/appointment/ViewAppointment'
+import AddTip from '../views/appointment/AddTip'
+import SelectPayment from '../views/appointment/SelectPayment'
+import CheckOut from '../views/appointment/CheckOut'
+import TimeGraph from '../views/appointment/TimeGraph'
 
 const Router = () => {
   // ** Hooks
@@ -196,6 +201,36 @@ const Router = () => {
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
       <Switch>
         {/* If user is logged in Redirect user to DefaultRoute else to login */}
+        <Route
+        exact
+        path='/newappointment'
+        component={NewAppointment}
+        />
+        <Route
+        exact
+        path='/viewappointment'
+        component={ViewAppointment}
+        />
+        <Route
+        exact
+        path='/addtip'
+        component={AddTip}
+        />
+        <Route
+        exact
+        path='/selectpayment'
+        component={SelectPayment}
+        />
+        <Route
+        exact
+        path='/checkout'
+        component={CheckOut}
+        />
+        <Route
+        exact
+        path='/timegraph'
+        component={TimeGraph}
+        />
         <Route
           exact
           path='/'

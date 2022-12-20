@@ -1,0 +1,120 @@
+.modal-90w {
+    max-width: 90% !important;
+  }
+  .white-box-2 {
+    width: 234px;
+    height: 400px;
+    background-color: #ffffff;
+    position: relative;
+    top: -315px;
+    left: 210px;
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+  }
+  .white-box-1 {
+    width: 234px;
+    height: 400px;
+    position: relative;
+    top: 20px;
+    left: 70px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+  }
+  .text-a4 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 36px;
+    margin-bottom: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .text-b4 {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+  .text-c4 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+  }
+  .text-d4 {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 6px;
+  }
+  .text-e4 {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 2px;
+  }
+  .text-f4 {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    margin-top: 6px;
+  }
+  .text-g4 {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    padding: 4px;
+    margin: 2px;
+  }
+  .text-h4 {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  .text-box-a4,
+  .text-box-b4 {
+    padding: 10px;
+  }
+  .icon-a4 {
+    padding-right: 4px;
+  }
+  .star-icon {
+    padding-right: 4px;
+  }
+  .circle-a4 {
+    background: #ffbb0b8f;
+    width: 140px;
+    height: 140px;
+    border-radius: 0 0 100% 0;
+  }
+  .search-box-a4 {
+    position: relative;
+    top:-40px;
+    margin: 0px auto;
+    width: 80%;
+    border: 1px solid #d9d9d9;
+    padding: 8px;
+    border-radius:4px;
+    background-color: #ffffff;
+  }
+  .search-icon-a4{
+    padding-right:3px;
+  }
+  .text-i4{
+    font-weight: 600;
+  font-size: 17px;
+  line-height: 20px;
+  padding:8px;
+  margin:4px 0;
+  }
+  .image-box-a4{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top:4px;
+    padding:4px;
+  }
+  .image-box-a4 div{
+    padding:6px 3px;
+    margin-top:5px;
+  }

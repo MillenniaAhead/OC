@@ -1,0 +1,216 @@
+/* // code *********** aa1 */
+
+.repeatation{
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-bottom: 32px;
+}
+.repeat{
+    color:#1bb70b;
+}
+
+.new-appointment-container,.view-appointment-container{
+    display:grid;
+    height: 100vh;
+    overflow-y: hidden;
+}
+.top-container-aa1,.top-container-aa2{
+    /* // border:1px solid red; */
+    grid-column-start: 1;
+    grid-column-end: 12;
+    text-align:center;
+    padding:14px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+}
+.top-container-aa1 div,.top-container-aa2 div{
+    font-size: 28px;
+    line-height:40px;
+    font-weight: 700;
+    color:black;
+}
+.left-container-aa1,.left-container-aa2{
+    /* // border:1px solid black; */
+    grid-column-start:1;
+    grid-column-end:11;
+    padding:24px;
+    margin: 0 30px;
+    height:88vh
+
+}
+.right-container-aa1,.right-container-aa2{
+    /* // border:1px solid blue; */
+    border-left:1px solid #d9d9d9;
+    grid-column-start:11;
+    grid-column-end:12;
+    overflow-y: scroll;
+}
+.box-aa1{
+    display:flex;
+    justify-content: space-between;
+}
+.date-box-aa1{
+    /* font-size: 20px;
+    font-weight: 800;
+    line-height: 28px; */
+    margin: 0 0 32px 0;
+}
+.form-control{
+    font-size:20px;
+    font-weight:600;
+    line-height: 25px;
+    color:black;
+}
+.box-bb1{
+    display:grid;
+    grid-template-columns: 25% 75%;
+    padding:24px 16px 4px 16px;
+    border:1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+}
+.text-aa1{
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 21px;
+        margin-bottom: 5px;
+        color:black;
+}
+
+.box-bb1 .select-time,.box-bb1 .duration{
+    padding:0 8px 24px 8px
+}
+.form-select-lg{
+      color:black;
+      font-size:1.2rem;
+}
+.text-bb1{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.service-field,.team-member-field{
+    border:1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    background:#ffffff;
+}
+select:focus,input:focus,textarea:focus{
+    outline: none;
+}
+.search-field-aa1:hover,select:hover,.service-field:hover,.team-member-field:hover,textarea:hover{
+    border:1px solid black;
+}
+/* select:focus{
+    border:2px solid green;
+} */
+input{
+    border:none;
+}
+textarea{
+    height:94px;
+    border:1px solid rgba(0, 0, 0, 0.18);
+    padding:10px 16px;
+    border-radius: 4px;;
+}
+.box-cc1{
+    margin:32px 0 32px 0px;
+}
+.search-field-aa1{
+    width:90%;
+    display:flex;
+    border:1px solid rgba(0, 0, 0, 0.18);
+    border-radius:4px;
+    margin-top:24px;
+    background-color: #ffffff;
+}
+.search-icon-aa1{
+    padding:10px 15px 10px 10px;
+}
+.search-field-aa1 input{
+    padding:10px 16px 12px 0;
+}
+.description-box-aa1{
+    padding:64px 48px 48px 48px ;
+}
+.description-icon-aa1{
+    margin-bottom: 21px;
+    text-align: center;
+}
+.description-text-aa1{
+    margin-bottom: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    font-size: 17px;
+    text-align: center;
+}
+.btn-aa1{
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 24px;
+    padding:10px 15px;
+    border-radius: 4px;
+    color:white;
+    border:none;
+    width:47%;
+}
+.text-cc1{
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align:center;
+    padding:10px 5px;
+    margin-bottom: 5px; 
+    color:black
+}
+.bottom-box-aa1{
+    padding:24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.24);
+    margin-top:80px;
+}
+.express-checkout,.more-option-aa2{
+    color:black;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+}
+.save-appointment,.checkout-aa2{
+    background:#000000;
+}
+
+.box-dd1{
+    background: rgba(237, 254, 235, 0.34);
+    border:1px solid rgba(0, 0, 0, 0.1);
+    margin-top:25px;
+}
+.service-option{
+    padding:25px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    align-items: center;
+    border-left:6px solid rgba(27, 183, 11, 0.7);
+}
+.service-option-category{
+    padding:25px 30px
+}
+.text-dd1{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 25px;
+    color: #000000;
+    margin-bottom: 4px;
+}
+.text-ee1{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    color:rgba(0, 0, 0, 0.48);
+}
+.text-ff1{
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 28px;
+    color: black;
+}
+.dropdown-menu{
+    overflow-y: scroll;
+    height:53vh;
+}
