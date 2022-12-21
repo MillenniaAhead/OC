@@ -29,6 +29,30 @@ const PagesRoutes = [
     }
   },
   {
+    path: '/verify',
+    component: lazy(() => import('../../views/auth/Verify')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/otp',
+    component: lazy(() => import('../../views/auth/OTP')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/resend',
+    component: lazy(() => import('../../views/auth/Resend')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
     path: '/pages/register-basic',
     component: lazy(() => import('../../views/pages/authentication/RegisterBasic')),
     layout: 'BlankLayout'

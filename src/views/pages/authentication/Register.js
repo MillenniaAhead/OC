@@ -209,9 +209,12 @@ const Register = () => {
                   </a>
                 </Label>
               </div>
-              <button className='btn' style={{background: '#4E4E4E', color: 'white', width: '300px', marginTop: '-5px'}} type='submit' block>
+              <Link to='/verify'>
+               <button  className='btn' style={{background: '#4E4E4E', color: 'white', width: '300px', marginTop: '-5px'}} type='submit' block>
                 Sign up
               </button>
+              </Link>
+             
             </Form>
             <p style={{marginBottom: '-45px'}} className='text-center mt-1'>
               <span className='me-25'>Already have an account?</span>
