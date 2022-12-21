@@ -12,7 +12,6 @@ import { handleLogin } from '@store/authentication'
 
 // ** Third Party Components
 import { useForm, Controller } from 'react-hook-form'
-import { Facebook, Twitter, Mail, GitHub } from 'react-feather'
 
 // ** Context
 import { AbilityContext } from '@src/utility/context/Can'
@@ -21,7 +20,7 @@ import { AbilityContext } from '@src/utility/context/Can'
 import InputPasswordToggle from '@components/input-password-toggle'
 
 // ** Reactstrap Imports
-import { Row, Col, CardTitle, CardText, Label, Button, Form, Input, FormFeedback } from 'reactstrap'
+import { Row, Col, Label, Form, Input, FormFeedback } from 'reactstrap'
 
 // ** Styles
 import '@styles/react/pages/page-authentication.scss'
@@ -99,7 +98,7 @@ const Register = () => {
         <Col style={{marginRight: '-100px'}} className='d-none d-lg-flex' lg='8' sm='12'>
             <img style={{height: '640px', width: '720px', marginLeft: '-10px', objectFit: 'cover', objectPosition:'left'}} className='img-fluid' src={source} alt='Login Cover' />
         </Col>
-        <Col className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>
+        <Col style={{marginTop: '-40px'}} className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>
           <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
           <div className='text-center'
         >
@@ -122,7 +121,7 @@ const Register = () => {
           Create a business account
           </p>
           </div>
-            <Form action='/' className='auth-register-form mt-2' onSubmit={handleSubmit(onSubmit)}>
+            <Form action='/' className='auth-register-form mt-1' onSubmit={handleSubmit(onSubmit)}>
               <div className='mb-1'>
                 <Label className='form-label' for='register-username'>
                   Username
@@ -164,7 +163,38 @@ const Register = () => {
                   )}
                 />
               </div>
-              <div className='form-check mb-1'>
+
+              <div className='mb-1'>
+                <Label className='form-label' for='register-mobilenumber'>
+                  Mobile Number
+                </Label>
+                <Controller
+                  id='mobilenumber'
+                  name='mobilenumber'
+                  control={control}
+                  render={({ field }) => (
+                    <Input autoFocus type='number' placeholder='Enter your mobile number' invalid={errors.mobilenumber && true} {...field} />
+                  )}
+                />
+                {errors.mobilenumber ? <FormFeedback>{errors.mobilenumber.message}</FormFeedback> : null}
+              </div>
+
+              <div className='mb-1'>
+                <Label className='form-label' for='register-country'>
+                  Country
+                </Label>
+                <Controller
+                  id='country'
+                  name='country'
+                  control={control}
+                  render={({ field }) => (
+                    <Input autoFocus placeholder='India' invalid={errors.country && true} {...field} />
+                  )}
+                />
+                {errors.country ? <FormFeedback>{errors.country.message}</FormFeedback> : null}
+              </div>
+
+              <div style={{marginTop: '-5px'}} className='form-check mb-1'>
                 <Controller
                   name='terms'
                   control={control}
@@ -179,11 +209,11 @@ const Register = () => {
                   </a>
                 </Label>
               </div>
-              <button className='btn' style={{background: '#4E4E4E', color: 'white', width: '300px'}} type='submit' block>
+              <button className='btn' style={{background: '#4E4E4E', color: 'white', width: '300px', marginTop: '-5px'}} type='submit' block>
                 Sign up
               </button>
             </Form>
-            <p className='text-center mt-2'>
+            <p style={{marginBottom: '-45px'}} className='text-center mt-1'>
               <span className='me-25'>Already have an account?</span>
               <Link to='/login'>
                 <span style={{color: '#1A85E7'}}>Sign in instead</span>

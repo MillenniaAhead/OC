@@ -10,7 +10,7 @@ import useJwt from '@src/auth/jwt/useJwt'
 import { useDispatch } from 'react-redux'
 import { toast, Slide } from 'react-toastify'
 import { useForm, Controller } from 'react-hook-form'
-import { Facebook, Twitter, Mail, GitHub, HelpCircle, Coffee } from 'react-feather'
+import { HelpCircle, Coffee } from 'react-feather'
 
 // ** Actions
 import { handleLogin } from '@store/authentication'
@@ -26,7 +26,7 @@ import InputPasswordToggle from '@components/input-password-toggle'
 import { getHomeRouteForLoggedInUser } from '@utils'
 
 // ** Reactstrap Imports
-import { Row, Col, Form, Input, Label, Alert, Button, CardText, CardTitle, UncontrolledTooltip } from 'reactstrap'
+import { Row, Col, Form, Input, Label, Alert, UncontrolledTooltip } from 'reactstrap'
 
 // ** Styles
 import '@styles/react/pages/page-authentication.scss'
@@ -189,7 +189,7 @@ const Login = () => {
                 Sign in
               </button>
               <div style={{marginTop: '4px'}} className='divider'>
-              <div className='divider-text'>OR</div>
+              <div style={{marginRight: '10px'}} className='divider-text'>OR</div>
               </div>
               <button
               style={{ width: "300px", height: "45px", marginTop: '-9px' }}
