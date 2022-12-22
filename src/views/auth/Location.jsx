@@ -1,24 +1,22 @@
-import React from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import React from "react"
+import X from "../../assets/images/pages/type/x.png"
+import Map from "../../assets/images/pages/type/map-pin.png"
 
 const Location = () => {
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center px-5 py-1 border-bottom border-1">
         <div className="d-flex justify-content-between align-items-center">
-          <AiOutlineClose className="mt-3" size={28} />
+        <img style={{width: '35px', height: '35px', marginTop: '5px'}} src={X} alt="x" />
           <a
             href="/size"
             style={{
-              marginTop: "23px",
+              marginTop: "18px",
               marginBottom: "10px",
               marginLeft: "30px",
               textDecoration: "none",
               color: ["#1E49E2"],
-              fontWeight: 400,
-              fontSize: "22px",
+              fontSize: "20px"
             }}
           >
             Previous
@@ -26,35 +24,36 @@ const Location = () => {
         </div>
 
         <a
+          style={{background: '#4E4E4E', color: 'white'}}
           href="/software"
           type="button"
-          className="px-5 py-2 btn btn-secondary"
+          className="px-4 py-1 btn rounded-1"
         >
           Next step
         </a>
       </div>
       <div style={{ height: "2px" }} className="progress">
-        <div style={{ width: "54%" }} className="progress-bar"></div>
+        <div style={{ width: "54%", background: '#1E49E2' }} className="progress-bar"></div>
       </div>
 
       <p
-        style={{ fontWeight: 500, cursor: "default" }}
-        className="text-center mt-3"
+        style={{ cursor: "default", color: 'black' }}
+        className="text-center mt-1"
       >
         Business setup
       </p>
       <p
-        style={{ fontWeight: 700, cursor: "default", marginTop: "-12px" }}
+        style={{ fontWeight: 700, color: 'black', cursor: "default", marginTop: "-5px" }}
         className="text-center fs-3"
       >
         Set your location
       </p>
       <p
         style={{
-          fontWeight: 500,
+          color: 'black',
           cursor: "default",
-          marginTop: "-12px",
-          fontSize: "17px",
+          marginTop: "5px",
+          fontSize: "17px"
         }}
         className="text-center"
       >
@@ -62,16 +61,16 @@ const Location = () => {
       </p>
       <div
         style={{ width: "780px", height: "230px" }}
-        className="card container align-items-center justify-content-center mt-5"
+        className="card container align-items-center justify-content-center mt-3 border"
       >
         <p
           style={{
             marginRight: "560px",
             marginTop: "-10px",
             marginBottom: "25px",
-            fontWeight: 500,
-            fontSize: "22px",
-            cursor: "default",
+            fontSize: "20px",
+            color: 'black',
+            cursor: "default"
           }}
         >
           Business location
@@ -80,53 +79,20 @@ const Location = () => {
         <p
           style={{
             marginTop: "20px",
-            marginRight: "490px",
-            fontWeight: 500,
+            marginRight: "460px",
+            color: 'black',
             fontSize: "16px",
-            cursor: "default",
+            cursor: "default"
           }}
         >
           Where’s your business located?
         </p>
-        {/* <form
-          style={{ maxWidth: "400px", marginRight: "520px", marginTop: "-8px" }}
-        >
-          <div style={{ width: "100%", marginBottom: "10px" }}>
-            <FontAwesomeIcon
-              style={{
-                marginLeft: "4px",
-                position: "absolute",
-                padding: "10px",
-              }}
-              icon={faLocationDot}
-            />
-            <div
-              style={{
-                marginLeft: "38px",
-                position: "absolute",
-                height: "34px",
-                width: "2px",
-              }}
-              className="vr"
-            ></div>
-            <input
-              className="rounded-1 border-0"
-              style={{
-                width: "255%",
-                padding: "5px",
-                textAlign: "start",
-                backgroundColor: ["#F5F5F5"],
-              }}
-              type="text"
-            />
-          </div>
-        </form> */}
         <div
           style={{ width: "550px", marginRight: "160px" }}
           class="input-group mb-3"
         >
-          <span style={{ background: "white" }} class="input-group-text">
-            <FontAwesomeIcon icon={faLocationDot} />
+          <span style={{ background: "#F5F5F5" }} class="input-group-text">
+         <img src={Map} alt="map" />
           </span>
           <input
             style={{ backgroundColor: "#F5F5F5" }}
@@ -135,7 +101,7 @@ const Location = () => {
           />
         </div>
         <div
-          style={{ fontWeight: 500, marginRight: "190px", marginTop: "-5px" }}
+          style={{ fontWeight: 500, marginRight: "180px", marginTop: "-20px" }}
           className="form-check"
         >
           <input
@@ -143,13 +109,13 @@ const Location = () => {
             type="checkbox"
             id="flexCheckDefault"
           />
-          <label className="form-check-label px-2" htmlFor="flexCheckDefault">
+          <label style={{color: 'black'}} className="form-check-label px-1" htmlFor="flexCheckDefault">
             I don’t have a business address ( mobile and online services only)
           </label>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Location;
+export default Location

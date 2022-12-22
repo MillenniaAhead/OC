@@ -1,23 +1,22 @@
-import React from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import Idea from "../assets/Type/Idea.png";
+import React from "react"
+import X from "../../assets/images/pages/type/x.png"
+import Idea from "../../assets/images/pages/type/Idea.png"
 
 const Teamsize = () => {
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center px-5 py-1 border-bottom border-1">
         <div className="d-flex justify-content-between align-items-center">
-          <AiOutlineClose className="mt-3" size={28} />
+        <img style={{width: '35px', height: '35px', marginTop: '5px'}} src={X} alt="x" />
           <a
             href="/team"
             style={{
-              marginTop: "23px",
+              marginTop: "18px",
               marginBottom: "10px",
               marginLeft: "30px",
               textDecoration: "none",
               color: ["#1E49E2"],
-              fontWeight: 400,
-              fontSize: "22px",
+              fontSize: "20px"
             }}
           >
             Previous
@@ -25,35 +24,36 @@ const Teamsize = () => {
         </div>
 
         <a
+        style={{background: '#4E4E4E', color: 'white'}}
           href="/location"
           type="button"
-          className="px-5 py-2 btn btn-secondary"
+          className="px-4 py-1 btn rounded-1"
         >
           Next step
         </a>
       </div>
       <div style={{ height: "2px" }} className="progress">
-        <div style={{ width: "38%" }} className="progress-bar"></div>
+        <div style={{ width: "38%", background: '#1E49E2' }} className="progress-bar"></div>
       </div>
 
       <p
-        style={{ fontWeight: 500, cursor: "default" }}
-        className="text-center mt-2"
+        style={{ cursor: "default", color: 'black'  }}
+        className="text-center mt-1"
       >
         Business setup
       </p>
       <p
-        style={{ fontWeight: 700, cursor: "default", marginTop: "-12px" }}
+        style={{ fontWeight: 700, cursor: "default", marginTop: "-5px", color: 'black'  }}
         className="text-center fs-3"
       >
         What’s your team size?
       </p>
       <p
         style={{
-          fontWeight: 500,
+          color: 'black', 
           cursor: "default",
-          marginTop: "-12px",
-          fontSize: "17px",
+          marginTop: "5px",
+          fontSize: "17px"
         }}
         className="text-center"
       >
@@ -62,8 +62,8 @@ const Teamsize = () => {
         free on Salon!
       </p>
       <div
-        style={{ width: "700px", height: "340px" }}
-        className="card container align-items-center justify-content-center mt-4"
+        style={{ width: "680px", height: "340px" }}
+        className="card container align-items-center justify-content-center border mt-2"
       >
         <div
           style={{ marginRight: "500px", marginTop: "20px" }}
@@ -76,7 +76,7 @@ const Teamsize = () => {
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "17px", marginLeft: "10px" }}
+            style={{ fontSize: "17px", marginLeft: "10px", color: 'black' }}
             className="form-check-label"
             for="flexRadioDefault1"
           >
@@ -95,7 +95,7 @@ const Teamsize = () => {
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "17px", marginLeft: "10px" }}
+            style={{ fontSize: "17px", marginLeft: "10px", color: 'black' }}
             className="form-check-label"
             for="flexRadioDefault1"
           >
@@ -104,7 +104,7 @@ const Teamsize = () => {
         </div>
 
         <div
-          style={{ marginRight: "490px", marginTop: "25px" }}
+          style={{ marginRight: "494px", marginTop: "25px" }}
           className="form-check"
         >
           <input
@@ -114,7 +114,7 @@ const Teamsize = () => {
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "17px", marginLeft: "10px" }}
+            style={{ fontSize: "17px", marginLeft: "10px", color: 'black' }}
             className="form-check-label"
             for="flexRadioDefault1"
           >
@@ -123,7 +123,7 @@ const Teamsize = () => {
         </div>
 
         <div
-          style={{ marginRight: "492px", marginTop: "25px" }}
+          style={{ marginRight: "505px", marginTop: "25px" }}
           className="form-check"
         >
           <input
@@ -133,7 +133,7 @@ const Teamsize = () => {
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "17px", marginLeft: "14px" }}
+            style={{ fontSize: "17px", marginLeft: "12px", color: 'black' }}
             className="form-check-label"
             for="flexRadioDefault1"
           >
@@ -141,8 +141,8 @@ const Teamsize = () => {
           </label>
         </div>
         <div
-          style={{ height: "73px", backgroundColor: ["#D1E3F4CC"] }}
-          className="card container align-items-center justify-content-center mt-4 border border-0"
+          style={{ height: "72px", width: '620px', backgroundColor: ["#D1E3F4CC"] }}
+          className="card container align-items-center justify-content-center mt-3 border-0"
         >
           <div className="d-flex">
             <img
@@ -152,11 +152,11 @@ const Teamsize = () => {
             />
             <p
               style={{
-                fontWeight: 500,
+                color: 'black',
                 marginLeft: "22px",
                 marginTop: "12px",
-                fontSize: "17px",
-                marginRight: "80px",
+                fontSize: "13px",
+                marginRight: "80px"
               }}
             >
               We’ll add ‘Wendy’ as an example employee so you can see how the{" "}
@@ -167,7 +167,7 @@ const Teamsize = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Teamsize;
+export default Teamsize

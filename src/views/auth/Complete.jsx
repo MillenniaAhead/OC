@@ -1,5 +1,5 @@
-import React from "react";
-import Check from "../assets/Type/check.png";
+import React from "react"
+import Check from "../../assets/images/pages/type/check.png"
 
 const Complete = () => {
   return (
@@ -12,12 +12,12 @@ const Complete = () => {
       </div>
       <p
         className="d-flex align-items-center justify-content-center"
-        style={{ fontSize: "22px", marginTop: "-200px", cursor: "default" }}
+        style={{ color: 'black', fontSize: "20px", marginTop: "-190px", cursor: "default" }}
       >
         Yes, your business is set up here!
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Complete;
+export default Complete

@@ -1,73 +1,72 @@
-import React from "react";
-import { AiOutlineClose} from "react-icons/ai";
+import React from "react"
+import X from "../../assets/images/pages/type/x.png"
 
-import Head from "../assets/Type/Woman Head.png";
-import Nail from "../assets/Type/Nail.png";
-import Barber from "../assets/Type/Barbershop.png";
-import Meme from "../assets/Type/not bad meme.png";
+import Head from "../../assets/images/pages/type/Woman Head.png"
+import Nail from "../../assets/images/pages/type/Nail.png"
+import Barber from "../../assets/images/pages/type/Barbershop.png"
+import Meme from "../../assets/images/pages/type/not bad meme.png"
 
-import Bed from "../assets/Type/Occupied Bed.png";
-import Spa from "../assets/Type/Spa.png";
-import Perfume from "../assets/Type/Perfume Bottle.png";
-import Recliner from "../assets/Type/Recliner.png";
-import Eye from "../assets/Type/Closed Eye.png";
+import Bed from "../../assets/images/pages/type/Occupied Bed.png"
+import Spa from "../../assets/images/pages/type/Spa.png"
+import Perfume from "../../assets/images/pages/type/Perfume Bottle.png"
+import Recliner from "../../assets/images/pages/type/Recliner.png"
+import Eye from "../../assets/images/pages/type/Closed Eye.png"
 
-import Arrow from "../assets/Type/Love Arrow.png";
-import Plus from "../assets/Type/Plus Math.png";
-import Scales from "../assets/Type/Kitchen Scales.png";
-import Running from "../assets/Type/Running.png";
-import Ropes from "../assets/Type/Battle Ropes.png";
+import Arrow from "../../assets/images/pages/type/Love Arrow.png"
+import Plus from "../../assets/images/pages/type/Plus Math.png"
+import Scales from "../../assets/images/pages/type/Kitchen Scales.png"
+import Running from "../../assets/images/pages/type/Running.png"
+import Ropes from "../../assets/images/pages/type/Battle Ropes.png"
 
-import Layout from "../assets/Type/Group Layouts.png";
+import Layout from "../../assets/images/pages/type/Group Layouts.png"
 
 const Other = () => {
   return (
     <div>
-      <div className="d-flex justify-content-between align-items-center px-5 py-1 border-bottom border-1">
+      <div className="d-flex justify-content-between align-items-center px-3 py-1 border-bottom border-1">
         <div className="d-flex justify-content-between align-items-center">
-          <AiOutlineClose className="mt-3" size={28} />
+        <img style={{width: '35px', height: '35px', marginTop: '5px'}} src={X} alt="x" />
           <a
             href="/type"
             style={{
-              marginTop: "23px",
+              marginTop: "18px",
               marginBottom: "10px",
               marginLeft: "30px",
               textDecoration: "none",
               color: ["#1E49E2"],
-              fontWeight: 400,
-              fontSize: "22px",
+              fontSize: "20px"
             }}
           >
             Previous
           </a>
         </div>
 
-        <a href="/team" type="button" className="px-5 py-2 btn btn-secondary">
+        <a style={{background: '#4E4E4E', color: 'white'}} href="/team" type="button" className="px-4 py-1 btn rounded-1">
           Next step
         </a>
       </div>
       <div style={{ height: "2px" }} className="progress">
-        <div style={{ width: "30%" }} className="progress-bar"></div>
+        <div style={{ width: "30%", background: '#1E49E2' }} className="progress-bar"></div>
       </div>
 
       <p
-        style={{ fontWeight: 400, cursor: "default" }}
-        className="text-center mt-2"
+        style={{ cursor: "default", color: 'black' }}
+        className="text-center mt-1"
       >
         Business setup
       </p>
       <p
-        style={{ fontWeight: 700, cursor: "default", marginTop: "-12px" }}
-        className="text-center fs-5"
+        style={{ fontWeight: 700, fontSize: '20px', cursor: "default", marginTop: "-12px", color: 'black' }}
+        className="text-center"
       >
         Select other related business types to help users find you
       </p>
       <p
         style={{
-          fontWeight: 400,
+          color: 'black',
           cursor: "default",
-          marginTop: "-12px",
-          fontSize: "12px",
+          marginTop: "-10px",
+          fontSize: "12px"
         }}
         className="text-center"
       >
@@ -79,7 +78,7 @@ const Other = () => {
         <div className="d-flex mt-3">
           <div
             style={{ width: "150px", height: "100px", marginLeft: "265px" }}
-            className="card"
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -90,11 +89,11 @@ const Other = () => {
             />
             <p
               style={{
+                color: 'black',
                 marginLeft: "40px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Hair Salon
@@ -102,7 +101,7 @@ const Other = () => {
           </div>
           <div
             style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -113,11 +112,11 @@ const Other = () => {
             />
             <p
               style={{
+                color: 'black',
                 marginLeft: "40px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Nail Salon
@@ -125,7 +124,7 @@ const Other = () => {
           </div>
           <div
             style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -136,11 +135,11 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "40px",
+                color: 'black',
+                marginLeft: "25px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Barber shop
@@ -149,7 +148,7 @@ const Other = () => {
 
           <div
             style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -160,11 +159,11 @@ const Other = () => {
             />
             <p
               style={{
+                color: 'black',
                 marginLeft: "36px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Aesthetics
@@ -172,7 +171,7 @@ const Other = () => {
           </div>
           <div
             style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -183,11 +182,11 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "40px",
+                color: 'black',
+                marginLeft: "35px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Massage
@@ -195,10 +194,10 @@ const Other = () => {
           </div>
         </div>
 
-        <div className="d-flex mt-3">
+        <div className="d-flex">
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "265px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "265px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -209,19 +208,19 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "60px",
+                color: 'black',
+                marginLeft: "56px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Spa
             </p>
           </div>
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -232,19 +231,19 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "28px",
+                color: 'black',
+                marginLeft: "22px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Waxing Salon
             </p>
           </div>
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -255,19 +254,19 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "22px",
+                color: 'black',
+                marginLeft: "18px",
                 marginTop: "5px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Tanning Studio
             </p>
           </div>
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -278,19 +277,19 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "14px",
+                color: 'black',
+                marginLeft: "12px",
                 marginTop: "5px",
-                fontWeight: 500,
-                fontSize: "14px",
-                cursor: "default",
+                fontSize: "13px",
+                cursor: "default"
               }}
             >
               Eyebrows & Lashes
             </p>
           </div>
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -301,11 +300,11 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "15px",
+                color: 'black',
+                marginLeft: "10px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Tattoo & Piercing
@@ -313,10 +312,10 @@ const Other = () => {
           </div>
         </div>
 
-        <div className="d-flex mt-3">
+        <div className="d-flex">
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "265px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "265px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -327,19 +326,19 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "20px",
+                color: 'black',
+                marginLeft: "15px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Therapy Center
             </p>
           </div>
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -350,19 +349,19 @@ const Other = () => {
             />
             <p
               style={{
+                color: 'black',
                 marginLeft: "28px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Weight Loss
             </p>
           </div>
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -373,19 +372,19 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "22px",
+                color: 'black',
+                marginLeft: "12px",
                 marginTop: "5px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Personal Trainer
             </p>
           </div>
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -396,19 +395,19 @@ const Other = () => {
             />
             <p
               style={{
-                marginLeft: "25px",
+                color: 'black',
+                marginLeft: "22px",
                 marginTop: "5px",
-                fontWeight: 500,
                 fontSize: "14px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Gym & Fitness
             </p>
           </div>
           <div
-            style={{ width: "150px", height: "100px", marginLeft: "15px" }}
-            className="card"
+            style={{ width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px' }}
+            className="card border"
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -419,11 +418,11 @@ const Other = () => {
             />
             <p
               style={{
+                color: 'black',
                 marginLeft: "52px",
                 marginTop: "8px",
-                fontWeight: 500,
                 fontSize: "15px",
-                cursor: "default",
+                cursor: "default"
               }}
             >
               Other
@@ -432,7 +431,7 @@ const Other = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Other;
+export default Other

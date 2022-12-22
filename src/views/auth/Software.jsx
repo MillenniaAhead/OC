@@ -1,54 +1,53 @@
-import React from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import React from "react"
+import X from "../../assets/images/pages/type/x.png"
 
 const Software = () => {
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center px-5 py-1 border-bottom border-1">
         <div className="d-flex justify-content-between align-items-center">
-          <AiOutlineClose style={{ marginTop: "20px" }} size={28} />
+        <img style={{width: '35px', height: '35px', marginTop: '5px'}} src={X} alt="x" />
           <a
             href="/location"
             style={{
-              marginTop: "25px",
+              marginTop: "18px",
               marginBottom: "10px",
               marginLeft: "30px",
               textDecoration: "none",
               color: ["#1E49E2"],
-              fontWeight: 400,
-              fontSize: "21px",
+              fontSize: "20px"
             }}
           >
             Previous
           </a>
         </div>
 
-        <a href="/hear" type="button" className="px-5 py-2 btn btn-secondary">
+        <a style={{background: '#4E4E4E', color: 'white'}} href="/hear" type="button" className="px-4 py-1 btn rounded-1">
           Next step
         </a>
       </div>
       <div style={{ height: "2px" }} className="progress">
-        <div style={{ width: "67%" }} className="progress-bar"></div>
+        <div style={{ width: "67%", background: '#1E49E2' }} className="progress-bar"></div>
       </div>
 
       <p
-        style={{ fontWeight: 500, cursor: "default" }}
-        className="text-center mt-3"
+        style={{color: 'black', cursor: "default" }}
+        className="text-center mt-1"
       >
         Business setup
       </p>
       <p
-        style={{ fontWeight: 700, cursor: "default", marginTop: "-12px" }}
+        style={{ fontWeight: 700, cursor: "default", marginTop: "-5px", color: 'black' }}
         className="text-center fs-4"
       >
         Which software are you currently using ?
       </p>
       <p
         style={{
-          fontWeight: 500,
+          color: 'black',
           cursor: "default",
-          marginTop: "-12px",
-          fontSize: "17px",
+          marginTop: "-5px",
+          fontSize: "17px"
         }}
         className="text-center"
       >
@@ -57,22 +56,23 @@ const Software = () => {
       </p>
 
       <div
-        style={{ width: "700px", height: "1110px" }}
-        className="card container mt-4 mb-4"
+        style={{ width: "700px", height: "1000px" }}
+        className="card container mt-2 mb-4 border"
       >
         <div
-          style={{ marginLeft: "30px", marginTop: "25px" }}
+          style={{ marginLeft: "10px", marginTop: "25px" }}
           className="form-check"
         >
           <input
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Acuity
@@ -80,18 +80,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Booksy
@@ -99,18 +100,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Janeapp
@@ -118,18 +120,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Kitomba
@@ -137,18 +140,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Square
@@ -156,18 +160,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Mind body
@@ -175,18 +180,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Ovatu
@@ -194,18 +200,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Phorest
@@ -213,18 +220,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Salon Iris
@@ -232,18 +240,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Shortcuts
@@ -251,18 +260,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Treatwell
@@ -270,18 +280,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Squire
@@ -289,18 +300,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Styleseat
@@ -308,18 +320,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Timely
@@ -327,18 +340,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Vagaro
@@ -346,18 +360,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Zenoti
@@ -365,18 +380,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             I’m not using any software
@@ -384,18 +400,19 @@ const Software = () => {
         </div>
 
         <div
-          style={{ marginLeft: "30px", marginTop: "20px" }}
+          style={{ marginLeft: "10px", marginTop: "20px" }}
           className="form-check"
         >
           <input
+          style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
           <label
-            style={{ fontSize: "20px", marginTop: "3px" }}
-            className="form-check-label px-3"
+            style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
+            className="form-check-label px-2"
             htmlFor="flexRadioDefault1"
           >
             Other
@@ -403,7 +420,7 @@ const Software = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Software;
+export default Software
