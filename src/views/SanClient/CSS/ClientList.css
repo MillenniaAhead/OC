@@ -1,0 +1,20 @@
+.three{
+    width: 24px;
+    height: 19px;
+    border: .5px solid gray;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+.client{
+    background-image: url("images/ClientList/background.jpg");
+}
+
+.paperless{
+    background-image: url('images/ClientList/Ellipse 15.png');
+    background-repeat: no-repeat;
+    height:1326px;
+   
+}
