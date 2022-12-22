@@ -1,6 +1,4 @@
-.modal-90w {
-    max-width: 90% !important;
-  }
+
   .white-box-2 {
     width: 234px;
     height: 400px;
@@ -16,7 +14,7 @@
     height: 400px;
     position: relative;
     top: 20px;
-    left: 70px;
+    left: 65px;
     background-color: #ffffff;
     border-radius: 10px;
     border: 1px solid #d9d9d9;

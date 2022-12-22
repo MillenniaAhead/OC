@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from 'react'
 import "../mycss/NewAppointment.css"
 import Flatpickr from 'react-flatpickr'
-import { Search, Repeat, ChevronDown } from 'react-feather'
+import { Search, Repeat, ChevronDown, X } from 'react-feather'
 import 'flatpickr/dist/flatpickr.css'
 import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Label } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 
 const NewAppointment = () => {
   const [picker, setPicker] = useState(new Date())
@@ -12,6 +13,9 @@ const NewAppointment = () => {
     <div className='new-appointment-container'>
       <div className="top-container-aa1">
       <div>New appointment</div>
+      <NavLink to='/timegraph'>
+      <X size={30} className='top-cross-aa1'/>
+      </NavLink>
       </div>
       <div className="left-container-aa1">
           <div className="box-aa1">

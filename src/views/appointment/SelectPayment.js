@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import "../mycss/AddTip.css"
 import "../mycss/SelectPayment.css"
 import { Modal, ModalBody } from 'reactstrap'
-import { Settings, ArrowLeft, X, Search, Check, Slash } from 'react-feather'
+import { Settings, ArrowLeft, X, Search, Slash, DollarSign, Columns } from 'react-feather'
 import Detail from './Detail'
+import cashpayment from '../images/cashpayment.svg'
+import voucherpayment from '../images/voucherpayment.svg'
+import { NavLink } from 'react-router-dom'
 
 const SelectPayment = () => {
   const [centeredModal1, setCenteredModal1] = useState(false)
@@ -11,19 +14,19 @@ const SelectPayment = () => {
 
   return (
     <div className="select-payment-container">
-        <div className="left-container-aa4">
+        <div className="left-container-aa4" style={{background:"#f8f8fb"}}>
             <div className="top-text-aa4 d-flex justify-content-between">
-                <div className="text-aa4 d-flex align-items-center"><div className="back-arrow-aa4 pe-3"><ArrowLeft size={30}/></div><div> Select payment</div></div>
+                <div className="text-aa4 d-flex align-items-center"><NavLink to='/addtip' ><div className="back-arrow-aa4 pe-3"><ArrowLeft size={30}/></div></NavLink><div> Select payment</div></div>
                 <div className="setting-icon-aa4" style={{cursor:"pointer"}}><Settings size={20}/></div>
             </div>
             <div className="payment-options-box">
-                <div className="p-option-1 payment-box" onClick={() => setCenteredModal1(!centeredModal1)}><div className='cash-icon'>*</div><div className="text-cc4">Cash<Check id="check-badge" strokeWidth={3}/></div></div>
-                <div className="p-option-2 payment-box" onClick={() => setCenteredModal2(!centeredModal2)}><div className='voucher-icon'></div>*<div className='text-cc4'>Voucher</div></div>
-                <div className="p-option-3 payment-box"><div className='split-payment-icon'>*</div> <div className='text-cc4'>Split payment</div></div>
-                <div className="p-option-4 payment-box"><div className="Others-icon"></div>*<div className='text-cc4'>Others</div></div>
+                <div className="p-option-1 payment-box" onClick={() => setCenteredModal1(!centeredModal1)}><div className='cash-icon'><img src={cashpayment} alt='cash'/></div><div className="text-cc4">Cash</div></div>
+                <div className="p-option-2 payment-box" onClick={() => setCenteredModal2(!centeredModal2)}><div className='voucher-icon'></div><img src={voucherpayment} alt='voucher'/><div className='text-cc4'>Voucher</div></div>
+                <div className="p-option-3 payment-box"><div className='split-payment-icon'><Columns style={{color:'#4ECB71'}} size={35} /></div> <div className='text-cc4'>Split payment</div></div>
+                <div className="p-option-4 payment-box"><div className="Others-icon"></div><DollarSign  style={{color:'#4ECB71'}} size={35}  /><div className='text-cc4'>Others</div></div>
             </div>
         </div>
-        <Detail/>
+        <Detail mypath="/timegraph" />
         {/* //Cash payment */}
         <Modal isOpen={centeredModal1} toggle={() => setCenteredModal1(!centeredModal1)} className='modal-dialog-centered'>
           <ModalBody style={{background:"white", padding:"0"}}>

@@ -1,8 +1,9 @@
 import React from 'react'
 import { MoreHorizontal, User, Trash2} from 'react-feather'
+import { NavLink } from 'react-router-dom'
 import '../mycss/AddTip.css'
 
-const Detail = () => {
+const Detail = (props) => {
     return (
         <div className="right-container-aa3">
             <div className='right-child-aa3'>
@@ -50,7 +51,8 @@ const Detail = () => {
                 </div>
                 <div className='btn-box-aa3 d-flex justify-content-between'> 
                 <button className="three-dit btn-aa3"> <MoreHorizontal size={30}/></button>
-                <button className="continue-aa3 btn-bb3">Continue</button>
+                {console.log(props.mypath)}
+                <NavLink className='w-75 btn-bb3' to={props.mypath} ><button className="continue-aa3 btn-bb3">Continue</button></NavLink>
                 </div>
             </div>
             </div>

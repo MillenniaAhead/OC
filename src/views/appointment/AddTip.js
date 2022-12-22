@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "../mycss/AddTip.css"
 import { Settings, ArrowLeft, Check } from 'react-feather'
 import Detail from './Detail'
+import { NavLink } from 'react-router-dom'
 
 const AddTip = () => {
     const [one, setOne] = useState(false)
@@ -79,7 +80,7 @@ const AddTip = () => {
     <div className="add-tip-container">
         <div className="left-container-aa3">
             <div className="top-text-aa3 d-flex justify-content-between">
-                <div className="text-aa3 d-flex align-items-center"><div className="back-arrow-aa3 pe-3"><ArrowLeft size={30}/></div><div> Add a tip amount</div></div>
+                <div className="text-aa3 d-flex align-items-center"><NavLink to='checkout'><div className="back-arrow-aa3 pe-3"><ArrowLeft size={30}/></div></NavLink><div> Add a tip amount</div></div>
                 <div className="setting-icon-aa3" style={{cursor:"pointer"}}><Settings size={20} /></div>
             </div>
             <div className="tip-value-boxes">
@@ -100,7 +101,8 @@ const AddTip = () => {
             </div>
                 <div className='text-bb3'>Tips goes to Kondeti Anusha <a href="">Edit</a> </div>
         </div>
-        <Detail/>
+    
+        <Detail mypath='/selectpayment' />
     </div>
  )
 }

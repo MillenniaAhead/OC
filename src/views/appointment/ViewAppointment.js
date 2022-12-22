@@ -2,7 +2,8 @@ import React, {useState} from "react"
 import "../mycss/NewAppointment.css"
 import "../mycss/ViewAppointment.css"
 import { User, Star, FileText, CheckCircle, X } from "react-feather"
-import { Offcanvas, OffcanvasBody } from 'reactstrap'
+import { Offcanvas, OffcanvasBody, Button } from 'reactstrap'
+import { NavLink } from "react-router-dom"
 // import classnames from 'classnames'
 
 const ViewAppointment = () => {
@@ -18,6 +19,9 @@ const ViewAppointment = () => {
     <div className="view-appointment-container">
       <div className="top-container-aa2">
         <div> View Appointment</div>
+        <NavLink to='/timegraph'>
+        <X size={30} className='top-cross-aa2'/>
+        </NavLink>
       </div>
       <div className="left-container-aa2">
         <div className="detail-wrapper-aa2">
@@ -80,8 +84,11 @@ const ViewAppointment = () => {
           <div className="btn-box-aa2">
             <p className="text-jj2">Total: ₹30 (30min)</p>
             <div className="btn-wrapper-aa2 d-flex justify-content-between">
-              <button className="more-option-aa2 btn-aa1">More option</button>
-              <button className="checkout-aa2 btn-aa1" onClick={toggleCanvasEnd}>Checkout</button>
+              <button className="more-option-aa2 btn-aa1 mb-1 ">More option</button>
+              {/* <NavLink><button className="checkout-aa2 btn-aa1">Checkout</button></NavLink> */}
+              <Button.Ripple className="btn-aa1 mb-1" color='dark' tag={NavLink} to='/checkout'>
+          Checkout
+        </Button.Ripple>
             </div>
           </div>
         </div>

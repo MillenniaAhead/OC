@@ -7,6 +7,11 @@ import { useLayout } from '@hooks/useLayout'
 import { AbilityContext } from '@src/utility/context/Can'
 import { useRouterTransition } from '@hooks/useRouterTransition'
 import NewAppointment from '../views/appointment/NewAppointment'
+import ViewAppointment from '../views/appointment/ViewAppointment'
+import StepOne from '../views/mypromote/StepOne'
+import StepTwo from '../views/mypromote/StepTwo'
+import StepThree from '../views/mypromote/StepThree'
+import StepFour from '../views/mypromote/StepFour'
 // ** Custom Components
 import LayoutWrapper from '@layouts/components/layout-wrapper'
 
@@ -20,7 +25,6 @@ import { DefaultRoute, Routes } from './routes'
 import BlankLayout from '@layouts/BlankLayout'
 import VerticalLayout from '@src/layouts/VerticalLayout'
 import HorizontalLayout from '@src/layouts/HorizontalLayout'
-import ViewAppointment from '../views/appointment/ViewAppointment'
 
 const Router = () => {
   // ** Hooks
@@ -206,6 +210,26 @@ const Router = () => {
         exact
         path='/viewappointment'
         component={ViewAppointment}
+        />
+        <Route
+        exact
+        path='/promote/stepone'
+        component={StepOne}
+        />
+        <Route
+        exact
+        path='/promote/steptwo'
+        component={StepTwo}
+        />
+        <Route
+        exact
+        path='/promote/stepthree'
+        component={StepThree}
+        />
+        <Route
+        exact
+        path='/promote/stepfour'
+        component={StepFour}
         />
         <Route
           exact

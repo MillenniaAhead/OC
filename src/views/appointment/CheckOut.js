@@ -44,7 +44,7 @@ const CheckOut = () => {
             </div>
         </div>
        </div>
-        <Detail/>
+        <Detail mypath='/addtip' />
         </div>
     )
 }

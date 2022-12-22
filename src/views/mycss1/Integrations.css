@@ -1,7 +1,6 @@
-
-    .integrations-container{
-        /* border:1px solid red; */
-    }
+.modal-lg{
+    min-width:85%;
+}
 .integrations-wrapper{
     padding:25px;
 }

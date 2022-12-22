@@ -30,6 +30,7 @@ div,p{
     text-align:center;
     height:7rem;
     position: relative;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1)
 }
 .back-arrow-aa3,.back-arrow-aa4{
     cursor: pointer;
@@ -40,7 +41,6 @@ div,p{
     line-height: 22px;
 }
 .tip-box:hover,.payment-box:hover{
-    border:1px solid #1bb70b;
     cursor: pointer;
 }
 .text-aa3,.text-aa4{

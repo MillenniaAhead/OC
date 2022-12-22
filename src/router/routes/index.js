@@ -9,6 +9,7 @@ import UiElementRoutes from './UiElements'
 import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 import Appointment from './Appointment'
+import RoutePromote from './RoutePromote'
 
 /*
 Customization Routes
@@ -28,6 +29,7 @@ const DefaultRoute = '/overview'
 
 // ** Merge Routes
 const Routes = [
+  ...RoutePromote,
   ...Appointment,
   ...OverviewRoutes,
   ...GroupRoutes,

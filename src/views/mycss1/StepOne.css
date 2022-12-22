@@ -1,0 +1,140 @@
+/* ########################### StepOne.js */
+body{
+  color:black;
+}
+#check-badge{
+  width:22px;
+  height:22px;
+  padding:3px;
+  background:#1bb70b;
+  border-radius:100%;
+  color:white;
+  position: absolute;
+  right:-10px;
+  top:-10px;
+}
+.btns-wrapper{
+  display: flex;
+  padding:10px 24px;
+  justify-content: space-between;
+  align-items: center;
+  height:84px;
+}
+.left-side{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 35px;
+}
+.next-step-btn a,.next-step-btn div{
+  font-size: 17px;
+    font-weight: 700;
+    line-height: 24px;
+  padding:8px 30px 10px 24px;
+  border-radius: 4px;
+  background: #4E4E4E;
+  font-family: muli, sans-serif;
+  min-height: 48px;
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.next-step-btn a:hover,.next-step-btn div:hover{
+  background: #807e7e;
+  cursor: pointer;
+}
+.next-step-btn a,.next-step-btn div{
+  color:#ffffff;
+  text-decoration: none;
+}
+.next-step-btn a:hover{
+  color:#ffffff;
+}
+.previous-page a{
+  font-size:1.5em;
+  text-decoration:none;
+}
+.step-one-body-container,.step-two-body-container{
+ display:flex;
+ align-content: center;
+ justify-content: center;
+}
+.step-one-body-wrapper,.step-two-body-wrapper{
+  flex-shrink: 0;
+}
+.step-one-heading-box,.step-two-heading-box{
+  /* border:1px solid red; */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding:16px 24px 24px 24px;
+}
+.deal-type{
+  display: flex;
+  width:560px;
+  height:120px;
+  padding:24px 32px;
+  justify-content: space-between;
+  border:1px solid #D9D9D9;
+  border-radius:8px;
+  margin-bottom:20px;
+}
+.deal-type:hover{
+    cursor:pointer;
+}
+.deal-types-container{
+  width:680px;
+  height:571px;
+}
+.deal-types-container-a{
+  /* border:2px solid yellow; */
+  width:565px;
+  margin:auto;
+}
+.deal-type-img img{
+  width:32px;
+  height:32px;
+  /* border:1px solid red  */
+}
+.deal-type-img{
+  align-self: center;
+}
+.body-container{
+  padding:24px 32px;
+}
+.text-a3{
+        color: rgba(0 ,0 ,0 ,0.6);
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 21px;
+}
+.text-b3{
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 36px;
+    }
+    .text-c3{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 21px;
+}
+.text-d3{
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 24px;
+}
+.text-e3{
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 21px;
+}
+.text-f3{
+        border-radius: 4px;
+        padding: 3px 8px;
+        height: 24px;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 18px;
+        background: rgba(217, 217, 217, 0.6);
+}
