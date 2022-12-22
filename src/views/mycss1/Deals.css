@@ -104,9 +104,10 @@ body{
     flex-wrap: wrap;
   }
   .deals-container-a {
-    width: 508px;
+    width: 490px;
     height: 424px;
     align-self: center;
+    margin-bottom:20px;
   }
   .deals-container-b{
     align-self:flex-end;

@@ -1,8 +1,14 @@
 import React from "react"
 import StepHead from "./StepHead"
 import "../mycss1/StepThree.css"
+import { useSelector } from "react-redux"
 
 const StepThree = () => {
+
+  const reducerOutput = useSelector(state => state.MyReducer)
+  const DealsArray = reducerOutput.myDeals
+  console.log(DealsArray)
+
   return (
     <div className="step-three-container">
       <div className="head-container-wrapper">

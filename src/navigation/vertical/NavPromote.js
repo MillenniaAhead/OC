@@ -5,9 +5,9 @@ export default [
         header : 'Promote'
     },
     {
-        id: 'Promote',
-        title: 'Promote',
+        id: 'NavigationPromote',
+        title: 'NavigationPromote',
         icon: <Check/>,
-        navLink:'/promote'
+        navLink:'/navigationpromote'
     }
 ]

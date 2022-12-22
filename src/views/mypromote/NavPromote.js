@@ -5,7 +5,7 @@ import Deals from "./Deals"
 import Integrations from "./Integrations"
 import { ChevronLeft } from 'react-feather'
 
-const Promote = () => {
+const NavPromote = () => {
   const [styleOne, setstyleOne] = useState({ justifyContent: "flex-end" })
   const [styleTwo, setstyleTwo] = useState({ display: "block" })
   const [styleThree, setstyleThree] = useState({ transform: "rotate(0deg)" })
@@ -82,4 +82,4 @@ const Promote = () => {
   )
 }
 
-export default Promote
+export default NavPromote

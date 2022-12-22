@@ -6,30 +6,58 @@ import { NavLink, useHistory } from "react-router-dom"
 import Flatpickr from "react-flatpickr"
 import { Modal, ModalBody, Button } from "reactstrap"
 import { X } from "react-feather"
+import { useDispatch } from "react-redux"
+import { bindActionCreators } from "redux"
+import { actionCreators } from "./promoteRedux"
 
 const StepTwo = () => {
   const [redStyle, setRedStyle] = useState({ display: "none" })
   const [redBox, setRedBox] = useState({ border: "1px solid #d9d9d9" })
-  const [myName, setmyName] = useState("")
   const [centeredModal1, setCenteredModal1] = useState(false)
   const [centeredModal2, setCenteredModal2] = useState(false)
   const [centeredModal3, setCenteredModal3] = useState(false)
   const [centeredModal4, setCenteredModal4] = useState(false)
+  const [product, setProduct] = useState([])
+  const [service, setService] = useState([])
+
+  const addProduct = (event) => {
+    if (product.includes(event.target.value)) {
+      const deselect = product.filter(
+        (myproduct) => myproduct !== event.target.value
+      )
+      setProduct(deselect)
+    } else {
+      setProduct([...product, event.target.value])
+    }
+  }
+  const addService = (event) => {
+    if (service.includes(event.target.value)) {
+      const deselect = service.filter(
+        (myservice) => myservice !== event.target.value
+        )
+        setService(deselect)
+      } else {
+      setService([...service, event.target.value])
+    }
+  }
+
+  const dispatch = useDispatch()
+  const { AddDeal } = bindActionCreators(actionCreators, dispatch)
 
   const nextStep = useHistory()
 
-  const myValue = (current) => {
-    setmyName(current.target.value)
-    setRedStyle({ display: "none" })
-    setRedBox({ border: "1px solid #d9d9d9" })
+  const [promotionDetail, setPromotionDetail] = useState({name:"", description:""})
+  
+  const updateValue = (current) => {
+    setPromotionDetail({...promotionDetail, [current.target.name]:current.target.value})
   }
-  console.log(myName)
   const formHandle = () => {
-    if (myName === "") {
+    if (promotionDetail.name === "") {
       setRedStyle({ display: "block" })
       setRedBox({ border: "1px solid red" })
     } else {
       nextStep.push("/promote/stepthree")
+      AddDeal([promotionDetail, product, service])
     }
   }
   const [picker1, setPicker1] = useState(new Date())
@@ -102,8 +130,8 @@ const StepTwo = () => {
                       <input
                         style={redBox}
                         type="text"
-                        onChange={myValue}
-                        name="myname"
+                        onChange={updateValue}
+                        name="name"
                         id="name"
                         className="input-a"
                         placeholder="Enter promotion name here"
@@ -125,6 +153,7 @@ const StepTwo = () => {
                       <textarea
                         maxLength={600}
                         type="text"
+                        onChange={updateValue}
                         name="description"
                         id=""
                         className="input-a"
@@ -135,7 +164,7 @@ const StepTwo = () => {
                 </div>
                 <div
                   className="edit-options-wrapper"
-                  style={{ marginTop: "20px" }}
+                  style={{ marginTop: "20px"}}
                 >
                   <div className="edit-option-heading">
                     <p className="text-e5" style={{ marginBottom: "20px" }}>
@@ -170,8 +199,9 @@ const StepTwo = () => {
                               <input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service"
-                                value="service"
+                                name="service1"
+                                value="service1"
+                                onClick={addService}
                               />
                             </label>
                             <div className="list-item-names">service1</div>
@@ -184,8 +214,9 @@ const StepTwo = () => {
                               <input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service"
-                                value="service"
+                                name="service2"
+                                value="service2"
+                                onClick={addService}
                               />
                             </label>
                             <div className="list-item-names">service2</div>
@@ -198,8 +229,9 @@ const StepTwo = () => {
                               <input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service"
-                                value="service"
+                                name="service3"
+                                value="service3"
+                                onClick={addService}
                               />
                             </label>
                             <div className="list-item-names">service3</div>
@@ -244,13 +276,14 @@ const StepTwo = () => {
                           <div className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="service"
+                              htmlFor="product"
                             >
                               <input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service"
-                                value="service"
+                                name="product1"
+                                value="product1"
+                                onClick={addProduct}
                               />
                             </label>
                             <div className="list-item-names">product1</div>
@@ -258,13 +291,14 @@ const StepTwo = () => {
                           <div className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="service"
+                              htmlFor="product"
                             >
                               <input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service"
-                                value="service"
+                                name="product2"
+                                value="product2"
+                                onClick={addProduct}
                               />
                             </label>
                             <div className="list-item-names">product2</div>
@@ -272,13 +306,14 @@ const StepTwo = () => {
                           <div className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="service"
+                              htmlFor="product"
                             >
                               <input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service"
-                                value="service"
+                                name="product3"
+                                value="product3"
+                                onClick={addProduct}
                               />
                             </label>
                             <div className="list-item-names">product3</div>
