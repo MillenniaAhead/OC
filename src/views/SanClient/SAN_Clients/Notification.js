@@ -1,6 +1,6 @@
 import React from 'react'
 import notification from '../../../images/ClientList/notification.png'
-import { Box } from '@mui/material'
+// import { div } from '@mui/material'
 
 const Notification = () => {
     return (
@@ -10,8 +10,8 @@ const Notification = () => {
                 <p className='fs-5'>View the notifications automatically sent to your clients. Manage your <span className='text-success'>settings</span> or <span className='text-success'>learn more</span></p>
             </div>
             <div className='text-center'>
-             <Box
-      sx={{
+             <div
+      style={{
         width: 940,
         height: 270,
        
@@ -27,7 +27,7 @@ by saving customer contact details in Outlet Control and give it a try!</p>
 
 <p className='fs-6'>You can manage these features on the <span className='text-success'>Client Notifications</span> <br />
 setting page.</p>
-    </Box>
+    </div>
              </div>
         </div>
     )

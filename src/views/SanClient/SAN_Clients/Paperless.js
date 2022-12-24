@@ -1,5 +1,5 @@
 import React from 'react'
-import '../CSS/ClientList.css'
+// import '../CSS/ClientList.css'
 import { AiOutlineCheck } from 'react-icons/ai'
 
 

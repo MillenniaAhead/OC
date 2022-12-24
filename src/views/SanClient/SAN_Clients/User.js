@@ -1,25 +1,32 @@
-import React from 'react'
+import React, {useState} from 'react'
 import X from '../../../images/ClientList/x.png'
 import star from '../../../images/ClientList/starH.png'
-import Col from 'react-bootstrap/Col'
-import Nav from 'react-bootstrap/Nav'
-import Row from 'react-bootstrap/Row'
-import Tab from 'react-bootstrap/Tab'
-import Avatar from '@mui/material/Avatar'
-import Invoice from './Invoice'
-import ClientFeed from './ClientFeed'
-import ClientsDetails from './ClientsDetails'
-import UserApoinmet from './UserApoinmet'
-import UserDeposit from './UserDeposit'
-import UserPayment from './UserPayment'
-import UserMembership from './UserMembership'
-import UserFrom from './UserFrom'
-import UserProducts from './UserProducts'
-import UserReviews from './UserReviews'
-import UserFiles from './UserFiles'
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap'
+// import Col from 'react-bootstrap/Col'
+// import Nav from 'react-bootstrap/Nav'
+// import Row from 'react-bootstrap/Row'
+// import Tab from 'react-bootstrap/Tab'
+// import Invoice from './Invoice'
+// import ClientFeed from './ClientFeed'
+// import ClientsDetails from './ClientsDetails'
+// import UserApoinmet from './UserApoinmet'
+// import UserDeposit from './UserDeposit'
+// import UserPayment from './UserPayment'
+// import UserMembership from './UserMembership'
+// import UserFrom from './UserFrom'
+// import UserProducts from './UserProducts'
+// import UserReviews from './UserReviews'
+// import UserFiles from './UserFiles'
 
 
 const User = () => {
+  const [active, setActive] = useState('1')
+
+  const toggle = tab => {
+    if (active !== tab) {
+      setActive(tab)
+    }
+  }
     return (
         <div className='container-fluid'>
             <div className="row">
@@ -60,7 +67,65 @@ const User = () => {
                     </div>
                 </div>
                 <div className="col-lg-10">
-                <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+                <div className='nav-vertical'>
+      <Nav tabs className='nav-left'>
+        <NavItem>
+          <NavLink
+            active={active === '1'}
+            onClick={() => {
+              toggle('1')
+            }}
+          >
+            Client feed
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '2'}
+            onClick={() => {
+              toggle('2')
+            }}
+          >
+            Tab 2
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '3'}
+            onClick={() => {
+              toggle('3')
+            }}
+          >
+            Tab 3
+          </NavLink>
+        </NavItem>
+      </Nav>
+      <TabContent activeTab={active}>
+        <TabPane tabId='1'>
+          <p>
+            Oat cake marzipan cake lollipop caramels wafer pie jelly beans. Icing halvah chocolate cake carrot cake.
+            Jelly beans carrot cake marshmallow gingerbread chocolate cake. Sweet fruitcake cheesecake biscuit cotton
+            candy. Cookie powder marshmallow donut. Gummies cupcake croissant.
+          </p>
+        </TabPane>
+        <TabPane tabId='2'>
+          <p>
+            Sugar plum tootsie roll biscuit caramels. Liquorice brownie pastry cotton candy oat cake fruitcake jelly
+            chupa chups. Sweet fruitcake cheesecake biscuit cotton candy. Cookie powder marshmallow donut. Pudding
+            caramels pastry powder cake soufflé wafer caramels. Jelly-o pie cupcake.
+          </p>
+        </TabPane>
+        <TabPane tabId='3'>
+          <p>
+            Icing croissant powder jelly bonbon cake marzipan fruitcake. Tootsie roll marzipan tart marshmallow pastry
+            cupcake chupa chups cookie. Fruitcake dessert lollipop pudding jelly. Cookie dragée jujubes croissant lemon
+            drops cotton candy. Carrot cake candy canes powder donut toffee cookie.
+          </p>
+        </TabPane>
+      </TabContent>
+    </div>
+              
+                {/* <Tab.Container id="left-tabs-example" defaultActiveKey="first">
       <Row>
         <Col sm={3}>
         <Avatar style={{width:"160px", height:'160px', fontSize:'56px' }} className="mx-auto mt-5 ">J</Avatar>
@@ -143,7 +208,7 @@ const User = () => {
           </Tab.Content>
         </Col>
       </Row>
-    </Tab.Container>
+    </Tab.Container> */}
 
                 </div>
             </div>

@@ -1,21 +1,21 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
-import { AiOutlineClose } from 'react-icons/ai'
+// import { Card } from 'react-bootstrap'
+// import { AiOutlineClose } from 'react-icons/ai'
 import Round from '../../../images/snr/Group 134.png'
-import clock from '../../../images/snr/clock.jpg'
-import mic from '../../../images/snr/mice.jpg'
-import calender from '../../../images/snr/calendar.jpg'
+// import clock from '../../../images/snr/clock.jpg'
+// import mic from '../../../images/snr/mice.jpg'
+// import calender from '../../../images/snr/calendar.jpg'
 
 const SANService = () => {
     return (
         <div>
-       <button type='button' class="btn btn-link linkButton text-dark p-3">< AiOutlineClose/></button>
+       {/* <button type='button' class="btn btn-link linkButton text-dark p-3">< AiOutlineClose/></button> */}
 
        <img className='rounded mx-auto d-block' src={Round} alt="" />
        <h2  className='text-center mt-3 mb-4'>Your automated message is set up</h2>
        
        
-       <Card   className='mx-auto' style={{ width: '720px' }}>
+       {/* <Card   className='mx-auto' style={{ width: '720px' }}>
       <Card.Body>
         <Card.Title>New appointment message details</Card.Title>
         <Card.Text>
@@ -29,7 +29,7 @@ const SANService = () => {
         </Card.Text>
         
       </Card.Body>
-    </Card>
+    </Card> */}
        
       
         </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Box } from '@mui/material'
 import Products from '../../../images/ClientList/Products.png'
 
 const UserProducts = () => {
@@ -9,8 +8,8 @@ const UserProducts = () => {
                 <h1>Products</h1>
             </div>
             <div className='text-center'>
-             <Box
-      sx={{
+             <div
+      style={{
         width: 940,
         height: 270,
         border: '1px solid rgba(217, 217, 217, 0.80)',
@@ -21,7 +20,7 @@ const UserProducts = () => {
     >  <img className='mx-auto d-block mt-5 pt-3' src={Products} alt="" />
     <p className='mt-2'> <span className='fs-4 fw-bolder'>No products sold</span> <br />
     <span className='fs-6'>All product sales for this client will appear here.</span></p>
-    </Box>
+    </div>
              </div>
         </div>
     )

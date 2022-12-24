@@ -1,7 +1,7 @@
 import React from 'react'
 import filter from '../../../images/ClientList/filers.jpg'
-import database from '../../../images/ClientList/database.png'
-import { Box } from '@mui/material'
+// import database from '../../../images/ClientList/database.png'
+// import { Box } from '@mui/material'
 
 const UserDeposit = () => {
     return (
@@ -17,7 +17,7 @@ const UserDeposit = () => {
                            </div>
              </div>
              <div className='text-center'>
-             <Box
+             {/* <Box
       sx={{
         width: 940,
         height: 270,
@@ -29,7 +29,7 @@ const UserDeposit = () => {
     >  <img className='mx-auto d-block mt-5 pt-3' src={database} alt="" />
     <p className='mt-2'> <span className='fs-4 fw-bolder'>No deposits found</span> <br />
     <span className='fs-6'>The client has no deposits.</span></p>
-    </Box>
+    </Box> */}
              </div>
         </div>
     )

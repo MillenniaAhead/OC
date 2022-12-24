@@ -1,5 +1,5 @@
 import React from 'react'
-import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material'
+// import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material'
 
 const Froms = () => {
     return (
@@ -17,7 +17,7 @@ const Froms = () => {
             </div>
         </div>
         <div>
-        <TableContainer style={{backgroundColor:'#F0F2F5'}} component={Paper}>
+        {/* <TableContainer style={{backgroundColor:'#F0F2F5'}} component={Paper}>
       <Table  aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -46,7 +46,7 @@ const Froms = () => {
          
         </TableBody>
       </Table>
-    </TableContainer>
+    </TableContainer> */}
         </div>
         </div>
     )

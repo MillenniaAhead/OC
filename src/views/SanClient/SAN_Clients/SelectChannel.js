@@ -1,8 +1,8 @@
 import React from 'react'
 import Switch from '@mui/material/Switch'
 import Box from '@mui/material/Box'
-import EmailPh from '../../images/ClientList/EmailPh.png'
-import EmailNT from '../../images/ClientList/emailNoti.png'
+import EmailPh from '../../../images/ClientList/EmailPh.png'
+import EmailNT from '../../../images/ClientList/emailNoti.png'
 import { AiOutlineClose } from 'react-icons/ai'
 
 

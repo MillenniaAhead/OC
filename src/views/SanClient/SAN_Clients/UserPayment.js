@@ -1,6 +1,6 @@
 import React from 'react'
-import { Box } from '@mui/material'
-import credit from '../../../images/ClientList/creditCard.png'
+// import { Box } from '@mui/material'
+// import credit from '../../../images/ClientList/creditCard.png'
 
 const UserPayment = () => {
     return (
@@ -8,7 +8,7 @@ const UserPayment = () => {
             <div className='ms-5 mt-5'>
                 <h1>Payment methods</h1>
             </div>
-            <div className='text-center'>
+            {/* <div className='text-center'>
              <Box
       sx={{
         width: 940,
@@ -22,7 +22,7 @@ const UserPayment = () => {
     <p className='mt-2'> <span className='fs-4 fw-bolder'>No payment methods</span> <br />
     <span className='fs-6'>This client has no payment methods.</span></p>
     </Box>
-             </div>
+             </div> */}
         </div>
     )
 }

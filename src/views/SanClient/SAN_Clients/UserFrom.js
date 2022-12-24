@@ -1,7 +1,7 @@
 import React from 'react'
 import filter from '../../../images/ClientList/filers.jpg'
 import Nofroms from '../../../images/ClientList/Nofroms.png'
-import { Box } from '@mui/material'
+
 
 const UserFrom = () => {
     return (
@@ -17,8 +17,8 @@ const UserFrom = () => {
                            </div>
              </div>
              <div className='text-center'>
-             <Box
-      sx={{
+             <div
+      style={{
         width: 940,
         height: 270,
         border: '1px solid rgba(217, 217, 217, 0.80)',
@@ -29,7 +29,7 @@ const UserFrom = () => {
     >  <img className='mx-auto d-block mt-5 pt-3' src={Nofroms} alt="" />
     <p className='mt-2'> <span className='fs-4 fw-bolder'>No forms</span> <br />
     <span className='fs-6'>This client has no forms.</span></p>
-    </Box>
+    </div>
              </div>
         </div>
     )

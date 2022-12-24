@@ -1,7 +1,7 @@
 import React from 'react'
-import filter from '../../images/ClientList/filers.jpg'
-import invoice from '../../images/ClientList/invoice.png'
-import Box from '@mui/material/Box'
+import filter from '../../../images/ClientList/filers.jpg'
+import invoice from '../../../images/ClientList/invoice.png'
+// import div from '@mui/material/div'
 
 const Invoice = () => {
     return (
@@ -18,8 +18,8 @@ const Invoice = () => {
                            </div>
              </div>
              <div className='text-center'>
-             <Box
-      sx={{
+             <div
+      style={{
         width: 940,
         height: 270,
         border: '1px solid rgba(217, 217, 217, 0.80)',
@@ -31,7 +31,7 @@ const Invoice = () => {
     <p className='mt-2'> <span className='fs-4 fw-bolder'>No invoices history</span> <br />
     <span className='fs-6'>All invoices for this client will appear here. Make a <br />
 sale to create your first invoice.</span></p>
-    </Box>
+    </div>
              </div>
         </div>
     )

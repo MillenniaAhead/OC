@@ -1,7 +1,6 @@
 import React from 'react'
-import filter from '../../images/ClientList/filers.jpg'
-import reviews from '../../images/ClientList/halfStar.png'
-import Box from '@mui/material/Box'
+import filter from '../../../images/ClientList/filers.jpg'
+
 
 const UserReviews = () => {
     return (
@@ -17,8 +16,8 @@ const UserReviews = () => {
                            </div>
              </div>
              <div className='text-center'>
-             <Box
-      sx={{
+             {/* <div
+     style={{
         width: 940,
         height: 270,
         border: '1px solid rgba(217, 217, 217, 0.80)',
@@ -29,7 +28,7 @@ const UserReviews = () => {
     >  <img className='mx-auto d-block mt-5 pt-3' src={reviews} alt="" />
     <p className='mt-2'> <span className='fs-4 fw-bolder'>No reviews</span> <br />
     <span className='fs-6'>This client hasn’t left any reviews.</span></p>
-    </Box>
+    </div> */}
              </div>
         </div>
     )

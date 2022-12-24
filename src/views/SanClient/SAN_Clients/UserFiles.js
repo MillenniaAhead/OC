@@ -1,6 +1,6 @@
 import React from 'react'
-import files from '../../images/ClientList/NoFiles.png'
-import Box from '@mui/material/Box'
+import files from '../../../images/ClientList/NoFiles.png'
+// import div from '@mui/material/div'
 
 const UserFiles = () => {
     return (
@@ -17,8 +17,8 @@ const UserFiles = () => {
                            </div>
              </div>
              <div className='text-center'>
-             <Box
-      sx={{
+             <div
+      style={{
         width: 940,
         height: 300,
         border: '1px solid rgba(217, 217, 217, 0.80)',
@@ -30,7 +30,7 @@ const UserFiles = () => {
     <p className='mt-2'> 
     <span className='fs-6'>Add your first file by clicking on the black button <br />
 above.</span></p>
-    </Box>
+    </div>
              </div>
         </div>
     )

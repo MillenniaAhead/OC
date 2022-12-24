@@ -1,6 +1,6 @@
 import React from 'react'
-import Box from '@mui/material/Box'
-import plusCircle from '../../images/ClientList/plus-circle.png'
+// import div from '@mui/material/div'
+import plusCircle from '../../../images/ClientList/plus-circle.png'
 
 
 const ClientsDetails = () => {
@@ -10,8 +10,8 @@ const ClientsDetails = () => {
                 <h1>Client details</h1>
             </div>
             <div>
-            <Box
-      sx={{
+            <div
+      style={{
         width: 940,
         height: 340,
         border: '1px solid rgba(217, 217, 217, 0.80)',
@@ -28,10 +28,10 @@ const ClientsDetails = () => {
        <div className='d-flex justify-content-between mx-3 mt-3'> <h5>Joined</h5> <button className='border-0 bg-white fs-5'>September 7, 2022</button></div>
        <div className='d-flex justify-content-between mx-3 mt-3'> <h5>Client source</h5> <button className='border-0 bg-white text-success fs-5'>+ Add</button></div>
        <p className='text-success mt-4 ms-3'>john@example.com</p>
-    </Box>
+    </div>
             </div>
             <div className='mt-3'>
-            <Box
+            <div
       sx={{
         width: 940,
         height: 174,
@@ -45,10 +45,10 @@ const ClientsDetails = () => {
     <div className='d-flex mt-3 ms-3'>
         <div><img src={plusCircle} alt="" /></div> <div><p className='fs-5 ms-2'>Add address</p></div>
     </div>
-    </Box>
+    </div>
             </div>
             <div className='mt-3'>
-            <Box
+            <div
       sx={{
         width: 940,
         height: 290,
@@ -71,7 +71,7 @@ const ClientsDetails = () => {
            
         </div>
     
-    </Box>
+    </div>
             </div>
         </div>
     )

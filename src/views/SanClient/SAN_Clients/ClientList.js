@@ -1,9 +1,9 @@
 import React from 'react'
-import Dropdown from 'react-bootstrap/Dropdown'
-import Card from 'react-bootstrap/Card'
+// import Dropdown from 'react-bootstrap/Dropdown'
+// import Card from 'react-bootstrap/Card'
 // import { TableContainer,Table,TableHead,TableBody,TableRow,TableCell,Paper } from '@mui/material'
-import Avatar from '@mui/material/Avatar'
-import Stack from '@mui/material/Stack'
+// import Avatar from '@mui/material/Avatar'
+// import Stack from '@mui/material/Stack'
 import { Link } from 'react-router-dom'
 import client from '../../images/ClientList/client.jpg'
 import filter from '../../images/ClientList/filers.jpg'
@@ -63,7 +63,7 @@ const ClientList = () => {
                 <p className='fs-5'>View, add, edit and delete your client’s details. Learn more</p>
             </div>
             <div className='d-flex align-items-start'>
-            <Dropdown className='p-2' style={{marginRight:'15px'}}>
+            {/* <Dropdown className='p-2' style={{marginRight:'15px'}}>
       <Dropdown.Toggle style={{height:"60px", width:"150px"}} variant="light" id="dropdown-basic">
        Options
       </Dropdown.Toggle>
@@ -73,7 +73,7 @@ const ClientList = () => {
         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
       </Dropdown.Menu>
-    </Dropdown>
+    </Dropdown> */}
             
     <button type="button" style={{height:"60px", width:"150px", marginTop:'8px'}} class="btn btn-secondary" >Add client</button>
 

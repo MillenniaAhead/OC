@@ -1,5 +1,5 @@
 import React from 'react' 
-import { GrClose} from 'react-icons/gr'
+// import { GrClose} from 'react-icons/gr'
 
 const AutomationRule = () => {
     return (
@@ -7,7 +7,7 @@ const AutomationRule = () => {
             
                <div className=' px-5 d-flex justify-content-between align-items-center'>
                   <div >
-                    <button type='button' class="btn btn-link linkButton"><GrClose/></button>
+                    {/* <button type='button' class="btn btn-link linkButton"><GrClose/></button> */}
                     <hr />
                     </div>
                     

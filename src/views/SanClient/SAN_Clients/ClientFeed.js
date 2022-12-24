@@ -3,8 +3,8 @@ import filter from '../../../images/ClientList/filers.jpg'
 import Rcalender from '../../../images/ClientList/roundCalender.png'
 import send from '../../../images/ClientList/send.png'
 import logo from '../../../images/ClientList/logo.png'
-import Box from '@mui/material/Box'
-import { Avatar } from 'antd'
+// import div from '@mui/material/div'
+// import { Avatar } from 'antd'
 
 
 const ClientFeed = () => {
@@ -27,7 +27,7 @@ const ClientFeed = () => {
                 <img className='me-3' src={send} alt="" />
             </form>
             <div className='mt-3'>
-            <Box
+            {/* <div
       sx={{
         width: 940,
         height: 202,
@@ -46,11 +46,11 @@ const ClientFeed = () => {
         7 Sep 2022 at 11:00am</p></div>
    
    </div>
-  </Box>
+  </div> */}
             </div>
             <div className='mt-3'>
-            <Box
-      sx={{
+            <div
+      style={{
         width: 940,
         height: 116,
         border: '1px solid rgba(217, 217, 217, 0.80)',
@@ -64,7 +64,7 @@ const ClientFeed = () => {
     <div><p><span className='fs-4 fw-bolder  '>Client created</span> <br />
     7 Sep 2022 at 7:39pm</p></div>
    </div>
-  </Box>
+  </div>
             </div>
         </div>
     )
