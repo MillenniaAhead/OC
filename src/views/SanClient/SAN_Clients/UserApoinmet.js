@@ -1,4 +1,3 @@
-// import { Box } from '@mui/material'
 import React from 'react'
 import filter from '../../../images/ClientList/filers.jpg'
 import '../CSS/ClientList.css'
@@ -17,7 +16,7 @@ const UserApoinmet = () => {
                            </div>
              </div>
              <div>
-             {/* <Box
+             <div
       sx={{
         width: 940,
         height: 270,
@@ -44,7 +43,7 @@ const UserApoinmet = () => {
         <button className='text-success border border-success bg-white'>New</button>
     </div>
     </div>
-    </Box> */}
+    </div>
              </div>
         </div>
     )

@@ -19,7 +19,7 @@ const Section = () => {
                     <h3>Add sections to your consultation form</h3>
                 </div>
                 <div>
-                <button type="button" class="btn btn-dark px-4 py-1">Save</button>
+                <button type="button" class="btn btn-secondary px-4 py-1">Next Step</button>
                 </div>
                 
             </div>
@@ -82,12 +82,13 @@ const Section = () => {
         height: 415,
         border: '1px solid rgba(217, 217, 217, 0.80)',
         backgroundColor:'rgba(27, 183, 11, 0.24)',
-        margin:'30px auto'
+        margin:'30px auto',
+        borderRadius:'10px'
         
       }}
     >
            <img className='d-block mx-auto mt-5 pt-4' src={card} alt="" />          <h1 className='mt-2'>Add your first section</h1>
-           <p>Drag and drop or <span className='text-success'>click</span> here to add a section</p>
+           <p>Drag and drop or <a className='text-success'>click</a> here to add a section</p>
                     </div>
                    </div>
                 </div>
