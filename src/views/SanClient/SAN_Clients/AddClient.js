@@ -5,6 +5,7 @@ import { Card,   CardText, CardFooter, CardHeader, CardTitle, CardBody, Row, Col
 import Cleave from 'cleave.js/react'
 import Flatpickr from 'react-flatpickr'
 import 'cleave.js/dist/addons/cleave-phone.us'
+import 'flatpickr/dist/flatpickr.css'
 
 
 const AddClient = () => {
