@@ -26,7 +26,7 @@ const CustomDropdown = () => {
           </DropdownItem>
         </DropdownMenu>
       </UncontrolledButtonDropdown>
-     
+      <Button color='relief-secondary'>Add new product</Button>
     </div>
   )
 }
