@@ -11,8 +11,8 @@ const Reviews = () => {
             </div>
             <div className='border rounded mx-4 mt-4 d-flex justify-content-between align-items-center' style={{height:'90px',  backgroundColor:'rgba(217, 217, 217, 0.16)'}}>
             <div style={{width: '150px', height:'48px'}} className=' ms-3 bg-white d-flex justify-content-around align-items-center border-0 rounded-pill'>
-                                <h6 className='fs-5 mt-1'>Filters</h6>
-                                <img  style={{width:"24px", height:'24px'}} src={filter} alt="" />
+                                <h5 className='text-dark mt-1'>Filters</h5>
+                                <div><img   src={filter} alt="" /></div>
                            </div>
             </div>
             <div style={{height:'390px'}} className='border rounded  mx-4 mt-5'>

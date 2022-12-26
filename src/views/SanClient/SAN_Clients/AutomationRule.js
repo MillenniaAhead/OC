@@ -1,4 +1,5 @@
 import React from 'react' 
+import X from '../../../images/ClientList/x.png'
 // import { GrClose} from 'react-icons/gr'
 
 const AutomationRule = () => {
@@ -7,7 +8,7 @@ const AutomationRule = () => {
             
                <div className=' px-5 d-flex justify-content-between align-items-center'>
                   <div >
-                    {/* <button type='button' class="btn btn-link linkButton"><GrClose/></button> */}
+                    <button> <img src={X} alt="" /></button>
                     <hr />
                     </div>
                     

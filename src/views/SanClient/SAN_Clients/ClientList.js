@@ -1,15 +1,18 @@
 import React from 'react'
+import {  Card, CardImg, CardBody, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import '../CSS/ClientList.css'
+import Column from '../../apps/user/list/columns'
 // import Dropdown from 'react-bootstrap/Dropdown'
 // import Card from 'react-bootstrap/Card'
 // import { TableContainer,Table,TableHead,TableBody,TableRow,TableCell,Paper } from '@mui/material'
 // import Avatar from '@mui/material/Avatar'
 // import Stack from '@mui/material/Stack'
 import { Link } from 'react-router-dom'
-import client from '../../images/ClientList/client.jpg'
-import filter from '../../images/ClientList/filers.jpg'
-import FirstName from '../../images/ClientList/FirstName.jpg'
+import client from '../../../images/ClientList/client.jpg'
+import filter from '../../../images/ClientList/filers.jpg'
+import FirstName from '../../../images/ClientList/FirstName.jpg'
+import { Columns } from 'react-feather'
 
-import '../CSS/ClientList.css'
 
 const ClientList = () => {
     // const tableData = [
@@ -74,6 +77,17 @@ const ClientList = () => {
         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown> */}
+    <UncontrolledButtonDropdown className='mt-2'>
+        <DropdownToggle color='white'  caret>
+          Option
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem href='/' tag='a'>Option 1</DropdownItem>
+          <DropdownItem href='/' tag='a'>Option 2</DropdownItem>
+          <DropdownItem href='/' tag='a'>Option 3</DropdownItem>
+        </DropdownMenu>
+      </UncontrolledButtonDropdown>
+      <UncontrolledButtonDropdown></UncontrolledButtonDropdown>
             
     <button type="button" style={{height:"60px", width:"150px", marginTop:'8px'}} class="btn btn-secondary" >Add client</button>
 
@@ -90,13 +104,18 @@ online.</h3>
                     </div>
                     <div className='col-4 client '>
                    
-                <Card className=' mx-auto' style={{ width: '215px', marginTop:'85px' }}>
+                {/* <Card className=' mx-auto' style={{ width: '215px', marginTop:'85px' }}>
       <Card.Img variant="top" src={client} />
       <Card.Body>
         
       </Card.Body>
-    </Card>
-                
+    </Card> */}
+                <Card style={{ width: '215px', marginTop:'70px' }}>
+        <CardImg top src={client} alt='card2' />
+        <CardBody>
+          
+        </CardBody>
+      </Card>
                  
                     </div>
              </div>
@@ -122,7 +141,7 @@ online.</h3>
             </div>
 
             <div  className='mt-3 mx-4'>
-            <TableContainer style={{backgroundColor:'#F0F2F5'}} component={Paper}>
+            {/* <TableContainer style={{backgroundColor:'#F0F2F5'}} component={Paper}>
       <Table aria-label = 'sample table'>
           <TableHead>
               <TableRow>
@@ -159,9 +178,9 @@ online.</h3>
          }
         </TableBody>
       </Table>
-    </TableContainer>
+    </TableContainer> */}
   
-
+     
             </div>
         </div>
     )

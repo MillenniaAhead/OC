@@ -6,6 +6,10 @@ const SanClientRoutes = [
     component: lazy(() => import('../../views/SanClient/SAN_Clients/User'))
   },
   {
+    path: '/sanclient/client',
+    component: lazy(() => import('../../views/SanClient/SAN_Clients/ClientsAll'))
+  },
+  {
     path: '/sanclient/section',
     component: lazy(() => import('../../views/SanClient/SAN_Clients/Section'))
   },

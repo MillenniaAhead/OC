@@ -1,16 +1,101 @@
-import React from 'react'
-// import Col from 'react-bootstrap/Col'
+import React, { useState } from 'react'
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap'
 // import Nav from 'react-bootstrap/Nav'
 // import Row from 'react-bootstrap/Row'
 // import Tab from 'react-bootstrap/Tab'
 // import AutomatedMessages from './AutomatedMessages'
-// import ClientList from './ClientList'
+import ClientList from './ClientList'
 // import Froms from './Froms'
 // import Notification from './Notification'
-// import Reviews from './Reviews'
+import Reviews from './Reviews'
 
 const ClientsAll = () => {
-    return (<div></div>
+    const [active, setActive] = useState('1')
+
+  const toggle = tab => {
+    if (active !== tab) {
+      setActive(tab)
+    }
+  }
+    return (<div className='nav-vertical'>
+    <Nav tabs className='nav-left'>
+      <NavItem>
+        <NavLink
+          active={active === '1'}
+          onClick={() => {
+            toggle('1')
+          }}
+        >
+          Clients
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink
+          active={active === '2'}
+          onClick={() => {
+            toggle('2')
+          }}
+        >
+          Clients list
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink
+          active={active === '3'}
+          onClick={() => {
+            toggle('3')
+          }}
+        >
+          Reviews
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        
+      </NavItem>
+      <NavItem>
+        <NavLink
+          active={active === '1'}
+          onClick={() => {
+            toggle('1')
+          }}
+        >
+          Tab 1
+        </NavLink>
+      </NavItem>
+      
+      <NavItem>
+        <NavLink
+          active={active === '2'}
+          onClick={() => {
+            toggle('2')
+          }}
+        >
+          
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink
+          active={active === '3'}
+          onClick={() => {
+            toggle('3')
+          }}
+        >
+          Tab 3
+        </NavLink>
+      </NavItem>
+    </Nav>
+    <TabContent activeTab={active}>
+      <TabPane tabId='1'>
+        <h1>Clients</h1>
+      </TabPane>
+      <TabPane tabId='2'>
+      <ClientList/>
+      </TabPane>
+      <TabPane tabId='3'>
+      <Reviews/>
+      </TabPane>
+    </TabContent>
+  </div>
     //     <Tab.Container id="left-tabs-example" defaultActiveKey="second">
     //   <Row>
     //     <Col sm={2}>
