@@ -4,6 +4,9 @@ import Layout from '../Product list/Layout/Layout'
 // ** Reactstrap Imports
 import { TabContent, TabPane, Nav, NavItem, NavLink, Container } from 'reactstrap'
 import CardsLayout from '../Product list/Layout/CardsLayout'
+import Stocktakes from '../Stocktakes/Stocktakes'
+import StockOrders from '../Stock-orders/StockOrders'
+import Suppliers from '../Suppliers/Suppliers'
 
 const TabsVerticalLeft = () => {
   // ** State
@@ -95,24 +98,16 @@ const TabsVerticalLeft = () => {
           </div>
         </TabPane>
         <TabPane tabId='3'>
-          <p>
-            this first third line
-          </p>
+             
         </TabPane>
         <TabPane tabId='4'>
-          <p>
-         this is fourth line
-          </p>
+          < Stocktakes />
         </TabPane>
         <TabPane tabId='5'>
-          <p>
-           this is 5
-          </p>
+          <StockOrders />
         </TabPane>
         <TabPane tabId='6'>
-          <p>
-           this is 6
-          </p>
+         <Suppliers />
         </TabPane>
       </TabContent>
     </div>
