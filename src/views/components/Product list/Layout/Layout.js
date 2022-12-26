@@ -1,37 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {Container, Row, Col} from 'reactstrap'
-import LayoutButton from './LayoutButton'
+import CustomDropdown from '../ProductsComponents/CustomDropdown'
+import CustomsButton from '../ProductsComponents/CustomsButton'
+
 
 const Layout = () => {
   return (
-       <Container>
-         <Row>
-            <Col>
-              <Container>
-                 <Row>
-                    <Col
-                       xs="12"
-                       md ="6"
-                    >
-                        <h2>Product list</h2>
-                       <p> Add and manage your products in stock. <Link> Learn more </Link></p>
-                    </Col>
-                    <Col
-                       xs="12"
-                       md= "6"
-                    > 
-                     <LayoutButton />
-                     
-                    
-                    </Col>
-                 </Row>
+       <div className=' d-flex justify-content-between'> 
+            <div>
+               <h3> Product list</h3>
+               <p> Add and manage your products in stock.<Link> Learn more </Link></p>
 
-              </Container>
+            </div>
+            <div className='d-flex justify-content-center align-items-center'> 
+                 <CustomDropdown />
+                 <CustomsButton />
             
-            </Col>
-         </Row>
-       </Container>
+            </div>
+
+       </div>
   )
 }
 
