@@ -1,11 +1,12 @@
 import React from 'react'
 import filter from '../../../images/ClientList/filers.jpg'
+import reviews from '../../../images/ClientList/halfStar.png'
 
 
 const UserReviews = () => {
     return (
         <div>
-            <div className='d-flex justify-content-between mx-5 mt-5'>
+            <div className='d-flex justify-content-between mx-5 mb-3 mt-5'>
             <div>
                 <h1>Forms</h1>
             </div>
@@ -16,7 +17,7 @@ const UserReviews = () => {
                            </div>
              </div>
              <div className='text-center'>
-             {/* <div
+             <div
      style={{
         width: 940,
         height: 270,
@@ -28,7 +29,7 @@ const UserReviews = () => {
     >  <img className='mx-auto d-block mt-5 pt-3' src={reviews} alt="" />
     <p className='mt-2'> <span className='fs-4 fw-bolder'>No reviews</span> <br />
     <span className='fs-6'>This client hasn’t left any reviews.</span></p>
-    </div> */}
+    </div>
              </div>
         </div>
     )

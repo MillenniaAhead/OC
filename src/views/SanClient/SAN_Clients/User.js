@@ -6,17 +6,17 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap'
 // import Nav from 'react-bootstrap/Nav'
 // import Row from 'react-bootstrap/Row'
 // import Tab from 'react-bootstrap/Tab'
-// import Invoice from './Invoice'
-// import ClientFeed from './ClientFeed'
-// import ClientsDetails from './ClientsDetails'
-// import UserApoinmet from './UserApoinmet'
-// import UserDeposit from './UserDeposit'
-// import UserPayment from './UserPayment'
-// import UserMembership from './UserMembership'
-// import UserFrom from './UserFrom'
-// import UserProducts from './UserProducts'
-// import UserReviews from './UserReviews'
-// import UserFiles from './UserFiles'
+import Invoice from './Invoice'
+import ClientFeed from './ClientFeed'
+import ClientsDetails from './ClientsDetails'
+import UserApoinmet from './UserApoinmet'
+import UserDeposit from './UserDeposit'
+import UserPayment from './UserPayment'
+import UserMembership from './UserMembership'
+import UserFrom from './UserFrom'
+import UserProducts from './UserProducts'
+import UserReviews from './UserReviews'
+import UserFiles from './UserFiles'
 
 
 const User = () => {
@@ -31,7 +31,7 @@ const User = () => {
         <div className='container-fluid'>
             <div className="row">
                 <div className="col-lg-2">
-                    <button className='border-0'><img src={X} alt="" /></button>
+                    <a ><img src={X} alt="" /></a>
                     <div className='mt-3 ms-1'>
                         <h6 className='fs-6'>0</h6>
                         <p className='fs-6'>Total sales (INR)</p>
@@ -86,7 +86,7 @@ const User = () => {
               toggle('2')
             }}
           >
-            Tab 2
+            Client details
           </NavLink>
         </NavItem>
         <NavItem>
@@ -96,31 +96,123 @@ const User = () => {
               toggle('3')
             }}
           >
-            Tab 3
+            Appointments
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '4'}
+            onClick={() => {
+              toggle('4')
+            }}
+          >
+            Deposits
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '5'}
+            onClick={() => {
+              toggle('5')
+            }}
+          >
+            Payment methods
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '6'}
+            onClick={() => {
+              toggle('6')
+            }}
+          >
+            Memberships
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '7'}
+            onClick={() => {
+              toggle('7')
+            }}
+          >
+            Forms
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '8'}
+            onClick={() => {
+              toggle('8')
+            }}
+          >
+           Products
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '9'}
+            onClick={() => {
+              toggle('9')
+            }}
+          >
+           Products
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '10'}
+            onClick={() => {
+              toggle('10')
+            }}
+          >
+           Reviews
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '11'}
+            onClick={() => {
+              toggle('11')
+            }}
+          >
+           Files
           </NavLink>
         </NavItem>
       </Nav>
       <TabContent activeTab={active}>
         <TabPane tabId='1'>
-          <p>
-            Oat cake marzipan cake lollipop caramels wafer pie jelly beans. Icing halvah chocolate cake carrot cake.
-            Jelly beans carrot cake marshmallow gingerbread chocolate cake. Sweet fruitcake cheesecake biscuit cotton
-            candy. Cookie powder marshmallow donut. Gummies cupcake croissant.
-          </p>
+        <ClientFeed/>
         </TabPane>
         <TabPane tabId='2'>
-          <p>
-            Sugar plum tootsie roll biscuit caramels. Liquorice brownie pastry cotton candy oat cake fruitcake jelly
-            chupa chups. Sweet fruitcake cheesecake biscuit cotton candy. Cookie powder marshmallow donut. Pudding
-            caramels pastry powder cake soufflé wafer caramels. Jelly-o pie cupcake.
-          </p>
+        <ClientsDetails/>
         </TabPane>
         <TabPane tabId='3'>
-          <p>
-            Icing croissant powder jelly bonbon cake marzipan fruitcake. Tootsie roll marzipan tart marshmallow pastry
-            cupcake chupa chups cookie. Fruitcake dessert lollipop pudding jelly. Cookie dragée jujubes croissant lemon
-            drops cotton candy. Carrot cake candy canes powder donut toffee cookie.
-          </p>
+        <UserApoinmet/>
+        </TabPane>
+        <TabPane tabId='4'>
+        <UserDeposit/>
+        </TabPane>
+        <TabPane tabId='5'>
+        <UserPayment/>
+        </TabPane>
+        <TabPane tabId='6'>
+        <UserMembership/>
+        </TabPane>
+        <TabPane tabId='7'>
+        <UserFrom/>
+        </TabPane>
+        <TabPane tabId='8'>
+        <UserProducts/>
+        </TabPane>
+        <TabPane tabId='9'>
+        <Invoice/>
+        </TabPane>
+        <TabPane tabId='10'>
+        <UserReviews/>
+        </TabPane>
+        <TabPane tabId='11'>
+        <UserFiles/>
         </TabPane>
       </TabContent>
     </div>

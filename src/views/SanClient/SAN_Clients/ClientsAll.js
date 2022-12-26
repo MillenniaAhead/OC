@@ -3,10 +3,10 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap'
 // import Nav from 'react-bootstrap/Nav'
 // import Row from 'react-bootstrap/Row'
 // import Tab from 'react-bootstrap/Tab'
-// import AutomatedMessages from './AutomatedMessages'
+import AutomatedMessages from './AutomatedMessages'
 import ClientList from './ClientList'
-// import Froms from './Froms'
-// import Notification from './Notification'
+import Froms from './Froms'
+import Notification from './Notification'
 import Reviews from './Reviews'
 
 const ClientsAll = () => {
@@ -54,33 +54,33 @@ const ClientsAll = () => {
       </NavItem>
       <NavItem>
         <NavLink
-          active={active === '1'}
+          active={active === '4'}
           onClick={() => {
-            toggle('1')
+            toggle('4')
           }}
         >
-          Tab 1
+          Automated messages
         </NavLink>
       </NavItem>
       
       <NavItem>
         <NavLink
-          active={active === '2'}
+          active={active === '5'}
           onClick={() => {
-            toggle('2')
+            toggle('5')
           }}
         >
-          
+          Forms
         </NavLink>
       </NavItem>
       <NavItem>
         <NavLink
-          active={active === '3'}
+          active={active === '6'}
           onClick={() => {
-            toggle('3')
+            toggle('6')
           }}
         >
-          Tab 3
+         Notifications
         </NavLink>
       </NavItem>
     </Nav>
@@ -93,6 +93,15 @@ const ClientsAll = () => {
       </TabPane>
       <TabPane tabId='3'>
       <Reviews/>
+      </TabPane>
+      <TabPane tabId='4'>
+      <AutomatedMessages/>
+      </TabPane>
+      <TabPane tabId='5'>
+      <Froms/>
+      </TabPane>
+      <TabPane tabId='6'>
+      <Notification/>
       </TabPane>
     </TabContent>
   </div>
