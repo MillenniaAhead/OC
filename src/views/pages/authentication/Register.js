@@ -96,7 +96,7 @@ const Register = () => {
     <div style={{background: 'white'}}>
       <Row style={{marginTop: '-3px'}} className='auth-inner'>
         <Col style={{marginRight: '-100px'}} className='d-none d-lg-flex' lg='8' sm='12'>
-            <img style={{height: '640px', width: '720px', marginLeft: '-10px', objectFit: 'cover', objectPosition:'left'}} className='img-fluid' src={source} alt='Login Cover' />
+            <img style={{height: '670px', width: '720px', marginLeft: '-10px', objectFit: 'cover', objectPosition:'left'}} className='img-fluid' src={source} alt='Login Cover' />
         </Col>
         <Col style={{marginTop: '-40px'}} className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>
           <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>

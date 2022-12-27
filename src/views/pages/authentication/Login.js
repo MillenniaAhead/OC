@@ -1,5 +1,5 @@
 // ** React Imports
-import { useContext, Fragment } from 'react'
+import { useContext, Fragment, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 // ** Custom Hooks
@@ -38,6 +38,7 @@ import Apple from "../../../assets/images/pages/apple.png"
 import Dot from "../../../assets/images/pages/Ellipse.png"
 import Web from "../../../assets/images/pages/Web Help.png"
 
+import axios from 'axios'
 
 const ToastContent = ({ name, role }) => (
   <Fragment>
@@ -59,6 +60,27 @@ const defaultValues = {
 }
 
 const Login = () => {
+
+  const [email, setEmail] = useState("")
+
+  const handleEmail = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const handleApi = () => {
+    console.log({ email })
+    axios
+      .get("https://reqres.in/api/login", {
+        email
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   // ** Hooks
   const { skin } = useSkin()
   const dispatch = useDispatch()
@@ -152,6 +174,7 @@ const Login = () => {
                   control={control}
                   render={({ field }) => (
                     <Input
+                      onChange={handleEmail}
                       autoFocus
                       type='email'
                       placeholder='john@example.com'
@@ -160,6 +183,9 @@ const Login = () => {
                     />
                   )}
                 />
+                <div className="invalid-feedback">
+                Please provide a valid email.
+                </div>
               </div>
               <div className='mb-1'>
                 <div className='d-flex justify-content-between'>
@@ -178,6 +204,9 @@ const Login = () => {
                     <InputPasswordToggle className='input-group-merge' invalid={errors.password && true} {...field} />
                   )}
                 />
+                 <div className="invalid-feedback">
+                Please provide a valid password.
+                </div>
               </div>
               <div style={{marginTop: '-2px'}} className='form-check mb-1'>
                 <Input type='checkbox' id='remember-me' />
@@ -185,7 +214,7 @@ const Login = () => {
                   Remember Me
                 </Label>
               </div>
-              <button className='btn' style={{ marginTop: '-6px', background: '#4E4E4E', color: 'white', width: '300px'}} type='submit' block>
+              <button onClick={handleApi} className='btn' style={{ marginTop: '-6px', background: '#4E4E4E', color: 'white', width: '300px'}} type='submit' block>
                 Sign in
               </button>
               <div style={{marginTop: '4px'}} className='divider'>

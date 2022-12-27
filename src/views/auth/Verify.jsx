@@ -13,7 +13,7 @@ const Verify = () => {
             marginTop: "-55px",
             marginLeft: "-120px",
             width: "660px",
-            height: "635px",
+            height: "670px",
             objectFit: "cover",
             objectPosition: "left"
           }}
