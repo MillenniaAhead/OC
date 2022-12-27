@@ -7,7 +7,7 @@ const StockOrderLayout = () => {
                
 <Card
   style={{
-    width: '50rem',
+    width: '62.7rem',
     height: '20rem'
   }}
 >
