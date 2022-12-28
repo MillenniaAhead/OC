@@ -2,7 +2,6 @@ import React from 'react'
 import { Card, CardBody, Col, Container, Row  } from 'reactstrap'
 import ProductsModalBasic from '../ProductsCard/ProductsModalBasic'
 
-
 const CardsLayout = () => {
   return (
     <div>
@@ -19,6 +18,7 @@ const CardsLayout = () => {
           <Container>
               <Row>
                   <Col xs ={12} >
+                                     
                     <h5>No products yet</h5>
             <p className='text-secondary '> Your products will appear here.<br></br> Import
     products in minutes and<br></br>  start selling them

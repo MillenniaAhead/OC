@@ -1,9 +1,10 @@
 // ** Reactstrap Imports
 import { Button, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
 
+
 const CustomDropdown = () => {
   return (
-    <div className='demo-inline-spacing'>
+    <div className='demo-inline-spacing '>
    
       <UncontrolledButtonDropdown>
         <Button outline color='secondary'>
@@ -25,8 +26,11 @@ const CustomDropdown = () => {
             Separated Link
           </DropdownItem>
         </DropdownMenu>
+
+        
       </UncontrolledButtonDropdown>
-      <Button color='relief-secondary'>Add new product</Button>
+          
+
     </div>
   )
 }
