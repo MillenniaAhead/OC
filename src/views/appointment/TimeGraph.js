@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import { useSelector } from 'react-redux'
+import Flatpickr from 'react-flatpickr'
 
 
 const TimeGraph = () => {
@@ -12,6 +12,8 @@ const TimeGraph = () => {
   const myFunOne = () => {
     history.push('/newappointment')
   }
+  const [picker, setPicker] = useState(new Date())
+
 
   const events = [
     {
@@ -21,17 +23,23 @@ const TimeGraph = () => {
       end: '2022-12-21T12:00:00'
     }
   ]
-
-  const NewAppointment = useSelector(state => state.AppointmentReducer)
-  const AppointmentArray = NewAppointment.appointment
-  console.log(AppointmentArray)
-
     return (
       <>
+      <Flatpickr
+        value={picker}
+        id='hf-picker'
+        className='form-control'
+        onChange={date => setPicker(date)}
+        options={{
+          altInput: true,
+          altFormat: 'F j, Y',
+          dateFormat: 'Y-m-d'
+        }}
+      />
             <div className="App">
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-        initialView="dayGridMonth"
+        initialView="timeGridDay"
         customButtons={{
           new: {
             text: 'new',
@@ -45,10 +53,10 @@ const TimeGraph = () => {
         events={events}
         eventColor='yellow'
         nowIndicator
-      dateClick = { myFunOne }
+        dateClick = {myFunOne}
       />
     </div>
-            </>
+    </>
     )
 }
 

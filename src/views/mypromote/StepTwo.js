@@ -1,7 +1,5 @@
 import React, { useState } from "react"
-import "../mycss1/StepTwo.css"
 import Progress from "./Progress"
-import Toggler from "./Toggler"
 import { NavLink, useHistory } from "react-router-dom"
 import Flatpickr from "react-flatpickr"
 import { Modal, ModalBody, Button } from "reactstrap"
@@ -11,15 +9,56 @@ import { bindActionCreators } from "redux"
 import { actionCreators } from "./promoteRedux"
 
 const StepTwo = () => {
+  //For required field
   const [redStyle, setRedStyle] = useState({ display: "none" })
-  const [redBox, setRedBox] = useState({ border: "1px solid #d9d9d9" })
+  const [redBox, setRedBox] = useState({ border: "1px solid #d9d9d9", bordeRadius:"4px" })
+
+  //For modals
   const [centeredModal1, setCenteredModal1] = useState(false)
   const [centeredModal2, setCenteredModal2] = useState(false)
   const [centeredModal3, setCenteredModal3] = useState(false)
   const [centeredModal4, setCenteredModal4] = useState(false)
+
+  //For name and description values
+  const [promotionDetail, setPromotionDetail] = useState({name:"", description:''})
+
+  //For product
   const [product, setProduct] = useState([])
+
+  //For service
   const [service, setService] = useState([])
 
+  //For date picker
+  const [picker1, setPicker1] = useState(new Date())
+  const [picker2, setPicker2] = useState(new Date())
+
+  //For color change of promotion value type box
+  const [color1, setColor1] = useState('#1bb70b')
+  const [color2, setColor2] = useState('white')
+
+  //For select promotion value type
+  const [promotionValueType, setPromotionValueType] = useState('%')
+
+  //For write promotion value in input field
+  const [myPromotionValue, setMyPromotionValue] = useState(10.00)
+
+  //For hide input fields
+  const [block1, setBlock1] = useState({display:'none'})
+  const [block2, setBlock2] = useState({display:'none'})
+
+  //For maxUse value
+  const [maxUseValue, setMaxUseValue] = useState('no-limits')
+
+  //For minPurchase value
+   const [minPurchaseValue, setMinPurchaseValue] = useState('no-limits')
+
+   //For check toggle one true or false
+   const [toggle1, setToggle1] = useState(false)
+
+   //For checked or unchecked toggle2
+   const [toggle2, setToggle2] = useState(false)
+
+  //For add and remove products 
   const addProduct = (event) => {
     if (product.includes(event.target.value)) {
       const deselect = product.filter(
@@ -30,6 +69,8 @@ const StepTwo = () => {
       setProduct([...product, event.target.value])
     }
   }
+
+  //For add and remove servoces
   const addService = (event) => {
     if (service.includes(event.target.value)) {
       const deselect = service.filter(
@@ -41,27 +82,106 @@ const StepTwo = () => {
     }
   }
 
-  const dispatch = useDispatch()
-  const { AddDeal } = bindActionCreators(actionCreators, dispatch)
+  //For change box color
+  const promotionValue1 = (e) => {
+    setPromotionValueType(e.target.textContent)
+    setColor2('white')
+    setColor1('#1bb70b')
+  }
+  const promotionValue2 = (e) => {
+    setPromotionValueType(e.target.textContent)
+    setColor1('white')
+    setColor2('#1bb70b')
+  }
+  //For set promotion value type
+  const promotionValue = (e) => {
+    setMyPromotionValue(e.target.value)
+  }
 
-  const nextStep = useHistory()
-
-  const [promotionDetail, setPromotionDetail] = useState({name:"", description:""})
-  
+  //For update values of name and description
   const updateValue = (current) => {
     setPromotionDetail({...promotionDetail, [current.target.name]:current.target.value})
+    // alert gone (name)
+    setRedStyle({display:'none'})
+    setRedBox({border: "1px solid #d9d9d9", borderRadius:'4px'})
   }
-  const formHandle = () => {
-    if (promotionDetail.name === "") {
-      setRedStyle({ display: "block" })
-      setRedBox({ border: "1px solid red" })
+  
+  //For input fields
+  const maxUse = (e) => {
+    setMaxUseValue(e.target.value)
+  }
+  
+  const minPurchaseFun = (e) => {
+    setMinPurchaseValue(e.target.value)
+  }
+  
+  //For togglers
+  const toggler1 = () => {
+    if (toggle2 !== true) {
+      setToggle1(!toggle1)
     } else {
-      nextStep.push("/promote/stepthree")
-      AddDeal([promotionDetail, product, service])
+      alert('Limit total number of uses is checked')
+      setToggle1(false)
     }
   }
-  const [picker1, setPicker1] = useState(new Date())
-  const [picker2, setPicker2] = useState(new Date())
+  const toggler2 = () => {
+    if (toggle1 === true) {
+      setToggle2(false)
+      alert('Limit to one use per client is checked')
+    } else {
+    if (block1.display === 'none') {
+      setBlock1({display:'block'})
+      setToggle2(true)
+    } else {
+      setBlock1({display:'none'})
+      setToggle2(false)
+    }
+    if (toggle1 === false) {
+      setMaxUseValue('no-limit')
+    } else {
+      setMaxUseValue(1)
+    }
+  }
+  }
+  const toggler3 = () => {
+    if (block2.display === 'none') {
+      setBlock2({display:'block'})
+    } else {
+      setBlock2({display:'none'})
+    }
+  }
+
+  //For navigate next step with condition
+  const nextStep = useHistory()
+
+   //For dispatch action from action.js
+   const dispatch = useDispatch()
+   const { CollectDealData } = bindActionCreators(actionCreators, dispatch) 
+   const { DeleteLastData } = bindActionCreators(actionCreators, dispatch) 
+   const { ClearDealData } = bindActionCreators(actionCreators, dispatch) 
+
+  //On next step click
+  const formHandle = () => {
+    if (promotionDetail.name === "") {
+      //Show alert (name)
+      setRedStyle({ display: "block" })
+      setRedBox({ border: "1px solid red", bordeRadius:'4px' })
+    } else {
+      //Navigate
+      nextStep.push("/promote/stepthree")
+      //Call action 
+      CollectDealData([promotionDetail, product, service, picker1, picker2, { promotion_value: myPromotionValue, promotion_value_type: promotionValueType}, {max_use: maxUseValue, min_purchase: minPurchaseValue}])
+    }
+  }
+
+  //On click of Previous
+  const Previous = () => {
+    DeleteLastData()
+  }
+  //On click of X
+  const Clear = () => {
+    ClearDealData()
+  }
 
   return (
     <div className="step-two-container">
@@ -69,13 +189,13 @@ const StepTwo = () => {
         <div className="head-container">
           <div className="btns-wrapper">
             <div className="left-side">
-              <div className="cross-symbol">
-                <NavLink to="/promote">
+              <div onClick={Clear} className="cross-symbol">
+                <NavLink to="/navigationpromote">
                 <X size={45} strokeWidth={1} style={{color:'black'}} />
                 </NavLink>
               </div>
-              <div className="previous-page">
-                <NavLink to="/promote/stepone" style={{ color: "#1BB70B" }}>
+              <div onClick={Previous} className="previous-page">
+                <NavLink  to="/promote/stepone" style={{ color: "#1BB70B" }}>
                   Previous
                 </NavLink>
               </div>
@@ -106,10 +226,6 @@ const StepTwo = () => {
             <div className="deal-costomise-container-a">
               <div
                 className="top-description-text-wrapper"
-                style={{
-                  padding: "24px 32px",
-                  borderBottom: "1px solid #d9d9d9"
-                }}
               >
                 <p className="text-c5">Basic details</p>
                 <p className="text-d5" style={{ marginTop: "2px" }}>
@@ -145,7 +261,7 @@ const StepTwo = () => {
                     <div className="desc-box d-flex justify-content-between">
                       <label htmlFor="" className="text-e5">
                         Description{" "}
-                        <span className="text-d10">&#40Optional&#41</span>
+                        <span className="text-d10">&#40;Optional&#41;</span>
                       </label>
                       <p>0/600</p>
                     </div>
@@ -202,6 +318,7 @@ const StepTwo = () => {
                                 name="service1"
                                 value="service1"
                                 onClick={addService}
+                                readOnly
                               />
                             </label>
                             <div className="list-item-names">service1</div>
@@ -217,6 +334,7 @@ const StepTwo = () => {
                                 name="service2"
                                 value="service2"
                                 onClick={addService}
+                                readOnly
                               />
                             </label>
                             <div className="list-item-names">service2</div>
@@ -232,6 +350,7 @@ const StepTwo = () => {
                                 name="service3"
                                 value="service3"
                                 onClick={addService}
+                                readOnly
                               />
                             </label>
                             <div className="list-item-names">service3</div>
@@ -284,6 +403,7 @@ const StepTwo = () => {
                                 name="product1"
                                 value="product1"
                                 onClick={addProduct}
+                                readOnly
                               />
                             </label>
                             <div className="list-item-names">product1</div>
@@ -299,6 +419,7 @@ const StepTwo = () => {
                                 name="product2"
                                 value="product2"
                                 onClick={addProduct}
+                                readOnly
                               />
                             </label>
                             <div className="list-item-names">product2</div>
@@ -314,6 +435,7 @@ const StepTwo = () => {
                                 name="product3"
                                 value="product3"
                                 onClick={addProduct}
+                                readOnly
                               />
                             </label>
                             <div className="list-item-names">product3</div>
@@ -460,38 +582,35 @@ const StepTwo = () => {
                   <div className="box-container-wrapper d-flex flex-column">
                     <div className="box-container">
                       <div className="box-1">
-                        <span
-                          style={{
-                            padding: "10px 16px 12px 16px",
-                            minWidth: "24px"
-                          }}
-                        >
-                          %
-                        </span>
+                        <div>
+                          {promotionValueType}
+                        </div>
                         <input
-                          style={{
-                            padding: "10px 16px 12px 16px",
-                            fontSize: "16px",
-                            fontWeight: "400",
-                            lineHeight: "24px"
-                          }}
-                          placeholder="10.00"
                           type="text"
+                          value={myPromotionValue}
+                          onChange={promotionValue}
+                          className='myinput-a'
                         />
                       </div>
                       <div className="box-2">
                         <button
                           style={{
                             marginLeft: "5px",
-                            borderRadius: "4px 0 0 4px"
+                            borderRadius: "4px 0 0 4px",
+                            background:`${color1}`,
+                            borderWidth:'1px 0 1px 1px'
                           }}
                           className="btn-b"
+                          onClick={promotionValue1}
                         >
                           %
                         </button>
                         <button
-                          style={{ borderRadius: "0 4px 4px 0" }}
+                          style={{ borderRadius: "0 4px 4px 0",
+                           background:`${color2}`,
+                           borderWidth:'1px 1px 1px 0px'}}
                           className="btn-b"
+                          onClick={promotionValue2}
                         >
                           INR
                         </button>
@@ -504,7 +623,23 @@ const StepTwo = () => {
                   <div className="three-option-wrapper">
                     <div className="dabba1 dabba">
                       <div className="toggle-btn">
-                        <Toggler />
+                      <div className="form-check form-switch">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckDefault"
+                  style={{ width: "48px", height: "24px" }}
+                  value='Limit to one use per client'
+                  onClick={toggler1}
+                  readOnly
+                  checked={toggle1}
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor="flexSwitchCheckDefault"
+                ></label>
+              </div>
                       </div>
                       <div className="btn-text">
                         <p className="text-i5">Limit to one use per client</p>
@@ -516,7 +651,23 @@ const StepTwo = () => {
                     </div>
                     <div className="dabba2 dabba">
                       <div className="toggle-btn">
-                        <Toggler />
+                      <div className="form-check form-switch">
+                      <input 
+                        className="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="flexSwitchCheckDefault"
+                        style={{ width: "48px", height: "24px" }}
+                        value='Limit total number of uses'
+                        onClick={toggler2}
+                        readOnly
+                        checked={toggle2}
+                      />
+                      <label
+                        className="form-check-label"
+                        htmlFor="flexSwitchCheckDefault"
+                      ></label>
+                    </div>
                       </div>
                       <div className="btn-text">
                         <p className="text-i5">Limit total number of uses</p>
@@ -526,9 +677,28 @@ const StepTwo = () => {
                         </p>
                       </div>
                     </div>
+                    <div style={block1} className='block-input-box'>
+                      <div className="text-k5">Max uses</div>
+                      <div className='input-field-a max-uses'><input type="number" onChange={maxUse} value={maxUseValue}/></div>
+                      </div>
                     <div className="dabba3 dabba">
                       <div className="toggle-btn">
-                        <Toggler />
+                      <div className="form-check form-switch">
+                     <input
+                       className="form-check-input"
+                       type="checkbox"
+                       role="switch"
+                       id="flexSwitchCheckDefault"
+                       style={{ width: "48px", height: "24px" }}
+                       value='Set minimum purchase amount'
+                       onClick={toggler3}
+                       readOnly
+                     />
+                     <label
+                       className="form-check-label"
+                       htmlFor="flexSwitchCheckDefault"
+                     ></label>
+                   </div>
                       </div>
                       <div className="btn-text">
                         <p className="text-i5">Set minimum purchase amount</p>
@@ -538,6 +708,10 @@ const StepTwo = () => {
                         </p>
                       </div>
                     </div>
+                    <div style={block2} className='block-input-box'>
+                      <div className="text-k5">Minimum purchase amount</div>
+                      <div className='input-field-a'><div className='myspan-a'>INR</div><input type="number" value={minPurchaseValue} placeholder='100' onChange={minPurchaseFun}/></div>
+                      </div>
                   </div>
                 </div>
               </div>

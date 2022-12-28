@@ -30,19 +30,19 @@
     color:black;
 }
 .left-container-aa1,.left-container-aa2{
-    /* // border:1px solid black; */
     grid-column-start:1;
     grid-column-end:11;
-    padding:24px;
-    margin: 0 30px;
-    height:88vh
-
+    padding:24px 54px;
+    height:88vh;
+    
 }
 .right-container-aa1,.right-container-aa2{
-    /* // border:1px solid blue; */
     border-left:1px solid #d9d9d9;
     grid-column-start:11;
     grid-column-end:12;
+    overflow-y: scroll;
+}
+.left-container-aa1{
     overflow-y: scroll;
 }
 .box-aa1{
@@ -50,9 +50,6 @@
     justify-content: space-between;
 }
 .date-box-aa1{
-    /* font-size: 20px;
-    font-weight: 800;
-    line-height: 28px; */
     margin: 0 0 32px 0;
 }
 .form-control{
@@ -99,9 +96,6 @@ select:focus,input:focus,textarea:focus{
 .search-field-aa1:hover,select:hover,.service-field:hover,.team-member-field:hover,textarea:hover{
     border:1px solid black;
 }
-/* select:focus{
-    border:2px solid green;
-} */
 input{
     border:none;
 }
@@ -181,6 +175,11 @@ textarea{
     cursor: pointer;
     color:black
 }
+.empty-warning{
+    color:red;
+    font-size:14px;
+    line-height: 21px;
+}
 
 .box-dd1{
     background: rgba(237, 254, 235, 0.34);
@@ -196,7 +195,7 @@ textarea{
     border-left:6px solid rgba(27, 183, 11, 0.7);
 }
 .service-option-category{
-    padding:25px 30px
+    padding:20px 30px
 }
 .text-dd1{
     font-size: 20px;

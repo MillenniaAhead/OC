@@ -6,12 +6,6 @@ import { isUserLoggedIn } from '@utils'
 import { useLayout } from '@hooks/useLayout'
 import { AbilityContext } from '@src/utility/context/Can'
 import { useRouterTransition } from '@hooks/useRouterTransition'
-import NewAppointment from '../views/appointment/NewAppointment'
-import ViewAppointment from '../views/appointment/ViewAppointment'
-import StepOne from '../views/mypromote/StepOne'
-import StepTwo from '../views/mypromote/StepTwo'
-import StepThree from '../views/mypromote/StepThree'
-import StepFour from '../views/mypromote/StepFour'
 // ** Custom Components
 import LayoutWrapper from '@layouts/components/layout-wrapper'
 
@@ -201,36 +195,6 @@ const Router = () => {
     <AppRouter basename={process.env.REACT_APP_BASENAME}>
       <Switch>
         {/* If user is logged in Redirect user to DefaultRoute else to login */}
-        <Route
-        exact
-        path='/newappointment'
-        component={NewAppointment}
-        />
-        <Route
-        exact
-        path='/viewappointment'
-        component={ViewAppointment}
-        />
-        <Route
-        exact
-        path='/promote/stepone'
-        component={StepOne}
-        />
-        <Route
-        exact
-        path='/promote/steptwo'
-        component={StepTwo}
-        />
-        <Route
-        exact
-        path='/promote/stepthree'
-        component={StepThree}
-        />
-        <Route
-        exact
-        path='/promote/stepfour'
-        component={StepFour}
-        />
         <Route
           exact
           path='/'

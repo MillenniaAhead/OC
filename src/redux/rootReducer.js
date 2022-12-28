@@ -17,12 +17,12 @@ import calendar from '@src/views/apps/calendar/store'
 import ecommerce from '@src/views/apps/ecommerce/store'
 import dataTables from '@src/views/tables/data-tables/store'
 import permissions from '@src/views/apps/roles-permissions/store'
-import MyReducer from '../views/mypromote/promoteRedux/Reducer'
+import DealsReducer from '../views/mypromote/promoteRedux/Reducer'
 import AppointmentReducer from '../views/appointment/appointmentRedux/Reducer'
 
 const rootReducer = {
   AppointmentReducer,
-  MyReducer,
+  DealsReducer,
   auth,
   todo,
   chat,

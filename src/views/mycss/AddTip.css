@@ -32,6 +32,9 @@ div,p{
     position: relative;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1)
 }
+.tip-box:hover, .payment-box:hover{
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2)
+}
 .back-arrow-aa3,.back-arrow-aa4{
     cursor: pointer;
 }

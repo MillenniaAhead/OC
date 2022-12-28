@@ -1,7 +1,7 @@
 /* ################################################ StepThree.js */
 .how-to-apply-promotion-container{
     width:678px;
-    height:185px;
+    min-height:185px;
     /* border:2px solid blue; */
     border:1px solid #D9D9D9;
     border-radius: 8px;
@@ -29,5 +29,24 @@
     border: none;
     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
   }
-  
-  
+  .text-a22{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+  .text-b22{
+    font-size:'13px';
+    font-weight: '400';
+    line-height:'19px';
+    margin:'4px 0 0 0';
+    color:rgba(0, 0, 0, 0.7)
+  }
+  .box-a22{
+    padding:10px;
+    border:1px solid #d9d9d9;
+    width:50%;
+    border-radius:4px;
+  }
+  .box-a22 input{
+    font-size: 1.2rem;
+  }

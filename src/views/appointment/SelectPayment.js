@@ -7,10 +7,20 @@ import Detail from './Detail'
 import cashpayment from '../images/cashpayment.svg'
 import voucherpayment from '../images/voucherpayment.svg'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const SelectPayment = () => {
   const [centeredModal1, setCenteredModal1] = useState(false)
   const [centeredModal2, setCenteredModal2] = useState(false)
+  const [amount, setAmount] = useState("Select a amount")
+
+  const AddTipAppointment = useSelector(state => state.AppointmentReducer)
+  const AddTipArray = AddTipAppointment.tipAdded
+  console.log(AddTipArray)
+
+  const SelectAmount = (current) => {
+    setAmount(current.target.textContent)
+  }
 
   return (
     <div className="select-payment-container">
@@ -41,18 +51,18 @@ const SelectPayment = () => {
                 </div>
                 <div className="costomer-amount">
                     <div className='text-dd4 mb-1'>Amount given by the costomer</div>
-                    <div className="text-dd4 my-amount-aa4">₹126.50</div>
+                    <div className="text-dd4 my-amount-aa4">{amount}</div>
                 </div>
                 <div className="change-given-aa4">
                    <div className='text-ee4'> No change given </div>
                 </div>
                 <div className="amount-options-container-aa4">
-                    <div className="amount-aa4">₹126</div>
-                    <div className="amount-aa4">₹127.50</div>
-                    <div className="amount-aa4">₹130</div>
-                    <div className="amount-aa4">₹140</div>
-                    <div className="amount-aa4">₹150</div>
-                    <div className="amount-aa4">₹500</div>
+                    <div onClick={SelectAmount} className="amount-aa4">₹126</div>
+                    <div onClick={SelectAmount} className="amount-aa4">₹127.50</div>
+                    <div onClick={SelectAmount}  className="amount-aa4">₹130</div>
+                    <div onClick={SelectAmount} className="amount-aa4">₹140</div>
+                    <div onClick={SelectAmount} className="amount-aa4">₹150</div>
+                    <div onClick={SelectAmount} className="amount-aa4">₹500</div>
                 </div>
             </div>
           <div className="modal-btn-box-aa4">

@@ -7,7 +7,7 @@ import facebookadd2 from "../images/facebookadd2.png"
 import facebookadd3 from "../images/facebookadd3.png"
 import facebookadd4 from "../images/facebookadd4.png"
 import facebookadd5 from "../images/facebookadd5.png"
-import { Check, Search, Star, Clock, ArrowRight, Users, DollarSign } from 'react-feather'
+import { Check, Search, Star, Clock, ArrowRight, Users, DollarSign, X } from 'react-feather'
 import { Button, Modal, ModalBody } from 'reactstrap'
 
 const Integrations = () => {
@@ -20,15 +20,15 @@ const Integrations = () => {
           <h1 className="text-a2">Integrations</h1>
           <p className="text-b2">
             Integrate Google Analytics and Facebook Ads onto your Outlet Control
-            account.{" "}
+            account.
             <a style={{ color: "#6B87E8", textDecoration: "none" }} href="#">
               Learn more
-            </a>{" "}
+            </a>
           </p>
         </div>
         <div className="int-body-boxes">
-          <div className="box-1 box d-flex">
-            <div className="image-box-b" style={{width:"260px", height:"185px", flexShrink:"0.3"}}>
+          <div className="box-a29 box d-flex">
+            <div className="image-box-b" style={{width:"260px", minHeight:"185px", flexShrink:"0.3"}}>
               <div>
                 <div className="google-image d-flex">
                 <div className="short-box-1"></div>
@@ -58,7 +58,7 @@ const Integrations = () => {
           </div>
         </div>
         <div className="int-body-boxes">
-          <div className="box-1 box d-flex">
+          <div className="box-a29 box d-flex">
             <div className="image-box-b" style={{width:"300px", height:"200px"}}>
               <div>
                 <img
@@ -91,6 +91,7 @@ const Integrations = () => {
          
           <ModalBody>
           <div className="my-deals-container d-flex justify-content-between">
+            <X style={{cursor:'pointer'}} onClick={() => setCenteredModal(!centeredModal)} />
             <div className="deals-container-a">
               <div className="deals-text-container">
                 <p className="text-a4">

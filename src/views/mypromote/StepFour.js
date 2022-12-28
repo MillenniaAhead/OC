@@ -2,15 +2,18 @@ import React from 'react'
 import '../mycss1/StepFour.css'
 import { NavLink } from 'react-router-dom'
 import ticketG from "../images/ticket-g.svg"
-import pinG from "../images/pin-g.svg"
-import { CheckCircle, Calendar, X } from 'react-feather'
+import { CheckCircle, X, Calendar, Tag } from 'react-feather'
+import { useSelector } from 'react-redux'
 
 const StepFour = () => {
 
+  const reducer = useSelector(state => state.DealsReducer)
+  const myArray = reducer.successDeals
+  console.log(myArray)
   return (
     <div className="step-four-container">
     <div className="cross-btn-wrapper">
-      <NavLink to="/promote">
+      <NavLink to="/navigationpromote">
       <X size={45} strokeWidth={1} style={{color:'black'}} />
       </NavLink>
     </div>
@@ -28,7 +31,7 @@ const StepFour = () => {
             <div>
               <div className='detail-dabba'>
                 <div>
-                <img src={pinG} alt="" />
+                <Tag size={35} className='icon-a1' />
                 </div>
                 <div>
                 <p>10% discount on this product and this service</p>
@@ -43,8 +46,8 @@ const StepFour = () => {
                 </div>
               </div>
               <div  className='detail-dabba'>
-                <div>
-                    <Calendar size={30} color={'#1bb70b'}/>
+                <div style={{paddingRight:'4px'}}>
+                    <Calendar size={35} className='icon-a1'/>
                 </div>
                 <div>
                 <p>Promotion starts on 21 Dec 2022 and end on never</p>
@@ -53,7 +56,7 @@ const StepFour = () => {
             </div>
           </div>
           <div className="sucess-btn">
-            <NavLink to="/promote" className="done-btn">Done</NavLink>
+            <NavLink to="/navigationpromote" className="done-btn">Done</NavLink>
           </div>
     </div>
 </div>

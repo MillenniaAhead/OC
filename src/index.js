@@ -2,6 +2,13 @@
 import { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom'
 
+// css
+import 'flatpickr/dist/flatpickr.css'
+import "./views/mycss1/StepOne.css"
+import "./views/mycss1/StepTwo.css"
+import "./views/mycss1/StepThree.css"
+
+
 // ** Redux Imports
 import { Provider } from 'react-redux'
 import { store } from './redux/store'

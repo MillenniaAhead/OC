@@ -67,7 +67,7 @@ const Deals = () => {
           </div>
           <div className="learn-more-btn">
             <NavLink
-              to="/promote"
+              to="/navigationpromote"
               style={{color:"#1bb70b"}}
               className="text-d1"
             >

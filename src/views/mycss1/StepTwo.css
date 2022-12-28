@@ -1,21 +1,25 @@
-/* #############################################StepTwo.js &&&&&&&&&&& id id id id id id ==============   55555555555555  */  
+/* #############################################StepTwo.js &&&&&&&&&&& id id id id id id ==============   55555555555555  */ 
+body{
+  color:'black'
+} 
 .deal-costomise-container{
     width:680px;
-    height:1530px;
+    min-height:1300px;
     margin:auto;
     /* border:1px solid green; */
   }
   .deal-costomise-container-a{
     border:1px solid #D9D9D9;
     width:678px;
-    height:850px;
+    min-height:750px;
     border-radius: 15px;
   }
   .promotion-value-container{
     margin-top: 50px;
+    margin-bottom: 80px;
     border:1px solid #D9D9D9;
     width:678px;
-    height:550px;
+    min-height:500px;
     border-radius: 15px;;
   }
   .edit-option{
@@ -121,30 +125,33 @@
   }
   .box-container{
     display: flex;
-    width:404px;
+    width:450px;
     height:48px;
   }
   .box-1{
     border:1px solid #D9D9D9;
     border-radius: 4px;
+    width:65%;
   }
-  .box-1 input{
+  input{
     border:none;
   }
   .btn-b{
     font-size: 16px;
       font-weight: 400;
       line-height: 24px;
-      border:1px solid #D9D9D9;
       width:43px;
       height:46px;
+      border-color:#d9d9d9;
+      border-style:solid;
   }
-  .btn-b:active{
-    background-color: #1BB70B;
+  .box-1 div{
+    padding:10px 16px 12px 16px;
+    display:inline;
+    border-right: 1px solid #d9d9d9;
   }
-  
-  .box-1 span{
-    border-right: 1px solid #D9D9D9;
+  .box-2{
+    margin-left:10px;
   }
   
   .btn-text{
@@ -172,6 +179,9 @@
   input[type="checkbox"]{
     cursor:pointer;
   }
+  input:focus, textarea:focus{
+    outline:none;
+  }
   .text-a10{
     color:rgba(0, 0, 0, 0.6);
     font-size:15px;
@@ -182,6 +192,7 @@
     font-size:28px;
     font-weight:800;
     line-height:36px;
+    color:black;
   }
   .text-c10{
     font-size:15px;
@@ -193,5 +204,33 @@
   font-weight:500;
   line-height:20px;
   color:rgba(0, 0, 0, 0.7)
-
+}
+.myinput-a{
+  padding: 10px 16px 12px 16px;
+  font-size:16px;
+  font-weight:400;
+  line-height:24px;
+}
+.input-field-a{
+  border:1px solid #d9d9d9;
+  width:40%;
+  display: flex;
+  border-radius: 4px;
+}
+.myspan-a{
+  padding:10px;
+  border-right:1px solid #d9d9d9;
+}
+.myspan-a+input{
+  padding-left: 8px;
+}
+.max-uses{
+  padding:10px
+}
+.text-k5{
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.block-input-box{
+  margin-bottom: 20px;
 }

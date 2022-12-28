@@ -2,18 +2,18 @@ import React, {useState} from "react"
 import "../mycss/NewAppointment.css"
 import "../mycss/ViewAppointment.css"
 import '../mycss/AddTip.css'
-import { User, Star, FileText, X } from "react-feather"
-import { Button } from 'reactstrap'
+import { User, Star, FileText, CheckCircle, X, CheckSquare } from "react-feather"
+import { Offcanvas, OffcanvasBody, Button } from 'reactstrap'
 import { NavLink } from "react-router-dom"
 
-const ViewAppointment = () => {
-  // const [canvasPlacement, setCanvasPlacement] = useState('end')
-  // const [canvasOpen, setCanvasOpen] = useState(false)
+const ViewAppointmentTwo = () => {
+  const [canvasPlacement, setCanvasPlacement] = useState('end')
+  const [canvasOpen, setCanvasOpen] = useState(false)
   
-  // const toggleCanvasEnd = () => {
-  //   setCanvasPlacement('end')
-  //   setCanvasOpen(!canvasOpen)
-  // }
+  const toggleCanvasEnd = () => {
+    setCanvasPlacement('end')
+    setCanvasOpen(!canvasOpen)
+  }
 
   return (
     <div className="view-appointment-container">
@@ -42,13 +42,14 @@ const ViewAppointment = () => {
         </div>
         <div className="appointment-history">
           <p className="text-ee2">Appointment history</p>
-          <p className="text-ff2">
-            Booked, reference 3768688 at Tue, 16 Dec 2022 at 11:00 am
-          </p>
+          <div className="text-ff2">
+            <div>Checked out to invoice 3 by Kondeti at Sat, 15 Oct 2022 at 11:19am</div>
+            <div>Booked by Kondeti, reference 208D25DB at Sat, 15 Oct 2022 at 11:07am</div>
+          </div>
         </div>
       </div>
       <div className="right-container-aa2">
-        <div className="new-client-box-aa2 d-flex align-items-center">
+        <div style={{borderBottom:'1px solid #d9d9d9'}} className="new-client-box-aa2 d-flex align-items-center">
           <div className="circle-logo-aa2 d-flex justify-content-center align-items-center text-hh2">
             <User style={{color:"#1bb70b"}} size={35} />
           </div>
@@ -59,42 +60,27 @@ const ViewAppointment = () => {
             </div>
             </div>
         <div className="bottom-box-aa2">
-          <div className="appointment-status-aa2 d-flex justify-content-center">
-            <button className="d-flex align-items-center justify-content-center">
-              <span
-                className="me-3"
-                style={{
-                  width: "24px",
-                  height: "24px",
-                  borderRadius: "100%",
-                  background: "rgba(27, 183, 11, 0.9)"
-                }}
-              >
-                <Star style={{color:"white"}} size={15} />
-              </span>
-              New Appointment
-            </button>
-          </div>
           <div className="sale-receipt-box-aa2">
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <div><FileText size={70} strokeWidth={0.8}/></div>
-              <div className="text-kk2">No invoice issued yet</div>
+              <div><CheckSquare size={80} strokeWidth={1.2}/></div>
+              <h2>Appointment Completed</h2>
+              <div className="text-kk2 text-center d-flex" style={{width:'340px'}}>Full payment received on Saturday, 15 Oct
+2022 with invoice 3 </div>
             </div>
           </div>
           <div className="btn-box-aa2">
             <p className="text-jj2">Total: ₹30 (30min)</p>
             <div className="btn-wrapper-aa2 d-flex justify-content-between">
-              <button className="more-option-aa2 btn-aa1 mb-1 ">More option</button>
-              {/* <NavLink><button className="checkout-aa2 btn-aa1">Checkout</button></NavLink> */}
-              <Button.Ripple className="btn-aa1 mb-1" color='dark' tag={NavLink} to='/checkout'>
-          Checkout
+              <button className="more-option-aa2 btn-aa1 mb-1 ">More options</button>
+              <Button.Ripple onClick={toggleCanvasEnd}  className="btn-aa1 mb-1" color='dark' tag='div'>
+          View invoice
         </Button.Ripple>
             </div>
           </div>
         </div>
       </div>
       
-      {/* <Offcanvas className="off-canvas-container-aa2" direction={canvasPlacement} isOpen={canvasOpen} toggle={toggleCanvasEnd}>
+      <Offcanvas className="off-canvas-container-aa2" direction={canvasPlacement} isOpen={canvasOpen} toggle={toggleCanvasEnd}>
         <OffcanvasBody className='off-canvas-aa2 p-0'
         >
           <div className="offcanvas-left-box-aa2 d-flex align-items-center flex-column">
@@ -158,9 +144,9 @@ const ViewAppointment = () => {
             </div>
             
         </OffcanvasBody>
-      </Offcanvas> */}
+      </Offcanvas>
     </div>
   )
 }
 
-export default ViewAppointment
+export default ViewAppointmentTwo

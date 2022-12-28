@@ -2,8 +2,7 @@ import React, { Fragment, useState } from 'react'
 import "../mycss/NewAppointment.css"
 import Flatpickr from 'react-flatpickr'
 import { Search, Repeat, ChevronDown, X } from 'react-feather'
-import 'flatpickr/dist/flatpickr.css'
-import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Label, FormFeedback } from 'reactstrap'
+import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Label } from 'reactstrap'
 import { NavLink, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -14,7 +13,9 @@ const NewAppointment = () => {
   const [startTime, setStartTime] = useState(null)
   const [teamMember, setTeamMember] = useState(null)
   const [duration, setDuration] = useState(null)
-  const [service, setService] = useState("Choose a service")
+  const [service, setService] = useState(["Choose a service"])
+  const [display1, setDisplay1] = useState("none")
+  const [display2, setDisplay2] = useState("none")
   const SelectDuration = (current) => {
     setDuration(current.target.value)
   }
@@ -23,19 +24,28 @@ const NewAppointment = () => {
   }
   const SelectTeamMember = (current) => {
    setTeamMember(current.target.value)
+   setDisplay2("none")
   }
   const SelectService = (current) => {
-  setService(current.target.innerHTML)
+  setService(current.target.textContent.split(/\s+/))
+  setDisplay1("none")
 } 
   const dispatch = useDispatch()
-const { addNewAppointment } = bindActionCreators(actionCreators, dispatch)
+const { PostAppointment } = bindActionCreators(actionCreators, dispatch)
 
 const history = useHistory()
-  const saveAppointment = () => {
-    addNewAppointment([startTime, teamMember, duration, service])
-    history.push('/timegraph')
-  }
 
+
+  const saveAppointment = () => {
+    if (service[0] === "Choose a service") {
+       setDisplay1('block')
+    } else if (teamMember === null) {
+       setDisplay2('block')
+    } else {
+    PostAppointment([picker, startTime, service, duration, teamMember])
+    history.push('/timegraph')
+    }
+  }
   return (
     <div className='new-appointment-container'>
       <div className="top-container-aa1">
@@ -82,57 +92,59 @@ const history = useHistory()
               </label>
             <UncontrolledButtonDropdown  className="service-field">
               <DropdownToggle style={{background:"white", padding:"10px 10px 8px", margin:"0 4px"}} color="light">
-              <div className='text-bb1 d-flex justify-content-between'><div>{service}</div> <div size={10}><ChevronDown/></div></div>
+              <div className='text-bb1 d-flex justify-content-between'><div>{service[0]}</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu' style={{width:"100%"}}>
-                <DropdownItem tag='div'  className="service-option" >
+                  <div tag='div' className="service-option-category" >
+                  <div className='text-ff1'>Hair</div>
+                </div>
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1' onClick={SelectService}>Haircut</div>
-<div className='text-ee1'>long hair, 45min</div>
+                  <div className='text-dd1'>Haircut</div>
+<div className='text-ee1'> 45min</div>
 </div>
-<div className='text-dd1'>₹40</div>
+<div className='text-dd1'> ₹40</div>
                 </DropdownItem>
-                <DropdownItem tag='div' className="service-option" >
-                  
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1' onClick={SelectService}>Hair Color</div>
-<div className='text-ee1'>1h 45miin</div>
+                  <div className='text-dd1'>Hair-Color</div>
+<div className='text-ee1'> 1h 45miin</div>
 </div>
-<div className='text-dd1'>₹57</div>
+<div className='text-dd1'> ₹57</div>
                 </DropdownItem>
-                <DropdownItem tag='div' className="service-option" >
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1' onClick={SelectService}>Blow Dry</div>
-<div className='text-ee1'>35min</div>
+                  <div className='text-dd1' onClick={SelectService}>Blow-Dry</div>
+<div className='text-ee1'> 35min</div>
 </div>
-<div className='text-dd1'>₹35</div>
+<div className='text-dd1'> ₹35</div>
                 </DropdownItem>
-                <DropdownItem tag='div' className="service-option" >
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
                   <div>
                   <div className='text-dd1' onClick={SelectService}>Balayage</div>
-<div className='text-ee1'>2h 30min</div>
+<div className='text-ee1'> 2h 30min</div>
 </div>
-<div className='text-dd1'>₹150</div>
+<div className='text-dd1'> ₹150</div>
                 </DropdownItem>
-                <DropdownItem tag='div' className="service-option-category" >
+                <div tag='div' className="service-option-category" >
                   <div className='text-ff1'>Face</div>
-                </DropdownItem>
-                <DropdownItem tag='div' className="service-option" >
+                </div>
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
                   <div>
                   <div className='text-dd1' onClick={SelectService}>Facial</div>
-<div className='text-ee1'>1h</div>
+<div className='text-ee1'> 1h</div>
 </div>
-<div className='text-dd1'>₹115</div>
+<div className='text-dd1'> ₹115</div>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledButtonDropdown>
-            <div className='mb-1'>Service is required</div>
+            <div style={{display:display1}} className='mb-1 empty-warning'>Service is required</div>
           </div>
           <div className="duration d-flex flex-column">
           <Label className='form-label text-aa1' for='select-lg'>
               Duration
               </Label>
-            <Input type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectTeamMember}>
+            <Input type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectDuration}>
               <option value="30min">30min</option>
               <option value="35min">35min</option>
               <option value="40min">40min</option>
@@ -144,18 +156,18 @@ const history = useHistory()
           <Label className='form-label text-aa1' for='select-lg'>
               Team member
               </Label>
-              <Input type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectDuration}>
-                <option disabled value="">Select a team member</option>
+              <Input type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectTeamMember}>
+                <option value={null}>Select a team member</option>
                 <option value="Renu">Renu</option>
-                <option value="Vearat">Veerat</option>
+                <option value="Veerat">Veerat</option>
                 <option value="Chaman">Chaman</option>
                 <option value="Tiku">Tiku</option>
                 </Input>
-            <div className='mb-1'>Employee is required</div>
+            <div style={{display:display2}} className='mb-1 empty-warning'>Employee is required</div>
 
           </div>
         </div>
-        <div className="box-bb1 box-dd1" style={{display:"none"}}>
+        { service[0] !== "Choose a service" && teamMember !== null && <div className="box-bb1 box-dd1">
         <div className="select-time d-flex flex-column">
             <Label className='form-label text-aa1' for='select-lg'>
             Start time
@@ -173,10 +185,6 @@ const history = useHistory()
             <label htmlFor="" className='text-aa1'>
               service
               </label>
-              
-            {/* <div className="service-field d-flex justify-content-between">
-            <input style={{cursor:"pointer"}} className='text-bb1' type="text" placeholder='Choose a service'/><div>*</div>
-            </div> */}
             <UncontrolledButtonDropdown  className="service-field">
               <DropdownToggle style={{background:"white", padding:"10px 10px 8px", margin:"0 4px"}} color="light">
               <div className='text-bb1 d-flex justify-content-between'><div>Choose a service</div> <div size={10}><ChevronDown/></div></div>
@@ -194,7 +202,7 @@ const history = useHistory()
               </DropdownMenu>
             </UncontrolledButtonDropdown>
           </div>
-        </div>
+        </div>}
         <div className="box-cc1 d-flex flex-column">
           <label htmlFor="Appointment notes" className='text-aa1'>Appointment notes</label>
           <textarea className='text-bb1' name="" id="" cols="30" rows="10" placeholder='Add an appointment note (visible to team only)'></textarea>
