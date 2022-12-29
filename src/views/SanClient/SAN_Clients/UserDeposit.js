@@ -1,13 +1,13 @@
 import React from 'react'
 import filter from '../../../images/ClientList/filers.jpg'
-// import database from '../../../images/ClientList/database.png'
-// import { Box } from '@mui/material'
+import database from '../../../images/ClientList/database.png'
+// import { div } from '@mui/material'
 
 const UserDeposit = () => {
     return (
         <div>
-            <div className='d-flex justify-content-between mx-5 mt-5'>
-            <div>
+            <div className='d-flex justify-content-between mx-5 mb-3 mt-5'>
+            <div className='ms-3'>
                 <h1>Deposits</h1>
             </div>
             
@@ -17,8 +17,8 @@ const UserDeposit = () => {
                            </div>
              </div>
              <div className='text-center'>
-             {/* <Box
-      sx={{
+             <div
+      style={{
         width: 940,
         height: 270,
         border: '1px solid rgba(217, 217, 217, 0.80)',
@@ -29,7 +29,7 @@ const UserDeposit = () => {
     >  <img className='mx-auto d-block mt-5 pt-3' src={database} alt="" />
     <p className='mt-2'> <span className='fs-4 fw-bolder'>No deposits found</span> <br />
     <span className='fs-6'>The client has no deposits.</span></p>
-    </Box> */}
+    </div>
              </div>
         </div>
     )

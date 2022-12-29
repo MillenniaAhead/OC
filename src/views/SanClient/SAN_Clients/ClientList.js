@@ -1,17 +1,25 @@
 import React from 'react'
-import {  Card, CardImg, CardBody, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import {  Card, CardImg, CardBody, Row, Col, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
 import '../CSS/ClientList.css'
-import Column from '../../apps/user/list/columns'
+import Table from '../../apps/user/list/Table'
+
+// ** Custom Components
+import StatsHorizontal from '@components/widgets/stats/StatsHorizontal'
+
+// ** Icons Imports
+import { User, UserPlus, UserCheck, UserX } from 'react-feather'
+
+// ** Styles
+import '@styles/react/apps/app-users.scss'
+
 // import Dropdown from 'react-bootstrap/Dropdown'
 // import Card from 'react-bootstrap/Card'
 // import { TableContainer,Table,TableHead,TableBody,TableRow,TableCell,Paper } from '@mui/material'
 // import Avatar from '@mui/material/Avatar'
 // import Stack from '@mui/material/Stack'
-import { Link } from 'react-router-dom'
 import client from '../../../images/ClientList/client.jpg'
 import filter from '../../../images/ClientList/filers.jpg'
 import FirstName from '../../../images/ClientList/FirstName.jpg'
-import { Columns } from 'react-feather'
 
 
 const ClientList = () => {
@@ -110,7 +118,7 @@ online.</h3>
         
       </Card.Body>
     </Card> */}
-                <Card style={{ width: '215px', marginTop:'70px' }}>
+                <Card style={{ width: '215px', margin:'75px auto 0px' }}>
         <CardImg top src={client} alt='card2' />
         <CardBody>
           
@@ -180,7 +188,36 @@ online.</h3>
       </Table>
     </TableContainer> */}
   
-     
+  <div className='app-user-list'>
+      <Row>
+        
+        {/* <Col lg='3' sm='6'>
+          <StatsHorizontal
+            color='danger'
+            statTitle='Paid Users'
+            icon={<UserPlus size={20} />}
+            renderStats={<h3 className='fw-bolder mb-75'>4,567</h3>}
+          />
+        </Col> */}
+        <Col lg='3' sm='6'>
+          <StatsHorizontal
+            color='success'
+            statTitle='Active Users'
+            icon={<UserCheck size={20} />}
+            renderStats={<h3 className='fw-bolder mb-75'>19,860</h3>}
+          />
+        </Col>
+        <Col lg='12' sm='6'>
+          <StatsHorizontal
+            color='warning'
+            statTitle='Pending Users'
+            icon={<UserX size={20} />}
+            renderStats={<h3 className='fw-bolder mb-75'>237</h3>}
+          />
+        </Col>
+      </Row>
+      <Table />
+    </div>
             </div>
         </div>
     )

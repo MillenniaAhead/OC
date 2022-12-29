@@ -18,6 +18,10 @@ const SanClientRoutes = [
     component: lazy(() => import('../../views/SanClient/SAN_Clients/SanTips'))
   },
   {
+    path: '/sanclient/paperless',
+    component: lazy(() => import('../../views/SanClient/SAN_Clients/Paperless'))
+  },
+  {
     path: '/sanclient/addClient',
     component: lazy(() => import('../../views/SanClient/SAN_Clients/AddClient'))
   }

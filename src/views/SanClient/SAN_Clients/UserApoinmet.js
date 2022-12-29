@@ -5,19 +5,19 @@ import '../CSS/ClientList.css'
 const UserApoinmet = () => {
     return (
         <div>
-        <div className='d-flex justify-content-between mx-5 mt-5'>
-            <div >
+        <div className='d-flex justify-content-between mx-5 mb-3 mt-5'>
+            <div className='ms-2'>
                 <h1>Appointments</h1>
             </div>
             
-            <div style={{width: '150px', height:'48px'}} className=' ms-3 bg-white d-flex justify-content-around align-items-center border-0 rounded-pill'>
+            <div style={{width: '150px', height:'48px'}} className=' ms-3 bg-white me-2 d-flex justify-content-around align-items-center border-0 rounded-pill'>
                                 <h6 className='fs-5 mt-1'>Filters</h6>
-                                <img  style={{width:"24px", height:'24px'}} src={filter} alt="" />
+                                <div><img  src={filter} alt="" /></div>
                            </div>
              </div>
              <div>
              <div
-      sx={{
+      style={{
         width: 940,
         height: 270,
         border: '1px solid rgba(217, 217, 217, 0.80)',
@@ -26,7 +26,7 @@ const UserApoinmet = () => {
         
       }}
     >  
-    <div className='d-flex align-items-center ms-3'><h2>Past</h2> <p className='three '>1</p></div>
+    <div className='d-flex align-items-center ms-3 pt-1'><h2>Past</h2> <p className='three '>1</p></div>
     <hr />
     <div className='d-flex'>
     <div style={{width:'100px', height:'100px'}} className='border border-1 rounded ms-3'>
