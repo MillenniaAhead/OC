@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, CardBody, Col, Container, Row  } from 'reactstrap'
-import ProductsModalBasic from '../ProductsCard/ProductsModalBasic'
+import ImportProductsModal from '../ProductsModal/ImportProductsModal'
+
 
 const CardsLayout = () => {
   return (
@@ -18,15 +19,17 @@ const CardsLayout = () => {
           <Container>
               <Row>
                   <Col xs ={12} >
-                                     
-                    <h5>No products yet</h5>
-            <p className='text-secondary '> Your products will appear here.<br></br> Import
-    products in minutes and<br></br>  start selling them
-    online and at your location.</p>
+                                 <div class="d-flex flex-column align-items-center">
+                                      <div class=""><h5>No products yet</h5></div>
+                                      <div class="">  <p className='text-secondary '> Your products will appear here.<br></br> Import
+                        products in minutes and<br></br>  start selling them
+                        online and at your location.</p></div>
+                                      <div class="">  <ImportProductsModal /></div>
+                                                                
+                               </div>      
+              
                          </Col>
-                  <Col xs = {12}>
-                  < ProductsModalBasic  />
-                  </Col>
+                 
               </Row>
           </ Container>
 
