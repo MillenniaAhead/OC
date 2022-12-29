@@ -2,7 +2,7 @@
 import { Fragment, useState } from 'react'
 
 // ** Reactstrap Imports
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardBody, CardText } from 'reactstrap'
 import BasicinfoCard from '../ProductsComponents/CardsComponents/BasicinfoCard'
 import PricingCard from '../ProductsComponents/CardsComponents/PricingCard'
 import InventoryCard from '../ProductsComponents/CardsComponents/InventoryCard'
@@ -61,7 +61,13 @@ const AddNewModal = () => {
                           <InventoryCard />
                       </div>
                       <div class="col-4">
-                        Column
+                          <Card>
+                              <CardBody>
+                                 <CardText>Product photos</CardText>
+                                 <p>Drag and drop a photo to change the order.</p>
+                              
+                                  </CardBody>
+                          </Card>
                       </div>
                     
                     </div>

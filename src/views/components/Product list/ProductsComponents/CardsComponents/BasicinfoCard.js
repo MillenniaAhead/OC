@@ -1,5 +1,5 @@
 
-import {  Card, CardBody, CardHeader, Container, Form, FormGroup, Input, Label } from 'reactstrap'
+import {   Card, CardBody, CardHeader,  Form, FormGroup, Input, InputGroup, Label  } from 'reactstrap'
 
 const BasicinfoCard = () => {
   return (
@@ -26,8 +26,22 @@ const BasicinfoCard = () => {
                      <Label className='text-success'>Select a brand</Label>
                         <div class ="container">
                             <div class =" row">
-                              <div class="col-6"> left side </div>
-                              <div class="col-6"> right side</div>
+                              <div class="col-6"> 
+                                 <InputGroup>
+                                    <FormGroup>
+                                        <Label for="measure"> Measure </Label>
+                                        <Input type="text" name="measure" id="measure" placeholder='Milliliters (ml) '  />
+                                    </FormGroup>
+                                 </InputGroup>
+                               </div>
+                              <div class="col-6"> 
+                              <InputGroup>
+                                    <FormGroup>
+                                        <Label for="amount"> Amount </Label>
+                                        <Input type="text" name="amount" id="amount" placeholder='0.00'  />
+                                    </FormGroup>
+                                 </InputGroup>
+                              </div>
                             </div>
                         </div>
                      <FormGroup>
@@ -40,8 +54,7 @@ const BasicinfoCard = () => {
                      </FormGroup>
                      <Label>Product category</Label><br></br>
                      <Label className='text-success'>Select a category</Label>
-
-                      
+                                          
                 </Form>
             </CardBody> 
          </Card>
