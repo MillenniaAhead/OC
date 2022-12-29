@@ -3,6 +3,9 @@ import { Fragment, useState } from 'react'
 
 // ** Reactstrap Imports
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import BasicinfoCard from '../ProductsComponents/CardsComponents/BasicinfoCard'
+import PricingCard from '../ProductsComponents/CardsComponents/PricingCard'
+import InventoryCard from '../ProductsComponents/CardsComponents/InventoryCard'
 
 const ModalConfig = [
 
@@ -47,7 +50,22 @@ const AddNewModal = () => {
             {item.title}
           </ModalHeader>
           <ModalBody>
-          
+            <div className='text-center'>
+              <h3 className='text-black bold'>Add a new product</h3>
+            </div>
+              <div class="container">
+                    <div class="row">
+                      <div class="col-8">
+                          <BasicinfoCard />
+                          <PricingCard />
+                          <InventoryCard />
+                      </div>
+                      <div class="col-4">
+                        Column
+                      </div>
+                    
+                    </div>
+                </div>
           </ModalBody>
           <ModalFooter>
            
