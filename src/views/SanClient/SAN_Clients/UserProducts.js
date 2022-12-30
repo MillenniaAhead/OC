@@ -4,8 +4,8 @@ import Products from '../../../images/ClientList/Products.png'
 const UserProducts = () => {
     return (
         <div>
-            <div className='ms-5 mt-5'>
-                <h1>Products</h1>
+            <div className='ms-5 mb-3 mt-5'>
+                <h1 className='ms-3'>Products</h1>
             </div>
             <div className='text-center'>
              <div

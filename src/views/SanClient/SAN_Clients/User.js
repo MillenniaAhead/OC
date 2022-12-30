@@ -156,7 +156,7 @@ const User = () => {
               toggle('9')
             }}
           >
-           Products
+          Invoices
           </NavLink>
         </NavItem>
         <NavItem>

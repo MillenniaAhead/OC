@@ -5,12 +5,12 @@ import files from '../../../images/ClientList/NoFiles.png'
 const UserFiles = () => {
     return (
         <div>
-            <div className='d-flex justify-content-between mx-5 mt-5'>
-            <div>
+            <div className='d-flex justify-content-between mx-5 mb-3 mt-5'>
+            <div className='ms-3'>
                 <h1>Files</h1>
             </div>
             
-            <div >
+            <div className='me-3'>
             <button type="button" class="btn btn-dark px-5 py-1">
                 Add files
             </button>

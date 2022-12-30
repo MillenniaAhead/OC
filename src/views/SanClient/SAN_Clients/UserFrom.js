@@ -6,14 +6,14 @@ import Nofroms from '../../../images/ClientList/Nofroms.png'
 const UserFrom = () => {
     return (
         <div>
-            <div className='d-flex justify-content-between mx-5 mt-5'>
-            <div>
+            <div className='d-flex justify-content-between mx-5 mb-3 mt-5'>
+            <div className='ms-2'>
                 <h1>Forms</h1>
             </div>
             
             <div style={{width: '150px', height:'48px'}} className=' ms-3 bg-white d-flex justify-content-around align-items-center border-0 rounded-pill'>
                                 <h6 className='fs-5 mt-1'>Filters</h6>
-                                <img  style={{width:"24px", height:'24px'}} src={filter} alt="" />
+                                <div><img  src={filter} alt="" /></div>
                            </div>
              </div>
              <div className='text-center'>

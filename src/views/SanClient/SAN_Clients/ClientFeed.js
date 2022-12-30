@@ -12,14 +12,14 @@ const ClientFeed = () => {
     return (
         <div>
             <div className='d-flex justify-content-between mb-3 mt-5 mx-3'>
-               <div>
+               <div className='ms-2'>
                <h1 className='text-dark'>Client feed</h1>
                </div>
                <div className='d-flex flex-row'>
                <div><img src={Rcalender} alt="" /></div>
                <div style={{width: '150px', height:'48px'}} className=' ms-3 bg-white d-flex justify-content-around align-items-center border-0 rounded-pill'>
                                 <h6 className='fs-5 mt-1'>Filters</h6>
-                                <img  style={{width:"24px", height:'24px'}} src={filter} alt="" />
+                                <div><img   src={filter} alt="" /></div>
                            </div>
                </div>
             </div>

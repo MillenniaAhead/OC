@@ -8,7 +8,7 @@ const UserReviews = () => {
         <div>
             <div className='d-flex justify-content-between mx-5 mb-3 mt-5'>
             <div>
-                <h1>Forms</h1>
+                <h1>Reviews</h1>
             </div>
             
             <div style={{width: '150px', height:'48px'}} className=' ms-3 bg-white d-flex justify-content-around align-items-center border-0 rounded-pill'>

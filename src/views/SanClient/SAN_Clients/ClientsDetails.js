@@ -7,7 +7,7 @@ const ClientsDetails = () => {
     return (
         <div>
             <div className='mx-5 my-3'>
-                <h1>Client details</h1>
+                <h1 className='ms-2'>Client details</h1>
             </div>
             <div>
             <div
