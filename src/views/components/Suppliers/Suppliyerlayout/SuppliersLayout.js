@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, CardBody, Col, Container, Row  } from 'reactstrap'
+import SuppliersModal from '../SupplierModal/SuppliersModal'
 
 const SuppliersLayout = () => {
   return (
@@ -17,8 +18,12 @@ const SuppliersLayout = () => {
           <Container>
               <Row>
                   <Col xs ={12} >
-                    <h5>No suppliers here yet.</h5>
-            <p className='text-secondary '> Your suppliers will appear here</p>
+                  <div class="d-flex flex-column align-items-center">
+                                      <div class=""><h5>No suppliers here yet.</h5></div>
+                                      <div class=""> <p>Your suppliers will appear here</p></div>
+                                      <div class=""> <SuppliersModal /> </div>
+                                                                
+                               </div>
                          </Col>
                   <Col xs = {12}>
                   

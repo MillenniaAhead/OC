@@ -3,12 +3,15 @@ import { Fragment, useState } from 'react'
 
 // ** Reactstrap Imports
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import Supplierdetails from '../Supplierdetails'
+import ContactInfo from '../ContactInfo'
+import PhysicalAddress from '../PhysicalAddress'
 
 const ModalConfig = [
 
   {
     id: 4,
-    btnTitle: 'Add New Product',
+    btnTitle: 'Add Supplier',
     modalTitle: 'save',
     modalClass: 'modal-lg'
   }
@@ -16,7 +19,7 @@ const ModalConfig = [
 
 ]
 
-const StockOrderModal = () => {
+const SuppliersModal = () => {
   // ** State
   const [modal, setModal] = useState(null)
 
@@ -47,7 +50,9 @@ const StockOrderModal = () => {
             {item.title}
           </ModalHeader>
           <ModalBody>
-          
+              <Supplierdetails />
+              <ContactInfo />
+              <PhysicalAddress />
           </ModalBody>
           <ModalFooter>
            
@@ -59,4 +64,4 @@ const StockOrderModal = () => {
 
   return <div className='demo-inline-spacing'>{renderModal}</div>
 }
-export default StockOrderModal
+export default SuppliersModal
