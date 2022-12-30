@@ -1,0 +1,363 @@
+import React from "react"
+import { Link } from "react-router-dom"
+
+import Client from "../../assets/images/Newsale/images/Add client.png"
+import Basket from "../../assets/images/Newsale/images/basket.png"
+import Voucher from "../../assets/images/Newsale/images/voucher.png"
+import Glass from "../../assets/images/Newsale/images/search.png"
+
+const Vouchers = () => {
+  return (
+    <div className="d-flex">
+      <div
+        className="border"
+        style={{
+          width: "890px",
+          height: "680px",
+          background: "#F8F8FB",
+          marginLeft: "115px"
+        }}
+      >
+       <div style={{color: 'black'}} className="fs-3 py-4 px-5 fw-bolder">New sale</div>
+
+<div style={{ cursor: "default", marginTop: '-35px' }} className="px-5">
+  <a
+    href="/newsale"
+    className="text-secondary"
+  >
+    Quick Sale
+  </a>
+</div>
+
+<div
+  style={{ marginLeft: "160px", marginTop: "-40px", cursor: "pointer" }}
+>
+  <Link to='/checkout'>
+ <p
+    className="text-secondary py-2"
+  >
+    To check out
+  </p> 
+  </Link>
+  
+</div>
+
+<div
+  style={{ marginLeft: "290px", marginTop: "-55px", cursor: "pointer" }}
+>
+  <a
+    href="/products"
+    className="text-secondary"
+  >
+    Products
+  </a>
+</div>
+
+<div
+  style={{ marginLeft: "390px", marginTop: "-20px", cursor: "pointer" }}
+>
+  <a
+    href="/services"
+    className="text-secondary"
+  >
+    Services
+  </a>
+</div>
+
+<div
+  style={{ marginLeft: "480px", marginTop: "-20px", cursor: "pointer" }}
+>
+  <a
+    href="/memberships"
+    className="text-secondary"
+  >
+    Memberships
+  </a>
+</div>
+
+<div
+  style={{ marginLeft: "610px", marginTop: "-20px", cursor: "pointer" }}
+>
+  <a
+    href="/vouchers"
+    className="text-secondary"
+  >
+    Vouchers
+  </a>
+</div>
+
+        <div
+          style={{ marginLeft: "50px", background: "#F2F2F7", width: "700px" }}
+          className="row mt-2 py-1 rounded-2"
+        >
+          <div style={{ width: "480px" }} className="col-md-5">
+            <div className="input-group">
+              <button
+                className="btn bg-white border-end-0 border"
+                type="button"
+              >
+                <img width={17} src={Glass} alt="glass" />
+              </button>
+              <input
+                style={{ marginRight: "25px" }}
+                className="form-control border"
+                type="text"
+                placeholder="Search by voucher name"
+              />
+            </div>
+          </div>
+        </div>
+
+
+        <div
+          className="d-flex flex-column align-items-center justify-content-center"
+          style={{
+            width: "800px",
+            height: "400px",
+            marginLeft: "48px",
+            marginTop: "20px"
+          }}
+        >
+          <img
+            style={{ width: "60px", height: "54px", marginBottom: "-15px" }}
+            src={Voucher}
+            alt="box"
+          />
+          <p style={{ color: 'black', marginTop: "25px" }} className="fw-bolder fs-5">
+            No vouchers added yet.
+          </p>
+          <p style={{ color: 'black', marginTop: "-15px", fontSize: "15px" }}>
+            Your voucher will appear here.
+          </p>
+          <p style={{ color: 'black', marginTop: "-15px" }}>
+            Click
+            <a
+              href="/createvoucher"
+              style={{
+                color: "#1BB70B",
+                cursor: "pointer",
+                textDecoration: "none"
+              }}
+            >
+              {" "}
+              here
+            </a>{" "}
+            to manage your voucher types.
+          </p>
+          <button
+            style={{ background: "#4E4E4E", color: "white" }}
+            className="btn rounded-1 py-1"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Create one-off voucher
+          </button>
+
+          {/* <!-- Modal --> */}
+          <div className="modal fade" id="exampleModal">
+            <div style={{ marginTop: "60px" }} className="modal-dialog">
+              <div
+                style={{
+                  width: "638px",
+                  height: "540px",
+                  marginLeft: "-45px"
+                }}
+                className="modal-content"
+              >
+                <div className="modal-header">
+                  <h1
+                    style={{ cursor: "default" }}
+                    className="modal-title fs-5 fw-bold px-2"
+                    id="exampleModalLabel"
+                  >
+                    Create one-off voucher
+                  </h1>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+
+                <div className="d-flex flex-column px-4 py-4">
+                  <label className="form-label fw-semibold">
+                    Included services
+                  </label>
+                  <div style={{ marginTop: "-2px" }} className="btn-group">
+                    <button
+                      style={{
+                        background: "#F2F2F7",
+                        width: "580px",
+                        height: "45px",
+                        textAlign: "start"
+                      }}
+                      className="btn"
+                      type="button"
+                    >
+                      All services
+                    </button>
+                    <button
+                      style={{ color: "#1BB70B", background: "#F2F2F7" }}
+                      className="btn"
+                    >
+                      Edit
+                    </button>
+                  </div>
+
+                  <div>
+                    <label
+                      style={{ marginTop: "10px" }}
+                      className="form-label fw-semibold"
+                    >
+                      Price
+                    </label>
+                    <label
+                      style={{ marginTop: "10px", marginLeft: "270px" }}
+                      className="form-label fw-semibold"
+                    >
+                      Retail price
+                    </label>
+                    <div className="d-flex">
+                      <div
+                        style={{ marginTop: "-5px" }}
+                        className="input-group mb-5"
+                      >
+                        <span
+                          style={{ background: "white" }}
+                          className="input-group-text"
+                        >
+                          ₹
+                        </span>
+                        <input
+                          style={{ height: "50px" }}
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter value"
+                        />
+                      </div>
+                      <div
+                        style={{ marginLeft: "20px", marginTop: "-5px" }}
+                        className="input-group mb-5"
+                      >
+                        <span
+                          style={{ background: "white" }}
+                          className="input-group-text"
+                          id="basic-addon1"
+                        >
+                          ₹
+                        </span>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter retail price"
+                          aria-label="Username"
+                          aria-describedby="basic-addon1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{ marginTop: "-30px" }}
+                    className="d-flex flex-column"
+                  >
+                    <label className="form-label fw-semibold">Valid for</label>
+                    <div
+                      style={{ marginTop: "-2px" }}
+                      className="btn-group dropdown border"
+                    >
+                      <button
+                        style={{
+                          background: "white",
+                          width: "520px",
+                          height: "45px",
+                          textAlign: "start"
+                        }}
+                        type="button"
+                        className="btn"
+                      >
+                        6 months
+                      </button>
+                      <button
+                        type="button"
+                        className="btn dropdown-toggle dropdown-toggle-split border-right"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      ></button>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{ marginLeft: "-24px" }}
+                    className="border-bottom py-2"
+                  >
+                    <div style={{ marginTop: "-5px" }} className="px-4 py-3">
+                      <label className="form-label fw-semibold">
+                        Voucher name
+                      </label>
+                      <input
+                        style={{ width: "590px", height: "45px" }}
+                        type="text"
+                        className="form-control rounded-1"
+                        placeholder="Gift Voucher"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="d-flex justify-content-between py-3">
+                    <div className="mt-2" style={{ color: "#1BB70B" }}>
+                      Use advanced builder
+                    </div>
+                    <div>
+                      <button
+                        style={{ marginRight: "15px" }}
+                        type="button"
+                        className="btn border px-4 py-2 rounded-1"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        style={{ background: "#4E4E4E", color: "white" }}
+                        type="button"
+                        className="btn px-3 py-2 rounded-1"
+                      >
+                        Sell voucher
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+      className="border-top"
+      style={{ width: "360px", height: "565px"}}
+    >
+      <div
+        style={{ cursor: "pointer" }}
+        className="border-bottom py-1 text-center"
+      >
+        <img width={100} src={Client} alt="client" />
+      </div>
+
+      <div style={{ marginTop: "195px" }} className="text-center">
+        <img width={30} src={Basket} alt="basket" />
+        <p style={{ color: 'black', marginTop: "15px", marginLeft: '10px' }} className="fw-semibold">
+          Your cart is empty
+        </p>
+        <p style={{ color: 'black', marginTop: "-15px", marginLeft: '9px' }}>
+          Select an appointment, service
+        </p>
+        <p style={{ color: 'black', marginTop: "-18px", marginLeft: '10px' }}> or item to check out.</p>
+      </div>
+    </div>
+    </div>
+  )
+}
+
+export default Vouchers
