@@ -1,15 +1,23 @@
-import React from "react"
 import X from "../../assets/images/Newsale/images/x.png"
 import Home from "../../assets/images/Newsale/images/home.png"
 import Glass from "../../assets/images/Newsale/images/search.png"
 import { Link } from "react-router-dom"
 
+// // ** React Imports
+import { Fragment, useState } from "react"
+
+// // ** Reactstrap Imports
+import { Modal, ModalBody, ModalHeader } from "reactstrap"
+
 const CreateVoucher = () => {
+  // // ** States
+  const [show, setShow] = useState(false)
+
   return (
     <div>
       <div className="d-flex justify-content-between border-bottom py-1">
         <Link to="/vouchers">
-          <img  width={35} height={35} className="mt-2" src={X} alt="x" />
+          <img width={35} height={35} className="mt-2" src={X} alt="x" />
         </Link>
 
         <div>
@@ -24,7 +32,7 @@ const CreateVoucher = () => {
           </p>
           <p
             style={{
-              color: 'black',
+              color: "black",
               fontSize: "26px",
               fontWeight: "bold",
               marginLeft: "65px",
@@ -55,12 +63,12 @@ const CreateVoucher = () => {
           className="border border-top-0"
         >
           <div
-            style={{ color: 'black', fontSize: "25px", marginLeft: "25px" }}
+            style={{ color: "black", fontSize: "25px", marginLeft: "25px" }}
             className="mt-1 fw-bolder"
           >
             Voucher info
           </div>
-          <p style={{ color: 'black', marginLeft: "25px" }}>
+          <p style={{ color: "black", marginLeft: "25px" }}>
             Add the voucher name,value and duration of the voucher. If the{" "}
             <br />
             voucher value is higher than the retail price it will encourage more{" "}
@@ -68,7 +76,12 @@ const CreateVoucher = () => {
             sales.
           </p>
           <div className="px-2 mt-1">
-            <label style={{color: 'black', fontSize: '13px'}} className="form-label fw-semibold">Voucher name</label>
+            <label
+              style={{ color: "black", fontSize: "13px" }}
+              className="form-label fw-semibold"
+            >
+              Voucher name
+            </label>
             <input
               style={{ width: "475px", height: "40px" }}
               type="text"
@@ -80,13 +93,16 @@ const CreateVoucher = () => {
             style={{ marginTop: "15px" }}
             className="d-flex justify-content-start"
           >
-            <p
-              style={{ color: 'black', marginLeft: "25px", fontSize: "17px"}}
-            >
+            <p style={{ color: "black", marginLeft: "25px", fontSize: "17px" }}>
               value
             </p>
             <p
-              style={{color: 'black', marginLeft: "190px", fontSize: "16px", fontWeight: 500 }}
+              style={{
+                color: "black",
+                marginLeft: "190px",
+                fontSize: "16px",
+                fontWeight: 500
+              }}
             >
               Retail price
             </p>
@@ -126,7 +142,12 @@ const CreateVoucher = () => {
             style={{ marginTop: "20px" }}
             className="d-flex flex-column px-2"
           >
-            <label style={{color: 'black', fontSize: '13px'}} className="form-label fw-semibold">Valid for</label>
+            <label
+              style={{ color: "black", fontSize: "13px" }}
+              className="form-label fw-semibold"
+            >
+              Valid for
+            </label>
             <div
               style={{ width: "480px", marginTop: "2px" }}
               className="btn-group dropdown border"
@@ -144,7 +165,7 @@ const CreateVoucher = () => {
                 6 months
               </button>
               <button
-                style={{  background: "white"}}
+                style={{ background: "white" }}
                 type="button"
                 className="btn dropdown-toggle dropdown-toggle-split border-right"
                 data-bs-toggle="dropdown"
@@ -159,7 +180,9 @@ const CreateVoucher = () => {
               className="form-check-input"
               type="checkbox"
             />
-            <label style={{color: 'black'}} className="form-check-label px-1">Save voucher</label>
+            <label style={{ color: "black" }} className="form-check-label px-1">
+              Save voucher
+            </label>
           </div>
           <div
             style={{
@@ -172,11 +195,16 @@ const CreateVoucher = () => {
             If you save your voucher you will be able to resell it later
           </div>
           <hr />
-          <div style={{ fontSize: "25px", color: 'black' }} className="px-2 fw-bolder">
+          <div
+            style={{ fontSize: "25px", color: "black" }}
+            className="px-2 fw-bolder"
+          >
             Services included
           </div>
           <div className="d-flex flex-column px-2 py-2">
-            <label style={{color: 'black'}} className="form-label">Services included</label>
+            <label style={{ color: "black" }} className="form-label">
+              Services included
+            </label>
             <div style={{ marginTop: "2px" }} className="btn-group">
               <button
                 style={{
@@ -191,78 +219,75 @@ const CreateVoucher = () => {
                 All services
               </button>
               <button
-                style={{ color: "#1BB70B", background: "#F2F2F7" }}
-                className="btn"
                 type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+                className="btn"
+                style={{
+                  color: "#1BB70B",
+                  background: "#F2F2F7"
+                }}
+                onClick={() => setShow(true)}
               >
                 Edit
               </button>
 
               {/* <!-- Modal --> */}
-              <div className="modal fade" id="exampleModal">
-                <div style={{ marginTop: "30px" }} className="modal-dialog">
-                  <div
-                    style={{
-                      width: "720px",
-                      height: "560px",
-                      marginLeft: "-100px"
-                    }}
-                    className="modal-content"
-                  >
-                    <div className="modal-header">
-                      <h1
-                        style={{ cursor: "default" }}
-                        className="modal-title fs-5 fw-bold"
-                        id="exampleModalLabel"
-                      >
-                        Select services
-                      </h1>
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-
-                    <div style={{ width: "740px", marginTop: "-2px" }}>
-                      <div className="input-group px-4 py-3 border-bottom">
+              <Fragment>
+                <Modal
+                  isOpen={show}
+                  toggle={() => setShow(!show)}
+                  className="modal-dialog-centered"
+                >
+                  <ModalHeader
+                    className="bg-transparent"
+                    toggle={() => setShow(!show)}
+                  ></ModalHeader>
+                  <ModalBody className="pb-2">
+                    <p
+                      style={{
+                        marginTop: "-40px",
+                        color: "black",
+                        fontSize: "18px",
+                        fontWeight: "bold"
+                      }}
+                    >
+                      Select services
+                    </p>
+                    <hr style={{ width: "500px", marginLeft: "-20px" }} />
+                    <div style={{ width: "460px", marginTop: "-2px" }}>
+                      <div className="input-group">
                         <button
-                          className="btn btn-outline-secondary bg-white border-end-0 border"
+                          className="btn border-end-0 border"
                           type="button"
                         >
-                          <img width={17} src={Glass} alt="glass" />
+                          <img width={15} src={Glass} alt="glass" />
                         </button>
                         <input
-                          style={{ marginRight: "25px" }}
-                          className="form-control border py-2"
+                          className="form-control border"
                           type="text"
                           placeholder="Search services"
                         />
                       </div>
                     </div>
-
-                    <div className="form-check border-bottom py-3">
+                    <hr style={{ width: "500px", marginLeft: "-19px" }} />
+                    <div className="form-check">
                       <input
                         style={{
                           width: "22px",
                           height: "22px",
-                          marginLeft: "2px",
                           backgroundColor: "#1BB70B"
                         }}
-                        className="form-check-input shadow-sm"
+                        className="form-check-input"
                         type="checkbox"
                       />
                       <label
-                        style={{ marginLeft: "20px" }}
-                        className="form-check-label fw-semibold"
+                        style={{ marginLeft: "10px", color: "black" }}
+                        className="form-check-label"
                       >
                         All services{" "}
                         <span
-                          className="rounded-circle px-2"
+                          className="rounded-circle"
                           style={{
+                            padding: "6px",
                             background: "#F2F2F7",
                             marginLeft: "5px"
                           }}
@@ -272,25 +297,32 @@ const CreateVoucher = () => {
                       </label>
                     </div>
 
-                    <div className="form-check border-bottom py-3">
+                    <hr style={{ width: "500px", marginLeft: "-19px" }} />
+
+                    <div className="form-check mt-1">
                       <input
                         style={{
                           width: "22px",
                           height: "22px",
-                          marginLeft: "10px",
                           backgroundColor: "#1BB70B"
                         }}
-                        className="form-check-input shadow-sm"
+                        className="form-check-input"
                         type="checkbox"
                       />
                       <label
-                        style={{ marginLeft: "20px", fontSize: "20px" }}
-                        className="form-check-label fw-bold"
+                        style={{
+                          marginLeft: "20px",
+                          fontSize: "18px",
+                          color: "black",
+                          fontWeight: "bolder"
+                        }}
+                        className="form-check-label"
                       >
                         Hair
                         <span
-                          className="rounded-circle px-2"
+                          className="rounded-circle"
                           style={{
+                            padding: "5px",
                             background: "#F2F2F7",
                             marginLeft: "8px",
                             fontSize: "13px",
@@ -302,20 +334,25 @@ const CreateVoucher = () => {
                       </label>
                     </div>
 
-                    <div className="form-check border-bottom mt-3">
+                    <hr style={{ width: "500px", marginLeft: "-19px" }} />
+
+                    <div className="form-check">
                       <input
                         style={{
                           width: "22px",
                           height: "22px",
-                          marginLeft: "10px",
                           backgroundColor: "#1BB70B"
                         }}
-                        className="form-check-input shadow-sm"
+                        className="form-check-input"
                         type="checkbox"
                       />
                       <label
-                        style={{ marginLeft: "20px" }}
-                        className="form-check-label fw-semibold"
+                        style={{
+                          marginLeft: "20px",
+                          color: "black",
+                          fontWeight: "bold"
+                        }}
+                        className="form-check-label"
                       >
                         Haircut
                       </label>
@@ -325,26 +362,37 @@ const CreateVoucher = () => {
                         </p>
                         <p
                           className="fw-semibold"
-                          style={{ marginRight: "20px" }}
+                          style={{ marginRight: "20px", color: "black" }}
                         >
                           ₹40
                         </p>
                       </div>
                     </div>
 
-                    <div className="form-check border-bottom mt-3">
+                    <hr
+                      style={{
+                        marginTop: "-5px",
+                        width: "500px",
+                        marginLeft: "-19px"
+                      }}
+                    />
+
+                    <div className="form-check mt-1">
                       <input
                         style={{
                           width: "22px",
                           height: "22px",
-                          marginLeft: "10px",
                           backgroundColor: "#1BB70B"
                         }}
-                        className="form-check-input shadow-sm"
+                        className="form-check-input"
                         type="checkbox"
                       />
                       <label
-                        style={{ marginLeft: "20px" }}
+                        style={{
+                          marginLeft: "20px",
+                          color: "black",
+                          fontWeight: "bold"
+                        }}
                         className="form-check-label fw-semibold"
                       >
                         Hair Color
@@ -355,27 +403,38 @@ const CreateVoucher = () => {
                         </p>
                         <p
                           className="fw-semibold"
-                          style={{ marginRight: "20px" }}
+                          style={{ marginRight: "20px", color: "black" }}
                         >
                           ₹57
                         </p>
                       </div>
                     </div>
 
-                    <div className="form-check mt-3">
+                    <hr
+                      style={{
+                        marginTop: "-5px",
+                        width: "500px",
+                        marginLeft: "-19px"
+                      }}
+                    />
+
+                    <div className="form-check mt-1">
                       <input
                         style={{
                           width: "22px",
                           height: "22px",
-                          marginLeft: "10px",
                           backgroundColor: "#1BB70B"
                         }}
-                        className="form-check-input shadow-sm"
+                        className="form-check-input"
                         type="checkbox"
                       />
                       <label
-                        style={{ marginLeft: "20px" }}
-                        className="form-check-label fw-semibold"
+                        style={{
+                          marginLeft: "20px",
+                          color: "black",
+                          fontWeight: "bold"
+                        }}
+                        className="form-check-label"
                       >
                         Beard Trim
                       </label>
@@ -385,54 +444,52 @@ const CreateVoucher = () => {
                         </p>
                         <p
                           className="fw-semibold"
-                          style={{ marginRight: "20px" }}
+                          style={{ marginRight: "20px", color: "black" }}
                         >
                           ₹20
                         </p>
                       </div>
                     </div>
 
-                    <div
-                      style={{ marginBottom: "-5px" }}
-                      className="modal-footer"
-                    >
-                      <div>
-                        <button
-                          style={{
-                            width: "120px",
-                            height: "45px",
-                            marginRight: "15px"
-                          }}
-                          type="button"
-                          className="btn border rounded-1 fw-semibold"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button
-                          style={{
-                            background: "#4E4E4E",
-                            width: "150px",
-                            height: "45px",
-                            color: "white"
-                          }}
-                          type="button"
-                          className="btn rounded-1 fw-semibold"
-                        >
-                          Select 5 services
-                        </button>
+                    <hr
+                      style={{
+                        marginTop: "-5px",
+                        width: "500px",
+                        marginLeft: "-20px"
+                      }}
+                    />
+
+                    <div style={{ marginBottom: "-10px" }}>
+                      <div className="d-flex justify-content-between">
+                        <div style={{ marginLeft: "200px" }}>
+                          <button
+                            type="button"
+                            className="btn border rounded-1 fw-semibold px-2"
+                          >
+                            Close
+                          </button>
+                        </div>
+                        <div>
+                          <button
+                            style={{ background: "#4E4E4E", color: "white" }}
+                            type="button"
+                            className="btn rounded-1 px-2"
+                          >
+                            Select 5 services
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </ModalBody>
+                </Modal>
+              </Fragment>
             </div>
           </div>
         </div>
         {/* 2 */}
         <div
           style={{
-            background: 'white',
+            background: "white",
             width: "600px",
             height: "780px",
             marginLeft: "70px",
@@ -444,7 +501,7 @@ const CreateVoucher = () => {
             className="d-flex justify-content-center fw-semibold"
             style={{ background: "#F2F2F7" }}
           >
-            <p style={{ color: 'black', fontSize: "16px", marginTop: "10px" }}>
+            <p style={{ color: "black", fontSize: "16px", marginTop: "10px" }}>
               Voucher preview
             </p>
           </div>
@@ -454,7 +511,7 @@ const CreateVoucher = () => {
           >
             <p
               style={{
-                color: 'black',
+                color: "black",
                 fontSize: "17px",
                 marginTop: "12px",
                 marginLeft: "50px"
@@ -569,7 +626,7 @@ const CreateVoucher = () => {
               </div>
               <button
                 style={{
-                  color: 'black',
+                  color: "black",
                   background: "white",
                   fontSize: "17px",
                   width: "240px",

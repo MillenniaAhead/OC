@@ -1,12 +1,22 @@
-import React from "react"
 import Client from "../../assets/images/Newsale/images/Add client.png"
 import Basket from "../../assets/images/Newsale/images/basket.png"
 import Calander from "../../assets/images/Newsale/images/calendar.png"
 import Glass from "../../assets/images/Newsale/images/search.png"
-import Slider from "../../assets/images/Newsale/images/slider-line.png"
 import Menu from "../../assets/images/Newsale/images/menu.png"
 
+// ** React Imports
+import { Fragment, useState } from "react"
+
+// ** Reactstrap Imports
+import { Modal, ModalBody, ModalHeader } from "reactstrap"
+
+// ** Third Party Components
+import { Sliders } from "react-feather"
+
 const Checkout = () => {
+  // // ** States
+  const [show, setShow] = useState(false)
+
   return (
     <div className="d-flex">
       <div
@@ -18,13 +28,12 @@ const Checkout = () => {
           marginLeft: "115px"
         }}
       >
-          <div style={{color: 'black'}} className="fs-3 py-4 px-5 fw-bolder">New sale</div>
+        <div style={{ color: "black" }} className="fs-3 py-4 px-5 fw-bolder">
+          New sale
+        </div>
 
-        <div style={{ cursor: "default", marginTop: '-35px' }} className="px-5">
-          <a
-            href="/newsale"
-            className="text-secondary"
-          >
+        <div style={{ cursor: "default", marginTop: "-35px" }} className="px-5">
+          <a href="/newsale" className="text-secondary">
             Quick Sale
           </a>
         </div>
@@ -32,20 +41,13 @@ const Checkout = () => {
         <div
           style={{ marginLeft: "160px", marginTop: "-40px", cursor: "pointer" }}
         >
-          <p
-            className="py-2"
-          >
-            To check out
-          </p>
+          <p className="py-2">To check out</p>
         </div>
 
         <div
           style={{ marginLeft: "290px", marginTop: "-55px", cursor: "pointer" }}
         >
-          <a
-            href="/products"
-            className="text-secondary"
-          >
+          <a href="/products" className="text-secondary">
             Products
           </a>
         </div>
@@ -53,10 +55,7 @@ const Checkout = () => {
         <div
           style={{ marginLeft: "390px", marginTop: "-20px", cursor: "pointer" }}
         >
-          <a
-            href="/services"
-            className="text-secondary"
-          >
+          <a href="/services" className="text-secondary">
             Services
           </a>
         </div>
@@ -64,10 +63,7 @@ const Checkout = () => {
         <div
           style={{ marginLeft: "480px", marginTop: "-20px", cursor: "pointer" }}
         >
-          <a
-            href="/memberships"
-            className="text-secondary"
-          >
+          <a href="/memberships" className="text-secondary">
             Memberships
           </a>
         </div>
@@ -75,10 +71,7 @@ const Checkout = () => {
         <div
           style={{ marginLeft: "610px", marginTop: "-20px", cursor: "pointer" }}
         >
-          <a
-            href="/vouchers"
-            className="text-secondary"
-          >
+          <a href="/vouchers" className="text-secondary">
             Vouchers
           </a>
         </div>
@@ -103,113 +96,142 @@ const Checkout = () => {
               />
               <div style={{ marginRight: "-270px" }} className="d-flex">
                 <div
-                  style={{ width: '120px', height: '50px', marginRight: '15px',  background: "white" }}
-                  className="d-flex border rounded-pill"
+                  style={{
+                    width: "120px",
+                    height: "50px",
+                    marginRight: "15px"
+                  }}
+                  className="d-flex"
                 >
                   <button
-                    type="button"
-                    className="btn fw-semibold"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                    className="btn border rounded-pill"
+                    style={{
+                      background: "white",
+                      color: "black",
+                      border: "none",
+                      width: "120px",
+                      height: "50px"
+                    }}
+                    onClick={() => setShow(true)}
                   >
                     Filters
+                    <Sliders
+                      style={{ marginLeft: "8px" }}
+                      width={20}
+                      height={20}
+                    />
                   </button>
-                  <div style={{marginLeft: '-35px'}}>
-                  <img className="px-2 mt-1" src={Slider} alt="sliderr" />
-                  </div>
-                 
+
                   {/* <!-- Modal --> */}
-                  {/* <div className="modal fade" id="exampleModal">
-                    <div
-                      style={{ marginTop: "180px" }}
-                      className="modal-dialog"
+                  <Fragment>
+                    <Modal
+                      isOpen={show}
+                      toggle={() => setShow(!show)}
+                      className="modal-dialog-centered"
                     >
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h1
-                            style={{ cursor: "default" }}
-                            className="modal-title fs-5 fw-bold"
-                            id="exampleModalLabel"
-                          >
-                            Filters
-                          </h1>
-                          <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div
-                          style={{ cursor: "default" }}
-                          className="modal-body fw-semibold"
+                      <ModalHeader
+                        className="bg-transparent"
+                        toggle={() => setShow(!show)}
+                      ></ModalHeader>
+                      <ModalBody className="pb-2">
+                        <p
+                          style={{
+                            marginTop: "-40px",
+                            color: "black",
+                            fontSize: "18px",
+                            fontWeight: "bold"
+                          }}
                         >
-                          Team member
-                        </div>
-
-                        <div
-                          style={{ marginTop: "-10px" }}
-                          className="input-group mb-4 px-4"
-                        >
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="All team members"
-                          />
-                          <button
-                            style={{ borderColor: "lightgrey" }}
-                            className="btn btn-outline-secondary dropdown-toggle"
-                            type="button"
-                          ></button>
-                        </div>
-
-                        <div
-                          style={{ marginBottom: "-5px" }}
-                          className="modal-footer"
-                        >
+                          Filters
+                        </p>
+                        <hr style={{ width: "500px", marginLeft: "-20px" }} />
+                        <div className="d-flex flex-column">
+                          <label style={{ color: "black" }}> Team member</label>
                           <div
-                            style={{ marginRight: "160px", marginTop: "10px" }}
+                            style={{ marginTop: "5px" }}
+                            className="btn-group border"
                           >
-                            <p
+                            <button
                               style={{
-                                fontSize: "16px",
-                                color: "#1BB70B",
-                                cursor: "default"
+                                background: "white",
+                                width: "580px",
+                                height: "40px",
+                                textAlign: "start"
                               }}
+                              className="btn"
+                              type="button"
                             >
-                              Clear all filters
-                            </p>
+                              All team members
+                            </button>
                           </div>
-
-                          <button
-                            style={{ background: "white" }}
-                            type="button"
-                            className="btn border px-4"
-                            data-bs-dismiss="modal"
-                          >
-                            Cancel
-                          </button>
-                          <button
-                            style={{ background: "#4E4E4E", color: "white" }}
-                            type="button"
-                            className="btn px-4"
-                          >
-                            Apply
-                          </button>
                         </div>
-                      </div>
-                    </div>
-                  </div> */}
+
+                        <hr
+                          style={{
+                            width: "500px",
+                            marginLeft: "-20px",
+                            marginTop: "15px"
+                          }}
+                        />
+
+                        <div style={{ marginBottom: "-10px" }}>
+                          <div className="d-flex justify-content-between">
+                            <div>
+                              <p
+                                style={{
+                                  marginTop: "10px",
+                                  fontSize: "16px",
+                                  color: "#1BB70B"
+                                }}
+                              >
+                                Clear all filters
+                              </p>
+                            </div>
+                            <div style={{ marginLeft: "150px" }}>
+                              <button
+                                type="button"
+                                className="btn border rounded-1 fw-semibold px-2"
+                              >
+                                Cancel
+                              </button>
+                            </div>
+                            <div>
+                              <button
+                                style={{
+                                  background: "#4E4E4E",
+                                  color: "white"
+                                }}
+                                type="button"
+                                className="btn rounded-1 px-2"
+                              >
+                                Apply
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </ModalBody>
+                    </Modal>
+                  </Fragment>
                 </div>
                 <div
-                  style={{ width: '120px', height: '50px', background: "white", marginRight: "-170px" }}
+                  style={{
+                    width: "120px",
+                    height: "50px",
+                    background: "white",
+                    marginRight: "-170px"
+                  }}
                   className="d-flex border rounded-pill"
                 >
                   <button type="button" className="btn">
                     Sort by
                   </button>
-                  <div style={{marginLeft: '-35px'}}>
-                  <img style={{width: '60px', height: '25px'}} className="px-2 mt-1" src={Menu} alt="menu" />
+                  <div style={{ marginLeft: "-35px" }}>
+                    <img
+                      style={{ width: "60px", height: "25px" }}
+                      className="px-2 mt-1"
+                      src={Menu}
+                      alt="menu"
+                    />
                   </div>
                 </div>
               </div>
@@ -247,10 +269,7 @@ const Checkout = () => {
         </div>
       </div>
 
-      <div
-        className="border-top"
-        style={{ width: "360px", height: "565px"}}
-      >
+      <div className="border-top" style={{ width: "360px", height: "565px" }}>
         <div
           style={{ cursor: "pointer" }}
           className="border-bottom py-2 text-center"
@@ -260,13 +279,19 @@ const Checkout = () => {
 
         <div style={{ marginTop: "195px" }} className="text-center">
           <img width={30} src={Basket} alt="basket" />
-          <p style={{ marginTop: "15px", marginLeft: '10px' }} className="fw-semibold">
+          <p
+            style={{ marginTop: "15px", marginLeft: "10px" }}
+            className="fw-semibold"
+          >
             Your cart is empty
           </p>
-          <p style={{ marginTop: "-15px", marginLeft: '9px' }}>
+          <p style={{ marginTop: "-15px", marginLeft: "9px" }}>
             Select an appointment, service
           </p>
-          <p style={{ marginTop: "-18px", marginLeft: '10px' }}> or item to check out.</p>
+          <p style={{ marginTop: "-18px", marginLeft: "10px" }}>
+            {" "}
+            or item to check out.
+          </p>
         </div>
       </div>
     </div>

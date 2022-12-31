@@ -1,8 +1,19 @@
-import React from "react"
 import Card from "../../assets/images/Newsale/images/credit-card.png"
-import Slider from "../../assets/images/Newsale/images/slider-line.png"
+
+// ** React Imports
+import { Fragment, useState } from "react"
+
+// ** Reactstrap Imports
+import { Modal, ModalBody, ModalHeader } from "reactstrap"
+
+// ** Third Party Components
+import { Sliders } from "react-feather"
 
 const PaymentPage = () => {
+
+  // // ** States
+  const [show, setShow] = useState(false)
+
   return (
     <div>
       <div
@@ -19,7 +30,7 @@ const PaymentPage = () => {
         </div>
         <div style={{ marginRight: "100px" }}>
           <button
-            style={{ width: "130px", height: "50px", fontSize: "18px", color:'black' }}
+            style={{ width: "120px", height: "50px", fontSize: "18px", color:'black' }}
             className="btn border fw-semibold"
           >
             Export
@@ -45,153 +56,118 @@ const PaymentPage = () => {
         </div>
         <div style={{ marginLeft: "260px", marginTop: "-40px" }}>
           <button
-            style={{ color:'black', background: "white", width: "130px", height: "40px", fontSize: '15px' }}
-            className="btn border rounded-pill fw-semibold py-1"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            className="btn border rounded-pill"
+            style={{
+              background: "white",
+              color: "black",
+              border: "none",
+              width: "120px",
+              height: "42px"
+            }}
+            onClick={() => setShow(true)}
           >
             Filters
-            <img
-              style={{ width: "22px", height: "22px", marginLeft: "8px", marginBottom: '-10px', marginTop: '-15px' }}
-              src={Slider}
-              alt="slider"
-            />
+            <Sliders style={{ marginLeft: "8px" }} width={20} height={20} />
           </button>
-          {/* <!-- Modal --> */}
-          <div className="modal fade" id="exampleModal">
-            <div
-              style={{ marginTop: "80px", marginLeft: "355px" }}
-              className="modal-dialog"
-            >
-              <div
-                style={{ width: "640px", height: "460px" }}
-                className="modal-content"
+        </div>
+
+        {/* Modal */}
+        <Fragment>
+          <Modal
+            isOpen={show}
+            toggle={() => setShow(!show)}
+            className="modal-dialog-centered"
+          >
+            <ModalHeader
+              className="bg-transparent"
+              toggle={() => setShow(!show)}
+            ></ModalHeader>
+            <ModalBody className="pb-2">
+              <p
+                style={{
+                  marginTop: "-40px",
+                  color: "black",
+                  fontSize: "18px",
+                  fontWeight: "bold"
+                }}
               >
-                <div className="modal-header">
-                  <h1
-                    style={{ cursor: "default" }}
-                    className="modal-title fs-5 fw-bold"
-                    id="exampleModalLabel"
+                Filters
+              </p>
+              <hr style={{ width: "500px", marginLeft: "-20px" }} />
+              <div style={{ marginLeft: "-18px",  color: 'black', fontWeight: 600 }} className="modal-body">
+                Team member
+              </div>
+
+              <div style={{ marginTop: "-5px" }} className="input-group mb-2">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="All team members"
+                />
+              </div>
+
+              <div style={{ marginLeft: "-18px",  color: 'black', fontWeight: 600 }} className="modal-body">
+              Vouchers
+              </div>
+
+              <div style={{ marginTop: "-5px" }} className="input-group mb-2">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Exclude voucher redemptions"
+                />
+              </div>
+
+              <div style={{ marginLeft: "-18px",  color: 'black', fontWeight: 600 }} className="modal-body">
+              Deposits
+              </div>
+
+              <div style={{ marginTop: "-5px" }} className="input-group mb-2">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Exclude deposit redemptions"
+                />
+              </div>
+
+              <hr style={{ width: "500px", marginLeft: "-20px" }} />
+
+              <div style={{ marginBottom: "-10px" }}>
+                <div className="d-flex justify-content-between">
+                <div>
+                  <p
+                    style={{
+                      marginTop: '10px',
+                      fontSize: "16px",
+                      color: "#1BB70B"
+                    }}
                   >
-                    Filters
-                  </h1>
+                    Clear all filters
+                  </p>
+                </div>
+                <div style={{marginLeft: '150px'}}>
                   <button
                     type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div
-                  style={{ cursor: "default", marginLeft: "10px" }}
-                  className="modal-body fw-semibold"
-                >
-                  Team member
-                </div>
-
-                <div
-                  style={{ marginTop: "-120px" }}
-                  className="input-group mb-2 px-4"
-                >
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="All team members"
-                  />
-                  <button
-                    style={{ borderColor: "lightgrey" }}
-                    className="btn btn-outline-secondary dropdown-toggle"
-                    type="button"
-                  ></button>
-                </div>
-
-                <div
-                  style={{
-                    cursor: "default",
-                    marginTop: "10px",
-                    marginLeft: "10px"
-                  }}
-                  className="modal-body fw-semibold"
-                >
-                  Vouchers
-                </div>
-
-                <div
-                  style={{ marginTop: "-120px" }}
-                  className="input-group px-4"
-                >
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Exclude voucher redemptions"
-                  />
-                  <button
-                    style={{ borderColor: "lightgrey" }}
-                    className="btn btn-outline-secondary dropdown-toggle"
-                    type="button"
-                  ></button>
-                </div>
-
-                <div
-                  style={{
-                    cursor: "default",
-                    marginLeft: "10px",
-                    marginTop: "10px"
-                  }}
-                  className="modal-body fw-semibold"
-                >
-                  Deposits
-                </div>
-
-                <div
-                  style={{ marginTop: "-120px" }}
-                  className="input-group mb-4 px-4"
-                >
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Exclude deposit redemptions"
-                  />
-                  <button
-                    style={{ borderColor: "lightgrey" }}
-                    className="btn btn-outline-secondary dropdown-toggle"
-                    type="button"
-                  ></button>
-                </div>
-
-                <div style={{ marginBottom: "-5px" }} className="modal-footer">
-                  <div style={{ marginRight: "300px", marginTop: "10px" }}>
-                    <p
-                      style={{
-                        fontSize: "16px",
-                        color: "#1BB70B",
-                        cursor: "default"
-                      }}
-                    >
-                      Clear all filters
-                    </p>
-                  </div>
-
-                  <button
-                    type="button"
-                    className="btn border rounded-1 fw-semibold px-4"
-                    data-bs-dismiss="modal"
+                    className="btn border rounded-1 fw-semibold px-2"
                   >
                     Cancel
                   </button>
+                </div>
+                <div>
                   <button
                     style={{ background: "#4E4E4E", color: "white" }}
                     type="button"
-                    className="btn rounded-1 px-4"
+                    className="btn rounded-1 px-2"
                   >
                     Apply
                   </button>
+                </div>  
                 </div>
               </div>
-            </div>
-          </div>
+            </ModalBody>
+          </Modal>
+        </Fragment>
         </div>
-      </div>
 
       <div
         className="border mt-2"
