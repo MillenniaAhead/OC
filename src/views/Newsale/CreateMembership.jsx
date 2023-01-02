@@ -8,13 +8,13 @@ const CreateMembership = () => {
         style={{
           width: "890px",
           height: "560px",
-          marginTop: "40px",
+          marginTop: "20px",
           marginLeft: "115px"
         }}
       >
         <div className="d-flex justify-content-between">
           <div style={{ fontSize: "16px" }} className="px-5 d-flex flex-column">
-            <div>
+            <div style={{color: 'black'}}>
               <span style={{ color: "gray" }}>Settings </span>
               <span style={{ color: "gray" }} className="fw-bolder">
                 .
@@ -33,9 +33,9 @@ const CreateMembership = () => {
             <a
               href="/createmembership"
               style={{
-                width: "220px",
+                width: "210px",
                 height: "50px",
-                fontSize: "17px",
+                fontSize: "16px",
                 paddingTop: "14px",
                 background: "#4E4E4E",
                 color: "white"
@@ -52,7 +52,6 @@ const CreateMembership = () => {
           style={{
             width: "1060px",
             height: "380px",
-            marginLeft: "48px",
             marginTop: "10px"
           }}
         >

@@ -14,7 +14,7 @@ const ProductList = () => {
         }}
       >
         <div className="d-flex justify-content-between">
-          <div  style={{color: 'black'}} className="fs-3 px-5 fw-bolder">Product list</div>
+          <div  style={{color: 'black'}} className="fs-2 px-5 fw-bolder">Product list</div>
           <div className="d-flex">
             <button
               style={{ marginRight: "18px" }}
@@ -37,7 +37,7 @@ const ProductList = () => {
           </div>
         </div>
 
-        <div style={{marginTop: '-20px'}} className="px-5">
+        <div style={{marginTop: '-15px', color: 'black'}} className="px-5">
           Add and manage your products in stock.{" "}
           <span style={{ color: "#1BB70B"}}>Learn more</span>{" "}
         </div>

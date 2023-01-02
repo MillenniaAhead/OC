@@ -93,7 +93,7 @@ const Memberships = () => {
               </button>
               <input
                 style={{ marginRight: "25px" }}
-                className="form-control border py-1"
+                className="form-control border"
                 type="text"
                 placeholder="Search by membership name"
               />
@@ -101,7 +101,7 @@ const Memberships = () => {
                 <div
                   style={{
                     width: "130px",
-                    height: "50px",
+                    height: "35px",
                     marginRight: "15px"
                   }}
                   className="d-flex"
@@ -112,8 +112,8 @@ const Memberships = () => {
                       background: "white",
                       color: "black",
                       border: "none",
-                      width: "120px",
-                      height: "50px"
+                      width: "130px",
+                      height: "42px"
                     }}
                     onClick={() => setShow(true)}
                   >

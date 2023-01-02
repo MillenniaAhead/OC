@@ -7,6 +7,10 @@ const NewSaleRoutes = [
     component: lazy(() => import('../../views/Newsale/NewsalePage'))
   },
   {
+    path: '/setup',
+    component: lazy(() => import('../../views/Newsale/Setup'))
+  },
+  {
     path: '/checkout',
     component: lazy(() => import('../../views/Newsale/Checkout'))
   },

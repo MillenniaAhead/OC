@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 const ImportProduct = () => {
   return (
     <div>
-      <div style={{marginTop: '-15px'}} className="d-flex justify-content-between px-5 py-2 border-bottom border-1">
+      <div style={{marginTop: '-30px'}} className="d-flex justify-content-between px-5 py-2 border-bottom border-1">
         <Link to="/productlist">
           <img width={30} height={30} className="mt-2" src={X} alt="x" />
         </Link>
