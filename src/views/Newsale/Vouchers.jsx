@@ -5,6 +5,8 @@ import Basket from "../../assets/images/Newsale/images/basket.png"
 import Voucher from "../../assets/images/Newsale/images/voucher.png"
 import Glass from "../../assets/images/Newsale/images/search.png"
 
+import axios from "axios"
+
 // ** React Imports
 import { Fragment, useState } from "react"
 
@@ -14,6 +16,56 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap"
 const Vouchers = () => {
   // ** States
   const [show, setShow] = useState(false)
+  const [name, setName] = useState("")
+  const [price, setPrice] = useState("")
+  const [retailPrice, setRetailPrice] = useState("")
+  const [voucher, setVoucher] = useState("")
+
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handlePrice = (e) => {
+    setPrice(e.target.value)
+  }
+
+  const handleRetailPrice = (e) => {
+    setRetailPrice(e.target.value)
+  }
+
+  const handleVoucher = (e) => {
+    setVoucher(e.target.value)
+  }
+
+  const handleCreateVoucher = () => {
+    console.log({ price, retailPrice, voucher })
+    axios
+      .get("https://reqres.in/api/create", {
+        price,
+        retailPrice,
+        voucher
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  const handleApi = () => {
+    console.log({ name })
+    axios
+      .get("https://reqres.in/api/name", {
+        name
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
     <div className="d-flex">
@@ -83,12 +135,15 @@ const Vouchers = () => {
           <div style={{ width: "480px" }} className="col-md-5">
             <div className="input-group">
               <button
+                onClick={handleApi}
                 className="btn bg-white border-end-0 border"
                 type="button"
               >
                 <img width={17} src={Glass} alt="glass" />
               </button>
               <input
+                value={name}
+                onChange={handleName}
                 style={{ marginRight: "25px" }}
                 className="form-control border"
                 type="text"
@@ -214,6 +269,8 @@ const Vouchers = () => {
                           ₹
                         </span>
                         <input
+                          value={price}
+                          onChange={handlePrice}
                           style={{ height: "50px" }}
                           type="text"
                           className="form-control"
@@ -231,6 +288,8 @@ const Vouchers = () => {
                           ₹
                         </span>
                         <input
+                          value={retailPrice}
+                          onChange={handleRetailPrice}
                           type="text"
                           className="form-control"
                           placeholder="Enter retail price"
@@ -276,6 +335,8 @@ const Vouchers = () => {
                           width: "460px",
                           height: "45px"
                         }}
+                        value={voucher}
+                        onChange={handleVoucher}
                         type="text"
                         className="form-control rounded-1"
                         placeholder="Gift Voucher"
@@ -305,6 +366,7 @@ const Vouchers = () => {
                         Cancel
                       </button>
                       <button
+                        onClick={handleCreateVoucher}
                         style={{ background: "#4E4E4E", color: "white" }}
                         type="button"
                         className="btn py-1 rounded-1"

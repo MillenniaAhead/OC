@@ -3,6 +3,8 @@ import Home from "../../assets/images/Newsale/images/home.png"
 import Glass from "../../assets/images/Newsale/images/search.png"
 import { Link } from "react-router-dom"
 
+import axios from "axios"
+
 // // ** React Imports
 import { Fragment, useState } from "react"
 
@@ -12,6 +14,56 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap"
 const CreateVoucher = () => {
   // // ** States
   const [show, setShow] = useState(false)
+  const [name, setName] = useState("")
+  const [value, setValue] = useState("")
+  const [retailPrice, setRetailPrice] = useState("")
+  const [search, setSearch] = useState("")
+
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handlevalue = (e) => {
+    setValue(e.target.value)
+  }
+
+  const handleRetailPrice = (e) => {
+    setRetailPrice(e.target.value)
+  }
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  }
+
+  const handleSearchModal = () => {
+    console.log({ search })
+    axios
+      .get("https://reqres.in/api/search", {
+        search
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  const handleCreateVoucher = () => {
+    console.log({ name, value, retailPrice })
+    axios
+      .get("https://reqres.in/api/create", {
+        name,
+        value,
+        retailPrice
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
     <div>
@@ -44,6 +96,7 @@ const CreateVoucher = () => {
         </div>
 
         <button
+          onClick={handleCreateVoucher}
           style={{
             width: "160px",
             height: "45px",
@@ -83,6 +136,8 @@ const CreateVoucher = () => {
               Voucher name
             </label>
             <input
+              value={name}
+              onChange={handleName}
               style={{ width: "475px", height: "40px" }}
               type="text"
               className="form-control rounded-1"
@@ -121,7 +176,12 @@ const CreateVoucher = () => {
               >
                 ₹
               </span>
-              <input type="text" className="form-control border" />
+              <input
+                value={value}
+                onChange={handlevalue}
+                type="text"
+                className="form-control border"
+              />
             </div>
 
             <div
@@ -134,7 +194,12 @@ const CreateVoucher = () => {
               >
                 ₹
               </span>
-              <input type="text" className="form-control border" />
+              <input
+                value={retailPrice}
+                onChange={handleRetailPrice}
+                type="text"
+                className="form-control border"
+              />
             </div>
           </div>
 
@@ -243,6 +308,7 @@ const CreateVoucher = () => {
                   ></ModalHeader>
                   <ModalBody className="pb-2">
                     <p
+                    
                       style={{
                         marginTop: "-40px",
                         color: "black",
@@ -256,12 +322,15 @@ const CreateVoucher = () => {
                     <div style={{ width: "460px", marginTop: "-2px" }}>
                       <div className="input-group">
                         <button
+                          onClick={handleSearchModal}
                           className="btn border-end-0 border"
                           type="button"
                         >
                           <img width={15} src={Glass} alt="glass" />
                         </button>
                         <input
+                          value={search}
+                          onChange={handleSearch}
                           className="form-control border"
                           type="text"
                           placeholder="Search services"

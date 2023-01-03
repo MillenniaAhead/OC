@@ -1,9 +1,31 @@
-import React from "react"
+import React, { useState } from "react"
 import X from "../../assets/images/Newsale/images/x.png"
 import Glass from "../../assets/images/Newsale/images/search.png"
 import { Link } from "react-router-dom"
 
+import axios from "axios"
+
 const Setup = () => {
+  const [name, setName] = useState("")
+
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleApi = () => {
+    console.log({ name })
+    axios
+      .get("https://reqres.in/api/name", {
+        name
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <div>
       <div className="d-flex justify-content-between px-3">
@@ -18,7 +40,9 @@ const Setup = () => {
         </button>
       </div>
       <div className="d-flex justify-content-center fw-bolder">
-        <p style={{ fontSize: "30px", color: 'black' }}>Your quick sale items</p>
+        <p style={{ fontSize: "30px", color: "black" }}>
+          Your quick sale items
+        </p>
       </div>
       <div className="d-flex justify-content-center">
         <p>
@@ -33,12 +57,15 @@ const Setup = () => {
         <div style={{ width: "788px" }} className="col-md-5 mx-auto">
           <div className="input-group">
             <button
+              onClick={handleApi}
               className="btn bg-white border-end-0 border"
               type="button"
             >
               <img width={17} src={Glass} alt="glass" />
             </button>
             <input
+              value={name}
+              onChange={handleName}
               className="form-control border"
               type="text"
               placeholder="Search by client, team member or service name"
@@ -87,7 +114,7 @@ const Setup = () => {
         <div
           className="card"
           style={{
-            marginTop: '-10px',
+            marginTop: "-10px",
             width: "260px",
             height: "135px",
             border: "2px dashed rgba(0, 0, 0, 0.15)"
@@ -96,7 +123,7 @@ const Setup = () => {
         <div
           className="card"
           style={{
-            marginTop: '-10px',
+            marginTop: "-10px",
             width: "260px",
             height: "135px",
             border: "2px dashed rgba(0, 0, 0, 0.15)"
@@ -105,40 +132,7 @@ const Setup = () => {
         <div
           className="card"
           style={{
-            marginTop: '-10px',
-            width: "260px",
-            height: "135px",
-            border: "2px dashed rgba(0, 0, 0, 0.15)"
-          }}
-        ></div>
-      </div>
-
-      <div
-        style={{ paddingInline: "170px" }}
-        className="d-flex justify-content-evenly"
-      >
-        <div
-          className="card"
-          style={{
-            marginTop: '-10px',
-            width: "260px",
-            height: "135px",
-            border: "2px dashed rgba(0, 0, 0, 0.15)"
-          }}
-        ></div>
-        <div
-          className="card"
-          style={{
-            marginTop: '-10px',
-            width: "260px",
-            height: "135px",
-            border: "2px dashed rgba(0, 0, 0, 0.15)"
-          }}
-        ></div>
-        <div
-          className="card"
-          style={{
-            marginTop: '-10px',
+            marginTop: "-10px",
             width: "260px",
             height: "135px",
             border: "2px dashed rgba(0, 0, 0, 0.15)"
@@ -153,7 +147,7 @@ const Setup = () => {
         <div
           className="card"
           style={{
-            marginTop: '-10px',
+            marginTop: "-10px",
             width: "260px",
             height: "135px",
             border: "2px dashed rgba(0, 0, 0, 0.15)"
@@ -162,7 +156,7 @@ const Setup = () => {
         <div
           className="card"
           style={{
-            marginTop: '-10px',
+            marginTop: "-10px",
             width: "260px",
             height: "135px",
             border: "2px dashed rgba(0, 0, 0, 0.15)"
@@ -171,7 +165,40 @@ const Setup = () => {
         <div
           className="card"
           style={{
-            marginTop: '-10px',
+            marginTop: "-10px",
+            width: "260px",
+            height: "135px",
+            border: "2px dashed rgba(0, 0, 0, 0.15)"
+          }}
+        ></div>
+      </div>
+
+      <div
+        style={{ paddingInline: "170px" }}
+        className="d-flex justify-content-evenly"
+      >
+        <div
+          className="card"
+          style={{
+            marginTop: "-10px",
+            width: "260px",
+            height: "135px",
+            border: "2px dashed rgba(0, 0, 0, 0.15)"
+          }}
+        ></div>
+        <div
+          className="card"
+          style={{
+            marginTop: "-10px",
+            width: "260px",
+            height: "135px",
+            border: "2px dashed rgba(0, 0, 0, 0.15)"
+          }}
+        ></div>
+        <div
+          className="card"
+          style={{
+            marginTop: "-10px",
             width: "260px",
             height: "135px",
             border: "2px dashed rgba(0, 0, 0, 0.15)"

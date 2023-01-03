@@ -1,11 +1,34 @@
-import React from "react"
+import React, { useState } from "react"
 import Client from "../../assets/images/Newsale/images/Add client.png"
 import Basket from "../../assets/images/Newsale/images/basket.png"
 import Glass from "../../assets/images/Newsale/images/search.png"
 import Report from "../../assets/images/Newsale/images/carbon_report.png"
 import { Link } from "react-router-dom"
 
+import axios from "axios"
+
 const Services = () => {
+
+  const [name, setName] = useState("")
+
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleApi = () => {
+    console.log({ name })
+    axios
+      .get("https://reqres.in/api/services", {
+        name
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <div className="d-flex">
       <div
@@ -90,12 +113,15 @@ const Services = () => {
           <div style={{ width: "480px" }} className="col-md-5">
             <div className="input-group">
               <button
+                onClick={handleApi}
                 className="btn bg-white border-end-0 border"
                 type="button"
               >
                 <img width={17} src={Glass} alt="glass" />
               </button>
               <input
+                value={name}
+                onChange={handleName}
                 style={{ marginRight: "25px" }}
                 className="form-control border"
                 type="text"

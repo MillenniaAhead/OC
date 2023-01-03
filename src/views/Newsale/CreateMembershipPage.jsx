@@ -1,9 +1,68 @@
-import React from "react"
+import React, { useState } from "react"
 import X from "../../assets/images/Newsale/images/x.png"
 import Member from "../../assets/images/Newsale/images/member.png"
 import { Link } from "react-router-dom"
 
+import axios from "axios"
+
 const CreateMembershipPage = () => {
+  const [name, setName] = useState("")
+  const [description, setDescription] = useState("")
+  const [services, setServices] = useState("")
+  const [sessions, setSessions] = useState("")
+  const [price, setPrice] = useState("")
+  const [termsConditions, setTermsConditions] = useState("")
+
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handledescription = (e) => {
+    setDescription(e.target.value)
+  }
+
+  const handleservices = (e) => {
+    setServices(e.target.value)
+  }
+
+  const handlesessions = (e) => {
+    setSessions(e.target.value)
+  }
+
+  const handleprice = (e) => {
+    setPrice(e.target.value)
+  }
+
+  const handletermsConditions = (e) => {
+    setTermsConditions(e.target.value)
+  }
+
+  const handleApi = () => {
+    console.log({
+      name,
+      description,
+      services,
+      sessions,
+      price,
+      termsConditions
+    })
+    axios
+      .get("https://reqres.in/api/create", {
+        name,
+        description,
+        services,
+        sessions,
+        price,
+        termsConditions
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <div>
       <div className="d-flex justify-content-between px-3">
@@ -12,13 +71,17 @@ const CreateMembershipPage = () => {
         </Link>
 
         <button
+          onClick={handleApi}
           style={{ height: "48px", background: "#4E4E4E", color: "white" }}
           className="px-2 py-1 btn rounded-1"
         >
           Create membership
         </button>
       </div>
-      <div style={{color: 'black'}} className="d-flex justify-content-center mt-2 fs-2 fw-bolder">
+      <div
+        style={{ color: "black" }}
+        className="d-flex justify-content-center mt-2 fs-2 fw-bolder"
+      >
         Create a membership
       </div>
 
@@ -27,11 +90,23 @@ const CreateMembershipPage = () => {
           style={{ width: "820px", height: "320px", marginLeft: "-10px" }}
           className="border rounded-3"
         >
-          <div style={{color: 'black'}} className="px-2 py-1 fs-4 fw-bolder border-bottom">Basic Info</div>
+          <div
+            style={{ color: "black" }}
+            className="px-2 py-1 fs-4 fw-bolder border-bottom"
+          >
+            Basic Info
+          </div>
 
           <div className="px-2 mt-1">
-            <label style={{color: 'black', fontSize: '13px'}} className="form-label">Membership name</label>
+            <label
+              style={{ color: "black", fontSize: "13px" }}
+              className="form-label"
+            >
+              Membership name
+            </label>
             <input
+              value={name}
+              onChange={handleName}
               style={{ width: "495px", height: "45px" }}
               type="text"
               placeholder="Add membership name"
@@ -39,10 +114,15 @@ const CreateMembershipPage = () => {
             />
           </div>
           <div className="px-2 mt-1">
-            <label style={{color: 'black', fontSize: '13px'}} className="form-label fw-semibold">
+            <label
+              style={{ color: "black", fontSize: "13px" }}
+              className="form-label fw-semibold"
+            >
               Membership description
             </label>
             <textarea
+              value={description}
+              onChange={handledescription}
               style={{ width: "495px", height: "120px" }}
               className="form-control"
               placeholder="Add membership description"
@@ -56,7 +136,10 @@ const CreateMembershipPage = () => {
           style={{ width: "820px", height: "280px", marginLeft: "-10px" }}
           className="border rounded-3"
         >
-          <div style={{color: 'black'}} className="px-2 mt-1 fs-4 fw-bolder border-bottom">
+          <div
+            style={{ color: "black" }}
+            className="px-2 mt-1 fs-4 fw-bolder border-bottom"
+          >
             Services and sessions
             <p style={{ fontSize: "15px" }} className="fw-normal">
               Add the services and sessions included in the membership.
@@ -64,8 +147,15 @@ const CreateMembershipPage = () => {
           </div>
 
           <div className="px-2 mt-1">
-            <label style={{color: 'black', fontSize: '13px'}} className="form-label fw-semibold">Included services</label>
+            <label
+              style={{ color: "black", fontSize: "13px" }}
+              className="form-label fw-semibold"
+            >
+              Included services
+            </label>
             <input
+              value={services}
+              onChange={handleservices}
               style={{ width: "495px", height: "45px", background: "#F2F2F7" }}
               type="text"
               placeholder="0 services"
@@ -74,7 +164,12 @@ const CreateMembershipPage = () => {
           </div>
           <div className="d-flex">
             <div className="d-flex flex-column px-2 mt-2">
-              <label style={{color: 'black', fontSize: '13px'}} className="form-label fw-semibold">Sessions</label>
+              <label
+                style={{ color: "black", fontSize: "13px" }}
+                className="form-label fw-semibold"
+              >
+                Sessions
+              </label>
               <div className="btn-group dropdown border">
                 <button
                   style={{
@@ -88,7 +183,7 @@ const CreateMembershipPage = () => {
                   Limited
                 </button>
                 <button
-                  style={{background: 'white'}}
+                  style={{ background: "white" }}
                   type="button"
                   className="btn dropdown-toggle dropdown-toggle-split border-right"
                   data-bs-toggle="dropdown"
@@ -97,11 +192,16 @@ const CreateMembershipPage = () => {
               </div>
             </div>
             <div className="mt-2">
-              <label style={{color: 'black', fontSize: '13px'}} className="form-label fw-semibold">
+              <label
+                style={{ color: "black", fontSize: "13px" }}
+                className="form-label fw-semibold"
+              >
                 Number of sessions
               </label>
               <div className="input-group">
                 <input
+                  value={sessions}
+                  onChange={handlesessions}
                   style={{ width: "240px" }}
                   type="number"
                   className="form-control px-1"
@@ -118,7 +218,10 @@ const CreateMembershipPage = () => {
           style={{ width: "820px", height: "330px", marginLeft: "-10px" }}
           className="border rounded-3"
         >
-          <div style={{color: 'black'}} className="px-2 mt-1 fs-4 fw-bolder border-bottom">
+          <div
+            style={{ color: "black" }}
+            className="px-2 mt-1 fs-4 fw-bolder border-bottom"
+          >
             Pricing and payment
             <p style={{ fontSize: "15px" }} className="fw-normal">
               Choose how you’d like your clients to pay.
@@ -130,7 +233,12 @@ const CreateMembershipPage = () => {
               style={{ marginTop: "-5px" }}
               className="d-flex flex-column px-2"
             >
-              <label style={{color: 'black', fontSize: '13px'}} className="form-label fw-bold">Valid for</label>
+              <label
+                style={{ color: "black", fontSize: "13px" }}
+                className="form-label fw-bold"
+              >
+                Valid for
+              </label>
               <div
                 style={{ marginTop: "2px" }}
                 className="btn-group dropdown border"
@@ -147,7 +255,7 @@ const CreateMembershipPage = () => {
                   1 month
                 </button>
                 <button
-                  style={{background: 'white'}}
+                  style={{ background: "white" }}
                   type="button"
                   className="btn dropdown-toggle dropdown-toggle-split border-right"
                   data-bs-toggle="dropdown"
@@ -156,7 +264,12 @@ const CreateMembershipPage = () => {
               </div>
             </div>
             <div style={{ marginTop: "-5px" }}>
-              <label style={{color: 'black', fontSize: '13px'}} className="form-label fw-semibold">Price</label>
+              <label
+                style={{ color: "black", fontSize: "13px" }}
+                className="form-label fw-semibold"
+              >
+                Price
+              </label>
               <div style={{ marginTop: "3px" }} className="input-group">
                 <span
                   style={{ background: "white", width: "20%", color: "gray" }}
@@ -164,11 +277,19 @@ const CreateMembershipPage = () => {
                 >
                   ₹
                 </span>
-                <input type="number" className="form-control" />
+                <input
+                  value={price}
+                  onChange={handleprice}
+                  type="number"
+                  className="form-control"
+                />
               </div>
             </div>
           </div>
-          <div style={{ color: 'black', fontSize: "22px" }} className="px-2 mt-1 fw-bolder">
+          <div
+            style={{ color: "black", fontSize: "22px" }}
+            className="px-2 mt-1 fw-bolder"
+          >
             Tax rate
           </div>
           <div className="d-flex py-1">
@@ -176,7 +297,12 @@ const CreateMembershipPage = () => {
               style={{ marginTop: "-5px" }}
               className="d-flex flex-column px-2"
             >
-              <label style={{color: 'black', fontSize: '13px'}} className="form-label fw-semibold">Tax rate</label>
+              <label
+                style={{ color: "black", fontSize: "13px" }}
+                className="form-label fw-semibold"
+              >
+                Tax rate
+              </label>
               <div
                 style={{ marginTop: "5px" }}
                 className="btn-group dropdown border"
@@ -193,7 +319,7 @@ const CreateMembershipPage = () => {
                   No tax
                 </button>
                 <button
-                  style={{background: 'white'}}
+                  style={{ background: "white" }}
                   type="button"
                   className="btn dropdown-toggle dropdown-toggle-split border-right"
                   data-bs-toggle="dropdown"
@@ -210,7 +336,10 @@ const CreateMembershipPage = () => {
           style={{ width: "820px", height: "160px", marginLeft: "-10px" }}
           className="border rounded-3"
         >
-          <div style={{color: 'black' }} className="px-2 mt-1 fs-4 fw-bolder border-bottom">
+          <div
+            style={{ color: "black" }}
+            className="px-2 mt-1 fs-4 fw-bolder border-bottom"
+          >
             Color customisation
             <p style={{ fontSize: "15px" }} className="fw-normal">
               Select a color that matches your business.
@@ -261,7 +390,10 @@ const CreateMembershipPage = () => {
           style={{ width: "820px", height: "290px", marginLeft: "-10px" }}
           className="border rounded-3"
         >
-          <div style={{color: 'black' }} className="px-2 mt-1 fs-4 fw-bolder border-bottom">
+          <div
+            style={{ color: "black" }}
+            className="px-2 mt-1 fs-4 fw-bolder border-bottom"
+          >
             Online sales
             <p style={{ fontSize: "15px" }} className="fw-normal">
               Choose if you would like to sell your membership online.
@@ -277,10 +409,7 @@ const CreateMembershipPage = () => {
               type="checkbox"
               disabled
             />
-            <label
-              style={{color: 'black'}}
-              className="form-check-label"
-            >
+            <label style={{ color: "black" }} className="form-check-label">
               Enable online sales
             </label>
           </div>
@@ -294,7 +423,10 @@ const CreateMembershipPage = () => {
             }}
           >
             <div className="d-flex justify-content-between">
-              <div style={{color: 'black', fontSize: '15px'}} className="px-2 py-2 mt-1">
+              <div
+                style={{ color: "black", fontSize: "15px" }}
+                className="px-2 py-2 mt-1"
+              >
                 Online membership sales are coming soon <br /> to India with
                 payments in Fresha
               </div>
@@ -318,7 +450,10 @@ const CreateMembershipPage = () => {
           }}
           className="border rounded-3"
         >
-          <div style={{color: 'black'}} className="px-2 mt-1 fs-4 fw-bolder border-bottom">
+          <div
+            style={{ color: "black" }}
+            className="px-2 mt-1 fs-4 fw-bolder border-bottom"
+          >
             Terms & Conditions
             <p style={{ fontSize: "15px" }} className="fw-normal">
               If there are any rules attached to your membership it’s a good
@@ -326,14 +461,19 @@ const CreateMembershipPage = () => {
             </p>
           </div>
           <div className="px-2 mt-2">
-            <label style={{color: 'black', fontSize: '13px'}} className="form-label">
+            <label
+              style={{ color: "black", fontSize: "13px" }}
+              className="form-label"
+            >
               Terms & Conditions{" "}
               <span style={{ color: "gray", fontWeight: "lighter" }}>
                 (Optional)
               </span>
             </label>
             <textarea
-              style={{ marginTop: '5px', width: "500px", height: "115px" }}
+              value={termsConditions}
+              onChange={handletermsConditions}
+              style={{ marginTop: "5px", width: "500px", height: "115px" }}
               className="form-control"
               placeholder="Add Terms & Conditions"
             ></textarea>

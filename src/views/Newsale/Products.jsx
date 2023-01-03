@@ -1,11 +1,33 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import Client from "../../assets/images/Newsale/images/Add client.png"
 import Basket from "../../assets/images/Newsale/images/basket.png"
 import Box from "../../assets/images/Newsale/images/box.png"
 import Glass from "../../assets/images/Newsale/images/search.png"
 
+import axios from "axios"
+
 const Products = () => {
+  const [name, setName] = useState("")
+
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleApi = () => {
+    console.log({ name })
+    axios
+      .get("https://reqres.in/api/name", {
+        name
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <div className="d-flex">
       <div
@@ -17,25 +39,21 @@ const Products = () => {
           marginLeft: "115px"
         }}
       >
-       <div style={{color: 'black'}} className="fs-3 py-4 px-5 fw-bolder">New sale</div>
-       <div style={{ cursor: "default" }} className="px-5 fw-semibold">
-        <Link to='/newsale'>
-         <p
-            className="text-secondary py-2"
-            style={{ marginTop: "-55px" }}
-          >
-            Quick Sale
-          </p>
-        </Link>
+        <div style={{ color: "black" }} className="fs-3 py-4 px-5 fw-bolder">
+          New sale
+        </div>
+        <div style={{ cursor: "default" }} className="px-5 fw-semibold">
+          <Link to="/newsale">
+            <p className="text-secondary py-2" style={{ marginTop: "-55px" }}>
+              Quick Sale
+            </p>
+          </Link>
         </div>
 
         <div
           style={{ marginLeft: "160px", marginTop: "-55px", cursor: "pointer" }}
         >
-          <a
-            href="/checkout"
-            className="text-secondary"
-          >
+          <a href="/checkout" className="text-secondary">
             To check out
           </a>
         </div>
@@ -43,10 +61,7 @@ const Products = () => {
         <div
           style={{ marginLeft: "290px", marginTop: "-20px", cursor: "pointer" }}
         >
-          <a
-            href="/products"
-            className="text-secondary"
-          >
+          <a href="/products" className="text-secondary">
             Products
           </a>
         </div>
@@ -54,10 +69,7 @@ const Products = () => {
         <div
           style={{ marginLeft: "390px", marginTop: "-20px", cursor: "pointer" }}
         >
-          <a
-            href="/services"
-            className="text-secondary"
-          >
+          <a href="/services" className="text-secondary">
             Services
           </a>
         </div>
@@ -65,10 +77,7 @@ const Products = () => {
         <div
           style={{ marginLeft: "480px", marginTop: "-20px", cursor: "pointer" }}
         >
-          <a
-            href="/memberships"
-            className="text-secondary"
-          >
+          <a href="/memberships" className="text-secondary">
             Memberships
           </a>
         </div>
@@ -76,10 +85,7 @@ const Products = () => {
         <div
           style={{ marginLeft: "610px", marginTop: "-20px", cursor: "pointer" }}
         >
-          <a
-            href="/vouchers"
-            className="text-secondary"
-          >
+          <a href="/vouchers" className="text-secondary">
             Vouchers
           </a>
         </div>
@@ -91,12 +97,15 @@ const Products = () => {
           <div style={{ width: "480px" }} className="col-md-5">
             <div className="input-group">
               <button
+                onClick={handleApi}
                 className="btn bg-white border-end-0 border"
                 type="button"
               >
                 <img width={17} src={Glass} alt="glass" />
               </button>
               <input
+                value={name}
+                onChange={handleName}
                 style={{ marginRight: "25px" }}
                 className="form-control border"
                 type="text"
@@ -141,10 +150,7 @@ const Products = () => {
         </div>
       </div>
 
-      <div
-        className="border-top"
-        style={{ width: "360px", height: "565px" }}
-      >
+      <div className="border-top" style={{ width: "360px", height: "565px" }}>
         <div
           style={{ cursor: "pointer" }}
           className="border-bottom py-2 text-center"
@@ -157,10 +163,12 @@ const Products = () => {
           <p style={{ marginTop: "15px" }} className="fw-semibold">
             Your cart is empty
           </p>
-          <p style={{ marginTop: "-15px", marginLeft: '9px'  }}>
+          <p style={{ marginTop: "-15px", marginLeft: "9px" }}>
             Select an appointment, service
           </p>
-          <p style={{ marginTop: "-18px", marginLeft: '9px' }}>or item to check out.</p>
+          <p style={{ marginTop: "-18px", marginLeft: "9px" }}>
+            or item to check out.
+          </p>
         </div>
       </div>
     </div>

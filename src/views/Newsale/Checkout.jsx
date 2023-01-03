@@ -3,6 +3,7 @@ import Basket from "../../assets/images/Newsale/images/basket.png"
 import Calander from "../../assets/images/Newsale/images/calendar.png"
 import Glass from "../../assets/images/Newsale/images/search.png"
 import Menu from "../../assets/images/Newsale/images/menu.png"
+import axios from "axios"
 
 // ** React Imports
 import { Fragment, useState } from "react"
@@ -16,6 +17,44 @@ import { Sliders } from "react-feather"
 const Checkout = () => {
   // // ** States
   const [show, setShow] = useState(false)
+  const [name, setName] = useState("")
+  const [team, setTeam] = useState("")
+
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleTeam = (e) => {
+    setTeam(e.target.value)
+  }
+
+  const handleTeamApi = () => {
+    console.log({ team })
+    axios
+      .get("https://reqres.in/api/team", {
+        team
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  const handleApi = () => {
+    console.log({ name })
+    axios
+      .get("https://reqres.in/api/name", {
+        name
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
     <div className="d-flex">
@@ -83,12 +122,15 @@ const Checkout = () => {
           <div style={{ width: "300px" }} className="col-md-5">
             <div className="input-group">
               <button
+                onClick={handleApi}
                 className="btn px-1 bg-white border-end-0 border"
                 type="button"
               >
                 <img width={17} src={Glass} alt="glass" />
               </button>
               <input
+                value={name}
+                onChange={handleName}
                 style={{ marginRight: "25px" }}
                 className="form-control border py-1"
                 type="text"
@@ -149,20 +191,15 @@ const Checkout = () => {
                           <label style={{ color: "black" }}> Team member</label>
                           <div
                             style={{ marginTop: "5px" }}
-                            className="btn-group border"
+                            className="input-group"
                           >
-                            <button
-                              style={{
-                                background: "white",
-                                width: "580px",
-                                height: "40px",
-                                textAlign: "start"
-                              }}
-                              className="btn"
-                              type="button"
-                            >
-                              All team members
-                            </button>
+                            <input
+                              value={team}
+                              onChange={handleTeam}
+                              type="text"
+                              className="form-control"
+                              placeholder="All team members"
+                            />
                           </div>
                         </div>
 
@@ -201,6 +238,7 @@ const Checkout = () => {
                                   background: "#4E4E4E",
                                   color: "white"
                                 }}
+                                onClick={handleTeamApi}
                                 type="button"
                                 className="btn rounded-1 px-2"
                               >

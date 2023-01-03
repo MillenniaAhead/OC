@@ -5,6 +5,8 @@ import Basket from "../../assets/images/Newsale/images/basket.png"
 import Glass from "../../assets/images/Newsale/images/search.png"
 import Group from "../../assets/images/Newsale/images/Group 298.png"
 
+import axios from "axios"
+
 // ** React Imports
 import { Fragment, useState } from "react"
 
@@ -17,6 +19,25 @@ import { Sliders } from "react-feather"
 const Memberships = () => {
   // // // ** States
   const [show, setShow] = useState(false)
+  const [name, setName] = useState("")
+
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleApi = () => {
+    console.log({ name })
+    axios
+      .get("https://reqres.in/api/memberships", {
+        name
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
     <div className="d-flex">
@@ -86,12 +107,15 @@ const Memberships = () => {
           <div style={{ width: "350px" }} className="col-md-5">
             <div className="input-group">
               <button
+                onClick={handleApi}
                 className="btn px-1 bg-white border-end-0 border"
                 type="button"
               >
                 <img width={17} src={Glass} alt="glass" />
               </button>
               <input
+                value={name}
+                onChange={handleName}
                 style={{ marginRight: "25px" }}
                 className="form-control border"
                 type="text"
