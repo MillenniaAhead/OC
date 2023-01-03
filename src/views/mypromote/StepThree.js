@@ -58,7 +58,10 @@ const StepThree = () => {
    const { ClearDealData } = bindActionCreators(actionCreators, dispatch) 
    const history = useHistory()
   
+
+   //On click of next step
    const nextBtnFun = () => {
+    //Checked both option
     if (toggle1 && toggle2) {
       if (discountCodeValue === null) {
         setStyle1({display:'block', color:'red'})
@@ -67,9 +70,11 @@ const StepThree = () => {
         StoreDealData([{promotion:applyPromotion1}, {promotion:applyPromotion2, discount_code:discountCodeValue}])
       history.push('/promote/stepFour')
     }
+    //Checked option1
   } else if (toggle1 && !toggle2) {
       StoreDealData({promotion:applyPromotion1})
     history.push('/promote/stepFour')
+    //Checked option2
   } else if (toggle2 && !toggle1) {
     if (discountCodeValue === null) {
       setStyle1({display:'block', color:'red'})
@@ -78,6 +83,7 @@ const StepThree = () => {
       StoreDealData({promotion:applyPromotion2, discount_code:discountCodeValue})
       history.push('/promote/stepFour')
     }
+    //Nothing checked
     } else {
       setVisible(true)
     }

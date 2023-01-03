@@ -1,31 +1,35 @@
 import React, { useState } from "react"
-import "../mycss1/Promote.css"
-import '../mycss1/SideMenu.css'
 import Deals from "./Deals"
 import Integrations from "./Integrations"
 import { ChevronLeft } from 'react-feather'
 
 const NavPromote = () => {
   const [styleOne, setstyleOne] = useState({ justifyContent: "flex-end" })
+
+  //For side menu
   const [styleTwo, setstyleTwo] = useState({ display: "block" })
-  const [styleThree, setstyleThree] = useState({ transform: "rotate(0deg)" })
-  const [styleFour, setstyleFour] = useState({
-    position: "relative", left: "-50%"
-  })
-  const [dealsStyle, setDealsStyle] = useState({background:"#d9d9d9"})
+  const [styleThree, setstyleThree] = useState()
+  const [styleFour, setstyleFour] = useState({position: "relative", left: "-50%"})
+
+  //For menu btn
+  const [dealsStyle, setDealsStyle] = useState({background:"rgba(27, 183, 11, 0.3)"})
   const [integrationsStyle, setIntegrationsStyle] = useState({})
   const [component, setcomponent] = useState(true)
+
+  //On click of Deals
   const showDeals = () => {
     setcomponent(true)
-    setDealsStyle({background:"#d9d9d9"})
+    setDealsStyle({background:"rgba(27, 183, 11, 0.3)"})
     setIntegrationsStyle({})
   }
+  //On click of Integration
   const showIntegrations = () => {
     setcomponent(false)
     setDealsStyle({})
-    setIntegrationsStyle({background:"#d9d9d9"})
+    setIntegrationsStyle({background:"rgba(27, 183, 11, 0.3)"})
   }
 
+  //On Click of arrow circle
   const toggleSideBar = () => {
     if (styleTwo.display === "block") {
       setstyleTwo({ display: "none" })
@@ -35,7 +39,7 @@ const NavPromote = () => {
     } else {
       setstyleTwo({ display: "block" })
       setstyleOne({ justifyContent: "flex-end" })
-      setstyleThree({ transform: "rotate(0deg)" })
+      setstyleThree()
       setstyleFour({ position: "relative", left: "-50%" })
     }
   }

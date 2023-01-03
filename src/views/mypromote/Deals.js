@@ -1,5 +1,4 @@
 import React from "react"
-import "../mycss1/Deals.css"
 // import DealsList from "./DealsList"
 import { NavLink } from "react-router-dom"
 import chair from "../images/chair.png"

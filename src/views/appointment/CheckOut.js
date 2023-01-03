@@ -1,5 +1,4 @@
 import React from "react"
-import "../mycss/CheckOut.css"
 import { MoreVertical, Search, Filter, AlignCenter } from "react-feather"
 import Detail from "./Detail"
 

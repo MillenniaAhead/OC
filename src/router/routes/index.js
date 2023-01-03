@@ -8,8 +8,11 @@ import DashboardRoutes from './Dashboards'
 import UiElementRoutes from './UiElements'
 import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
+
+//My work
 import Appointment from './Appointment'
 import RoutePromote from './RoutePromote'
+import SanReport from './SanReport'
 
 /*
 Customization Routes
@@ -29,6 +32,7 @@ const DefaultRoute = '/overview'
 
 // ** Merge Routes
 const Routes = [
+  ...SanReport,
   ...RoutePromote,
   ...Appointment,
   ...OverviewRoutes,

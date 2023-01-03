@@ -7,8 +7,11 @@
  import charts from './charts'
  import dashboards from './dashboards'
  import uiElements from './ui-elements'
+
+ //My work
  import appointment from './Appointment'
  import NavPromote from './NavPromote'
+ import MyReport from './MyReport'
 
 /*
 Customization Navigation
@@ -21,5 +24,5 @@ import exports from './exports'
 import labsManager from './labs_manager'
 //import blank from './blank'
 // ** Merge & Export
- export default [...NavPromote, ...appointment, ...overview,  ...organization, ...groups, ...exports, ...labsManager, ...dashboards, ...apps, ...pages, ...uiElements, ...forms, ...tables, ...charts, ...others]
+ export default [...MyReport, ...NavPromote, ...appointment, ...overview,  ...organization, ...groups, ...exports, ...labsManager, ...dashboards, ...apps, ...pages, ...uiElements, ...forms, ...tables, ...charts, ...others]
 //export default [...overview,  ...organization, ...groups, ...exports, ...labsManager, ...blank]
