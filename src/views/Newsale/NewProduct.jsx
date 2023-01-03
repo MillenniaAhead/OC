@@ -4,6 +4,8 @@ import Camera from "../../assets/images/Newsale/images/camera.png"
 import Plus from "../../assets/images/Newsale/images/plus-circle.png"
 import { Link } from "react-router-dom"
 
+import axios from "axios"
+
 const NewProduct = () => {
   const [name, setName] = useState("")
   const [code, setCode] = useState("")
@@ -378,7 +380,7 @@ const NewProduct = () => {
                 }}
                 className="form-check-input"
                 type="checkbox"
-                checked
+                defaultChecked={true}
               />
               <label style={{ color: "black" }} className="form-check-label">
                 Enable retail sales
@@ -540,7 +542,7 @@ const NewProduct = () => {
                   }}
                   className="form-check-input"
                   type="checkbox"
-                  checked
+                  defaultChecked={true}
                 />
                 <label style={{ color: "black" }} className="form-check-label">
                   Enable team member commission
@@ -638,7 +640,7 @@ const NewProduct = () => {
                 }}
                 className="form-check-input"
                 type="checkbox"
-                checked
+                defaultChecked={true}
               />
               <label style={{ color: "black" }} className="form-check-label">
                 Track stock quantity
