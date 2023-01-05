@@ -34,7 +34,7 @@ const Products = () => {
         className="border"
         style={{
           width: "890px",
-          height: "660px",
+          height: "680px",
           background: "#F8F8FB",
           marginLeft: "115px"
         }}
@@ -61,7 +61,8 @@ const Products = () => {
         <div
           style={{ marginLeft: "290px", marginTop: "-20px", cursor: "pointer" }}
         >
-          <a href="/products" className="text-secondary">
+          <a className="border-bottom-dark py-1 fw-bolder"
+            style={{width: '14%', color: 'black'}} href="/products">
             Products
           </a>
         </div>
@@ -92,7 +93,7 @@ const Products = () => {
 
         <div
           style={{ marginLeft: "50px", background: "#F2F2F7", width: "700px" }}
-          className="row mt-2 py-1 rounded-2"
+          className="row mt-3 py-1 rounded-2"
         >
           <div style={{ width: "480px" }} className="col-md-5">
             <div className="input-group">

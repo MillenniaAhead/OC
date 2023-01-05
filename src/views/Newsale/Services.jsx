@@ -35,7 +35,7 @@ const Services = () => {
         className="border"
         style={{
           width: "890px",
-          height: "800px",
+          height: "730px",
           background: "#F8F8FB",
           marginLeft: "115px"
         }}
@@ -77,8 +77,9 @@ const Services = () => {
           style={{ marginLeft: "390px", marginTop: "-20px", cursor: "pointer" }}
         >
           <a
+          className="border-bottom-dark py-1 fw-bolder"
+          style={{width: '14%', color: 'black'}}
             href="/services"
-            className="text-secondary"
           >
             Services
           </a>
@@ -108,7 +109,7 @@ const Services = () => {
 
         <div
           style={{ marginLeft: "50px", background: "#F2F2F7", width: "700px" }}
-          className="row mt-2 py-1 rounded-2"
+          className="row mt-3 py-1 rounded-2"
         >
           <div style={{ width: "480px" }} className="col-md-5">
             <div className="input-group">

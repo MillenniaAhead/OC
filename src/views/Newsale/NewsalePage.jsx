@@ -15,18 +15,18 @@ const NewsalePage = () => {
           marginLeft: "115px"
         }}
       >
-        <div style={{color: 'black'}} className="fs-3 py-4 px-5 fw-bolder">New sale</div>
-        <div style={{ cursor: "default" }} className="px-5 fw-semibold">
+        <div style={{color: 'black', fontWeight: 800}} className="fs-3 py-4 px-5">New sale</div>
+        <div style={{ cursor: "default" }} className="px-5">
           <p
-            className="py-2"
-            style={{ marginTop: "-55px" }}
+            className="border-bottom-dark py-1 fw-bolder"
+            style={{width: '11%', marginTop: "-45px", color: 'black'}}
           >
             Quick Sale
           </p>
         </div>
 
         <div
-          style={{ marginLeft: "160px", marginTop: "-55px", cursor: "pointer" }}
+          style={{ marginLeft: "160px", marginTop: "-50px", cursor: "pointer" }}
         >
           <a
             href="/checkout"

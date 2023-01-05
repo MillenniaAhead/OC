@@ -78,13 +78,14 @@ const Checkout = () => {
         </div>
 
         <div
-          style={{ marginLeft: "160px", marginTop: "-40px", cursor: "pointer" }}
+          style={{ marginLeft: "160px", marginTop: "-33px", cursor: "pointer" }}
         >
-          <p className="py-2">To check out</p>
+          <p className="border-bottom-dark py-1 fw-bolder"
+            style={{width: '14%', color: 'black'}}>To check out</p>
         </div>
 
         <div
-          style={{ marginLeft: "290px", marginTop: "-55px", cursor: "pointer" }}
+          style={{ marginLeft: "290px", marginTop: "-50px", cursor: "pointer" }}
         >
           <a href="/products" className="text-secondary">
             Products
@@ -117,7 +118,7 @@ const Checkout = () => {
 
         <div
           style={{ marginLeft: "50px", background: "#F2F2F7", width: "750px" }}
-          className="row mt-2 py-1 rounded-2"
+          className="row mt-3 py-1 rounded-2"
         >
           <div style={{ width: "300px" }} className="col-md-5">
             <div className="input-group">

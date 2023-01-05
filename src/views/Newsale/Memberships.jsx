@@ -87,7 +87,8 @@ const Memberships = () => {
         <div
           style={{ marginLeft: "480px", marginTop: "-20px", cursor: "pointer" }}
         >
-          <a href="/memberships" className="text-secondary">
+          <a className="border-bottom-dark py-1 fw-bolder"
+            style={{width: '14%', color: 'black'}} href="/memberships">
             Memberships
           </a>
         </div>
@@ -102,7 +103,7 @@ const Memberships = () => {
 
         <div
           style={{ marginLeft: "50px", background: "#F2F2F7", width: "750px" }}
-          className="row mt-2 py-1 rounded-2"
+          className="row mt-3 py-1 rounded-2"
         >
           <div style={{ width: "350px" }} className="col-md-5">
             <div className="input-group">
