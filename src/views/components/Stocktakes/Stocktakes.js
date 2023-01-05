@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import StokTakesButton from './StokTakesButton'
+
 import StockTakesLayout from './StokTakeslayout/StockTakesLayout'
+import StockTakesModal from './StockTakesModal/StockTakesModal'
 
 const Stocktakes = () => {
   return (
@@ -13,8 +14,7 @@ const Stocktakes = () => {
 
             </div>
             <div className=''> 
-             <StokTakesButton />
-              
+                          <StockTakesModal />
             
             </div>
 

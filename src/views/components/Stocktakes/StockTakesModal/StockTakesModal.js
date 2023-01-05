@@ -1,14 +1,16 @@
 // ** React Imports
 import { Fragment, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // ** Reactstrap Imports
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import StockinfoCard from '../StokTakeslayout/StockinfoCard'
 
 const ModalConfig = [
 
   {
     id: 4,
-    btnTitle: 'Add New Product',
+    btnTitle: 'Add New ',
     modalTitle: 'save',
     modalClass: 'modal-lg'
   }
@@ -16,7 +18,7 @@ const ModalConfig = [
 
 ]
 
-const StockOrderModal = () => {
+const StockTakesModal = () => {
   // ** State
   const [modal, setModal] = useState(null)
 
@@ -47,7 +49,12 @@ const StockOrderModal = () => {
             {item.title}
           </ModalHeader>
           <ModalBody>
-          
+               <div className='text-center'>
+                <span className='text-secondary'>  Create a new stocktake </span>
+                <h3 className='mt-1'>Add the stocktake info</h3>
+                <p className='mt-1'>Start a full inventory count to keep accurate stock levels. <Link>Learn more </Link> </p>
+               </div>
+               <StockinfoCard />
           </ModalBody>
           <ModalFooter>
            
@@ -59,4 +66,4 @@ const StockOrderModal = () => {
 
   return <div className='demo-inline-spacing'>{renderModal}</div>
 }
-export default StockOrderModal
+export default StockTakesModal
