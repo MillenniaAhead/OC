@@ -9,6 +9,7 @@ import UiElementRoutes from './UiElements'
 import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 import ProductDetailsRoutes from './ProductDetails' 
+import ReviewStocktakesRoutes from './ReviewStocktakes'
 
 /*
 Customization Routes
@@ -18,6 +19,7 @@ import GroupRoutes from './Groups'
 import OrganizationRoutes from './Organization'
 
 import CountDetailsRoutes from './CountDetails'
+
 // ** Document title
 const TemplateTitle = '%s - Vuexy React Admin Template'
 
@@ -43,7 +45,9 @@ const Routes = [
   ...TablesRoutes,
   ...ChartsRoutes,
   ...ProductDetailsRoutes,
-  ...CountDetailsRoutes
+  ...CountDetailsRoutes,
+  ...ReviewStocktakesRoutes
+
   
 ]
 
