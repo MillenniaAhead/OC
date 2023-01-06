@@ -64,7 +64,7 @@ const StepOne = () => {
         <div className="btns-wrapper">
           <div className="left-side">
             <div className="cross-symbol">
-              <NavLink to="/navigationpromote">
+              <NavLink to="/promote/deals">
                 <X size={45} strokeWidth={1} style={{color:'black'}} />
               </NavLink>
             </div>

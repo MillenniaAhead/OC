@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import Progress from "./Progress"
 import { NavLink, useHistory } from "react-router-dom"
 import Flatpickr from "react-flatpickr"
-import { Modal, ModalBody, Button } from "reactstrap"
-import { X } from "react-feather"
+import { Modal, ModalBody, Button, Alert, ModalHeader } from "reactstrap"
+import { Search, X } from "react-feather"
 import { useDispatch } from "react-redux"
 import { bindActionCreators } from "redux"
 import { actionCreators } from "./promoteRedux"
@@ -11,7 +11,11 @@ import { actionCreators } from "./promoteRedux"
 const StepTwo = () => {
   //For required field
   const [redStyle, setRedStyle] = useState({ display: "none" })
-  const [redBox, setRedBox] = useState({ border: "1px solid #d9d9d9", bordeRadius:"4px" })
+  const [redStyle2, setRedStyle2] = useState({ display: "none" })
+  const [redStyle3, setRedStyle3] = useState({ display: "none" })
+  const [redBox, setRedBox] = useState()
+  const [redBox2, setRedBox2] = useState()
+  const [redBox3, setRedBox3] = useState()
 
   //For modals
   const [centeredModal1, setCenteredModal1] = useState(false)
@@ -57,6 +61,15 @@ const StepTwo = () => {
 
    //For checked or unchecked toggle2
    const [toggle2, setToggle2] = useState(false)
+   
+   //For checked or unchecked toggle3
+   const [toggle3, setToggle3] = useState(false)
+
+   //For alert compo.
+  const [visible1, setVisible1] = useState(false)
+  const [visible2, setVisible2] = useState(false)
+  const [visible3, setVisible3] = useState(false)
+
 
   //For add and remove products 
   const addProduct = (event) => {
@@ -103,16 +116,20 @@ const StepTwo = () => {
     setPromotionDetail({...promotionDetail, [current.target.name]:current.target.value})
     // alert gone (name)
     setRedStyle({display:'none'})
-    setRedBox({border: "1px solid #d9d9d9", borderRadius:'4px'})
+    setRedBox()
   }
   
   //For input fields
   const maxUse = (e) => {
-    setMaxUseValue(e.target.value)
+    setMaxUseValue(e.target.value.toString())
+    setRedBox2()
+    setRedStyle2({display:'none'})
   }
   
   const minPurchaseFun = (e) => {
-    setMinPurchaseValue(e.target.value)
+    setMinPurchaseValue(e.target.value.toString())
+    setRedBox3()
+    setRedStyle3({display:'none'})
   }
   
   //For togglers
@@ -120,34 +137,44 @@ const StepTwo = () => {
     if (toggle2 !== true) {
       setToggle1(!toggle1)
     } else {
-      alert('Limit total number of uses is checked')
+      setVisible1(true)
+      setTimeout(() => {
+        setVisible1(false)
+      }, 3000)
       setToggle1(false)
     }
   }
   const toggler2 = () => {
-    if (toggle1 === true) {
+    if (toggle1) {
       setToggle2(false)
-      alert('Limit to one use per client is checked')
+      setVisible2(true)
+      setTimeout(() => {
+        setVisible2(false)
+      }, 3000)
     } else {
-    if (block1.display === 'none') {
+    if (!toggle2) {
       setBlock1({display:'block'})
       setToggle2(true)
+      setMaxUseValue("")
     } else {
       setBlock1({display:'none'})
       setToggle2(false)
-    }
-    if (toggle1 === false) {
-      setMaxUseValue('no-limit')
-    } else {
-      setMaxUseValue(1)
+      setMaxUseValue("no-limits")
+      setRedBox2()
+      setRedStyle2({display:'none'})
     }
   }
-  }
+}
   const toggler3 = () => {
-    if (block2.display === 'none') {
+    setToggle3(!toggle3)
+    if (!toggle3) {
       setBlock2({display:'block'})
+      setMinPurchaseValue("")
     } else {
+      setMinPurchaseValue("no-limits")
       setBlock2({display:'none'})
+      setRedBox3()
+      setRedStyle3({display:'none'})
     }
   }
 
@@ -162,10 +189,30 @@ const StepTwo = () => {
 
   //On next step click
   const formHandle = () => {
+    console.log(maxUseValue.toString())
+    console.log(minPurchaseValue.toString())
     if (promotionDetail.name === "") {
       //Show alert (name)
       setRedStyle({ display: "block" })
-      setRedBox({ border: "1px solid red", bordeRadius:'4px' })
+      setRedBox({ border: "1px solid red"})
+      setVisible3(true)
+      setTimeout(() => {
+        setVisible3(false)
+      }, 3000)
+    } else if (maxUseValue === "") {
+      setRedBox2({border:'1px solid red'})
+      setRedStyle2({display:'block'})
+      setVisible3(true)
+      setTimeout(() => {
+        setVisible3(false)
+      }, 3000)
+    } else if (minPurchaseValue === "") {
+      setRedBox3({border:'1px solid red'})
+      setRedStyle3({display:'block'})
+      setVisible3(true)
+      setTimeout(() => {
+        setVisible3(false)
+      }, 3000)
     } else {
       //Navigate
       nextStep.push("/promote/stepthree")
@@ -188,9 +235,9 @@ const StepTwo = () => {
       <div className="head-component-wrapper">
         <div className="head-container">
           <div className="btns-wrapper">
-            <div className="left-side">
+            <div className="left-side left-side-a5">
               <div onClick={Clear} className="cross-symbol">
-                <NavLink to="/navigationpromote">
+                <NavLink to="/promote/deals">
                 <X size={45} strokeWidth={1} style={{color:'black'}} />
                 </NavLink>
               </div>
@@ -211,6 +258,27 @@ const StepTwo = () => {
           <div className="progress-wrapper">
             <Progress width="50%" />
           </div>
+          <div className="my-alert-comp">
+         <Alert isOpen={visible1}>
+           <div className='alert-body text-center'>
+           Limit total number of uses is checked
+           </div>
+         </Alert>
+         </div>
+          <div className="my-alert-comp">
+         <Alert color='danger' isOpen={visible2}>
+           <div className='alert-body text-center'>
+           Limit to one use per client is checked
+           </div>
+         </Alert>
+          <div className="my-alert-comp">
+         <Alert color='danger' isOpen={visible3}>
+           <div className='alert-body text-center'>
+           Please fill all required fields
+           </div>
+         </Alert>
+         </div>
+         </div>
         </div>
       </div>
       <div className="step-two-body-container">
@@ -235,7 +303,6 @@ const StepTwo = () => {
               </div>
               <div
                 className="detail-container"
-                style={{ padding: "24px 32px" }}
               >
                 <div className="input-wrapper">
                   <div className="name-input">
@@ -305,8 +372,11 @@ const StepTwo = () => {
                         toggle={() => setCenteredModal1(!centeredModal1)}
                         className="modal-dialog-centered"
                       >
-                        <ModalBody>
-                          <h2>Select services</h2>
+          <ModalHeader toggle={() => setCenteredModal1(!centeredModal1)}><div className="modal-option-heading-a5">Select services</div></ModalHeader>
+                        <ModalBody className="my-modal-a5">
+                          <div className="modal-option-search-box-wrapper-a5">
+                          <div className="modal-option-search-box-a5 w-100"><div className="madal-option-search-a5"><Search/></div><span><input className="modal-option-input-a5"/></span></div>
+                          </div>
                           <div className="select-box-mini">
                             <label
                               className="edit-list-label"
@@ -321,7 +391,25 @@ const StepTwo = () => {
                                 readOnly
                               />
                             </label>
-                            <div className="list-item-names">service1</div>
+                            <div className="list-item-names-d5">All services</div>
+                          </div>
+                          <div className="select-box-mini">
+                            <label
+                              className="edit-list-label"
+                              htmlFor="service"
+                            >
+                              <input
+                                className="edit-checkbox"
+                                type="checkbox"
+                                name="service1"
+                                value="service1"
+                                onClick={addService}
+                                readOnly
+                              />
+                            </label>
+                            <div>
+                            <div className="list-item-names-b5">Hair</div>
+                            </div>
                           </div>
                           <div className="select-box-mini">
                             <label
@@ -337,7 +425,10 @@ const StepTwo = () => {
                                 readOnly
                               />
                             </label>
-                            <div className="list-item-names">service2</div>
+                            <div>
+                            <div className="list-item-names-a5">Haircut</div>
+                            <div className="list-item-names-c5">30 min</div>
+                            </div>
                           </div>
                           <div className="select-box-mini">
                             <label
@@ -353,15 +444,55 @@ const StepTwo = () => {
                                 readOnly
                               />
                             </label>
-                            <div className="list-item-names">service3</div>
+                            <div>
+                            <div className="list-item-names-a5">Beard Trim</div>
+                            <div className="list-item-names-c5">30 min</div>
+                            </div>
                           </div>
-                          <div className="d-flex justify-content-center">
+                          <div className="select-box-mini">
+                            <label
+                              className="edit-list-label"
+                              htmlFor="service"
+                            >
+                              <input
+                                className="edit-checkbox"
+                                type="checkbox"
+                                name="service3"
+                                value="service3"
+                                onClick={addService}
+                                readOnly
+                              />
+                            </label>
+                            <div>
+                            <div className="list-item-names-b5">Brows & Lashes</div>
+                            </div>
+                          </div>
+                          <div className="select-box-mini">
+                            <label
+                              className="edit-list-label"
+                              htmlFor="service"
+                            >
+                              <input
+                                className="edit-checkbox"
+                                type="checkbox"
+                                name="service3"
+                                value="service3"
+                                onClick={addService}
+                                readOnly
+                              />
+                            </label>
+                            <div>
+                            <div className="list-item-names-a5">Classic Fill</div>
+                            <div className="list-item-names-c5">1 h</div>
+                            </div>
+                          </div>
+                          <div className="d-flex justify-content-center mt-1">
                             <Button.Ripple
                               color="dark me-1"
                               onClick={() => setCenteredModal1(!centeredModal1)}
                               outline
                             >
-                              cancel
+                              close
                             </Button.Ripple>
                             <Button
                               color="dark"
@@ -390,8 +521,11 @@ const StepTwo = () => {
                         toggle={() => setCenteredModal1(!centeredModal2)}
                         className="modal-dialog-centered"
                       >
+          <ModalHeader toggle={() => setCenteredModal2(!centeredModal2)}><div className="modal-option-heading-a5">Select products</div></ModalHeader>
                         <ModalBody>
-                          <h2>Select products</h2>
+                          <div className="modal-option-search-box-wrapper-a5">
+                          <div className="modal-option-search-box-a5 w-100"><div className="madal-option-search-a5"><Search/></div><span><input className="modal-option-input-a5"/></span></div>
+                          </div>
                           <div className="select-box-mini">
                             <label
                               className="edit-list-label"
@@ -406,7 +540,23 @@ const StepTwo = () => {
                                 readOnly
                               />
                             </label>
-                            <div className="list-item-names">product1</div>
+                            <div className="list-item-names-d5">All products</div>
+                          </div>
+                          <div className="select-box-mini">
+                            <label
+                              className="edit-list-label"
+                              htmlFor="product"
+                            >
+                              <input
+                                className="edit-checkbox"
+                                type="checkbox"
+                                name="product1"
+                                value="product1"
+                                onClick={addProduct}
+                                readOnly
+                              />
+                            </label>
+                            <div className="list-item-names-a5">product1</div>
                           </div>
                           <div className="select-box-mini">
                             <label
@@ -422,7 +572,7 @@ const StepTwo = () => {
                                 readOnly
                               />
                             </label>
-                            <div className="list-item-names">product2</div>
+                            <div className="list-item-names-a5">product2</div>
                           </div>
                           <div className="select-box-mini">
                             <label
@@ -438,15 +588,15 @@ const StepTwo = () => {
                                 readOnly
                               />
                             </label>
-                            <div className="list-item-names">product3</div>
+                            <div className="list-item-names-a5">product3</div>
                           </div>
-                          <div className="d-flex justify-content-center">
+                          <div className="d-flex justify-content-center mt-1">
                             <Button.Ripple
                               color="dark me-1"
                               onClick={() => setCenteredModal2(!centeredModal2)}
                               outline
                             >
-                              cancel
+                              close
                             </Button.Ripple>
                             <Button
                               color="dark"
@@ -475,8 +625,11 @@ const StepTwo = () => {
                         toggle={() => setCenteredModal3(!centeredModal3)}
                         className="modal-dialog-centered"
                       >
+          <ModalHeader toggle={() => setCenteredModal3(!centeredModal3)}><div className="modal-option-heading-a5">Select memberships</div></ModalHeader>
                         <ModalBody>
-                          <h2>Select products</h2>
+                          <div className="modal-option-search-box-wrapper-a5">
+                          <div className="modal-option-search-box-a5 w-100"><div className="madal-option-search-a5"><Search/></div><span><input className="modal-option-input-a5"/></span></div>
+                          </div>
                           <h1 className="mt-4 mb-4 text-center">
                             No Membership found
                           </h1>
@@ -486,7 +639,7 @@ const StepTwo = () => {
                               onClick={() => setCenteredModal3(!centeredModal3)}
                               outline
                             >
-                              cancel
+                              close
                             </Button.Ripple>
                             <Button
                               color="dark"
@@ -515,8 +668,11 @@ const StepTwo = () => {
                         toggle={() => setCenteredModal4(!centeredModal4)}
                         className="modal-dialog-centered"
                       >
+          <ModalHeader toggle={() => setCenteredModal4(!centeredModal4)}><div className="modal-option-heading-a5">Select vouchers</div></ModalHeader>
                         <ModalBody>
-                          <h2>Select products</h2>
+                          <div className="modal-option-search-box-wrapper-a5">
+                          <div className="modal-option-search-box-a5 w-100"><div className="madal-option-search-a5"><Search/></div><span><input className="modal-option-input-a5"/></span></div>
+                          </div>
                           <h1 className="mt-4 mb-4 text-center">
                             No voucher found
                           </h1>
@@ -526,7 +682,7 @@ const StepTwo = () => {
                               onClick={() => setCenteredModal4(!centeredModal4)}
                               outline
                             >
-                              cancel
+                              close
                             </Button.Ripple>
                             <Button
                               color="dark"
@@ -579,10 +735,10 @@ const StepTwo = () => {
                   <p className="text-e5" style={{ marginBottom: "5px" }}>
                     Promotion value
                   </p>
-                  <div className="box-container-wrapper d-flex flex-column">
+                  <div className="box-container-wrapper">
                     <div className="box-container">
                       <div className="box-1">
-                        <div>
+                        <div className="promotion-value-type">
                           {promotionValueType}
                         </div>
                         <input
@@ -595,7 +751,6 @@ const StepTwo = () => {
                       <div className="box-2">
                         <button
                           style={{
-                            marginLeft: "5px",
                             borderRadius: "4px 0 0 4px",
                             background:`${color1}`,
                             borderWidth:'1px 0 1px 1px'
@@ -679,7 +834,10 @@ const StepTwo = () => {
                     </div>
                     <div style={block1} className='block-input-box'>
                       <div className="text-k5">Max uses</div>
-                      <div className='input-field-a max-uses'><input type="number" onChange={maxUse} value={maxUseValue}/></div>
+                      <div className='input-field-a max-uses' style={redBox2}><input type="number" onChange={maxUse} value={maxUseValue}/></div>
+                      <p style={redStyle2} className="text-a5">
+                        This field is required
+                      </p>
                       </div>
                     <div className="dabba3 dabba">
                       <div className="toggle-btn">
@@ -692,6 +850,7 @@ const StepTwo = () => {
                        style={{ width: "48px", height: "24px" }}
                        value='Set minimum purchase amount'
                        onClick={toggler3}
+                       checked={toggle3}
                        readOnly
                      />
                      <label
@@ -710,7 +869,10 @@ const StepTwo = () => {
                     </div>
                     <div style={block2} className='block-input-box'>
                       <div className="text-k5">Minimum purchase amount</div>
-                      <div className='input-field-a'><div className='myspan-a'>INR</div><input type="number" value={minPurchaseValue} placeholder='100' onChange={minPurchaseFun}/></div>
+                      <div className='input-field-a' style={redBox3}><div className='myspan-a'>INR</div><input type="number" value={minPurchaseValue} placeholder='100' onChange={minPurchaseFun}/></div>
+                      <p style={redStyle3} className="text-a5">
+                        This field is required
+                      </p>
                       </div>
                   </div>
                 </div>

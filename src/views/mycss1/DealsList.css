@@ -1,9 +1,10 @@
 /* ############################# DealList.js */
 
 .my-deal-box {
-    padding: 24px;
+    padding: 15px;
     border: 1px solid #d9d9d9;
     border-radius: 8px;
+    margin-top: 20px;
   }
   .my-deal-box:hover {
     cursor: pointer;
@@ -11,7 +12,6 @@
   }
   .image-a div img {
     width: 18px;
-  
   }
   .image-a div {
     background-color: #1bb70b4d;
@@ -33,12 +33,15 @@
     margin-top: 2px;
     color:rgba(0, 0, 0, 0.4)
   }
+  .deals-list-wrapper{
+    padding:8px;
+  }
   .list-right-side {
     display: flex;
     align-items: center;
   }
   .list-right-side .status p {
-    line-height: 1.42857143;
+    line-height:17px;
     font-size: 14px;
     font-weight: normal;
     background: #1bb70b4d;
@@ -58,4 +61,46 @@
   .three-dot {
     margin-left: 32px;
   }
-  
+  .list-right-side-3{
+    display: none;
+  }
+  @media (max-width:850px){
+    .top-right, .my-filter-deals{
+      display: none;
+    }
+    .deals-filter-icon{
+      width: 14px;
+    }
+    .filter-deals{
+      padding:3px;
+      border-radius: 8px;
+    }
+   .top-box-2{
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+   }
+   .list-right-side-2{
+    display: none;
+   }
+   .status p{
+    margin-bottom: 0;
+  }
+}
+@media (max-width:850px) and (min-width:700px){
+    .my-deal-box{
+     padding:10px;
+     margin-bottom: 15px;
+    }
+    .list-right-side-3{
+      display:flex;
+    }
+  }
+
+  @media (max-width:700px) {
+    .list-right-side-3{
+      display:flex;
+      justify-content: space-between;
+    }
+  }

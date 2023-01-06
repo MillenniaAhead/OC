@@ -95,3 +95,37 @@
 .google-image{
     justify-content: center;
 }
+.top-content{
+    display: flex;
+    justify-content: space-between;
+}
+.right-side-a p{
+    width:fit-content
+}
+/* style={{width:"260px", minHeight:"185px", flexShrink:"0.3"}} */
+.image-box-b{
+    width:300px;
+    height:225px;
+}
+@media (max-width:850px){
+    .box-a29{
+        flex-direction: column;
+      }
+      .top-content{
+        display: block;
+      }
+      .image-box-b{
+        border:none;
+        height:120px;
+        width:fit-content;
+      }
+      .integrations-wrapper{
+        padding: 10px;
+      }
+      .box-content{
+        padding: 20px;
+      }
+      .modal-lg{
+        min-width:100%;
+    }
+}

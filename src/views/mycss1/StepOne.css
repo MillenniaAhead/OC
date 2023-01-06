@@ -60,7 +60,6 @@ p {
 }
 .step-one-heading-box,
 .step-two-heading-box {
-  /* border:1px solid red; */
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -136,4 +135,39 @@ p {
   font-weight: 700;
   line-height: 18px;
   background: rgba(217, 217, 217, 0.6);
+}
+@media (max-width:600px) {
+  .deal-type{
+    width:95%;
+    height:auto;
+    margin: auto;
+    margin-bottom: 6%;
+    padding:4%;
+  }
+  .deal-types-container{
+    width:100%;
+    height: auto;
+  }
+  .deal-types-container-a{
+    width: 100%;
+    height:auto
+  }
+  .step-one-body-wrapper,
+  .step-two-body-wrapper {
+   flex-shrink: 1;
+  }
+}
+@media (max-width:850px) {
+  .btns-wrapper{
+    justify-content: end;
+  }
+  .next-step-btn a,.next-step-btn div{
+    position:fixed;
+    width:96%;
+    bottom: 2%;
+    left:2.5%;
+  }
+  .deal-types-container{
+    margin-bottom:80px;
+  }
 }

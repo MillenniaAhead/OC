@@ -71,3 +71,16 @@ h3{
     color:#1bb70b;
     padding-right: 5px;
 }
+
+@media (max-width:700px){
+    .step-four-body{
+        width:96%;
+      height:auto;
+      margin:auto;
+      margin-bottom: 5%;
+    }
+    .promotion-detail-box{
+        margin:18px 10px;
+        padding:18px 10px;
+      }
+}

@@ -8,6 +8,6 @@ export default [
         id: 'NavigationPromote',
         title: 'NavigationPromote',
         icon: <Check/>,
-        navLink:'/navigationpromote'
+        navLink:'/promote/deals'
     }
 ]

@@ -9,6 +9,9 @@
     opacity: 1;
     padding:16px 8px 8px 8px;
   }
+  .promote-text-wrapper-2{
+    padding:8px 16px;
+  }
   .promote-text-wrapper{
     padding:8px 16px;
   }
@@ -36,4 +39,15 @@
     border:none;
     width:100%;
     margin-top:4px;
+  }
+
+  @media all and (max-width : 850px){
+    .side-menu-container,.side-menu-toggler-arrow{
+      display:none
+    }
+  }
+  @media all and (min-width : 850px){
+    .side-menu-wrapper-2{
+      display:none
+    }
   }

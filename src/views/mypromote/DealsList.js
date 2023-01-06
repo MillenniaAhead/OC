@@ -5,7 +5,8 @@ import '../mycss1/DealsList.css'
 
 const DealsList = () => {
   return (
-    <div className="mb-3 my-deal-box d-flex justify-content-between">
+    <>
+    <div className="my-deal-box d-flex justify-content-between">
         <div className='d-flex '>
         <div className='image-a'>
             <div>
@@ -13,12 +14,18 @@ const DealsList = () => {
             </div>
         </div>
         <div className="list-detail-a">
-            <p className='text-n'>Name</p>
-            <p className='text-o'>x % discount for service and product</p>
-            <p className='text-o'>20 dec 2022</p>
+            <p className='text-n'>promotion Deal</p>
+            <p className='text-o'>10% discount for all services and products</p>
+            <p className='text-o'>20 dec 2022 to outgoing</p>
+        <div className='list-right-side list-right-side-3'>
+        <div className='status'><p>STATUS</p></div>
+        <div className='three-dot'>
+            <MoreVertical/>
         </div>
         </div>
-        <div className='list-right-side'>
+        </div>
+        </div>
+        <div className='list-right-side list-right-side-2'>
         <div className='status'><p>STATUS</p></div>
         <div className='total-sales'>
             <p className='text-p'>Total sales</p>
@@ -29,6 +36,8 @@ const DealsList = () => {
         </div>
         </div>
     </div>
+        <div className='d-flex justify-content-center mt-1'>1 of 1</div>
+        </>
   )
 }
 

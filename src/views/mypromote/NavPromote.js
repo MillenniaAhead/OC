@@ -4,41 +4,52 @@ import Integrations from "./Integrations"
 import { ChevronLeft } from 'react-feather'
 
 const NavPromote = () => {
-  const [styleOne, setstyleOne] = useState({ justifyContent: "flex-end" })
 
   //For side menu
-  const [styleTwo, setstyleTwo] = useState({ display: "block" })
+  const [styleTwo, setstyleTwo] = useState({display:'block'})
   const [styleThree, setstyleThree] = useState()
   const [styleFour, setstyleFour] = useState({position: "relative", left: "-50%"})
+  const [styleFive, setStyleFive] = useState({mode:true})
+  const [styleSix, setStyleSix] = useState({display:'none'})
 
   //For menu btn
-  const [dealsStyle, setDealsStyle] = useState({background:"rgba(27, 183, 11, 0.3)"})
-  const [integrationsStyle, setIntegrationsStyle] = useState({})
   const [component, setcomponent] = useState(true)
+  const [component2, setcomponent2] = useState(true)
 
   //On click of Deals
   const showDeals = () => {
     setcomponent(true)
-    setDealsStyle({background:"rgba(27, 183, 11, 0.3)"})
-    setIntegrationsStyle({})
   }
   //On click of Integration
   const showIntegrations = () => {
     setcomponent(false)
-    setDealsStyle({})
-    setIntegrationsStyle({background:"rgba(27, 183, 11, 0.3)"})
+  }
+  
+  //On click of Deals
+  const showDeals2 = () => {
+    setcomponent2(true)
+    setStyleSix({display:'block'})
+    if (styleFive.mode === true) {
+      setStyleFive({display:'none'})
+    }
+  }
+  //On click of Integration
+  const showIntegrations2 = () => {
+    setcomponent2(false)
+    setStyleSix({display:'block'})
+    if (styleFive.mode === true) {
+      setStyleFive({display:'none'})
+    }
   }
 
   //On Click of arrow circle
   const toggleSideBar = () => {
     if (styleTwo.display === "block") {
       setstyleTwo({ display: "none" })
-      setstyleOne({ justifyContent: "space-around" })
       setstyleThree({ transform: "rotate(180deg)" })
       setstyleFour({ position: "relative", left: "0" })
     } else {
       setstyleTwo({ display: "block" })
-      setstyleOne({ justifyContent: "flex-end" })
       setstyleThree()
       setstyleFour({ position: "relative", left: "-50%" })
     }
@@ -52,16 +63,31 @@ const NavPromote = () => {
               <p className="promote-text">Promote</p>
             </div>
             <div className="links-wrapper">
-              <button style={dealsStyle} className="deals-link " onClick={showDeals}>
+              <button className="deals-link " onClick={showDeals}>
                 Deals
               </button>
-              <button style={integrationsStyle} className="integrations-link " onClick={showIntegrations}>
+              <button className="integrations-link " onClick={showIntegrations}>
                 Integrations
               </button>
             </div>
           </div>
         </div>
-        <div>
+        <div className="side-menu-wrapper-2 w-100"  style={styleFive}>
+          <div className="side-menu-container-2 w-100">
+            <div className="promote-text-wrapper-2">
+              <p className="promote-text text-center">Promote</p>
+            </div>
+            <div className="links-wrapper">
+              <button className="deals-link " onClick={showDeals2}>
+                Deals
+              </button>
+              <button className="integrations-link " onClick={showIntegrations2}>
+                Integrations
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className='side-menu-toggler-arrow'>
           <button
             className="side-menu-toggle"
             style={styleFour}
@@ -73,7 +99,18 @@ const NavPromote = () => {
         <div className="deals-component-wrapper">
           {component ? (
             <div>
-              <Deals styleOne={styleOne}/>
+              <Deals/>
+            </div>
+          ) : (
+            <div>
+              <Integrations />
+            </div>
+          )}
+        </div>
+        <div className="deals-component-wrapper-2" style={styleSix}>
+          {component2 ? (
+            <div>
+              <Deals/>
             </div>
           ) : (
             <div>

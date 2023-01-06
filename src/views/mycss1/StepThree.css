@@ -2,7 +2,6 @@
 .how-to-apply-promotion-container{
     width:678px;
     min-height:185px;
-    /* border:2px solid blue; */
     border:1px solid #D9D9D9;
     border-radius: 8px;
   }
@@ -42,11 +41,34 @@
     color:rgba(0, 0, 0, 0.7)
   }
   .box-a22{
-    padding:10px;
+    padding:2px;
     border:1px solid #d9d9d9;
-    width:50%;
+    width:fit-content;
     border-radius:4px;
   }
   .box-a22 input{
     font-size: 1.2rem;
+    padding: 8px;
+  }
+  .my-alert-comp{
+    width:40%;
+    position: fixed;
+    top:1%;
+    left:30%;
+    background-color: rgb(252, 111, 111);
+  }
+  @media (max-width:700px){
+    .how-to-apply-promotion-container{
+      width:96%;
+      height:auto;
+      margin:auto;
+      margin-bottom: 15%;
+    }
+    .my-alert-comp{
+      width:80%;
+      left:10%;
+    }
+    .how-to-apply-promotion-wrapper{
+      padding:18px 10px;
+    }
   }

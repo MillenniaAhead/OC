@@ -2,8 +2,12 @@ import { lazy } from 'react'
 
 const RoutePromote = [
     {
-        path: '/navigationpromote',
-        component: lazy(() => import('../../views/mypromote/NavPromote'))
+        path: '/promote/deals',
+        component: lazy(() => import('../../views/mypromote/Deals'))
+    },
+    {
+        path: '/promote/integrations',
+        component: lazy(() => import('../../views/mypromote/Integrations'))
     },
     {
         path: '/promote/stepone',

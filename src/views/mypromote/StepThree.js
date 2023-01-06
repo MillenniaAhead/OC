@@ -10,7 +10,7 @@ import { Alert } from 'reactstrap'
 const StepThree = () => {
 
   //For discountcode
-  const [discountCodeValue, setDiscountCodeValue] = useState(null)
+  const [discountCodeValue, setDiscountCodeValue] = useState("")
   //For togglers
   const [applyPromotion1, setApplyPromotion1] = useState('Enable promotionat point of sale')
   const [applyPromotion2, setApplyPromotion2] = useState(false)
@@ -18,6 +18,7 @@ const StepThree = () => {
   const [block1, setBlock1] = useState({display:'none'})
   //For alert compo
   const [visible, setVisible] = useState(false)
+  const [visible2, setVisible2] = useState(false)
   //For required
   const [style1, setStyle1] = useState({display:'none'})
   const [style2, setStyle2] = useState()
@@ -45,6 +46,8 @@ const StepThree = () => {
     if (toggle2) {
       setBlock1({display:'none'})
       setApplyPromotion2(false)
+      setStyle1({display:'none'})
+      setStyle2()
     } else {
       setBlock1({display:'block'})
       setApplyPromotion2('Enable discount code')
@@ -63,9 +66,13 @@ const StepThree = () => {
    const nextBtnFun = () => {
     //Checked both option
     if (toggle1 && toggle2) {
-      if (discountCodeValue === null) {
+      if (discountCodeValue === "") {
         setStyle1({display:'block', color:'red'})
         setStyle2({border:'1px solid red'})
+        setVisible2(true)
+        setTimeout(() => {
+          setVisible2(false)
+        }, 3000)
       } else {
         StoreDealData([{promotion:applyPromotion1}, {promotion:applyPromotion2, discount_code:discountCodeValue}])
       history.push('/promote/stepFour')
@@ -76,9 +83,13 @@ const StepThree = () => {
     history.push('/promote/stepFour')
     //Checked option2
   } else if (toggle2 && !toggle1) {
-    if (discountCodeValue === null) {
+    if (discountCodeValue === "") {
       setStyle1({display:'block', color:'red'})
       setStyle2({border:'1px solid red'})
+      setVisible2(true)
+        setTimeout(() => {
+          setVisible2(false)
+        }, 3000)
     } else {
       StoreDealData({promotion:applyPromotion2, discount_code:discountCodeValue})
       history.push('/promote/stepFour')
@@ -86,6 +97,9 @@ const StepThree = () => {
     //Nothing checked
     } else {
       setVisible(true)
+      setTimeout(() => {
+        setVisible(false)
+      }, 3000)
     }
    }
 
@@ -104,9 +118,9 @@ const StepThree = () => {
       <div className="head-container-wrapper">
         <div className="head-container">
         <div className="btns-wrapper">
-          <div className="left-side">
+          <div className="left-side left-side-a5">
             <div onClick={Clear} className="cross-symbol">
-              <NavLink to="/navigationpromote">
+              <NavLink to="/promote/deals">
                 <X size={45} strokeWidth={1} style={{color:'black'}} />
               </NavLink>
             </div>
@@ -125,10 +139,17 @@ const StepThree = () => {
         </div>
       </div>
       </div>
-      <div className="my-alert-comp" style={{width:'30%', margin:'auto'}}>
-      <Alert color='danger' isOpen={visible} toggle={() => setVisible(false)}>
+      <div className="my-alert-comp">
+      <Alert color='danger' isOpen={visible}>
         <div className='alert-body text-center'>
         Please enable at least one option
+        </div>
+      </Alert>
+      </div>
+      <div className="my-alert-comp">
+      <Alert color='danger' isOpen={visible2}>
+        <div className='alert-body text-center'>
+        Please fill all required fields
         </div>
       </Alert>
       </div>
@@ -159,6 +180,7 @@ const StepThree = () => {
                       style={{width:"48px", height:"24px"}}
                       onClick={toggler1Fun}
                       checked={toggle1}
+                      readOnly
                     />
                     <label
                       className="form-check-label"
@@ -185,6 +207,7 @@ const StepThree = () => {
                       style={{width:"48px", height:"24px"}}
                       onClick={toggler2Fun}
                       checked={toggle2}
+                      readOnly
                     />
                     <label
                       className="form-check-label"
