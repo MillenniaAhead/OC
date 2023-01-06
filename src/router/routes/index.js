@@ -16,6 +16,8 @@ Customization Routes
 import OverviewRoutes from './Overview'
 import GroupRoutes from './Groups'
 import OrganizationRoutes from './Organization'
+
+import CountDetailsRoutes from './CountDetails'
 // ** Document title
 const TemplateTitle = '%s - Vuexy React Admin Template'
 
@@ -40,7 +42,9 @@ const Routes = [
   ...FormRoutes,
   ...TablesRoutes,
   ...ChartsRoutes,
-  ...ProductDetailsRoutes
+  ...ProductDetailsRoutes,
+  ...CountDetailsRoutes
+  
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }
