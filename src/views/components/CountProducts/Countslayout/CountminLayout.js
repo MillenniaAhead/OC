@@ -14,7 +14,8 @@ const CountminLayout = () => {
       </InputGroup>
      
             </div>
-            <div class="d-flex  justify-content-start  gap-2 ">
+        <div>
+                  <div class="d-flex  justify-content-start  gap-2 ">
                  <div class="">
                  <Button color='relief-success' className='round'>All</Button>
                 </div>
@@ -25,6 +26,15 @@ const CountminLayout = () => {
                 Counted (0)
                  </Button.Ripple>
             </div>
+            <div class="d-flex justify-content-between mt-2">
+                <div>Product name</div>
+                 <div class="d-flex gap-1">
+                     <div>Expected</div>
+                     <div>Counted</div>
+                 </div>
+            </div>
+            <hr></hr>
+        </div>
         </div>
        
     </div>
