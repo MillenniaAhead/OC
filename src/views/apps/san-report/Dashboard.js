@@ -62,19 +62,18 @@
 //         <div id="dashboard-container">
 //             <div className='text-eee1'>Dashboard</div>
 //             <div className='text-fff1'>Track and manage your business stats here. <NavLink to='#'>Learn more</NavLink></div>
-//             <div className='d-flex' style={{margin:'32px 0'}}>
+//             <div className='my-top-xxx1'>
 //       <Flatpickr
-//         style={{width:'330px', border:'1px solid #d9d9d9'}}
 //         value={picker}
 //         id='range-picker'
-//         className='form-control text-ddd1'
+//         className='date-picker-aaa1'
 //         onChange={date => setPicker(date)}
 //         options={{
 //           mode: 'range',
 //           defaultDate: ['2020-02-01', '2020-02-15']
 //         }}
 //       />
-//       <button style={{width:'150px'}} className="filter-deals"><div className="d-flex justify-content-center align-items-center"><span className='text-ddd1'>Filter</span><Filter size={20}/>
+//       <button className="filter-deals filter-aaa1"><div className="d-flex justify-content-center align-items-center"><span className='text-ddd1'>Filter</span><Filter size={20}/>
 //       </div>
 //       </button>
 //       </div>

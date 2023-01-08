@@ -2,22 +2,29 @@ import React from 'react'
 import '../mycss2/PaymentSummary.css'
 import SideMenu from '../ReportsSideMenu'
 import {  UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import { ArrowLeft} from 'react-feather'
+import { NavLink } from 'react-router-dom'
 
 const PaymentSummary = () => {
 
     return (
-        <div id='report-container' className='h-100 d-flex'>
+        <div className='h-100 report-container'>
+       <div className="side-menu-wrapper-aaa3">
       <SideMenu link1='/san-reports/dashboard' link2='/san-reports/reports' />
+      </div>
+      <div className="side-menu-wrapper-aaa4">
+        <NavLink to='/san-reports/reports'><ArrowLeft/></NavLink>
+      </div>
         <div id='payment-summary-container' className='w-100'>
             <div>
-                <div className='d-flex justify-content-between'>
+                <div className='top-box-xxx2'>
                     <div>
                 <span className='text-aaa3 pe-1'>Reports</span>
                 <span className='text-bbb3'>Outstanding invoices</span>
                 <div className='text-ccc3'>Outstanding invoices</div>
                 </div>
                 <div>
-                <UncontrolledButtonDropdown className='me-2'>
+                <UncontrolledButtonDropdown>
               <DropdownToggle outline color='dark' size='lg' caret>
                 Export
               </DropdownToggle>

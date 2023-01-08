@@ -2,25 +2,30 @@ import React, {useState} from 'react'
 import Flatpickr from 'react-flatpickr'
 import { NavLink } from 'react-router-dom'
 import SideMenu from '../ReportsSideMenu'
+import { ArrowLeft} from 'react-feather'
 
 const FinancesSummary = () => {
 
     const [picker, setPicker] = useState(new Date())
 
   return (
-    <div id='report-container' className='h-100 d-flex'>
-    <SideMenu link1='/san-reports/dashboard' link2='/san-reports/reports' />
+    <div className='h-100 report-container'>
+     <div className="side-menu-wrapper-aaa3">
+      <SideMenu link1='/san-reports/dashboard' link2='/san-reports/reports' />
+      </div>
+      <div className="side-menu-wrapper-aaa4">
+        <NavLink to='/san-reports/reports'><ArrowLeft/></NavLink>
+      </div>
     <div id='finances-summary-container' className='w-100'>
       <div>
         <span className='text-aaa3 pe-1'>Reports</span><span className='text-bbb3'>Finances summary</span>
       </div>
       <div className='text-ccc3'>Finances summary</div>
-      <div className='range-date-picker-aaa3'>
+      <div className='my-top-xxx1'>
       <Flatpickr
-        style={{width:'35%', border:'1px solid #d9d9d9', margin:'35px 0'}}
         value={picker}
         id='range-picker'
-        className='form-control text-bbb3'
+        className='date-picker-aaa1'
         onChange={date => setPicker(date)}
         options={{
           mode: 'range',
@@ -29,7 +34,7 @@ const FinancesSummary = () => {
       />
       </div>
       <div className="finances-summary-body-box d-flex w-100">
-        <div className='w-50 d-flex flex-column'>
+        <div className='finances-summary-body-box-1 d-flex flex-column'>
             <div className="box-aaa3">
         <table className='table-aaa3'>
             <thead className='thead-aaa3'>
@@ -114,7 +119,7 @@ const FinancesSummary = () => {
         </table>
         </div>
         </div>
-        <div className='w-50 d-flex flex-column'>
+        <div className='finances-summary-body-box-2 d-flex flex-column'>
         <div className="box-aaa3">
         <table className='table-aaa3'>
             <thead className='thead-aaa3'>

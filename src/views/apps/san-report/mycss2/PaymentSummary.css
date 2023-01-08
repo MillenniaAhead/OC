@@ -8,6 +8,7 @@
 }
 .thead-aaa4 tr th{
     padding: 0 6px;
+    text-align: center;
 }
 .tbody-aaa4 tr:first-child{
     font-size: 15px;
@@ -48,6 +49,10 @@
 }
 .tbody-aaa4 tr td{
     padding:15px 10px;
+    text-align: center;
+}
+.tbody-aaa15 tr td{
+    text-align:left;
 }
 
 /* //For Discount summary */
@@ -74,6 +79,7 @@
     width: fit-content;
     box-sizing:border-box;
     padding: 2px;
+    margin:auto;
 }
 
 /* // for Internal Stock Consumption */

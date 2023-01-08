@@ -1,11 +1,12 @@
 import React from 'react'
-import { Card, CardBody} from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 import SideMenu from './ReportsSideMenu'
+import { Card, CardBody } from 'reactstrap'
 
 const Reports = () => {
+
     return (
-        <div id='report-container' className='h-100 d-flex'>
+        <div className='h-100 report-container'>
             <SideMenu link1='/san-reports/dashboard' link2='/san-reports/reports' />
         <div id='reports-container' className='w-100'>
         <div className='text-eee1'>Dashboard</div>
@@ -13,7 +14,7 @@ const Reports = () => {
         <div className='reports-main-container d-flex'>
             <div className='row-1-aaa2'>
             <div className="box-1-aaa2">
-                <Card className='me-2 mb-2 card-aaa2'>
+                <Card className='card-aaa2'>
                     <CardBody className='p-0'>
                         <div className='card-top-aaa2'>
                         <div className='text-aaa2'>Finances</div>
@@ -34,7 +35,7 @@ const Reports = () => {
                 </Card>
             </div>
             <div className="box-3-aaa2">
-                <Card className='me-2 mb-2 card-aaa2'>
+                <Card className='card-aaa2'>
                     <CardBody className='p-0'>
                         <div className='card-top-aaa2'>
                         <div className='text-aaa2'>Inventory</div>
@@ -52,7 +53,7 @@ const Reports = () => {
                 </Card>
             </div>
             <div className="box-4-aaa2">
-                <Card className='me-2 mb-2 card-aaa2'>
+                <Card className='card-aaa2'>
                     <CardBody className='p-0'>
                         <div className='card-top-aaa2'>
                         <div className='text-aaa2'>Appointments</div>
@@ -68,7 +69,7 @@ const Reports = () => {
                 </Card>
             </div>
             <div className="box-6-aaa2">
-                <Card className='me-2 mb-2 card-aaa2'>
+                <Card className='card-aaa2'>
                     <CardBody className='p-0'>
                         <div className='card-top-aaa2'>
                         <div className='text-aaa2'>Clients</div>
@@ -85,7 +86,7 @@ const Reports = () => {
             </div>
             <div className='row-1-aaa2'>
             <div className="box-2-bbb2">
-                <Card className='me-2 mb-2 card-aaa2'>
+                <Card className='card-aaa2'>
                     <CardBody className='p-0'>
                     <div className='card-top-aaa2'>
                         <div className='text-aaa2'>Sales</div>
@@ -114,7 +115,7 @@ const Reports = () => {
                 </Card>
             </div>
             <div className="box-5-aaa2">
-                <Card className='me-2 mb-2 card-aaa2'>
+                <Card className='card-aaa2'>
                     <CardBody className='p-0'>
                         <div className='card-top-aaa2'>
                         <div className='text-aaa2'>Vouchers</div>
@@ -130,7 +131,7 @@ const Reports = () => {
                 </Card>
             </div>
             <div className="box-7-aaa2">
-                <Card className='me-2 mb-2 card-aaa2'>
+                <Card className='card-aaa2'>
                     <CardBody className='p-0'>
                         <div className='card-top-aaa2'>
                         <div className='text-aaa2'>Deposits</div>
@@ -145,7 +146,7 @@ const Reports = () => {
                 </Card>
             </div>
             <div className="box-8-aaa2">
-                <Card className='me-2 mb-2 card-aaa2'>
+                <Card className='card-aaa2'>
                     <CardBody className='p-0'>
                         <div className='card-top-aaa2'>
                         <div className='text-aaa2'>Team</div>

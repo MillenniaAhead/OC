@@ -1,26 +1,32 @@
 import React, {useState} from 'react'
 import Flatpickr from 'react-flatpickr'
-import { Filter} from 'react-feather'
+import { Filter, ArrowLeft} from 'react-feather'
 import {  UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
 import '../mycss2/PaymentSummary.css'
 import SideMenu from '../ReportsSideMenu'
+import { NavLink } from 'react-router-dom'
 
 const DepositsOutstandingBalance = () => {
     const [picker, setPicker] = useState(new Date())
 
     return (
-        <div id='report-container' className='h-100 d-flex'>
+        <div className='h-100 report-container'>
+       <div className="side-menu-wrapper-aaa3">
       <SideMenu link1='/san-reports/dashboard' link2='/san-reports/reports' />
+      </div>
+      <div className="side-menu-wrapper-aaa4">
+        <NavLink to='/san-reports/reports'><ArrowLeft/></NavLink>
+      </div>
         <div id='payment-summary-container' className=''>
             <div>
-                <div className='d-flex justify-content-between'>
+                <div className='top-box-xxx2'>
                     <div>
                 <span className='text-aaa3 pe-1'>Reports</span>
                 <span className='text-bbb3'>Deposits outstanding balance</span>
                 <div className='text-ccc3'>Deposits outstanding balance</div>
                 </div>
                 <div>
-                <UncontrolledButtonDropdown className='me-2'>
+                <UncontrolledButtonDropdown>
               <DropdownToggle outline color='dark' size='lg' caret>
                 Export
               </DropdownToggle>
@@ -38,12 +44,11 @@ const DepositsOutstandingBalance = () => {
             </UncontrolledButtonDropdown>
             </div>
                 </div>
-                <div className='d-flex' style={{margin:'32px 0'}}>
+                <div className='my-top-xxx1'>
              <Flatpickr
-               style={{width:'330px', border:'1px solid #d9d9d9'}}
                value={picker}
                id='range-picker'
-               className='form-control text-ddd1'
+                className='date-picker-aaa1'
                onChange={date => setPicker(date)}
                options={{
                  mode: 'range',

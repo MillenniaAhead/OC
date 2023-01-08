@@ -55,3 +55,32 @@ li span{
     border:1px solid #d9d9d9;
     border-radius:10px;
 }
+.date-picker-aaa1{
+    width:230px;
+    padding:10px 15px;
+    border:1px solid #d9d9d9;
+    font-weight:700;
+    border-radius:4px;
+}
+.filter-aaa1{
+    width:130px
+}
+.my-top-xxx1{
+    margin: 32px 0px;
+    display:flex
+}
+.top-box-xxx2{
+    display: flex;
+    justify-content: space-between;
+}
+@media (max-width:600px){
+    .date-picker-aaa1{
+        width:70%
+    }
+    .my-top-xxx1{
+        margin: 16px 0px;
+    }
+    .top-box-xxx2{
+        display: block;
+    }
+}

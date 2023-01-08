@@ -65,3 +65,20 @@
     color:#1bb70b;
     text-decoration: underline #1bb70b;
 }
+.my-top-xxx3 .search-field-aa5{
+    margin-right:5px;
+}
+@media (max-width:600px){
+    .text-ccc3{
+        font-size:26px;
+        line-height: 32px;
+    }
+    .my-top-xxx3 .search-field-aa5{
+        width:auto;
+     }
+    }
+    @media (max-width:850px) and (min-width:600px){
+    .my-top-xxx3 .search-field-aa5{
+        width:70%;
+     }
+}
