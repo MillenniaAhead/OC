@@ -1,8 +1,11 @@
 import React from 'react'
+import CountHeaderLayout from '../components/CountProducts/CountHeaderLayout'
 
 const countproducts = () => {
   return (
-    <div>countproducts</div>
+    <div>
+        <CountHeaderLayout />
+    </div>
   )
 }
 
