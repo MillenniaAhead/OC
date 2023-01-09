@@ -68,7 +68,7 @@ const ClientList = () => {
     return (
         <div>
             <div>
-            <div className='d-flex justify-content-between mx-3 mt-5 '>
+            <div className='d-flex justify-content-between mx-3 mb-3 mt-5 '>
             <div>
                 <div className='d-flex align-items-center'><h2>Clients list</h2> <p className='three '>3</p></div>
                 <p className='fs-5'>View, add, edit and delete your client’s details. Learn more</p>

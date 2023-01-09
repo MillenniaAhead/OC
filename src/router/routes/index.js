@@ -16,6 +16,9 @@ import OverviewRoutes from './Overview'
 import GroupRoutes from './Groups'
 import OrganizationRoutes from './Organization'
 import SanClientRoutes from './SanClient'
+import SanSetSalesRoutes from './SanSetSales'
+
+
 // ** Document title
 const TemplateTitle = '%s - Vuexy React Admin Template'
 
@@ -40,7 +43,8 @@ const Routes = [
   ...FormRoutes,
   ...TablesRoutes,
   ...ChartsRoutes,
-  ...SanClientRoutes
+  ...SanClientRoutes,
+  ...SanSetSalesRoutes
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }

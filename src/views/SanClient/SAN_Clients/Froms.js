@@ -1,4 +1,5 @@
 import React from 'react'
+import { Table } from 'reactstrap'
 // import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material'
 
 const Froms = () => {
@@ -16,7 +17,7 @@ const Froms = () => {
 
             </div>
         </div>
-        <div>
+        <div className='mt-2'>
         {/* <TableContainer style={{backgroundColor:'#F0F2F5'}} component={Paper}>
       <Table  aria-label="simple table">
         <TableHead>
@@ -47,6 +48,40 @@ const Froms = () => {
         </TableBody>
       </Table>
     </TableContainer> */}
+    <Table responsive>
+      <thead >
+        <tr className='bg-white'>
+          <th scope='col' className='text-nowrap'>
+          Consultation form name
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Services
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Request
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Status
+          </th>
+          <th scope='col' className='text-nowrap'>
+            
+          </th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+         
+          <td className='text-nowrap'>COVID 19</td>
+          <td className='text-nowrap'>All services</td>
+          <td className='text-nowrap'>Before appointments</td>
+          <td className='text-nowrap'><span className='bg-danger mt-2 text-center px-2 text-white'>INACTIVE</span></td>
+          <td className='text-nowrap'><span className='fw-bolder fs-4'>...</span></td>
+          
+        </tr>
+        
+      </tbody>
+    </Table>
         </div>
         </div>
     )
