@@ -59,7 +59,7 @@ const Checkout = () => {
   return (
     <div className="d-flex">
       <div
-        className="border"
+        className="border d-none d-md-block"
         style={{
           width: "890px",
           height: "565px",
@@ -80,8 +80,12 @@ const Checkout = () => {
         <div
           style={{ marginLeft: "160px", marginTop: "-33px", cursor: "pointer" }}
         >
-          <p className="border-bottom-dark py-1 fw-bolder"
-            style={{width: '14%', color: 'black'}}>To check out</p>
+          <p
+            className="border-bottom-dark py-1 fw-bolder"
+            style={{ width: "14%", color: "black" }}
+          >
+            To check out
+          </p>
         </div>
 
         <div
@@ -290,7 +294,7 @@ const Checkout = () => {
           <img
             style={{ width: "50px", height: "50px", marginBottom: "-15px" }}
             src={Calander}
-            alt="chk"
+            alt="calander"
           />
           <p style={{ marginTop: "25px" }} className="fw-semibold fs-5">
             No more appointments!
@@ -309,25 +313,50 @@ const Checkout = () => {
       </div>
 
       <div className="border-top" style={{ width: "360px", height: "565px" }}>
-        <div
-          style={{ cursor: "pointer" }}
-          className="border-bottom py-2 text-center"
-        >
-          <img width={100} src={Client} alt="client" />
+        <div style={{ cursor: "pointer" }} className="border-bottom py-1">
+          <div
+            style={{ marginBottom: "-10px" }}
+            className="d-sm-block d-md-none d-flex justify-content-between"
+          >
+            <p style={{ color: "#1BB70B" }}>Add client</p>
+            <img width={23} height={23} src={Client} alt="client" />
+          </div>
+          <div
+            style={{ marginBottom: "-15px" }}
+            className="d-none d-md-block d-flex"
+          >
+            <img
+              style={{ marginLeft: "65px" }}
+              width={23}
+              height={23}
+              src={Client}
+              alt="client"
+            />
+            <p
+              style={{
+                marginTop: "-20px",
+                marginLeft: "100px",
+                color: "#1BB70B",
+                fontSize: "17px"
+              }}
+            >
+              Add client
+            </p>
+          </div>
         </div>
 
-        <div style={{ marginTop: "195px" }} className="text-center">
+        <div style={{ marginTop: "195px", color: 'black' }} className="text-center">
           <img width={30} src={Basket} alt="basket" />
           <p
             style={{ marginTop: "15px", marginLeft: "10px" }}
-            className="fw-semibold"
+            className="fw-bolder"
           >
             Your cart is empty
           </p>
-          <p style={{ marginTop: "-15px", marginLeft: "9px" }}>
+          <p style={{ marginTop: "-10px", marginLeft: "9px" }}>
             Select an appointment, service
           </p>
-          <p style={{ marginTop: "-18px", marginLeft: "10px" }}>
+          <p style={{ marginTop: "-15px", marginLeft: "10px" }}>
             {" "}
             or item to check out.
           </p>

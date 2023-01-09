@@ -115,14 +115,14 @@ const NewProduct = () => {
 
   return (
     <div>
-      <div className="d-flex justify-content-between px-5">
+      <div className="d-flex justify-content-between px-5 d-none d-lg-block">
         <Link to="/productlist">
           <img width={30} height={30} className="mt-2" src={X} alt="x" />
         </Link>
 
         <button
           onClick={handleApi}
-          style={{ background: "#4E4E4E", color: "white" }}
+          style={{marginLeft: '850px', background: "#4E4E4E", color: "white" }}
           className="px-5 fs-5 btn rounded-1 fw-semibold"
         >
           Save

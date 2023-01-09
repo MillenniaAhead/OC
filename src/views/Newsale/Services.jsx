@@ -32,7 +32,7 @@ const Services = () => {
   return (
     <div className="d-flex">
       <div
-        className="border"
+        className="border d-none d-md-block"
         style={{
           width: "890px",
           height: "730px",
@@ -257,11 +257,36 @@ const Services = () => {
         className="border-top"
         style={{ width: "360px", height: "565px" }}
       >
-        <div
-          style={{ cursor: "pointer" }}
-          className="border-bottom py-2 text-center"
-        >
-          <img width={100} src={Client} alt="client" />
+         <div style={{ cursor: "pointer" }} className="border-bottom py-1">
+          <div
+            style={{ marginBottom: "-10px" }}
+            className="d-sm-block d-md-none d-flex justify-content-between"
+          >
+            <p style={{ color: "#1BB70B" }}>Add client</p>
+            <img width={23} height={23} src={Client} alt="client" />
+          </div>
+          <div
+            style={{ marginBottom: "-15px" }}
+            className="d-none d-md-block d-flex"
+          >
+            <img
+              style={{ marginLeft: "65px" }}
+              width={23}
+              height={23}
+              src={Client}
+              alt="client"
+            />
+            <p
+              style={{
+                marginTop: "-20px",
+                marginLeft: "100px",
+                color: "#1BB70B",
+                fontSize: "17px"
+              }}
+            >
+              Add client
+            </p>
+          </div>
         </div>
 
         <div style={{ marginTop: "195px" }} className="text-center">
@@ -269,10 +294,10 @@ const Services = () => {
           <p style={{ color: 'black', marginTop: "15px" }} className="fw-bolder">
             Your cart is empty
           </p>
-          <p style={{ color: 'black', marginTop: "-15px" }}>
+          <p style={{ color: 'black', marginTop: "-10px" }}>
             Select an appointment, service or
           </p>
-          <p style={{ color: 'black', marginTop: "-18px" }}>item to check out.</p>
+          <p style={{ color: 'black', marginTop: "-15px" }}>item to check out.</p>
         </div>
       </div>
     </div>
