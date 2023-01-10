@@ -22,6 +22,10 @@ const SanSetSalesRoutes = [
     component: lazy(() => import('../../views/SanSetSales/PaymentType.js'))
   },
   {
+    path: '/sansetsale/charge',
+    component: lazy(() => import('../../views/SanSetSales/ServiceCharge.js'))
+  },
+  {
     path: '/datatables/basic',
     component: lazy(() => import('../../views/tables/data-tables/basic'))
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Input, Label, InputGroup, InputGroupText } from 'reactstrap'
+import {Input, Label, InputGroup, InputGroupText, Button } from 'reactstrap'
 
 const SanTips = () => {
     return (
@@ -80,7 +80,9 @@ the cart menu.</p>
                             <Input  placeholder='No tip' />
                         </InputGroup>
                             </div>
+                            
                         </div>
+                        <div className='float-end me-5 mt-2'><Button.Ripple color='dark'>Save</Button.Ripple></div>
                     </div>
                 </div>
             </div>
