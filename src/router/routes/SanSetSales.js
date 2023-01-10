@@ -18,6 +18,10 @@ const SanSetSalesRoutes = [
     component: lazy(() => import('../../views/SanSetSales/InvoiceService.js'))
   },
   {
+    path: '/sansetsale/payment',
+    component: lazy(() => import('../../views/SanSetSales/PaymentType.js'))
+  },
+  {
     path: '/datatables/basic',
     component: lazy(() => import('../../views/tables/data-tables/basic'))
   }
