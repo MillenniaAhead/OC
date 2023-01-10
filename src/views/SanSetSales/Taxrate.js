@@ -1,5 +1,6 @@
 import React from 'react'
 import tax from '../../images/SSS/taxfrom.png'
+import I from '../../images/SSS/Iround.png'
 import TaxAdd from './TaxAdd'
 import { Button } from 'reactstrap'
 
@@ -38,6 +39,21 @@ settings of individual products and services</p>
       </Button.Ripple>
 
             </div>
+        </div>
+        <div className="mx-5 border p-2">
+            <h5 className='text-dark '>UIUX Designer</h5>
+            <p>Products Default: No tax .Services Default: No tax </p>
+        </div>
+        <div className="bg-light-success p-1 mt-2 mx-5">
+           <div className='d-flex m-1'>
+           <div>
+                <img src={I} alt="" />
+            </div>
+            <div className='ms-1'>
+                <p className='text-dark'>Tax calculation <br />
+Your retail prices are including taxes.<span className='text-success'> Change this setting</span></p>
+            </div>
+           </div>
         </div>
              </div>
         </div>
