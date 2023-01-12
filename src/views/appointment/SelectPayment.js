@@ -25,8 +25,8 @@ const SelectPayment = () => {
   return (
     <div className="select-payment-container">
         <div className="left-container-aa4" style={{background:"#f8f8fb"}}>
-            <div className="top-text-aa4 d-flex justify-content-between">
-                <div className="text-aa4 d-flex align-items-center"><NavLink to='/addtip' ><div className="back-arrow-aa4 pe-3"><ArrowLeft size={30}/></div></NavLink><div> Select payment</div></div>
+            <div className="top-text-aa4">
+                <div className="text-aa4"><NavLink to='/addtip' ><div className="back-arrow-aa4"><ArrowLeft size={30}/></div></NavLink><div> Select payment</div></div>
                 <div className="setting-icon-aa4" style={{cursor:"pointer"}}><Settings size={20}/></div>
             </div>
             <div className="payment-options-box">
@@ -38,7 +38,7 @@ const SelectPayment = () => {
         </div>
         <Detail mypath="/timegraph" />
         {/* //Cash payment */}
-        <Modal isOpen={centeredModal1} toggle={() => setCenteredModal1(!centeredModal1)} className='modal-dialog-centered'>
+        <Modal style={{padding:'0'}}  isOpen={centeredModal1} toggle={() => setCenteredModal1(!centeredModal1)} className='modal-dialog-centered'>
           <ModalBody style={{background:"white", padding:"0"}}>
           <div className="modal-top-aa4 d-flex justify-content-between">
           <div className="cash-payment-aa4 text-bb4">Cash payment</div>
@@ -72,7 +72,7 @@ const SelectPayment = () => {
           </ModalBody>
         </Modal>
         {/* //Redeem voucher */}
-        <Modal isOpen={centeredModal2} toggle={() => setCenteredModal2(!centeredModal2)} className='modal-dialog-centered'>
+        <Modal style={{padding:'0'}}  isOpen={centeredModal2} toggle={() => setCenteredModal2(!centeredModal2)} className='modal-dialog-centered'>
           <ModalBody style={{background:"white", padding:"0"}}>
           <div className="modal-top-aa4 d-flex justify-content-between">
           <div className="use-voucher-aa4 text-bb4">Redeem voucher</div>

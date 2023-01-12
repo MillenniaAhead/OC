@@ -82,6 +82,7 @@
     padding: 25px;
     display: flex;
     flex-direction: row-reverse;
+    
 }
 .btn-aa4{
     padding:12px 25px;
@@ -110,4 +111,9 @@
 }
 .voucher-code-field-aa4 div{
     padding:0 5px;
+}
+@media (max-width:500px) {
+    .modal-btn-box-bb4{
+        padding:25px 15px;
+    }
 }

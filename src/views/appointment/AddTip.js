@@ -97,8 +97,8 @@ const AddTip = () => {
  return (
     <div className="add-tip-container">
         <div className="left-container-aa3">
-            <div className="top-text-aa3 d-flex justify-content-between">
-                <div className="text-aa3 d-flex align-items-center"><NavLink to='checkout'><div className="back-arrow-aa3 pe-3"><ArrowLeft size={30}/></div></NavLink><div> Add a tip amount</div></div>
+            <div className="top-text-aa3">
+                <div className="text-aa3"><NavLink to='checkout'><div className="back-arrow-aa3"><ArrowLeft size={30}/></div></NavLink><div> Add a tip amount</div></div>
                 <div className="setting-icon-aa3" style={{cursor:"pointer"}}><Settings size={20} /></div>
             </div>
             <div className="tip-value-boxes">

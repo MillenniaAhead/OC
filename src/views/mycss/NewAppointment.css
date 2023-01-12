@@ -12,11 +12,8 @@
 
 .new-appointment-container,.view-appointment-container{
     display:grid;
-    height: 100vh;
-    overflow-y: hidden;
 }
 .top-container-aa1,.top-container-aa2{
-    /* // border:1px solid red; */
     grid-column-start: 1;
     grid-column-end: 12;
     text-align:center;
@@ -32,18 +29,13 @@
 .left-container-aa1,.left-container-aa2{
     grid-column-start:1;
     grid-column-end:11;
-    padding:24px 54px;
-    height:88vh;
-    
+    margin:4%;
 }
 .right-container-aa1,.right-container-aa2{
     border-left:1px solid #d9d9d9;
     grid-column-start:11;
     grid-column-end:12;
-    overflow-y: scroll;
-}
-.left-container-aa1{
-    overflow-y: scroll;
+    height:100%;
 }
 .box-aa1{
     display:flex;
@@ -60,7 +52,7 @@
 }
 .box-bb1{
     display:grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 30% 66%;
     padding:24px 16px 4px 16px;
     border:1px solid rgba(0, 0, 0, 0.18);
     border-radius: 8px;
@@ -74,7 +66,7 @@
 }
 
 .box-bb1 .select-time,.box-bb1 .duration{
-    padding:0 8px 24px 8px
+    padding:0 8px 24px 8px;
 }
 .form-select-lg{
       color:black;
@@ -89,6 +81,10 @@
     border:1px solid rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     background:#ffffff;
+}
+.service-field{
+    padding:10px;
+    background-color: white;
 }
 select:focus,input:focus,textarea:focus{
     outline: none;
@@ -216,7 +212,36 @@ textarea{
     line-height: 28px;
     color: black;
 }
-.dropdown-menu{
-    overflow-y: scroll;
-    height:53vh;
+@media (max-width:700px){
+    .box-bb1{
+        display: block;
+    }
+    .box-bb1 .select-time,.service,.box-bb1 .duration,.team-member{
+        padding:10px 0 10px 0;
+    }
+    .select-time, .duration{
+        width:50%;
+    }
+}
+@media (max-width:900px){
+    .new-appointment-container,.view-appointment-container{
+        display:block;
+    }
+}
+@media (max-width:330px){
+    .top-container-aa1 div,.top-container-aa2 div{
+        font-size: 24px;
+        line-height:32px;
+        font-weight: 700;
+        color:black;
+    }
+    .date-box-aa1{
+        width:60%
+    }
+    .btn-aa1, .checkout-bb2{
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 18px;
+        padding:10px 15px;
+    }
 }

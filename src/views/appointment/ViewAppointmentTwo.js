@@ -64,7 +64,7 @@ const ViewAppointmentTwo = () => {
             <div className="d-flex flex-column align-items-center justify-content-center">
               <div><CheckSquare size={80} strokeWidth={1.2}/></div>
               <h2>Appointment Completed</h2>
-              <div className="text-kk2 text-center d-flex" style={{width:'340px'}}>Full payment received on Saturday, 15 Oct
+              <div className="text-kk2 text-center">Full payment received on Saturday, 15 Oct
 2022 with invoice 3 </div>
             </div>
           </div>

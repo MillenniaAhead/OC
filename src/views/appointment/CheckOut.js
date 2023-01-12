@@ -14,7 +14,7 @@ const CheckOut = () => {
             <div className="sort-by-option-aa5 text-aa5">Sort by<span className="ms-1"><AlignCenter size={20}/></span></div>
         </div>
         <div className="date-aa5 text-cc5">16 Dec</div>
-        <div className="service-box-aa5 d-flex">
+        <div className="service-box-aa5">
             <div className="time-day-box-aa5">
                 <div className="text-dd5">12:00pm-1:00am</div>
                 <div className="text-bb5">Friday</div>
@@ -23,12 +23,12 @@ const CheckOut = () => {
                 <div className="text-dd5">Walk-in</div>
                 <div className="text-bb5">1h with Kondeti Anusha*Facial</div>
             </div>
-            <div className="right-side-aa5 d-flex flex-column align-items-center">
+            <div className="right-side-aa5">
                 <div className="text-dd5">₹115</div>
                 <div><MoreVertical size={25}/></div>
             </div>
         </div>
-        <div className="service-box-aa5 d-flex">
+        <div className="service-box-aa5">
             <div className="time-day-box-aa5">
                 <div className="text-dd5">12:00pm-1:00am</div>
                 <div className="text-bb5">Friday</div>
@@ -37,7 +37,7 @@ const CheckOut = () => {
                 <div className="text-dd5">Walk-in</div>
                 <div className="text-bb5">1h with Kondeti Anusha*Facial</div>
             </div>
-            <div className="right-side-aa5 d-flex flex-column align-items-center">
+            <div className="right-side-aa5">
                 <div className="text-dd5">₹115</div>
                 <div><MoreVertical size={25}/></div>
             </div>

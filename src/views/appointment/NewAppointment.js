@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import "../mycss/NewAppointment.css"
 import Flatpickr from 'react-flatpickr'
 import { Search, Repeat, ChevronDown, X } from 'react-feather'
@@ -56,7 +56,7 @@ const history = useHistory()
       </div>
       <div className="left-container-aa1">
           <div className="box-aa1">
-        <div style={{cursor:"pointer"}} className="date-box-aa1 d-flex align-items-center" ><Fragment>
+        <div style={{cursor:"pointer"}} className="date-box-aa1 d-flex align-items-center" >
       <Flatpickr
         value={picker}
         id='hf-picker'
@@ -68,7 +68,6 @@ const history = useHistory()
           dateFormat: 'm-d-y'
         }}
       />
-    </Fragment>
 </div>
         <div style={{cursor:"pointer"}} className="repeatation d-flex align-items-center" ><div style={{paddingRight:"4px"}} className='d-flex align-items-start repeat'><Repeat size={15}/></div><div className='repeat'> Repeat</div></div>
         </div>
@@ -91,7 +90,7 @@ const history = useHistory()
               service
               </label>
             <UncontrolledButtonDropdown  className="service-field">
-              <DropdownToggle style={{background:"white", padding:"10px 10px 8px", margin:"0 4px"}} color="light">
+              <DropdownToggle style={{padding:"0"}} color="light">
               <div className='text-bb1 d-flex justify-content-between'><div>{service[0]}</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu' style={{width:"100%"}}>
@@ -189,7 +188,7 @@ const history = useHistory()
               <DropdownToggle style={{background:"white", padding:"10px 10px 8px", margin:"0 4px"}} color="light">
               <div className='text-bb1 d-flex justify-content-between'><div>Choose a service</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
-              <DropdownMenu style={{width:"100%"}}>
+              <DropdownMenu className='dropdown-menu-aa1' style={{width:"100%"}}>
                 <DropdownItem tag='div'>
                   Haircut
                 </DropdownItem>

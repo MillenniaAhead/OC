@@ -37,7 +37,7 @@
 }
 .detail-text-aa2,
 .total-time-aa2 {
-  width: 75%;
+  width: 65%;
 }
 .total-detail-box-aa2 {
   border-top: 1px solid rgba(0, 0, 0, 0.24);
@@ -52,9 +52,6 @@
 .detail-wrapper-aa2,
 .appointment-history {
   padding: 0 16px 24px 16px;
-}
-.left-container-aa2 {
-  margin: 10px 35px;
 }
 .text-ee2 {
   font-size: 20px;
@@ -78,11 +75,6 @@
   background: #1bb70b66;
   margin-right: 16px;
 }
-/* // .text-gg2{
-//     font-size: 15px;
-//     font-weight: 400;
-//     line-height: 24px;
-// } */
 .text-hh2 {
   font-size: 24px;
   font-weight: 800;
@@ -98,9 +90,6 @@
   border-radius: 4px;
   width: max-content;
 }
-/* // .box-aa2{
-//     padding:0px 24px 16px 24px;
-// } */
 .appointment-status-aa2 {
   padding: 24px 10px;
   background: rgba(237, 254, 235, 0.34);
@@ -125,6 +114,8 @@
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;
+  width: 320px;
+  margin: auto;
 }
 .text-jj2 {
   text-align: center;
@@ -156,6 +147,7 @@
 }
 .off-canvas-container-aa2 {
   width: 60%;
+  overflow: scroll;
 }
 .detail-box-bb2 {
   background: #ffffff;
@@ -201,7 +193,7 @@
   font-size: 26px;
   line-height: 30px;
   font-weight: 600;
-  margin: 25px 0;
+  margin: 22px 0;
   color: rgba(0, 0, 0, 0.96);
 }
 .text-zz2 {
@@ -235,4 +227,41 @@
   font-size: 15px;
   line-height: 18px;
   font-weight: 600;
+}
+.checkout-bb2{
+  font-size:17px;
+  line-height:24px;
+  font-weight:700;
+  width:47%;
+  margin-bottom: 10px;
+}
+
+@media (max-width:900px){
+  .off-canvas-aa2{
+    display: block;
+  }
+  .off-canvas-container-aa2{
+    width:100%;
+  }
+  .offcanvas-left-box-aa2, .offcanvas-right-box-aa2{
+    width:70%;
+    margin:auto;
+  }
+  .text-kk2{
+    width:fit-content;
+    margin:0 8px;
+  }
+}
+@media (max-width:700px){
+  .detail-text-aa2,
+.total-time-aa2 {
+  width:50%;
+}
+.detail-wrapper-aa2, .appointment-history{
+  padding:8px 4px;
+}
+.offcanvas-left-box-aa2, .offcanvas-right-box-aa2{
+  width:98%;
+  margin:auto;
+}
 }
