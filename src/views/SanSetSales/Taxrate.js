@@ -3,6 +3,7 @@ import tax from '../../images/SSS/taxfrom.png'
 import I from '../../images/SSS/Iround.png'
 import TaxAdd from './TaxAdd'
 import { Button } from 'reactstrap'
+import ApplyDefultmodal from './ApplyDefultmodal'
 
 const Taxrate = () => {
     return (
@@ -34,10 +35,7 @@ for example combining city and state taxes</p>
 settings of individual products and services</p>
             </div>
             <div className='mt-2'>
-            <Button.Ripple color='dark'className='fw-bolder text-dark' outline>
-            Apply defaults
-      </Button.Ripple>
-
+           <ApplyDefultmodal/>
             </div>
         </div>
         <div className="mx-5 border p-2">

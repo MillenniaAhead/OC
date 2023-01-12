@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table } from 'reactstrap'
+import Invoicemodel from './Invoicemodel'
 
 
 const SaleInvoice = () => {
@@ -32,16 +33,17 @@ const SaleInvoice = () => {
         </tr>
       </thead>
       <tbody>
+        
         <tr>
          
-          <td className='text-nowrap'>UIUX Designer</td>
-          <td className='text-nowrap'>-</td>
-          <td className='text-nowrap'>4</td>
-          <td className='text-nowrap'></td>
-          <td className='text-nowrap'></td>
-          
-        </tr>
-        
+         <td className='text-nowrap'>UIUX Designer</td>
+         <td className='text-nowrap'>-</td>
+         <td className='text-nowrap'>4</td>
+         <td className='text-nowrap'><Invoicemodel/></td>
+         <td className='text-nowrap'></td>
+         
+       </tr>
+      
       </tbody>
     </Table>
             </div>
