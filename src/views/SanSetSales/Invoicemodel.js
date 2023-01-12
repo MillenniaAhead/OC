@@ -1,12 +1,11 @@
 import React, { Fragment, useState } from 'react'
 // ** Reactstrap Imports
-import { Button, Modal, ModalHeader, ModalBody, Input, Label, ModalFooter} from 'reactstrap'
+import {Table, Button, Modal, ModalHeader, ModalBody, Input, Label, ModalFooter} from 'reactstrap'
 const ModalConfig = [
   
   
   {
     id: 4,
-    btnTitle: 'change',
     modalTitle: 'Change sequencing',
     modalClass: 'Default Modal'
   }
@@ -25,11 +24,41 @@ const Invoicemodel = () => {
   const renderModal = ModalConfig.map(item => {
     return (
       <Fragment key={item.id} className="mx-auto">
-        <div>
-          <button className='border-0' onClick={() => toggleModal(item.id)} key={item.title} >              
-                {item.btnTitle}
-          </button>
-        </div>
+        <Table responsive>
+      <thead >
+        <tr className='bg-white'>
+          <th scope='col' className='text-nowrap'>
+          Location Name
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Invoice No. Prefix
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Next Invoice Number
+          </th>
+          <th scope='col' className='text-nowrap'>
+            
+          </th>
+          <th scope='col' className='text-nowrap'>
+            
+          </th>
+          
+        </tr>
+      </thead>
+      
+      <tbody onClick={() => toggleModal(item.id)}>
+        <tr>
+         
+         <td className='text-nowrap'>UIUX Designer</td>
+         <td className='text-nowrap'>-</td>
+         <td className='text-nowrap'>4</td>
+         <td className='text-nowrap'></td>
+         <td className='text-nowrap'></td>
+         
+       </tr>
+       </tbody>
+      
+    </Table>
         <Modal
           key={item.id}
           isOpen={modal === item.id}
@@ -72,7 +101,7 @@ Designer</p>
     )
   })
 
-  return <div className='demo-inline-spacing'>{renderModal}</div>
+  return <div >{renderModal}</div>
 }
 
 export default Invoicemodel
