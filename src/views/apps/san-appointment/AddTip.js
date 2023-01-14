@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "../mycss/AddTip.css"
+import "./mycss/AddTip.css"
 import { Settings, ArrowLeft, Check, MoreHorizontal, User, Trash2 } from 'react-feather'
 // import Detail from './Detail'
 import { NavLink } from 'react-router-dom'

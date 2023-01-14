@@ -10,7 +10,7 @@ import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 
 //My work
-import Appointment from './Appointment'
+import SanAppointment from './SanAppointment'
 import RoutePromote from './RoutePromote'
 import SanReport from './SanReport'
 
@@ -34,7 +34,7 @@ const DefaultRoute = '/overview'
 const Routes = [
   ...SanReport,
   ...RoutePromote,
-  ...Appointment,
+  ...SanAppointment,
   ...OverviewRoutes,
   ...GroupRoutes,
   ...OrganizationRoutes,

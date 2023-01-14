@@ -4,18 +4,17 @@ import ReactDOM from 'react-dom'
 
 // css
 import 'flatpickr/dist/flatpickr.css'
-import "./views/mycss1/StepOne.css"
-import "./views/mycss1/StepTwo.css"
-import "./views/mycss1/StepThree.css"
-import "./views/mycss1/Promote.css"
-import './views/mycss1/SideMenu.css'
-import "./views/mycss1/Integrations.css"
-import "./views/mycss1/Deals.css"
-import "./views/mycss1/FacebookAdd.css"
+import "./views/apps/san-promote/mycss1/StepOne.css"
+import "./views/apps/san-promote//mycss1/StepTwo.css"
+import "./views/apps/san-promote/mycss1/Promote.css"
+import './views/apps/san-promote/mycss1/SideMenu.css'
+import "./views/apps/san-promote/mycss1/Integrations.css"
+import "./views/apps/san-promote/mycss1/Deals.css"
+import "./views/apps/san-promote/mycss1/FacebookAdd.css"
 import './views/apps/san-report/mycss2/Dashboard.css'
 import './views/apps/san-report/mycss2/Reports.css'
 import './views/apps/san-report/mycss2/FinancesSummary.css'
-import "./views/mycss/CheckOut.css"
+import "./views/apps/san-appointment/mycss/CheckOut.css"
 
 // ** Redux Imports
 import { Provider } from 'react-redux'

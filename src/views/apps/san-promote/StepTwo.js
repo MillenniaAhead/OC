@@ -136,6 +136,11 @@ const StepTwo = () => {
   const toggler1 = () => {
     if (toggle2 !== true) {
       setToggle1(!toggle1)
+      if (!toggle1) {
+        setMaxUseValue(1)
+      } else {
+        setMaxUseValue('no-limit')
+      }
     } else {
       setVisible1(true)
       setTimeout(() => {
@@ -217,7 +222,7 @@ const StepTwo = () => {
       //Navigate
       nextStep.push("/promote/stepthree")
       //Call action 
-      CollectDealData([promotionDetail, product, service, picker1, picker2, { promotion_value: myPromotionValue, promotion_value_type: promotionValueType}, {max_use: maxUseValue, min_purchase: minPurchaseValue}])
+      CollectDealData([promotionDetail, service, product, picker1, picker2, { promotion_value: myPromotionValue, promotion_value_type: promotionValueType}, {max_use: maxUseValue, min_purchase: minPurchaseValue}])
     }
   }
 
@@ -386,7 +391,7 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service1"
-                                value="service1"
+                                value="All services"
                                 onClick={addService}
                                 readOnly
                               />
@@ -402,7 +407,7 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service1"
-                                value="service1"
+                                value="Hair"
                                 onClick={addService}
                                 readOnly
                               />
@@ -420,7 +425,7 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service2"
-                                value="service2"
+                                value="Haircut "
                                 onClick={addService}
                                 readOnly
                               />
@@ -439,7 +444,7 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
-                                value="service3"
+                                value="Beard Trim"
                                 onClick={addService}
                                 readOnly
                               />
@@ -458,7 +463,7 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
-                                value="service3"
+                                value="Brows & Lashes"
                                 onClick={addService}
                                 readOnly
                               />
@@ -476,7 +481,7 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
-                                value="service3"
+                                value="Classic Fill"
                                 onClick={addService}
                                 readOnly
                               />
@@ -535,7 +540,7 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="product1"
-                                value="product1"
+                                value="All products"
                                 onClick={addProduct}
                                 readOnly
                               />

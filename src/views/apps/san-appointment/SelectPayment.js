@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import "../mycss/AddTip.css"
-import "../mycss/SelectPayment.css"
+import "./mycss/AddTip.css"
+import "./mycss/SelectPayment.css"
 import { Modal, ModalBody } from 'reactstrap'
 import { Settings, ArrowLeft, X, Search, Slash, DollarSign, Columns } from 'react-feather'
 import Detail from './Detail'

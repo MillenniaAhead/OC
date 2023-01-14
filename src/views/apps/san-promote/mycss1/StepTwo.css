@@ -146,6 +146,9 @@ body{
     justify-content: center;
     align-items: center;
   }
+  .myinput-a{
+    width:90%;
+  }
   .promotion-value-type{
     border-right:1px solid #d9d9d9;
   }
@@ -177,6 +180,7 @@ body{
   }
   .edit-list-label{
     margin-right:16px;
+    margin-top:5px;
   }
   input[type="checkbox"]{
     cursor:pointer;
@@ -285,6 +289,18 @@ body{
   border-bottom: 1px solid #d9d9d9; 
   border-top: 1px solid #d9d9d9; 
 }
+.form-switch .form-check-input:focus {
+    border-color: rgba(0, 0, 0, 0.25);
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
+  }
+  .form-switch .form-check-input:checked {
+    background-color: #1BB70B;
+    border-color: #1BB70B;
+    border: none;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+  }
 @media(max-width:850px){
   .left-side-a5{
     display: flex;

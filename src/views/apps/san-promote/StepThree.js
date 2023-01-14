@@ -6,6 +6,7 @@ import { NavLink, useHistory } from 'react-router-dom'
 import { X } from "react-feather"
 import Progress from "./Progress"
 import { Alert } from 'reactstrap'
+import './mycss1/StepThree.css'
 
 const StepThree = () => {
 

@@ -218,6 +218,9 @@ a{
     .right-child-bb3{
         margin-top:50px;
     }
+    .item-list-box-aa3, .total-box-aa3, .bottom-box-aa3{
+        padding:10px;
+    }
 }
 @media (max-width:385px){
     .tip-value-boxes, .payment-options-box{

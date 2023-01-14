@@ -3,30 +3,30 @@ import { lazy } from 'react'
 const RoutePromote = [
     {
         path: '/promote/deals',
-        component: lazy(() => import('../../views/mypromote/Deals'))
+        component: lazy(() => import('../../views/apps/san-promote/Deals'))
     },
     {
         path: '/promote/integrations',
-        component: lazy(() => import('../../views/mypromote/Integrations'))
+        component: lazy(() => import('../../views/apps/san-promote/Integrations'))
     },
     {
         path: '/promote/stepone',
-        component: lazy(() => import('../../views/mypromote/StepOne')),
+        component: lazy(() => import('../../views/apps/san-promote/StepOne')),
         layout: 'BlankLayout'
     },
     {
         path: '/promote/steptwo',
-        component: lazy(() => import('../../views/mypromote/StepTwo')),
+        component: lazy(() => import('../../views/apps/san-promote/StepTwo')),
         layout: 'BlankLayout'
     },
     {
         path: '/promote/stepthree',
-        component: lazy(() => import('../../views/mypromote/StepThree')),
+        component: lazy(() => import('../../views/apps/san-promote/StepThree')),
         layout: 'BlankLayout'
     },
     {
         path: '/promote/stepfour',
-        component: lazy(() => import('../../views/mypromote/StepFour')),
+        component: lazy(() => import('../../views/apps/san-promote/StepFour')),
         layout: 'BlankLayout'
     }
 ]

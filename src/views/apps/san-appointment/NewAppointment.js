@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import "../mycss/NewAppointment.css"
+import "./mycss/NewAppointment.css"
 import Flatpickr from 'react-flatpickr'
 import { Search, Repeat, ChevronDown, X } from 'react-feather'
 import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Label } from 'reactstrap'
@@ -91,7 +91,7 @@ const history = useHistory()
               </label>
             <UncontrolledButtonDropdown  className="service-field">
               <DropdownToggle style={{padding:"0"}} color="light">
-              <div className='text-bb1 d-flex justify-content-between'><div>{service[0]}</div> <div size={10}><ChevronDown/></div></div>
+              <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>{service[0]}</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu' style={{width:"100%"}}>
                   <div tag='div' className="service-option-category" >
@@ -185,18 +185,50 @@ const history = useHistory()
               service
               </label>
             <UncontrolledButtonDropdown  className="service-field">
-              <DropdownToggle style={{background:"white", padding:"10px 10px 8px", margin:"0 4px"}} color="light">
-              <div className='text-bb1 d-flex justify-content-between'><div>Choose a service</div> <div size={10}><ChevronDown/></div></div>
+              <DropdownToggle style={{padding:"0"}} color="light">
+              <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>Select a service</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
-              <DropdownMenu className='dropdown-menu-aa1' style={{width:"100%"}}>
-                <DropdownItem tag='div'>
-                  Haircut
+              <DropdownMenu className='dropdown-menu' style={{width:"100%"}}>
+                  <div tag='div' className="service-option-category" >
+                  <div className='text-ff1'>Hair</div>
+                </div>
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                  <div>
+                  <div className='text-dd1'>Haircut</div>
+<div className='text-ee1'> 45min</div>
+</div>
+<div className='text-dd1'> ₹40</div>
                 </DropdownItem>
-                <DropdownItem tag='div'>
-                  Beard trim
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                  <div>
+                  <div className='text-dd1'>Hair-Color</div>
+<div className='text-ee1'> 1h 45miin</div>
+</div>
+<div className='text-dd1'> ₹57</div>
                 </DropdownItem>
-                <DropdownItem tag='div'>
-                  Haircut & Beard trim
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                  <div>
+                  <div className='text-dd1' onClick={SelectService}>Blow-Dry</div>
+<div className='text-ee1'> 35min</div>
+</div>
+<div className='text-dd1'> ₹35</div>
+                </DropdownItem>
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                  <div>
+                  <div className='text-dd1' onClick={SelectService}>Balayage</div>
+<div className='text-ee1'> 2h 30min</div>
+</div>
+<div className='text-dd1'> ₹150</div>
+                </DropdownItem>
+                <div tag='div' className="service-option-category" >
+                  <div className='text-ff1'>Face</div>
+                </div>
+                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                  <div>
+                  <div className='text-dd1' onClick={SelectService}>Facial</div>
+<div className='text-ee1'> 1h</div>
+</div>
+<div className='text-dd1'> ₹115</div>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledButtonDropdown>

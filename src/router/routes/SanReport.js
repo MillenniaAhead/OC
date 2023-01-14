@@ -3,7 +3,7 @@ import { lazy } from "react"
 const SanReport = [
   {
     path: "/san-reports/dashboard",
-    component: lazy(() => import("../../views/apps/san-report/SanReport"))
+    component: lazy(() => import("../../views/apps/san-report/Dashboard"))
   },
   {
     path: "/san-reports/reports",

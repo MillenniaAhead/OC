@@ -82,6 +82,9 @@
     border-radius: 4px;
     background:#ffffff;
 }
+.team-member [name='select']{
+    width:70%
+}
 .service-field{
     padding:10px;
     background-color: white;
@@ -222,13 +225,16 @@ textarea{
     .select-time, .duration{
         width:50%;
     }
+    .team-member [name='select']{
+        width: fit-content;
+    }
 }
 @media (max-width:900px){
     .new-appointment-container,.view-appointment-container{
         display:block;
     }
 }
-@media (max-width:330px){
+@media (max-width:350px){
     .top-container-aa1 div,.top-container-aa2 div{
         font-size: 24px;
         line-height:32px;

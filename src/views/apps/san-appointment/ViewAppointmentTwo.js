@@ -1,7 +1,7 @@
 import React, {useState} from "react"
-import "../mycss/NewAppointment.css"
-import "../mycss/ViewAppointment.css"
-import '../mycss/AddTip.css'
+import "./mycss/NewAppointment.css"
+import "./mycss/ViewAppointment.css"
+import './mycss/AddTip.css'
 import { User, Star, FileText, CheckCircle, X, CheckSquare } from "react-feather"
 import { Offcanvas, OffcanvasBody, Button } from 'reactstrap'
 import { NavLink } from "react-router-dom"
@@ -72,7 +72,7 @@ const ViewAppointmentTwo = () => {
             <p className="text-jj2">Total: ₹30 (30min)</p>
             <div className="btn-wrapper-aa2 d-flex justify-content-between">
               <button className="more-option-aa2 btn-aa1 mb-1 ">More options</button>
-              <Button.Ripple onClick={toggleCanvasEnd}  className="btn-aa1 mb-1" color='dark' tag='div'>
+              <Button.Ripple onClick={toggleCanvasEnd} className="btn-aa1 mb-1" color='dark' tag='div'>
           View invoice
         </Button.Ripple>
             </div>
@@ -130,7 +130,7 @@ const ViewAppointmentTwo = () => {
                     <div className='text-ee3'>₹11.50</div>
                 </div>
                 <div className="tip d-flex justify-content-between">
-                    <div className='text-uu2 d-flex'><span style={{padding:"1px 3px 0 0", cursor:"pointer", width:"60%"}} className='d-flex'>Cash payment on Saturday, 15 Oct
+                    <div className='text-uu2 d-flex'><span style={{padding:"1px 3px 0 0", cursor:"pointer", width:"95%"}} className='d-flex'>Cash payment on Saturday, 15 Oct
 2022 at 11:19am</span></div>
                     <div className='text-ee3'>₹126.50</div>
                 </div>

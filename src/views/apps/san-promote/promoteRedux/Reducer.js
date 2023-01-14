@@ -5,7 +5,7 @@ const INI_DATA = {
     successDeals: []
   }
   
-const DealsReducer = (state = INI_DATA, action) => {
+const PromoteReducer = (state = INI_DATA, action) => {
         switch (action.type) {
           case GET_ALL_DEALS_DATA:
           return {
@@ -38,4 +38,4 @@ const DealsReducer = (state = INI_DATA, action) => {
     }
   }
   
-  export default DealsReducer
+  export default PromoteReducer

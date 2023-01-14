@@ -1,7 +1,7 @@
 import React from 'react'
 import { MoreHorizontal, User, Trash2} from 'react-feather'
 import { NavLink } from 'react-router-dom'
-import '../mycss/AddTip.css'
+import './mycss/AddTip.css'
 
 const Detail = (props) => {
     return (

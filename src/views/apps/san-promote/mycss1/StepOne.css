@@ -44,6 +44,9 @@ p {
 .next-step-btn a:hover {
   color: #ffffff;
 }
+.next-btn-a5{
+  z-index:1;
+}
 .previous-page a {
   font-size: 1.5em;
   text-decoration: none;
@@ -84,14 +87,12 @@ p {
   height: 571px;
 }
 .deal-types-container-a {
-  /* border:2px solid yellow; */
   width: 565px;
   margin: auto;
 }
 .deal-type-img img {
   width: 32px;
   height: 32px;
-  /* border:1px solid red  */
 }
 .deal-type-img {
   align-self: center;
