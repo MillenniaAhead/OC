@@ -83,7 +83,7 @@
     background:#ffffff;
 }
 .team-member [name='select']{
-    width:70%
+    width:100%
 }
 .service-field{
     padding:10px;
@@ -92,7 +92,7 @@
 select:focus,input:focus,textarea:focus{
     outline: none;
 }
-.search-field-aa1:hover,select:hover,.service-field:hover,.team-member-field:hover,textarea:hover{
+select:hover,.service-field:hover,.team-member-field:hover,textarea:hover{
     border:1px solid black;
 }
 input{
@@ -106,20 +106,6 @@ textarea{
 }
 .box-cc1{
     margin:32px 0 32px 0px;
-}
-.search-field-aa1{
-    width:90%;
-    display:flex;
-    border:1px solid rgba(0, 0, 0, 0.18);
-    border-radius:4px;
-    margin-top:24px;
-    background-color: #ffffff;
-}
-.search-icon-aa1{
-    padding:10px 15px 10px 10px;
-}
-.search-field-aa1 input{
-    padding:10px 16px 12px 0;
 }
 .description-box-aa1{
     padding:64px 48px 48px 48px ;

@@ -9,11 +9,11 @@
     padding:0px 32px;
     display: flex;
     align-items: center;
-    border-right: 1px solid #d9d9d9;
     justify-content: center;
 }
 .box-content{
     padding:24px;
+    border-left:1px solid #d9d9d9;
 }
 .left-side-a{
     padding-right:16px;
@@ -22,7 +22,7 @@
     font-size: 28px;
     font-weight: 800;
     line-height: 36px;
-    font-family:'SF Pro Display';
+    color:black;
 }
 .text-b2{
     font-size: 15px;
@@ -102,7 +102,6 @@
 .right-side-a p{
     width:fit-content
 }
-/* style={{width:"260px", minHeight:"185px", flexShrink:"0.3"}} */
 .image-box-b{
     width:300px;
     height:225px;
@@ -123,7 +122,7 @@
         padding: 10px;
       }
       .box-content{
-        padding: 20px;
+        padding: 15px;
       }
       .modal-lg{
         min-width:100%;

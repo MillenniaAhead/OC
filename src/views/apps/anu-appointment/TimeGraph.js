@@ -4,15 +4,17 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import './mycss/TimeGraph.css'
-
 
 const TimeGraph = () => {
+
   const history = useHistory()
+
+  //Redirect to new appointment
   const myFunOne = () => {
     history.push('/newappointment')
   }
 
+  //For select area
   const events = [
     {
       id: 1,

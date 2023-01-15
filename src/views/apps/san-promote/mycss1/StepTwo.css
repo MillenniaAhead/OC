@@ -1,4 +1,3 @@
-/* #############################################StepTwo.js &&&&&&&&&&& id id id id id id ==============   55555555555555  */ 
 body{
   color:'black'
 } 
@@ -274,12 +273,6 @@ body{
   padding:15px;
   font-size:1.2em;
   width:80%;
-}
-.modal-option-search-box-a5{
-  border:1px solid #d9d9d9;
-  border-radius: 8px;
-  margin:15px 0;
-  box-sizing: border-box;
 }
 .my-modal-a5{
   height:500px;

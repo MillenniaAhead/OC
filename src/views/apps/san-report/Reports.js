@@ -9,7 +9,7 @@ const Reports = () => {
         <div className='h-100 report-container'>
             <SideMenu link1='/san-reports/dashboard' link2='/san-reports/reports' />
         <div id='reports-container' className='w-100'>
-        <div className='text-eee1'>Dashboard</div>
+        <div className='text-eee1'>Reports</div>
         <div className='text-fff1'>Track and manage your business stats here. <NavLink to='/san-reports/reports'>Learn more</NavLink></div>
         <div className='reports-main-container d-flex'>
             <div className='row-1-aaa2'>

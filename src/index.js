@@ -2,20 +2,6 @@
 import { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom'
 
-// css
-import 'flatpickr/dist/flatpickr.css'
-import "./views/apps/san-promote/mycss1/StepOne.css"
-import "./views/apps/san-promote//mycss1/StepTwo.css"
-import "./views/apps/san-promote/mycss1/Promote.css"
-import './views/apps/san-promote/mycss1/SideMenu.css'
-import "./views/apps/san-promote/mycss1/Integrations.css"
-import "./views/apps/san-promote/mycss1/Deals.css"
-import "./views/apps/san-promote/mycss1/FacebookAdd.css"
-import './views/apps/san-report/mycss2/Dashboard.css'
-import './views/apps/san-report/mycss2/Reports.css'
-import './views/apps/san-report/mycss2/FinancesSummary.css'
-import "./views/apps/san-appointment/mycss/CheckOut.css"
-
 // ** Redux Imports
 import { Provider } from 'react-redux'
 import { store } from './redux/store'

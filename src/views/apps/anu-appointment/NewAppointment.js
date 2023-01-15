@@ -2,45 +2,75 @@ import React, { useState } from 'react'
 import "./mycss/NewAppointment.css"
 import Flatpickr from 'react-flatpickr'
 import { Search, Repeat, ChevronDown, X } from 'react-feather'
-import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Label } from 'reactstrap'
+import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Label, InputGroup, InputGroupText, Alert } from 'reactstrap'
 import { NavLink, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actionCreators } from './appointmentRedux'
 
 const NewAppointment = () => {
+  //For date-picker
   const [picker, setPicker] = useState(new Date())
+  //For collect data
   const [startTime, setStartTime] = useState(null)
-  const [teamMember, setTeamMember] = useState(null)
+  const [teamMember, setTeamMember] = useState('Select a team member')
   const [duration, setDuration] = useState(null)
   const [service, setService] = useState(["Choose a service"])
+
+  //For Alert message
   const [display1, setDisplay1] = useState("none")
   const [display2, setDisplay2] = useState("none")
-  const SelectDuration = (current) => {
-    setDuration(current.target.value)
-  }
+  //For red border
+  const [border1, setBorder1] = useState()
+  const [border2, setBorder2] = useState()
+  //For aler comp
+  const [visible1, setVisible1] = useState(false)
+  const [visible2, setVisible2] = useState(false)
+
+  //For select Start time
   const SelectStartTime = (current) => {
     setStartTime(current.target.value)
   }
-  const SelectTeamMember = (current) => {
-   setTeamMember(current.target.value)
-   setDisplay2("none")
-  }
+  //For select Service name
   const SelectService = (current) => {
   setService(current.target.textContent.split(/\s+/))
   setDisplay1("none")
+  setBorder1()
 } 
+//For select Duration
+const SelectDuration = (current) => {
+  setDuration(current.target.value)
+}
+//For select Team member
+const SelectTeamMember = (current) => {
+ setTeamMember(current.target.value)
+ setDisplay2("none")
+ setBorder2()
+ console.log(current.target.value)
+}
+
+//For redux
   const dispatch = useDispatch()
 const { PostAppointment } = bindActionCreators(actionCreators, dispatch)
 
 const history = useHistory()
 
-
+//for submit function
   const saveAppointment = () => {
     if (service[0] === "Choose a service") {
        setDisplay1('block')
-    } else if (teamMember === null) {
-       setDisplay2('block')
+       setBorder1({borderColor:'red'})
+       setVisible1(true)
+        setTimeout(() => {
+          setVisible1(false)
+        }, 3000)
+      } else if (teamMember === "Select a team member") {
+        setDisplay2('block')
+        setBorder2({borderColor:'red'})
+        setVisible2(true)
+         setTimeout(() => {
+           setVisible2(false)
+         }, 3000)
     } else {
     PostAppointment([picker, startTime, service, duration, teamMember])
     history.push('/timegraph')
@@ -55,6 +85,20 @@ const history = useHistory()
       </NavLink>
       </div>
       <div className="left-container-aa1">
+        <div className="my-alert-comp">
+      <Alert color='danger' isOpen={visible1}>
+        <div className='alert-body text-center'>
+        Please select a Service
+        </div>
+      </Alert>
+      </div>
+      <div className="my-alert-comp">
+      <Alert color='danger' isOpen={visible2}>
+        <div className='alert-body text-center'>
+        Please select a Employee
+        </div>
+      </Alert>
+      </div>
           <div className="box-aa1">
         <div style={{cursor:"pointer"}} className="date-box-aa1 d-flex align-items-center" >
       <Flatpickr
@@ -89,11 +133,11 @@ const history = useHistory()
             <label htmlFor="" className='text-aa1'>
               service
               </label>
-            <UncontrolledButtonDropdown  className="service-field">
+            <UncontrolledButtonDropdown style={border1}  className="service-field">
               <DropdownToggle style={{padding:"0"}} color="light">
               <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>{service[0]}</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
-              <DropdownMenu className='dropdown-menu' style={{width:"100%"}}>
+              <DropdownMenu className='dropdown-menu' style={{width:"100%", height:'300px', overflow:'scroll'}}>
                   <div tag='div' className="service-option-category" >
                   <div className='text-ff1'>Hair</div>
                 </div>
@@ -155,8 +199,8 @@ const history = useHistory()
           <Label className='form-label text-aa1' for='select-lg'>
               Team member
               </Label>
-              <Input type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectTeamMember}>
-                <option value={null}>Select a team member</option>
+              <Input style={border2} type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectTeamMember}>
+                <option value='Select a team member'>Select a team member</option>
                 <option value="Renu">Renu</option>
                 <option value="Veerat">Veerat</option>
                 <option value="Chaman">Chaman</option>
@@ -188,7 +232,7 @@ const history = useHistory()
               <DropdownToggle style={{padding:"0"}} color="light">
               <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>Select a service</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
-              <DropdownMenu className='dropdown-menu' style={{width:"100%"}}>
+              <DropdownMenu className='dropdown-menu' style={{width:"100%", height:'300px', overflow:'scroll'}}>
                   <div tag='div' className="service-option-category" >
                   <div className='text-ff1'>Hair</div>
                 </div>
@@ -241,10 +285,12 @@ const history = useHistory()
       </div>
       <div className="right-container-aa1">
         <div className='w-100 d-flex justify-content-center'>
-        <div className="search-field-aa1">
-        <div className="search-icon-aa1"><Search size={18}/></div>
-        <input placeholder="Search client " className='text-bb1'/>
-        </div>
+        <InputGroup className='m-2'>
+        <InputGroupText>
+          <Search size={14} />
+        </InputGroupText>
+        <Input style={{fontSize:'14px'}} placeholder='Search client' />
+      </InputGroup>
         </div>
         <div className="description-box-aa1">
           <div className="description-icon-aa1"><Search size={60} strokeWidth={0.5}/></div>

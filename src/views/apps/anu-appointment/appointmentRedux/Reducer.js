@@ -1,7 +1,9 @@
 import { GET_APPOINTMENTS, POST_A_APPOINTMENT, DELETE_A_APPOINTMENT, Update_A_APPOINTMENT, ADD_A_TIP, SELECT_PAYMENT} from './constant'
 
 const INI_DATA = {
-    appointments: []
+    appointments: [],
+    tips:[],
+    payments:[]
   }
   
 const AppointmentReducer = (state = INI_DATA, action) => {
@@ -29,17 +31,12 @@ const AppointmentReducer = (state = INI_DATA, action) => {
       case ADD_A_TIP:
         return {
           ...state,
-          appointments: [state.appointments.filter((appointment) => appointment.id !== action.data.id)]
-        }
-      case ADD_A_TIP:
-        return {
-          ...state,
-          appointments: [state.appointments.filter((appointment) => appointment.id !== action.data.id)]
+          tips: [action.data]
         }
       case SELECT_PAYMENT:
         return {
           ...state,
-          appointments: [state.appointments.filter((appointment) => appointment.id !== action.data.id)]
+          payments: [action.data]
         }
        default:
         return state

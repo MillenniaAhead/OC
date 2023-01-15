@@ -1,6 +1,6 @@
 import { lazy } from 'react'
 
-const RoutePromote = [
+const SanPromote = [
     {
         path: '/promote/deals',
         component: lazy(() => import('../../views/apps/san-promote/Deals'))
@@ -31,4 +31,4 @@ const RoutePromote = [
     }
 ]
 
-export default RoutePromote
+export default SanPromote

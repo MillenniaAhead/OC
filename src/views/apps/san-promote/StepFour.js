@@ -3,14 +3,8 @@ import './mycss1/StepFour.css'
 import { NavLink } from 'react-router-dom'
 import ticketG from "../images/ticket-g.svg"
 import { CheckCircle, X, Calendar, Tag } from 'react-feather'
-import { useSelector } from 'react-redux'
 
 const StepFour = () => {
-
-  const reducer = useSelector(state => state.PromoteReducer)
-  const myArray = reducer.successDeals
-  console.log(myArray)
-  
   return (
     <div className="step-four-container">
     <div className="cross-btn-wrapper">

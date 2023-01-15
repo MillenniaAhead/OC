@@ -103,15 +103,6 @@
     border-radius: 4px;
     background-color: #4e4e4e;
 }
-.voucher-code-field-aa4{
-    display: flex;
-    border: 1px solid rgba(0, 0, 0, 0.18);
-    border-radius:4px;
-    padding:10px
-}
-.voucher-code-field-aa4 div{
-    padding:0 5px;
-}
 @media (max-width:500px) {
     .modal-btn-box-bb4{
         padding:25px 15px;

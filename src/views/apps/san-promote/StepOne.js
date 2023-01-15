@@ -11,7 +11,7 @@ import  Progress from './Progress'
 
 const StepOne = () => {
 
-  //For selected deal border color
+  //For selected deal
   const [border1, setborder1] = useState({border:'1px solid #1bb70b'})
   const [border2, setborder2] = useState()
   const [border3, setborder3] = useState()

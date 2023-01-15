@@ -10,8 +10,8 @@ import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 
 //My work
-import SanAppointment from './SanAppointment'
-import RoutePromote from './RoutePromote'
+import AnuAppointment from './AnuAppointment'
+import SanPromote from './SanPromote'
 import SanReport from './SanReport'
 
 /*
@@ -33,8 +33,8 @@ const DefaultRoute = '/overview'
 // ** Merge Routes
 const Routes = [
   ...SanReport,
-  ...RoutePromote,
-  ...SanAppointment,
+  ...SanPromote,
+  ...AnuAppointment,
   ...OverviewRoutes,
   ...GroupRoutes,
   ...OrganizationRoutes,

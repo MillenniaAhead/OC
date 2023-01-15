@@ -1,17 +1,21 @@
 import React from "react"
 import { MoreVertical, Search, Filter, AlignCenter } from "react-feather"
 import Detail from "./Detail"
+import { Input, InputGroup, InputGroupText } from "reactstrap"
 
 const CheckOut = () => {
     return (
         <div className="add-tip-container">
        <div className="check-out-container left-container-aa3">
-        <div className="search-container-aa5">
-            <div className="search-field-aa5 text-bb5">
-                <span className="search-icon-aa5 ps-1 pe-1"><Search size={20}/></span><input type="text" name="new-sale" id="" placeholder="Search by client, team member or service name"/>
-            </div>
-            <div className="filter-option-aa5 text-aa5">Filter<span className="ms-1"><Filter size={20}/></span></div>
-            <div className="sort-by-option-aa5 text-aa5">Sort by<span className="ms-1"><AlignCenter size={20}/></span></div>
+        <div className='d-flex' style={{background:'#f2f2f7', padding:"15px 8px", borderRadius:'8px'}}> 
+            <InputGroup style={{height:'fit-content'}}>
+        <InputGroupText>
+          <Search size={14} />
+        </InputGroupText>
+        <Input style={{fontSize:'14px'}} placeholder='Search by client, team member or service name' />
+      </InputGroup>
+            <div className="filter-option-aa5 text-aa5">Filter<div className="ms-1"><Filter size={20}/></div></div>
+            <div className="sort-by-option-aa5 text-aa5">Sortby<div className="ms-1"><AlignCenter size={20}/></div></div>
         </div>
         <div className="date-aa5 text-cc5">16 Dec</div>
         <div className="service-box-aa5">

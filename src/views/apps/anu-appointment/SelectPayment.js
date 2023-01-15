@@ -1,26 +1,36 @@
 import React, { useState } from 'react'
 import "./mycss/AddTip.css"
 import "./mycss/SelectPayment.css"
-import { Modal, ModalBody } from 'reactstrap'
-import { Settings, ArrowLeft, X, Search, Slash, DollarSign, Columns } from 'react-feather'
-import Detail from './Detail'
+import { Modal, ModalBody, Input, InputGroup, InputGroupText } from 'reactstrap'
+import { Settings, ArrowLeft, X, Search, Slash, DollarSign, Columns, User, Trash2, MoreHorizontal } from 'react-feather'
 import cashpayment from '../images/cashpayment.svg'
 import voucherpayment from '../images/voucherpayment.svg'
 import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actionCreators } from './appointmentRedux'
 
 const SelectPayment = () => {
+  //For modal
   const [centeredModal1, setCenteredModal1] = useState(false)
   const [centeredModal2, setCenteredModal2] = useState(false)
   const [amount, setAmount] = useState("Select a amount")
 
-  const AddTipAppointment = useSelector(state => state.AppointmentReducer)
-  const AddTipArray = AddTipAppointment.tipAdded
-  console.log(AddTipArray)
-
+  //For select a amount
   const SelectAmount = (current) => {
     setAmount(current.target.textContent)
   }
+  //For costom amount
+  const costomAmount = (e) => {
+    setAmount(e.target.value)
+  }
+
+  //For redux
+  const dispatch = useDispatch()
+    const { selectPayment } = bindActionCreators(actionCreators, dispatch)
+   const addPayment = () => {
+    selectPayment(amount)
+   }
 
   return (
     <div className="select-payment-container">
@@ -36,7 +46,57 @@ const SelectPayment = () => {
                 <div className="p-option-4 payment-box"><div className="Others-icon"></div><DollarSign  style={{color:'#4ECB71'}} size={35}  /><div className='text-cc4'>Others</div></div>
             </div>
         </div>
-        <Detail mypath="/timegraph" />
+        <div className="right-container-aa3">
+            <div className='right-child-aa3'>
+            <div className="top-box-aa3 d-flex align-items-center">
+                <div className="circle-logo-aa3 me-3 d-flex align-items-center justify-content-center"><User style={{color:"#1bb70b"}} size={35} /></div>
+                <div className="status-aa3 text-dd3">Walk In</div>
+            </div>
+            <div className="item-list-box-aa3">
+                <div className="list-top-aa3 d-flex justify-content-between">
+                    <div className='text-ee3'>Items</div>
+                    <div className='text-ee3'>Amount</div>
+                </div>
+                <div className='mt-1'>
+                <div className="list-item-aa3 d-flex  justify-content-between">
+                    <div className='text-ff3'>Facial</div>
+                    <div className='text-gg3'>1*₹115</div>
+                </div>
+                <div style={{marginTop:"3px"}} className='text-ee3'> 1h with Kondeti Anusha</div>
+                </div>
+            </div>
+            </div>
+            <div className='right-child-bb3'>
+            <div className="total-box-aa3">
+                <div className="subtotal d-flex justify-content-between">
+                    <div className='text-cc3'>Subtotal</div>
+                    <div className='text-cc3'>₹115</div>
+                </div>
+                <div className="taxes d-flex justify-content-between">
+                    <div className='text-cc3'>Taxes</div>
+                    <div className='text-cc3'>₹0</div>
+                </div>
+                <div className="total d-flex justify-content-between">
+                    <div className='text-cc3'>Total</div>
+                    <div className='text-cc3'>₹115</div>
+                </div>
+                <div className="tip d-flex justify-content-between">
+                    <div className='text-hh3 d-flex'><span style={{padding:"1px 3px 0 0", cursor:"pointer"}} className='d-flex'><Trash2 size={20} style={{color:"black"}}/></span><span>Tip for Kondeti Anusha</span></div>
+                    <div className='text-cc3'>₹11.50</div>
+                </div>
+            </div>
+            <div className="bottom-box-aa3">
+                <div className="to-pay  d-flex justify-content-between">
+                    <div className="text-cc3">To pay</div>
+                    <div className='text-cc3'>₹115.50</div>
+                </div>
+                <div className='btn-box-aa3 d-flex justify-content-between'> 
+                <button className="three-dit btn-aa3"> <MoreHorizontal size={30}/></button>
+                <NavLink className='w-75 btn-bb3' onClick={addPayment} to='/selectpayment' ><button className="continue-aa3 btn-bb3">Continue</button></NavLink>
+                </div>
+            </div>
+            </div>
+        </div>
         {/* //Cash payment */}
         <Modal style={{padding:'0'}}  isOpen={centeredModal1} toggle={() => setCenteredModal1(!centeredModal1)} className='modal-dialog-centered'>
           <ModalBody style={{background:"white", padding:"0"}}>
@@ -51,7 +111,7 @@ const SelectPayment = () => {
                 </div>
                 <div className="costomer-amount">
                     <div className='text-dd4 mb-1'>Amount given by the costomer</div>
-                    <div className="text-dd4 my-amount-aa4">{amount}</div>
+                    <input value={amount} onChange={costomAmount} type='text' className="text-dd4 my-amount-aa4"/>
                 </div>
                 <div className="change-given-aa4">
                    <div className='text-ee4'> No change given </div>
@@ -84,8 +144,13 @@ const SelectPayment = () => {
                     <div className='text-ff4'>₹126.50</div>
                 </div>
                 <div className="voucher-code-field-aa4">
-                    <div style={{paddingRight:"15px"}}><Search size={18}/></div><input className='text-gg4' type="text" placeholder='Enter voucher code'/>
-                </div>
+                <InputGroup className='input-group-merge mb-2'>
+        <InputGroupText>
+          <Search size={14} />
+        </InputGroupText>
+        <Input style={{fontSize:'20px'}} placeholder='Enter voucher code' />
+      </InputGroup>             
+      </div>
                 <div className="no-voucher-aa4 flex-column h-75 d-flex align-items-center justify-content-center">
                     <div><Slash size={70} strokeWidth={1}/></div>
                     <div className='text-hh4'>No voucher selected</div>

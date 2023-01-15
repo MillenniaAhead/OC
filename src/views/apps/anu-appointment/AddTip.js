@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import "./mycss/AddTip.css"
 import { Settings, ArrowLeft, Check, MoreHorizontal, User, Trash2 } from 'react-feather'
-// import Detail from './Detail'
 import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actionCreators } from './appointmentRedux'
 
 const AddTip = () => { 
+    //For select tip box
     const [one, setOne] = useState(true)
     const [two, setTwo] = useState(false)
     const [three, setThree] = useState(false)
@@ -16,6 +16,7 @@ const AddTip = () => {
     const [six, setSix] = useState(false)
     const [seven, setSeven] = useState(false)
     const [tipValue, setTipValue] = useState('No tip')
+    //tip-box1
     const myOne = (current) => {
         setTwo(false)
         setThree(false)
@@ -26,6 +27,7 @@ const AddTip = () => {
         setOne(!one)
         setTipValue(current.target.textContent)
     }
+    //tip-box2
     const myTwo = (current) => { 
         setOne(false)
         setThree(false)
@@ -36,6 +38,7 @@ const AddTip = () => {
         setTwo(!two)
         setTipValue(current.target.textContent)
     }
+    //tip-box3
     const myThree = (current) => { 
         setTwo(false)
         setOne(false)
@@ -46,6 +49,7 @@ const AddTip = () => {
         setThree(!three)
         setTipValue(current.target.textContent)
     }
+    //tip-box4
     const myFour = (current) => {
         setTwo(false)
         setThree(false)
@@ -56,6 +60,7 @@ const AddTip = () => {
         setFour(!four)
         setTipValue(current.target.textContent)
     }
+    //tip-box5
     const myFive = (current) => {
         setTwo(false)
         setThree(false)
@@ -66,6 +71,7 @@ const AddTip = () => {
         setFive(!five)
         setTipValue(current.target.textContent)
     }
+    //tip-box6
     const mySix = (current) => { 
         setTwo(false)
         setThree(false)
@@ -76,6 +82,7 @@ const AddTip = () => {
         setSix(!six)
         setTipValue(current.target.textContent)
     }
+    //tip-box7
     const mySeven = (current) => { 
         setTwo(false)
         setThree(false)
@@ -87,6 +94,7 @@ const AddTip = () => {
         setTipValue(current.target.textContent)
     }
 
+    //For redux
     const dispatch = useDispatch()
     const { addTip } = bindActionCreators(actionCreators, dispatch)
    const AddMyTip = () => {
@@ -119,7 +127,6 @@ const AddTip = () => {
             </div>
                 <div className='text-bb3'>Tips goes to Kondeti Anusha <a href="">Edit</a> </div>
         </div>
-    
         <div className="right-container-aa3">
             <div className='right-child-aa3'>
             <div className="top-box-aa3 d-flex align-items-center">
@@ -166,7 +173,7 @@ const AddTip = () => {
                 </div>
                 <div className='btn-box-aa3 d-flex justify-content-between'> 
                 <button className="three-dit btn-aa3"> <MoreHorizontal size={30}/></button>
-                <NavLink onClick={AddMyTip} className='w-75 btn-bb3' to='/selectpayment' ><button className="continue-aa3 btn-bb3">Continue</button></NavLink>
+                <NavLink className='w-75 btn-bb3' onClick={AddMyTip}  to='selectpayment' ><button className="continue-aa3 btn-bb3">Continue</button></NavLink>
                 </div>
             </div>
             </div>

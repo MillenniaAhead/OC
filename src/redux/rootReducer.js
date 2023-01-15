@@ -18,7 +18,7 @@ import ecommerce from '@src/views/apps/ecommerce/store'
 import dataTables from '@src/views/tables/data-tables/store'
 import permissions from '@src/views/apps/roles-permissions/store'
 import PromoteReducer from '../views/apps/san-promote/promoteRedux/Reducer'
-import AppointmentReducer from '../views/apps/san-appointment/appointmentRedux/Reducer'
+import AppointmentReducer from '../views/apps/anu-appointment/appointmentRedux/Reducer'
 
 const rootReducer = {
   AppointmentReducer,

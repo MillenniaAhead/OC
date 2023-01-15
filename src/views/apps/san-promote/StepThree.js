@@ -6,16 +6,15 @@ import { NavLink, useHistory } from 'react-router-dom'
 import { X } from "react-feather"
 import Progress from "./Progress"
 import { Alert } from 'reactstrap'
-import './mycss1/StepThree.css'
 
 const StepThree = () => {
 
-  //For discountcode
-  const [discountCodeValue, setDiscountCodeValue] = useState("")
   //For togglers
   const [applyPromotion1, setApplyPromotion1] = useState('Enable promotionat point of sale')
   const [applyPromotion2, setApplyPromotion2] = useState(false)
-  //For Discount code field 
+  //For discountcode
+  const [discountCodeValue, setDiscountCodeValue] = useState("")
+  //Visible discount code input field
   const [block1, setBlock1] = useState({display:'none'})
   //For alert compo
   const [visible, setVisible] = useState(false)
@@ -34,6 +33,7 @@ const StepThree = () => {
     setStyle2()
   }
 
+  //Toggller-1
   const toggler1Fun = () => {
     setToggle1(!toggle1)
     if (toggle1) {
@@ -42,6 +42,8 @@ const StepThree = () => {
       setApplyPromotion1('Enable promotionat point of sale')
     }
   }
+
+  //Toggller-2
   const toggler2Fun = () => {
     setToggle2(!toggle2)
     if (toggle2) {
@@ -49,6 +51,7 @@ const StepThree = () => {
       setApplyPromotion2(false)
       setStyle1({display:'none'})
       setStyle2()
+      setDiscountCodeValue("")
     } else {
       setBlock1({display:'block'})
       setApplyPromotion2('Enable discount code')
@@ -64,8 +67,10 @@ const StepThree = () => {
   
 
    //On click of next step
+
    const nextBtnFun = () => {
     //Checked both option
+
     if (toggle1 && toggle2) {
       if (discountCodeValue === "") {
         setStyle1({display:'block', color:'red'})
@@ -78,10 +83,12 @@ const StepThree = () => {
         StoreDealData([{promotion:applyPromotion1}, {promotion:applyPromotion2, discount_code:discountCodeValue}])
       history.push('/promote/stepFour')
     }
+
     //Checked option1
   } else if (toggle1 && !toggle2) {
       StoreDealData({promotion:applyPromotion1})
     history.push('/promote/stepFour')
+
     //Checked option2
   } else if (toggle2 && !toggle1) {
     if (discountCodeValue === "") {
@@ -95,6 +102,7 @@ const StepThree = () => {
       StoreDealData({promotion:applyPromotion2, discount_code:discountCodeValue})
       history.push('/promote/stepFour')
     }
+    
     //Nothing checked
     } else {
       setVisible(true)

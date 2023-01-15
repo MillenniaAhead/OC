@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Progress from "./Progress"
 import { NavLink, useHistory } from "react-router-dom"
 import Flatpickr from "react-flatpickr"
-import { Modal, ModalBody, Button, Alert, ModalHeader } from "reactstrap"
+import { Modal, ModalBody, Button, Alert, ModalHeader, Input, InputGroup, InputGroupText } from "reactstrap"
 import { Search, X } from "react-feather"
 import { useDispatch } from "react-redux"
 import { bindActionCreators } from "redux"
@@ -114,25 +114,26 @@ const StepTwo = () => {
   //For update values of name and description
   const updateValue = (current) => {
     setPromotionDetail({...promotionDetail, [current.target.name]:current.target.value})
-    // alert gone (name)
+    // alert gone
     setRedStyle({display:'none'})
     setRedBox()
   }
   
-  //For input fields
+  //For max use value
   const maxUse = (e) => {
     setMaxUseValue(e.target.value.toString())
     setRedBox2()
     setRedStyle2({display:'none'})
   }
   
+  //For minimume purchase value
   const minPurchaseFun = (e) => {
     setMinPurchaseValue(e.target.value.toString())
     setRedBox3()
     setRedStyle3({display:'none'})
   }
   
-  //For togglers
+  //For toggler-1
   const toggler1 = () => {
     if (toggle2 !== true) {
       setToggle1(!toggle1)
@@ -149,6 +150,7 @@ const StepTwo = () => {
       setToggle1(false)
     }
   }
+  //For toggler-2
   const toggler2 = () => {
     if (toggle1) {
       setToggle2(false)
@@ -170,6 +172,7 @@ const StepTwo = () => {
     }
   }
 }
+//For toggler-3
   const toggler3 = () => {
     setToggle3(!toggle3)
     if (!toggle3) {
@@ -194,8 +197,6 @@ const StepTwo = () => {
 
   //On next step click
   const formHandle = () => {
-    console.log(maxUseValue.toString())
-    console.log(minPurchaseValue.toString())
     if (promotionDetail.name === "") {
       //Show alert (name)
       setRedStyle({ display: "block" })
@@ -380,7 +381,12 @@ const StepTwo = () => {
           <ModalHeader toggle={() => setCenteredModal1(!centeredModal1)}><div className="modal-option-heading-a5">Select services</div></ModalHeader>
                         <ModalBody className="my-modal-a5">
                           <div className="modal-option-search-box-wrapper-a5">
-                          <div className="modal-option-search-box-a5 w-100"><div className="madal-option-search-a5"><Search/></div><span><input className="modal-option-input-a5"/></span></div>
+                          <InputGroup className="input-group-merge mt-1 mb-1">
+        <InputGroupText>
+          <Search size={18} />
+        </InputGroupText>
+        <Input style={{fontSize:'22px', fontWeight:'500', color:'black'}} placeholder='' />
+      </InputGroup>
                           </div>
                           <div className="select-box-mini">
                             <label
@@ -529,8 +535,12 @@ const StepTwo = () => {
           <ModalHeader toggle={() => setCenteredModal2(!centeredModal2)}><div className="modal-option-heading-a5">Select products</div></ModalHeader>
                         <ModalBody>
                           <div className="modal-option-search-box-wrapper-a5">
-                          <div className="modal-option-search-box-a5 w-100"><div className="madal-option-search-a5"><Search/></div><span><input className="modal-option-input-a5"/></span></div>
-                          </div>
+                          <InputGroup className="input-group-merge mt-1 mb-1">
+        <InputGroupText>
+          <Search size={18} />
+        </InputGroupText>
+        <Input style={{fontSize:'22px', fontWeight:'500', color:'black'}} placeholder='' />
+      </InputGroup>                          </div>
                           <div className="select-box-mini">
                             <label
                               className="edit-list-label"
@@ -633,8 +643,12 @@ const StepTwo = () => {
           <ModalHeader toggle={() => setCenteredModal3(!centeredModal3)}><div className="modal-option-heading-a5">Select memberships</div></ModalHeader>
                         <ModalBody>
                           <div className="modal-option-search-box-wrapper-a5">
-                          <div className="modal-option-search-box-a5 w-100"><div className="madal-option-search-a5"><Search/></div><span><input className="modal-option-input-a5"/></span></div>
-                          </div>
+                          <InputGroup className="input-group-merge mt-1 mb-1">
+        <InputGroupText>
+          <Search size={18} />
+        </InputGroupText>
+        <Input style={{fontSize:'22px', fontWeight:'500', color:'black'}} placeholder='' />
+      </InputGroup>                          </div>
                           <h1 className="mt-4 mb-4 text-center">
                             No Membership found
                           </h1>
@@ -676,8 +690,12 @@ const StepTwo = () => {
           <ModalHeader toggle={() => setCenteredModal4(!centeredModal4)}><div className="modal-option-heading-a5">Select vouchers</div></ModalHeader>
                         <ModalBody>
                           <div className="modal-option-search-box-wrapper-a5">
-                          <div className="modal-option-search-box-a5 w-100"><div className="madal-option-search-a5"><Search/></div><span><input className="modal-option-input-a5"/></span></div>
-                          </div>
+                          <InputGroup className="input-group-merge mt-1 mb-1">
+        <InputGroupText>
+          <Search size={18} />
+        </InputGroupText>
+        <Input style={{fontSize:'22px', fontWeight:'500', color:'black'}} placeholder='' />
+      </InputGroup>                          </div>
                           <h1 className="mt-4 mb-4 text-center">
                             No voucher found
                           </h1>

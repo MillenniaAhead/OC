@@ -7,6 +7,7 @@ import { Offcanvas, OffcanvasBody, Button } from 'reactstrap'
 import { NavLink } from "react-router-dom"
 
 const ViewAppointmentTwo = () => {
+  //For canvas
   const [canvasPlacement, setCanvasPlacement] = useState('end')
   const [canvasOpen, setCanvasOpen] = useState(false)
   
