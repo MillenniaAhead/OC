@@ -49,7 +49,7 @@ const ProjectAnuServicesRoutes = [
   {
     path: '/VoucherTypes',
     component: lazy(() => import('../../views/ProjectAnuSevices/VoucherTypes'))
-  },
+  }
   // {
   //   path: '/SelectMemModal',
   //   component: lazy(() => import('../../views/ProjectAnuSevices/SelectMemModal'))
