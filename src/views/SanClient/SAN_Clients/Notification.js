@@ -1,6 +1,5 @@
 import React from 'react'
 import notification from '../../../images/ClientList/notification.png'
-// import { div } from '@mui/material'
 
 const Notification = () => {
     return (

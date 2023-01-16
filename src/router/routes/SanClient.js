@@ -22,6 +22,10 @@ const SanClientRoutes = [
     component: lazy(() => import('../../views/SanClient/SAN_Clients/Paperless'))
   },
   {
+    path: '/sanclient/selectchannel',
+    component: lazy(() => import('../../views/SanClient/SAN_Clients/SelectChannel'))
+  },
+  {
     path: '/sanclient/addClient',
     component: lazy(() => import('../../views/SanClient/SAN_Clients/AddClient'))
   }

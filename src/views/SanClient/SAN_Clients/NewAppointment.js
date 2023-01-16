@@ -1,10 +1,5 @@
 import React from 'react'
-// import { Card } from 'react-bootstrap'
-// import { AiOutlineClose } from 'react-icons/ai'
 import Round from '../../../images/snr/Group 134.png'
-// import clock from '../../../images/snr/clock.jpg'
-// import mic from '../../../images/snr/mice.jpg'
-// import calender from '../../../images/snr/calendar.jpg'
 
 const SANService = () => {
     return (

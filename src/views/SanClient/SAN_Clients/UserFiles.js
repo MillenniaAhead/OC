@@ -1,6 +1,5 @@
 import React from 'react'
 import files from '../../../images/ClientList/NoFiles.png'
-// import div from '@mui/material/div'
 
 const UserFiles = () => {
     return (

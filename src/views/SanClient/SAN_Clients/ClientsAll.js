@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap'
-// import Nav from 'react-bootstrap/Nav'
-// import Row from 'react-bootstrap/Row'
-// import Tab from 'react-bootstrap/Tab'
 import AutomatedMessages from './AutomatedMessages'
 import ClientList from './ClientList'
 import Froms from './Froms'

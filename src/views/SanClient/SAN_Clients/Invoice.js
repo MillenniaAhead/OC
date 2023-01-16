@@ -1,7 +1,6 @@
 import React from 'react'
 import filter from '../../../images/ClientList/filers.jpg'
 import invoice from '../../../images/ClientList/invoice.png'
-// import div from '@mui/material/div'
 
 const Invoice = () => {
     return (

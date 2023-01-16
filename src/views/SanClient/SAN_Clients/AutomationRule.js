@@ -1,6 +1,5 @@
 import React from 'react' 
 import X from '../../../images/ClientList/x.png'
-// import { GrClose} from 'react-icons/gr'
 
 const AutomationRule = () => {
     return (
