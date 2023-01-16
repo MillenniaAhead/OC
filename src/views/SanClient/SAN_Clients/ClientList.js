@@ -1,8 +1,6 @@
 import React from 'react'
-import {  Card, CardImg, CardBody, Row, Col, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import {Table,  Card, CardImg, CardBody, Row, Col, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
 import '../CSS/ClientList.css'
-import Table from '../../apps/user/list/Table'
-
 // ** Custom Components
 import StatsHorizontal from '@components/widgets/stats/StatsHorizontal'
 
@@ -20,51 +18,29 @@ import '@styles/react/apps/app-users.scss'
 import client from '../../../images/ClientList/client.jpg'
 import filter from '../../../images/ClientList/filers.jpg'
 import FirstName from '../../../images/ClientList/FirstName.jpg'
+import { Link } from 'react-router-dom'
 
 
 const ClientList = () => {
-    // const tableData = [
-    //   {
-    //     "avatar": "J",
-    //     "Clint_name": "Jack Doe",
-    //     "email": "ckeam0@bing.com",
-    //     "Mobile_number":  '-',
-    //     "gender": "Male",
-    //     "reviews": "-",
-    //     "total_sales": "-"
-    //   }, {
-    //     "avatar": "M",
-    //     "Clint_name": "Mack Doe",
-    //     "email": "ngreveson1@rambler.ru",
-    //     "Mobile_number":'-',
-    //     "gender": "Male",
-    //     "reviews": "-",
-    //     "total_sales": "-"
-    //   }, {
-    //     "avatar": "L",
-    //     "Clint_name": "Liam  Doe",
-    //     "email": "cdidomenico2@walmart.com",
-    //     "Mobile_number":'-',
-    //     "gender": "Male",
-    //     "reviews": "-",
-    //     "total_Sales": "-"
-    //   }, {
-    //     "avatar": "S",
-    //     "Clint_name": "Shane Doe",
-    //     "email": "svandermark3@ihg.com",
-    //     "Mobile_number":'-',
-    //     "gender": "male",
-    //     "reviews": "-",
-    //     "total_sales": "-"
-    //   }, {
-    //     "avatar": "L",
-    //     "Clint_name": "Look Doe",
-    //     "email": "agreated4@jugem.jp",
-    //     "Mobile_number": "-",
-    //     "gender": "Male",
-    //     "reviews": "-",
-    //     "total_sales": "-"
-    //   }]
+  const tableData = [
+    {
+      avatar: "J",
+      Clint_name: "Jack Doe",
+      email: "ckeam0@bing.com",
+      Mobile_number:  '-',
+      gender: "Male",
+      reviews:"-",
+      total_sales: "-"
+    }, {
+      avatar: "M",
+      Clint_name: "Mack Doe",
+     email: "ngreveson1@rambler.ru",
+      Mobile_number:'-',
+     gender: "Male",
+      reviews: "-",
+     total_sales: "-"
+    }
+]
     return (
         <div>
             <div>
@@ -187,36 +163,56 @@ online.</h3>
         </TableBody>
       </Table>
     </TableContainer> */}
+    <Table responsive>
+      <thead >
+        <tr className='bg-white'>
+          <th scope='col' className='text-nowrap'>
+          Clint name
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Mobile number
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Gender
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Reviews
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Total Sales
+          </th>
+          <th scope='col' className='text-nowrap'>
+            
+          </th>
+          
+        </tr>
+      </thead>
+      <tbody>
+      {
+          tableData.map(row => (
+            
+        <tr  key = {row.Clint_name}>
+         
+          <td className='text-nowrap'><div  spacing={2} className=" d-flex">
+                      <div className=' fs-2 w-40 h-40' > {row.avatar}</div>
+                    <div className='ms-1 '>
+                      <Link  >{row.Clint_name} </Link><br/>{row.email}
+                      </div>
+                  </div></td>
+          <td className='text-nowrap'>{row.Mobile_number}</td>
+          <td className='text-nowrap'>{row.gender}</td>
+          <td className='text-nowrap'>{row.reviews}</td>
+          <td className='text-nowrap'>{row.total_sales}</td>
+          
+        </tr>
+        ))
+      }
+      </tbody>
+    </Table>
   
-  <div className='app-user-list'>
-      <Row>
-        
-        {/* <Col lg='3' sm='6'>
-          <StatsHorizontal
-            color='danger'
-            statTitle='Paid Users'
-            icon={<UserPlus size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>4,567</h3>}
-          />
-        </Col> */}
-        <Col lg='3' sm='6'>
-          <StatsHorizontal
-            color='success'
-            statTitle='Active Users'
-            icon={<UserCheck size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>19,860</h3>}
-          />
-        </Col>
-        <Col lg='12' sm='6'>
-          <StatsHorizontal
-            color='warning'
-            statTitle='Pending Users'
-            icon={<UserX size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>237</h3>}
-          />
-        </Col>
-      </Row>
-      <Table />
+  <div >
+      
+      
     </div>
             </div>
         </div>
