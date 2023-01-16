@@ -46,14 +46,17 @@ const VerticalMenuHeader = props => {
         <li className='nav-item me-auto'>
           <NavLink to='/' className='navbar-brand'>
             <span className='brand-logo'>
-              <img src={themeConfig.app.appLogoImage} alt='logo' width="180px" height="50px"/>
+              <img style={{marginLeft: '-10px'}} src={themeConfig.app.appLogoImage} alt='logo' width="50px" height="50px"/>
+              <p className='fs-4' style={{color: '#4E4E4E', marginTop: '-35px', marginLeft: '60px'}}>
+                <span style={{color: '#1BB70B'}}>OUTLET</span>
+                CONTROL</p>
             </span>
           </NavLink>
         </li>
         <li className='nav-item nav-toggle'>
-          <div className='nav-link modern-nav-toggle cursor-pointer'>
+          <div style={{marginTop: '-35px', marginLeft: '220px'}} className='nav-link modern-nav-toggle cursor-pointer'>
             <Toggler />
-            <X onClick={() => setMenuVisibility(false)} className='toggle-icon icon-x d-block d-xl-none' size={20} />
+            <X onClick={() => setMenuVisibility(false)} className='toggle-icon icon-x d-block d-xl-none' size={22} />
           </div>
         </li>
       </ul>

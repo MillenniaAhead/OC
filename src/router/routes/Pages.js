@@ -29,6 +29,102 @@ const PagesRoutes = [
     }
   },
   {
+    path: '/verify',
+    component: lazy(() => import('../../views/auth/Verify')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/otp',
+    component: lazy(() => import('../../views/auth/OTP')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/resend',
+    component: lazy(() => import('../../views/auth/Resend')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/details',
+    component: lazy(() => import('../../views/auth/Details')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/type',
+    component: lazy(() => import('../../views/auth/Type')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/other',
+    component: lazy(() => import('../../views/auth/Other')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/team',
+    component: lazy(() => import('../../views/auth/Team')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/size',
+    component: lazy(() => import('../../views/auth/Teamsize')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/location',
+    component: lazy(() => import('../../views/auth/Location')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/software',
+    component: lazy(() => import('../../views/auth/Software')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/hear',
+    component: lazy(() => import('../../views/auth/Hear')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
+    path: '/complete',
+    component: lazy(() => import('../../views/auth/Complete')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+  {
     path: '/pages/register-basic',
     component: lazy(() => import('../../views/pages/authentication/RegisterBasic')),
     layout: 'BlankLayout'
