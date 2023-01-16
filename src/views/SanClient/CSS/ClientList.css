@@ -1,0 +1,84 @@
+.three{
+    width: 24px;
+    height: 19px;
+    border: .5px solid gray;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+.client{
+    background-image: url("../../../images/ClientList/background.jpg");
+}
+
+.paperless{
+    background-image: url('../../../images/ClientList/Ellipse 15.png');
+    background-repeat: no-repeat;
+    height:1326px;
+   
+}
+.medical{
+    position: absolute;
+    left: 100px;
+    top: 180px;
+
+}
+.badgeba{
+    background-image: url('../../../images/snr/greenbadge.png') ;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 370px;
+    top: 240px;
+    height: 50px;
+    width: 90px;
+    padding-top: 8px;
+    
+}
+.cardab{
+    position: absolute;
+    left: 380px;
+    top: 280px;
+    width: 240px;
+ 
+}
+
+.inputbg{
+    position: absolute;
+    left: 90px;
+    top: 500px;
+    width: 320px;
+    height: 105px;
+    background-color: white;
+    border-radius: 10px;
+}
+.inputbg input{
+    width:300px; 
+    height:90px; 
+   margin: 10px 10px;
+   border-radius: 10px;
+   background-color: rgba(27, 183, 11, 0.24);
+   border: rgba(27, 183, 11, 0.24);
+}
+.handtv{
+    background-image: url('../../../images/snr/Rectangle\ 99.png');
+    background-repeat: no-repeat;
+    width: 160px;
+    height: 100px;
+    position: absolute;
+    left: 20px;
+    top: 550px;
+}
+.hand{
+    position: absolute;
+    left: 80px;
+    top: 630px;
+}
+.hrline{
+    position: absolute;
+    left: 400px;
+    top: 400px;
+    width: 200px;
+    color: rgb(156, 155, 155);
+    
+}
