@@ -1,0 +1,110 @@
+/* code aa4 */
+
+.modal-body-aa4,.modal-body-bb4{
+    padding:25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.modal-body-bb4{
+    height:65vh
+}
+.text-bb4{
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 700;
+}
+.text-cc4{
+    font-size: 21px;
+    line-height: 23px;
+    font-weight: 500;
+}
+.text-gg4{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    color:rgba(0, 0, 0, 0.4)
+}
+.text-hh4{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    color:rgba(0, 0, 0, 0.9)
+}
+.text-ff4{
+    font-size: 19px;
+    line-height: 23px;
+    font-weight: 500;
+}
+.text-dd4{
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+}
+.text-ee4{
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.6);
+}
+.modal-top-aa4{
+    padding:25px;
+}
+.amount-to-pay-aa4{
+    padding-bottom: 30px;
+}
+.my-amount-aa4{
+    border: 1px solid #0000002E;
+    border-radius:8px;
+    padding:10px;
+    width:100%;
+}
+.change-given-aa4{
+    padding:15px 0;
+}
+.amount-options-container-aa4{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+.amount-aa4{
+    border-radius: 4px;
+    border: 1px solid #0000002E;
+    height:4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+}
+.modal-btn-box-aa4,.modal-btn-box-bb4{
+    padding: 25px;
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+.btn-aa4{
+    padding:12px 25px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-right: 15px;
+    border-radius: 4px;
+}
+.btn-bb4{
+    padding:12px 25px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color:white;
+    border-radius: 4px;
+    background-color: #4e4e4e;
+}
+@media (max-width:500px) {
+    .modal-btn-box-bb4{
+        padding:25px 15px;
+    }
+}
