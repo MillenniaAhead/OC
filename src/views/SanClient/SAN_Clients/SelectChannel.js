@@ -10,8 +10,8 @@ const SelectChannel = () => {
         <div>
             <div className=' px-5 d-flex justify-content-between align-items-center mt-4'>
                   <div>
-                    <button type='button' className="border-0 fs-4 text-dark"><img src={X} alt="" /></button>
-                    <button type="button" className="border-0 fs-4 text-dark">Previous</button></div>
+                    <a ><img src={X} alt="" /></a>
+                    <a  className=" fs-4 text-dark">Previous</a></div>
                   <div><button type="button" class="btn btn-secondary nextButton">Next Step</button></div>
             </div>
             <div>
