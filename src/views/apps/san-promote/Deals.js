@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 // import DealsList from "./DealsList"
 import { NavLink } from "react-router-dom"
 import chair from "../images/chair.png"
@@ -6,12 +6,16 @@ import modulo from "../images/modulo.svg"
 import database from "../images/database.svg"
 import { Search, Filter, Check, Clock, ChevronLeft } from "react-feather"
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Input, InputGroup, InputGroupText } from 'reactstrap'
+import axios from "axios"
 
 const Deals = () => {
    //For side menu
    const [styleTwo, setstyleTwo] = useState({display:'block'})
    const [styleThree, setstyleThree] = useState()
    const [styleFour, setstyleFour] = useState({position: "relative", left: "-50%"})
+
+   //GET data from backend
+   const [detail, setDetail] = useState()
    
    //On Click of arrow circle
    const toggleSideBar = () => {
@@ -32,6 +36,17 @@ const Deals = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen)
   }
+
+  //Fetch api by axios
+  useEffect(() => {
+    axios.get("http://localhost:5000/deals/get")
+    .then((res) => {
+      setDetail(res.data)
+      console.log(detail)
+    })
+    .catch((err) => console.log(['Error from /deals/get', err]))
+  }, [])
+
   return (
     <div className="promote-container-wrapper">
     <div className="promote-container">

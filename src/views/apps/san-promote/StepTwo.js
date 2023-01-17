@@ -24,7 +24,7 @@ const StepTwo = () => {
   const [centeredModal4, setCenteredModal4] = useState(false)
 
   //For name and description values
-  const [promotionDetail, setPromotionDetail] = useState({name:"", description:''})
+  const [promotionDetail, setPromotionDetail] = useState({name:"", description:""})
 
   //For product
   const [product, setProduct] = useState([])
@@ -223,7 +223,7 @@ const StepTwo = () => {
       //Navigate
       nextStep.push("/promote/stepthree")
       //Call action 
-      CollectDealData([promotionDetail, service, product, picker1, picker2, { promotion_value: myPromotionValue, promotion_value_type: promotionValueType}, {max_use: maxUseValue, min_purchase: minPurchaseValue}])
+      CollectDealData([promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue + promotionValueType, maxUseValue, minPurchaseValue])
     }
   }
 

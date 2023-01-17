@@ -225,7 +225,7 @@ body{
     width: 20px;
   }
 
-  @media (max-width:850px){
+  @media (max-width:900px){
     .my-deals-container{
       flex-wrap: wrap;
     }
@@ -244,15 +244,15 @@ body{
       display:none;
     }
   }
-  @media all and (max-width : 850px) and (min-width:750px) {
+  @media all and (max-width :900px) and (min-width:750px) {
     .deals-container-a, .deals-container-b{
-      font-size: 14px;
+      font-size: 12px;
     }
     .my-deals-container{
       padding:15px 30px;
     }
   }
-  @media (max-width :500px){
+  @media (max-width :400px){
     .deals-container-b, .deals-container-a{
       font-size:8px;
     }

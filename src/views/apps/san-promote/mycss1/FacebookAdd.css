@@ -140,7 +140,7 @@
     width:1em;
   }
 
-  @media (max-width:850px) {
+  @media (max-width:900px) {
     .deals-container-a4, .deals-container-b4{
       width:100%;
     }
@@ -159,7 +159,7 @@
       font-size: 9px;
     }
   }
-  @media (max-width:850px) and (min-width:500px){
+  @media (max-width:900px) and (min-width:500px){
     .deals-container-b4{
       font-size: 11px;
     }

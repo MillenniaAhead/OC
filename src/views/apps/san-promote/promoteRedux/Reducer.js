@@ -21,7 +21,7 @@ const PromoteReducer = (state = INI_DATA, action) => {
           case COLLECT_A_DEAL_DATA:
           return {
             ...state,
-            newDeal : [...state.newDeal, action.data]
+            newDeal : [...state.newDeal, ...action.data]
           }
           case DELETE_LAST_DATA:
           return {
