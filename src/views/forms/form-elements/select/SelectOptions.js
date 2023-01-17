@@ -8,7 +8,8 @@ import { Card, CardHeader, CardTitle, CardBody, Row, Col, Label } from 'reactstr
 import { selectThemeColors } from '@utils'
 
 // ** Third Party Components
-import Select, { components } from 'react-select'
+// import Select, { components } from 'react-select'
+import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import CreatableSelect from 'react-select/creatable'
 import AsyncSelect from 'react-select/async'

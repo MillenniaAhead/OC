@@ -1,8 +1,12 @@
 // ** React Imports
 import { useState } from 'react'
-
+import Layout from '../Product list/Layout/Layout'
 // ** Reactstrap Imports
-import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap'
+import { TabContent, TabPane, Nav, NavItem, NavLink, Container } from 'reactstrap'
+import CardsLayout from '../Product list/Layout/CardsLayout'
+import Stocktakes from '../Stocktakes/Stocktakes'
+import StockOrders from '../Stock-orders/StockOrders'
+import Suppliers from '../Suppliers/Suppliers'
 
 const TabsVerticalLeft = () => {
   // ** State
@@ -24,7 +28,7 @@ const TabsVerticalLeft = () => {
               toggle('1')
             }}
           >
-            Tab 1
+            Products
           </NavLink>
         </NavItem>
         <NavItem>
@@ -34,7 +38,7 @@ const TabsVerticalLeft = () => {
               toggle('2')
             }}
           >
-            Tab 2
+            Product list
           </NavLink>
         </NavItem>
         <NavItem>
@@ -44,7 +48,37 @@ const TabsVerticalLeft = () => {
               toggle('3')
             }}
           >
-            Tab 3
+           Inventory
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '4'}
+            onClick={() => {
+              toggle('4')
+            }}
+          >
+           Stocktakes
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '5'}
+            onClick={() => {
+              toggle('5')
+            }}
+          >
+           Stock orders
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            active={active === '6'}
+            onClick={() => {
+              toggle('6')
+            }}
+          >
+           Suppliers
           </NavLink>
         </NavItem>
       </Nav>
@@ -57,18 +91,23 @@ const TabsVerticalLeft = () => {
           </p>
         </TabPane>
         <TabPane tabId='2'>
-          <p>
-            Sugar plum tootsie roll biscuit caramels. Liquorice brownie pastry cotton candy oat cake fruitcake jelly
-            chupa chups. Sweet fruitcake cheesecake biscuit cotton candy. Cookie powder marshmallow donut. Pudding
-            caramels pastry powder cake soufflé wafer caramels. Jelly-o pie cupcake.
-          </p>
+          <div>
+            < Layout />
+            <CardsLayout />
+             
+          </div>
         </TabPane>
         <TabPane tabId='3'>
-          <p>
-            Icing croissant powder jelly bonbon cake marzipan fruitcake. Tootsie roll marzipan tart marshmallow pastry
-            cupcake chupa chups cookie. Fruitcake dessert lollipop pudding jelly. Cookie dragée jujubes croissant lemon
-            drops cotton candy. Carrot cake candy canes powder donut toffee cookie.
-          </p>
+             
+        </TabPane>
+        <TabPane tabId='4'>
+          < Stocktakes />
+        </TabPane>
+        <TabPane tabId='5'>
+          <StockOrders />
+        </TabPane>
+        <TabPane tabId='6'>
+         <Suppliers />
         </TabPane>
       </TabContent>
     </div>
