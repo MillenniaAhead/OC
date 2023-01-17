@@ -8,6 +8,13 @@ import DashboardRoutes from './Dashboards'
 import UiElementRoutes from './UiElements'
 import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
+import ProductDetailsRoutes from './ProductDetails' 
+import ReviewStocktakesRoutes from './ReviewStocktakes'
+
+//My work
+import AnuAppointment from './AnuAppointment'
+import SanPromote from './SanPromote'
+import SanReport from './SanReport'
 
 /*
 Customization Routes
@@ -15,9 +22,8 @@ Customization Routes
 import OverviewRoutes from './Overview'
 import GroupRoutes from './Groups'
 import OrganizationRoutes from './Organization'
-import SanClientRoutes from './SanClient'
-import SanSetSalesRoutes from './SanSetSales'
 
+import CountDetailsRoutes from './CountDetails'
 
 // ** Document title
 const TemplateTitle = '%s - Vuexy React Admin Template'
@@ -31,6 +37,9 @@ const DefaultRoute = '/overview'
 
 // ** Merge Routes
 const Routes = [
+  ...SanReport,
+  ...SanPromote,
+  ...AnuAppointment,
   ...OverviewRoutes,
   ...GroupRoutes,
   ...OrganizationRoutes,
@@ -43,8 +52,11 @@ const Routes = [
   ...FormRoutes,
   ...TablesRoutes,
   ...ChartsRoutes,
-  ...SanClientRoutes,
-  ...SanSetSalesRoutes
+  ...ProductDetailsRoutes,
+  ...CountDetailsRoutes,
+  ...ReviewStocktakesRoutes
+
+  
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }

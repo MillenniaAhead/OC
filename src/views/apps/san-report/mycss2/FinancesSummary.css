@@ -1,0 +1,84 @@
+.text-aaa3, .text-bbb3{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+}
+.text-ddd3{
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 400;
+}
+.text-aaa3, .text-ddd3{
+    color:rgba(0, 0, 0, 0.7)
+}
+.text-ccc3{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 36px;
+    margin:15px 0;
+}
+.table-aaa3{
+    width:95%;
+}
+.tbody-aaa3 tr, .tfoot-aaa3 tr{
+    display:flex;
+    justify-content: space-between;
+}
+.box-aaa3{
+    background-color: white;
+    border-radius: 8px;
+    border:1px solid #d9d9d9;
+    padding:20px;
+    margin:8px;
+}
+.thead-aaa3 tr{
+    font-weight:600;
+    font-size: 23px;
+    line-height: 25px;
+}
+.thead-aaa3 tr th{
+    padding-bottom: 16px;
+}
+
+.tr-aaa3 td:first-child{
+    font-size:17px;
+    line-height: 21px;
+    font-weight: 400;
+}
+.tbody-aaa3 tr td:first-child{
+    color:rgba(0, 0, 0, 0.7)
+}
+.tr-aaa3{
+    padding:8px 0;
+}
+.tfoot-aaa3 tr{
+    font-weight: 900;
+    border-top: 1px solid #d9d9d9;
+}
+.tfoot-aaa3 tr td:first-child{
+    font-weight: 500;
+}
+.tr-aaa3 a{
+    color:#1bb70b;
+}
+.tr-aaa3 a:hover{
+    color:#1bb70b;
+    text-decoration: underline #1bb70b;
+}
+.my-top-xxx3 .search-field-aa5{
+    margin-right:5px;
+}
+@media (max-width:600px){
+    .text-ccc3{
+        font-size:26px;
+        line-height: 32px;
+    }
+    .my-top-xxx3 .search-field-aa5{
+        width:auto;
+     }
+    }
+    @media (max-width:850px) and (min-width:600px){
+    .my-top-xxx3 .search-field-aa5{
+        width:70%;
+     }
+}

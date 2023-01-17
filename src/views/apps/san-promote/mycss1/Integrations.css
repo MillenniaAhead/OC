@@ -1,0 +1,130 @@
+.modal-lg{
+    min-width:85%;
+}
+.integrations-wrapper{
+    padding:25px;
+}
+
+.image-box-b{
+    padding:0px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box-content{
+    padding:24px;
+    border-left:1px solid #d9d9d9;
+}
+.left-side-a{
+    padding-right:16px;
+}
+.text-a2{
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 36px;
+    color:black;
+}
+.text-b2{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 21px;
+    margin-top: 4px;
+}
+.text-c2{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+}
+.text-d2{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 21px;
+    padding-top:4px;
+    color: #00000099;
+}
+.right-side-a p{
+    padding:3px 8px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 18px;
+    border-radius:4px;
+    background: #CC31314D;
+    color: #CC3131F5;
+}
+.set-up-btn{
+    margin-top:4px;
+    padding-top:16px;
+}
+.set-up-btn button{
+    padding:8px 16px;
+    font-weight: 700;
+    line-height: 18px;
+    font-size:17px;
+    color:white;
+    background: #4E4E4E;
+    border-radius: 3px;
+    font-family:sans-serif;
+    border:none;
+}
+.int-body-boxes{
+    margin-bottom: 20px;
+    border:1px solid #d9d9d9;
+    border-radius:8px;
+}
+.short-box-3{
+    background: #FF6F06;
+    width:20px;
+    height:60px;
+    margin-top: auto;
+    border-radius: 4px 4px 4px 0;
+}
+.short-box-2{
+    background: #FFDB21;
+    width:20px;
+    height:40px;
+    margin-top: auto;
+    border-radius: 4px 0 0 0;
+}
+.short-box-1{
+    background: #FFDB21;
+    width:20px;
+    height:20px;
+    margin-top: auto;
+    border-radius: 4px 0 0 4px;
+}
+.google-image{
+    justify-content: center;
+}
+.top-content{
+    display: flex;
+    justify-content: space-between;
+}
+.right-side-a p{
+    width:fit-content
+}
+.image-box-b{
+    width:300px;
+    height:225px;
+}
+@media (max-width:850px){
+    .box-a29{
+        flex-direction: column;
+      }
+      .top-content{
+        display: block;
+      }
+      .image-box-b{
+        border:none;
+        height:120px;
+        width:fit-content;
+      }
+      .integrations-wrapper{
+        padding: 10px;
+      }
+      .box-content{
+        padding: 15px;
+      }
+      .modal-lg{
+        min-width:100%;
+    }
+}
