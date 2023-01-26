@@ -15,7 +15,6 @@ import ReviewStocktakesRoutes from './ReviewStocktakes'
 import AnuAppointment from './AnuAppointment'
 import SanPromote from './SanPromote'
 import SanReport from './SanReport'
-
 /*
 Customization Routes
 */
@@ -24,6 +23,8 @@ import GroupRoutes from './Groups'
 import OrganizationRoutes from './Organization'
 
 import CountDetailsRoutes from './CountDetails'
+import NewSaleRoutes from './Newsale'
+import SettingClients from './Settingclients'
 
 // ** Document title
 const TemplateTitle = '%s - Vuexy React Admin Template'
@@ -54,8 +55,9 @@ const Routes = [
   ...ChartsRoutes,
   ...ProductDetailsRoutes,
   ...CountDetailsRoutes,
-  ...ReviewStocktakesRoutes
-
+  ...ReviewStocktakesRoutes,
+  ...NewSaleRoutes,
+  ...SettingClients
   
 ]
 
