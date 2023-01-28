@@ -1,0 +1,61 @@
+.team-member-container-ua{
+    width:80%;
+    margin:auto;
+    margin-top: 30px;
+}
+.box-ua{
+    margin:30px 0;
+    background-color: rgba(229, 229, 229, 0.4);
+    padding:15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.box-ua .input-group-merge{
+    width:fit-content;
+}
+.team-member-body-ua{
+    column-gap: 20px;
+}
+.text-ua{
+    font-size: 18px;
+    font-weight: 700;
+    padding:10px 0;
+    margin-top: 15px;
+}
+.text-ub{
+    color:#1bb70b;
+    font-size: 16px;
+}
+.card-body-ua{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box-ub{
+    margin: auto;
+}
+.btn-ub{
+    display: none;
+}
+@media(max-width:900px){
+    .team-member-container-ua{
+      width:90%;
+    }
+}
+@media(max-width:700px){
+    .dropdown-ua, .dropdown-ub, .toggle-ua, .btn-ua{
+        display: none;
+    }
+    .btn-ub{
+        display: block;
+    }
+    .team-member-body-ua{
+        column-gap: 0;
+        margin:0 1px;
+    }
+    .box-ua{
+        padding:0;
+        background-color: white;
+    }
+}

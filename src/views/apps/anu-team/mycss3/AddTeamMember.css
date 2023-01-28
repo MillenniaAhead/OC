@@ -1,0 +1,24 @@
+.body-wa{
+    margin:auto;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 7%;;
+}
+.box-wa, .box-wb{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border:1px solid rgba(0, 0, 0, 0.24);
+    padding:20px;
+    border-radius: 8px;
+}
+@media(max-width:900px){
+    .body-wa{
+        margin-top: 15%;
+    }
+}
+@media(max-width:700px){
+    .body-wa{
+        margin:0 10px;
+    }
+}

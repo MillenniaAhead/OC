@@ -6,8 +6,20 @@
     border-radius: 8px;
     border-bottom:1px solid #d9d9d9;
 }
+.thead-working-hour tr{
+    font-size: 17px;
+    line-height:21px;
+    height:70px;
+    background-color: white;
+    border-radius: 8px;
+    border-bottom:1px solid #d9d9d9;
+}
 .thead-aaa4 tr th{
     padding: 0 6px;
+    text-align: center;
+}
+.thead-working-hour tr th{
+    padding: 0 10px;
     text-align: center;
 }
 .tbody-aaa4 tr:first-child{
@@ -27,6 +39,15 @@
     width:180px;
     border-bottom:1px solid #d9d9d971;
 }
+.table-first-column-working-hour div{
+    width:220px;
+    height: 70px;
+    border-bottom:1px solid #d9d9d9;
+}
+.table-first-column-working-hour div p{
+    margin:0;
+    
+}
 .table-first-column-aaa4 div:first-child+div{
     font-weight:700;
 }
@@ -40,6 +61,11 @@
     display:flex;
     align-items:center;
 }
+.text-sa{
+    font-size: 17px;
+    line-height:21px;
+    font-weight:700;
+}
 .tbody-aaa4 tr{
     font-size: 15px;
     line-height:19px;
@@ -47,14 +73,43 @@
     border-radius: 8px;
     border-bottom:1px solid #d9d9d971;
 }
+.tbody-working-hour tr{
+    font-size: 15px;
+    line-height:19px;
+    font-weight:400;
+    border-radius: 8px;
+    border-bottom:1px solid #d9d9d971;
+    height:70px;
+}
 .tbody-aaa4 tr td{
     padding:15px 10px;
     text-align: center;
 }
+.tbody-working-hour tr td{
+    text-align: center;
+    border:1px solid #d9d9d9
+}
+.tbody-working-hour tr td div{
+    padding:10px;
+    background:rgba(27, 183, 11, 0.3);
+    border-radius: 4px;
+    margin:0 4px;
+    cursor:pointer;
+}
 .tbody-aaa15 tr td{
     text-align:left;
 }
-
+.box-sa{
+    margin-top:40px;
+    padding:15px;
+    font-size:16px;
+    border:1px solid rgba(0, 0, 0, 0.24);
+    border-radius:4px;
+}
+.box-sb{
+    display: flex;
+    justify-content: right;
+}
 /* //For Discount summary */
 
 .text-aaa9{
@@ -135,6 +190,9 @@
 .thead-aaa4 tr th{
     width:150px;
 }
+.thead-working-hour tr th{
+    width:160px;
+}
 
  #payment-summary-container{
  overflow-x: auto;
@@ -153,3 +211,42 @@
     line-height: 23px;
     font-weight: 400;
 }
+
+
+/* Working hour css */
+.box-sc{
+    width:26%
+}
+.box-sd{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.text-sb{
+    border-radius: 100%;
+    background-color: #e5e5e5;
+    width:25px;
+    height:25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media(max-width:900px){
+    .box-sb{
+       justify-content: left;
+}
+.box-se{
+    display: none;
+}
+.box-sc{
+    width:80%;
+    margin-top: 10px;
+}
+.box-sd{
+    display: block;
+}
+.btn-vc{
+    margin-top: 10px;
+}
+}
+

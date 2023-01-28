@@ -6,6 +6,10 @@ const SanPromote = [
         component: lazy(() => import('../../views/apps/san-promote/Deals'))
     },
     {
+        path: '/promote/dealstwo',
+        component: lazy(() => import('../../views/apps/san-promote/DealsTwo'))
+    },
+    {
         path: '/promote/integrations',
         component: lazy(() => import('../../views/apps/san-promote/Integrations'))
     },
@@ -17,6 +21,11 @@ const SanPromote = [
     {
         path: '/promote/steptwo',
         component: lazy(() => import('../../views/apps/san-promote/StepTwo')),
+        layout: 'BlankLayout'
+    },
+    {
+        path: '/promote/steptwoedit/:id',
+        component: lazy(() => import('../../views/apps/san-promote/StepTwoEdit')),
         layout: 'BlankLayout'
     },
     {

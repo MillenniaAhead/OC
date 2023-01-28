@@ -118,7 +118,7 @@ const BasicHookForm = () => {
             />
           </div>
           <div className='d-flex'>
-            <Button className='me-1' color='primary' type='submit'>
+            <Button className='me-1' color='primary'>
               Submit
             </Button>
             <Button outline color='secondary' type='reset' onClick={handleReset}>

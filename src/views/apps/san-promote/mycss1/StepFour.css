@@ -59,7 +59,7 @@ h3{
     color:#ffffff;
     padding:10px 15px 12px 15px;
     text-decoration: none;
-    width: 480px;
+    width: 90%;
     text-align: center;
     font-size: 17px;
     font-weight: 700;
@@ -80,5 +80,8 @@ h3{
     .promotion-detail-box{
         margin:18px 10px;
         padding:18px 10px;
+      }
+      .sucess-btn a{
+        width:95%
       }
 }

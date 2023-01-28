@@ -34,6 +34,7 @@ const NewAppointment = () => {
   //For select Service name
   const SelectService = (current) => {
   setService(current.target.textContent.split(/\s+/))
+  console.log(current.target.textContent.split(/\s+/))
   setDisplay1("none")
   setBorder1()
 } 
@@ -210,7 +211,7 @@ const history = useHistory()
 
           </div>
         </div>
-        { service[0] !== "Choose a service" && teamMember !== null && <div className="box-bb1 box-dd1">
+        { service[0] !== "Choose a service" && teamMember !== "Select a team member" && <div className="box-bb1 box-dd1">
         <div className="select-time d-flex flex-column">
             <Label className='form-label text-aa1' for='select-lg'>
             Start time

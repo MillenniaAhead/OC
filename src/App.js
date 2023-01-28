@@ -15,6 +15,7 @@ import './views/apps/san-report/mycss2/Dashboard.css'
 import './views/apps/san-report/mycss2/Reports.css'
 import './views/apps/san-report/mycss2/FinancesSummary.css'
 import "./views/apps/anu-appointment/mycss/CheckOut.css"
+import './views/apps/anu-team/mycss3/AddTeamMemberForm.css'
 
 const App = () => <Router />
 

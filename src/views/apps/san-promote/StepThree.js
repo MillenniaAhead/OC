@@ -73,8 +73,7 @@ const StepThree = () => {
    //On click of next step
 
    const nextBtnFun = () => {
-    const data = [...reducerData, {promotion:applyPromotion1, promotion:applyPromotion2, discount_code:discountCodeValue}]
-    console.log(data)
+    const data = [...reducerData, {promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue}]
 
     //Checked both option
     if (toggle1 && toggle2) {
@@ -88,35 +87,35 @@ const StepThree = () => {
       } else {
         
         //axios
-        axios.post("http://localhost:5000/deals/post", {dealType:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:"", startDate:data[5].getDate().toString(), endDate:data[6].getDate().toString(), promotionValue:data[7], useLimit:data[8], minPurchaseValue:data[9], applyPromotion:data[10]})
+        axios.post("http://localhost:5000/deals/post", {dealType:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:"", startDate:data[5].toString(), endDate:data[6].toString(), promotionValue:data[7], useLimit:data[8], minPurchaseValue:data[9], applyPromotion:data[10]})
         .then(res => {
          console.log(res.data)
-        if (res.data === "Student added successfully") {
-        alert("Student added successfully")
+        if (res.data === "deal added successfully") {
+        alert("deal added successfully")
         history.push('/promote/stepFour')
        }
      })
       .catch(err => console.log(err))
 
-        StoreDealData([{promotion:applyPromotion1}, {promotion:applyPromotion2, discount_code:discountCodeValue}])
+        StoreDealData([{promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue}])
     }
 
     //Checked option1
   } else if (toggle1 && !toggle2) {
       
     //axios
-    axios.post("http://localhost:5000/deals/post", {dealType:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:"", vouchers:"", startDate:data[5].getDate().toString(), endDate:data[6].getDate().toString(), promotionValue:data[7], useLimit:data[8], minPurchaseValue:data[9], applyPromotion:data[10]})
+    axios.post("http://localhost:5000/deals/post", {dealType:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:"", vouchers:"", startDate:data[5].toString(), endDate:data[6].toString(), promotionValue:data[7], useLimit:data[8], minPurchaseValue:data[9], applyPromotion:data[10]})
     .then(res => {
       console.log(res.data)
-    if (res.data === "deals added successfully") {
+    if (res.data === "deal added successfully") {
     alert("deal added successfully")
      history.push('/promote/stepFour')
    }
  })
   .catch(err => console.log(err))
 
-  StoreDealData({promotion:applyPromotion1})
-    //Checked option2
+  StoreDealData([{promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue}])
+  //Checked option2
   } else if (toggle2 && !toggle1) {
     if (discountCodeValue === "") {
       setStyle1({display:'block', color:'red'})
@@ -127,17 +126,17 @@ const StepThree = () => {
         }, 3000)
     } else {
        //axios
-    axios.post("http://localhost:5000/deals/post", {dealType:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], startDate:data[5].getDate().toString(), endDate:data[6].getDate().toString(), promotionValue:data[7], useLimit:data[8], minPurchaseValue:data[9], applyPromotion:data[10]})
+    axios.post("http://localhost:5000/deals/post", {dealType:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], startDate:data[5].toString(), endDate:data[6].toString(), promotionValue:data[7], useLimit:data[8], minPurchaseValue:data[9], applyPromotion:data[10]})
     .then(res => {
       console.log(res.data)
-    if (res.data === "deals added successfully") {
+    if (res.data === "deal added successfully") {
     alert("deal added successfully")
      history.push('/promote/stepFour')
    }
   })
    .catch(err => console.log(err))
 
-        StoreDealData([{promotion:applyPromotion1}, {promotion:applyPromotion2, discount_code:discountCodeValue}])
+        StoreDealData([{promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue}])
     }
     
     //Nothing checked
@@ -235,7 +234,7 @@ const StepThree = () => {
                   </div>
                 </div>
                   <div className="option-text-wrapper">
-                    <p className="text-a22"> Enable promotionat point of sale</p>
+                    <p className="text-a22"> Enable promotion at point of sale</p>
                     <p className='text-b22'>
                       This allows you to apply this promotion manually during
                       checkout at Point of Sale.

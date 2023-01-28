@@ -8,7 +8,7 @@ const StepFour = () => {
   return (
     <div className="step-four-container">
     <div className="cross-btn-wrapper">
-      <NavLink to="/promote/deals">
+      <NavLink to="/promote/dealstwo">
       <X size={45} strokeWidth={1} style={{color:'black'}} />
       </NavLink>
     </div>
@@ -51,7 +51,7 @@ const StepFour = () => {
             </div>
           </div>
           <div className="sucess-btn">
-            <NavLink to="/promote/deals" className="done-btn">Done</NavLink>
+            <NavLink to="/promote/dealstwo" className="done-btn">Done</NavLink>
           </div>
     </div>
 </div>

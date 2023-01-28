@@ -1,12 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Progress from "./Progress"
-import { NavLink, useHistory } from "react-router-dom"
+import { NavLink, useHistory, useParams } from "react-router-dom"
 import Flatpickr from "react-flatpickr"
-import { Modal, ModalBody, Button, Alert, ModalHeader, Input, InputGroup, InputGroupText, Label } from "reactstrap"
+import { Modal, ModalBody, Button, Alert, ModalHeader, Input, InputGroup, InputGroupText } from "reactstrap"
 import { Search, X } from "react-feather"
 import { useDispatch } from "react-redux"
 import { bindActionCreators } from "redux"
 import { actionCreators } from "./promoteRedux"
+import axios from 'axios'
 
 const StepTwo = () => {
   //For required field
@@ -69,6 +70,19 @@ const StepTwo = () => {
   const [visible1, setVisible1] = useState(false)
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
+
+  const [deal, setDeal] = useState({})
+
+//Axios
+  const { id } = useParams() 
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/deals/getIndivisual/${id}`)
+    .then((res) =>  {
+        setDeal(res.data)
+})
+    .catch(err => console.log(['Error from getOneStudent', err]))
+}, [])
 
   //For add and remove products 
   const addProduct = (event) => {
@@ -242,13 +256,8 @@ const StepTwo = () => {
           <div className="btns-wrapper">
             <div className="left-side left-side-a5">
               <div onClick={Clear} className="cross-symbol">
-                <NavLink to="/promote/deals">
+                <NavLink to="/promote/dealstwo">
                 <X size={45} strokeWidth={1} style={{color:'black'}} />
-                </NavLink>
-              </div>
-              <div onClick={Previous} className="previous-page">
-                <NavLink  to="/promote/stepone" style={{ color: "#1BB70B" }}>
-                  Previous
                 </NavLink>
               </div>
             </div>
@@ -323,6 +332,7 @@ const StepTwo = () => {
                         id="name"
                         className="input-a"
                         placeholder="Enter promotion name here"
+                        value={deal.name || ""}
                       />
                       <p style={redStyle} className="text-a5">
                         This field is required
@@ -375,9 +385,9 @@ const StepTwo = () => {
                       <Modal
                         isOpen={centeredModal1}
                         toggle={() => setCenteredModal1(!centeredModal1)}
-                        className="modal-dialog-centered my-modal-va p-0"
+                        className="modal-dialog-centered"
                       >
-          <div className="d-flex justify-content-between p-1"><div className="modal-option-heading-a5">Select services</div><X style={{cursor:'pointer'}} onClick={() => setCenteredModal1(!centeredModal1)}/></div>
+          <ModalHeader toggle={() => setCenteredModal1(!centeredModal1)}><div className="modal-option-heading-a5">Select services</div></ModalHeader>
                         <ModalBody className="my-modal-a5">
                           <div className="modal-option-search-box-wrapper-a5">
                           <InputGroup className="input-group-merge mt-1 mb-1">
@@ -387,50 +397,50 @@ const StepTwo = () => {
         <Input style={{fontSize:'22px', fontWeight:'500', color:'black'}} placeholder='' />
       </InputGroup>
                           </div>
-                          <Label for="all-services"  className="select-box-mini">
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="service"
                             >
-                              <Input
+                              <input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="all_services"
+                                name="setAllServices"
                                 value="All services"
-                                id='all-services'
-                                onChange={addService}
+                                onClick={addService}
                               />
                             </label>
                             <div className="list-item-names-d5">All services</div>
-                          </Label>
-                          <Label for='Hair' className="select-box-mini">
+                          </div>
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="service"
                             >
-                              <Input
+                              <input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="Hair"
                                 value="Hair"
+                                onClick={addService}
                                 readOnly
-                                id='Hair'
-                                onChange={addService}
                               />
                             </label>
                             <div>
                             <div className="list-item-names-b5">Hair</div>
                             </div>
-                          </Label>
-                          <Label for="Haircut" className="select-box-mini">
+                          </div>
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="service"
                             >
-                              <Input
+                              <input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service2"
                                 value="Haircut "
-                                id='Haircut'
-                                onChange={addService}
+                                onClick={addService}
                                 readOnly
                               />
                             </label>
@@ -438,18 +448,18 @@ const StepTwo = () => {
                             <div className="list-item-names-a5">Haircut</div>
                             <div className="list-item-names-c5">30 min</div>
                             </div>
-                          </Label>
-                          <Label for='Beard-Trim' className="select-box-mini">
+                          </div>
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="service"
                             >
-                              <Input
+                              <input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
                                 value="Beard Trim"
-                                id='Beard-Trim'
-                                onChange={addService}
+                                onClick={addService}
                                 readOnly
                               />
                             </label>
@@ -457,36 +467,36 @@ const StepTwo = () => {
                             <div className="list-item-names-a5">Beard Trim</div>
                             <div className="list-item-names-c5">30 min</div>
                             </div>
-                          </Label>
-                          <Label for='Bows-&-Lashes' className="select-box-mini">
+                          </div>
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="service"
                             >
-                              <Input
+                              <input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
                                 value="Brows & Lashes"
-                                id='Bows-&-Lashes'
-                                onChange={addService}
+                                onClick={addService}
                                 readOnly
                               />
                             </label>
                             <div>
                             <div className="list-item-names-b5">Brows & Lashes</div>
                             </div>
-                          </Label>
-                          <Label for='Classic-Fill' className="select-box-mini">
+                          </div>
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="service"
                             >
                               <input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
                                 value="Classic Fill"
-                                id='Classic-Fill'
-                                onChange={addService}
+                                onClick={addService}
                                 readOnly
                               />
                             </label>
@@ -494,7 +504,7 @@ const StepTwo = () => {
                             <div className="list-item-names-a5">Classic Fill</div>
                             <div className="list-item-names-c5">1 h</div>
                             </div>
-                          </Label>
+                          </div>
                           <div className="d-flex justify-content-center mt-1">
                             <Button.Ripple
                               color="dark me-1"
@@ -528,9 +538,9 @@ const StepTwo = () => {
                       <Modal
                         isOpen={centeredModal2}
                         toggle={() => setCenteredModal1(!centeredModal2)}
-                        className="modal-dialog-centered my-modal-va p-0"
+                        className="modal-dialog-centered"
                       >
-          <div className="d-flex justify-content-between p-1"><div className="modal-option-heading-a5">Select products</div><X style={{cursor:'pointer'}} onClick={() => setCenteredModal2(!centeredModal2)}/></div>
+          <ModalHeader toggle={() => setCenteredModal2(!centeredModal2)}><div className="modal-option-heading-a5">Select products</div></ModalHeader>
                         <ModalBody>
                           <div className="modal-option-search-box-wrapper-a5">
                           <InputGroup className="input-group-merge mt-1 mb-1">
@@ -539,70 +549,70 @@ const StepTwo = () => {
         </InputGroupText>
         <Input style={{fontSize:'22px', fontWeight:'500', color:'black'}} placeholder='' />
       </InputGroup>                          </div>
-                          <Label className="select-box-mini" for='all_products'>
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="product"
                             >
-                              <Input
+                              <input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="product1"
                                 value="All products"
                                 onClick={addProduct}
-                                id="all_products"
                                 readOnly
                               />
                             </label>
                             <div className="list-item-names-d5">All products</div>
-                          </Label>
-                          <Label for="product1" className="select-box-mini">
+                          </div>
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="product"
                             >
-                              <Input
+                              <input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="product1"
                                 value="product1"
-                                id='product1'
                                 onClick={addProduct}
                                 readOnly
                               />
                             </label>
                             <div className="list-item-names-a5">product1</div>
-                          </Label>
-                          <Label for='product2' className="select-box-mini">
+                          </div>
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="product"
                             >
-                              <Input
+                              <input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="product2"
                                 value="product2"
-                                id='product2'
                                 onClick={addProduct}
                                 readOnly
                               />
                             </label>
                             <div className="list-item-names-a5">product2</div>
-                          </Label>
-                          <Label for='product3' className="select-box-mini">
+                          </div>
+                          <div className="select-box-mini">
                             <label
                               className="edit-list-label"
+                              htmlFor="product"
                             >
-                              <Input
+                              <input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="product3"
                                 value="product3"
-                                id='product3'
                                 onClick={addProduct}
                                 readOnly
                               />
                             </label>
                             <div className="list-item-names-a5">product3</div>
-                          </Label>
+                          </div>
                           <div className="d-flex justify-content-center mt-1">
                             <Button.Ripple
                               color="dark me-1"
@@ -636,9 +646,9 @@ const StepTwo = () => {
                       <Modal
                         isOpen={centeredModal3}
                         toggle={() => setCenteredModal3(!centeredModal3)}
-                        className="modal-dialog-centered my-modal-va p-0"
+                        className="modal-dialog-centered"
                       >
-          <div className="d-flex justify-content-between p-1"><div className="modal-option-heading-a5">Select memberships</div><X style={{cursor:'pointer'}} onClick={() => setCenteredModal3(!centeredModal3)}/></div>
+          <ModalHeader toggle={() => setCenteredModal3(!centeredModal3)}><div className="modal-option-heading-a5">Select memberships</div></ModalHeader>
                         <ModalBody>
                           <div className="modal-option-search-box-wrapper-a5">
                           <InputGroup className="input-group-merge mt-1 mb-1">
@@ -683,9 +693,9 @@ const StepTwo = () => {
                       <Modal
                         isOpen={centeredModal4}
                         toggle={() => setCenteredModal4(!centeredModal4)}
-                        className="modal-dialog-centered my-modal-va p-0"
+                        className="modal-dialog-centered"
                       >
-          <div className="d-flex justify-content-between p-1"><div className="modal-option-heading-a5">Select vouchers</div><X style={{cursor:'pointer'}} onClick={() => setCenteredModal4(!centeredModal4)}/></div>
+          <ModalHeader toggle={() => setCenteredModal4(!centeredModal4)}><div className="modal-option-heading-a5">Select vouchers</div></ModalHeader>
                         <ModalBody>
                           <div className="modal-option-search-box-wrapper-a5">
                           <InputGroup className="input-group-merge mt-1 mb-1">

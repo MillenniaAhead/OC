@@ -15,6 +15,7 @@ import ReviewStocktakesRoutes from './ReviewStocktakes'
 import AnuAppointment from './AnuAppointment'
 import SanPromote from './SanPromote'
 import SanReport from './SanReport'
+import AnuTeam from "./AnuTeam"
 
 /*
 Customization Routes
@@ -37,6 +38,7 @@ const DefaultRoute = '/overview'
 
 // ** Merge Routes
 const Routes = [
+  ...AnuTeam,
   ...SanReport,
   ...SanPromote,
   ...AnuAppointment,
@@ -55,8 +57,6 @@ const Routes = [
   ...ProductDetailsRoutes,
   ...CountDetailsRoutes,
   ...ReviewStocktakesRoutes
-
-  
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }
