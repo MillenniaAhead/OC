@@ -24,6 +24,8 @@ import OrganizationRoutes from './Organization'
 
 import CountDetailsRoutes from './CountDetails'
 import NewSaleRoutes from './Newsale'
+import HomeRoute from './Home'
+import CalenderRoute from './Calender'
 import SettingClients from './Settingclients'
 
 // ** Document title
@@ -57,8 +59,9 @@ const Routes = [
   ...CountDetailsRoutes,
   ...ReviewStocktakesRoutes,
   ...NewSaleRoutes,
-  ...SettingClients
-  
+  ...SettingClients,
+  ...HomeRoute,
+  ...CalenderRoute
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }
