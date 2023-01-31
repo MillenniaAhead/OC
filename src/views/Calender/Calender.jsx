@@ -1,7 +1,7 @@
 import Left from "../../assets/images/Calender/chevron-left.png"
 import Right from "../../assets/images/Calender/chevron-right.png"
 import Settings from "../../assets/images/Calender/settings.png"
-
+import axios from "axios"
 // ** React Imports
 import { Fragment, useState } from "react"
 
@@ -10,6 +10,26 @@ import { Modal, ModalBody, ModalHeader } from "reactstrap"
 
 const Calender = () => {
   const [show, setShow] = useState(false)
+
+  const [desc, setDesc] = useState("")
+
+  const handleDesc = (e) => {
+    setDesc(e.target.value)
+  }
+
+  const handleApi = () => {
+    console.log({ desc })
+    axios
+      .get("https://reqres.in/api/login", {
+       desc
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
     <div>
@@ -201,6 +221,8 @@ const Calender = () => {
                       Description
                     </label>
                     <input
+                      value={desc}
+                      onChange={handleDesc}
                       style={{
                         width: "430px",
                         height: "90px",
@@ -224,6 +246,7 @@ const Calender = () => {
                     <div className="d-flex justify-content-end">
                       <div>
                         <button
+                          onClick={handleApi}
                           style={{
                             background: "#4E4E4E",
                             color: "white"
