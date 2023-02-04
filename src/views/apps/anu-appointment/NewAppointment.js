@@ -1,20 +1,23 @@
 import React, { useState } from 'react'
 import "./mycss/NewAppointment.css"
 import Flatpickr from 'react-flatpickr'
-import { Search, Repeat, ChevronDown, X } from 'react-feather'
-import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Label, InputGroup, InputGroupText, Alert } from 'reactstrap'
-import { NavLink, useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { actionCreators } from './appointmentRedux'
+import { Search, RefreshCw, ChevronDown, X } from 'react-feather'
+import { ButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Label, InputGroup, InputGroupText, Alert } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 
 const NewAppointment = () => {
+
+  // For services dropdown
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [dropdownOpen2, setDropdownOpen2] = useState(false)
+
   //For date-picker
   const [picker, setPicker] = useState(new Date())
   //For collect data
   const [startTime, setStartTime] = useState(null)
   const [teamMember, setTeamMember] = useState('Select a team member')
-  const [duration, setDuration] = useState(null)
+  const [myduration, setDuration] = useState(null)
   const [service, setService] = useState(["Choose a service"])
 
   //For Alert message
@@ -31,13 +34,34 @@ const NewAppointment = () => {
   const SelectStartTime = (current) => {
     setStartTime(current.target.value)
   }
+
+  //For services dropdown
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen)
+  }
+  const toggleDropdown2 = () => {
+    setDropdownOpen2(!dropdownOpen2)
+  }
+  
   //For select Service name
-  const SelectService = (current) => {
-  setService(current.target.textContent.split(/\s+/))
-  console.log(current.target.textContent.split(/\s+/))
-  setDisplay1("none")
-  setBorder1()
-} 
+  const SelectService = (e) => {
+    setService([e.target.id])
+    setDisplay1("none")
+    setBorder1()
+  } 
+  //For select Service name
+  const ChildSelectService = (e) => {
+    setService([e.target.parentElement.id])
+    toggleDropdown()
+    e.stopPropagation()
+  }
+  //For select Service name
+  const SecondChildSelectService = (e) => {
+    setService([e.target.parentElement.parentElement.id])
+    toggleDropdown()
+    e.stopPropagation()
+  }
+
 //For select Duration
 const SelectDuration = (current) => {
   setDuration(current.target.value)
@@ -47,14 +71,7 @@ const SelectTeamMember = (current) => {
  setTeamMember(current.target.value)
  setDisplay2("none")
  setBorder2()
- console.log(current.target.value)
 }
-
-//For redux
-  const dispatch = useDispatch()
-const { PostAppointment } = bindActionCreators(actionCreators, dispatch)
-
-const history = useHistory()
 
 //for submit function
   const saveAppointment = () => {
@@ -73,10 +90,15 @@ const history = useHistory()
            setVisible2(false)
          }, 3000)
     } else {
-    PostAppointment([picker, startTime, service, duration, teamMember])
-    history.push('/timegraph')
+    const finalData = {date:picker, start_time:startTime, services:service, duration:myduration, team_member:teamMember}
+    console.log(finalData)
+    // Store data to backend with the help of axios
+    axios.post('http://localhost:4000/api/newAppointments', finalData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
     }
   }
+
   return (
     <div className='new-appointment-container'>
       <div className="top-container-aa1">
@@ -114,14 +136,14 @@ const history = useHistory()
         }}
       />
 </div>
-        <div style={{cursor:"pointer"}} className="repeatation d-flex align-items-center" ><div style={{paddingRight:"4px"}} className='d-flex align-items-start repeat'><Repeat size={15}/></div><div className='repeat'> Repeat</div></div>
+        <div style={{cursor:"pointer"}} className="repeatation d-flex align-items-center" ><div style={{paddingRight:"4px"}} className='d-flex align-items-start repeat'><RefreshCw strokeWidth={2.5} size={15}/></div><div className='repeat'> Repeat</div></div>
         </div>
         <div className="box-bb1">
           <div className="select-time d-flex flex-column">
             <Label className='form-label text-aa1' for='select-lg'>
             Start time
           </Label>
-          <Input type='select' name='select' bsSize='lg' id={'select-lg'} onChange={SelectStartTime}>
+          <Input type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectStartTime}>
               <option value="12:00">12:00 am</option>
               <option value="12:05">12:05 am</option>
               <option value="12:10">12:10 am</option>
@@ -134,7 +156,7 @@ const history = useHistory()
             <label htmlFor="" className='text-aa1'>
               service
               </label>
-            <UncontrolledButtonDropdown style={border1}  className="service-field">
+            <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown} style={border1}  className="service-field">
               <DropdownToggle style={{padding:"0"}} color="light">
               <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>{service[0]}</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
@@ -142,46 +164,46 @@ const history = useHistory()
                   <div tag='div' className="service-option-category" >
                   <div className='text-ff1'>Hair</div>
                 </div>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id='Haircut'  onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1'>Haircut</div>
-<div className='text-ee1'> 45min</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Haircut</div>
+<div className='text-ee1' onClick={SecondChildSelectService}>45min</div>
 </div>
-<div className='text-dd1'> ₹40</div>
+<div className='text-dd1' onClick={ChildSelectService}>₹40</div>
                 </DropdownItem>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id="Hair Color" onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1'>Hair-Color</div>
-<div className='text-ee1'> 1h 45miin</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Hair Color</div>
+<div className='text-ee1' onClick={SecondChildSelectService}> 1h 45miin</div>
 </div>
-<div className='text-dd1'> ₹57</div>
+<div className='text-dd1' onClick={ChildSelectService}> ₹57</div>
                 </DropdownItem>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id='Blow Dry' onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1' onClick={SelectService}>Blow-Dry</div>
-<div className='text-ee1'> 35min</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Blow Dry</div>
+<div className='text-ee1' onClick={SecondChildSelectService}>35min</div>
 </div>
-<div className='text-dd1'> ₹35</div>
+<div className='text-dd1' onClick={ChildSelectService}>₹35</div>
                 </DropdownItem>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id="Balayage" onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1' onClick={SelectService}>Balayage</div>
-<div className='text-ee1'> 2h 30min</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Balayage</div>
+<div className='text-ee1' onClick={SecondChildSelectService}> 2h 30min</div>
 </div>
-<div className='text-dd1'> ₹150</div>
+<div className='text-dd1' onClick={ChildSelectService}> ₹150</div>
                 </DropdownItem>
                 <div tag='div' className="service-option-category" >
                   <div className='text-ff1'>Face</div>
                 </div>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id="Facial" onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1' onClick={SelectService}>Facial</div>
-<div className='text-ee1'> 1h</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Facial</div>
+<div className='text-ee1' onClick={SecondChildSelectService}> 1h</div>
 </div>
-<div className='text-dd1'> ₹115</div>
+<div className='text-dd1' onClick={ChildSelectService}> ₹115</div>
                 </DropdownItem>
               </DropdownMenu>
-            </UncontrolledButtonDropdown>
+            </ButtonDropdown>
             <div style={{display:display1}} className='mb-1 empty-warning'>Service is required</div>
           </div>
           <div className="duration d-flex flex-column">
@@ -229,7 +251,7 @@ const history = useHistory()
             <label htmlFor="" className='text-aa1'>
               service
               </label>
-            <UncontrolledButtonDropdown  className="service-field">
+            <ButtonDropdown isOpen={dropdownOpen2} toggle={toggleDropdown2}  className="service-field">
               <DropdownToggle style={{padding:"0"}} color="light">
               <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>Select a service</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
@@ -237,46 +259,46 @@ const history = useHistory()
                   <div tag='div' className="service-option-category" >
                   <div className='text-ff1'>Hair</div>
                 </div>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id='Haircut'  onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1'>Haircut</div>
-<div className='text-ee1'> 45min</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Haircut</div>
+<div className='text-ee1' onClick={SecondChildSelectService}>45min</div>
 </div>
-<div className='text-dd1'> ₹40</div>
+<div className='text-dd1' onClick={ChildSelectService}>₹40</div>
                 </DropdownItem>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id="Hair Color" onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1'>Hair-Color</div>
-<div className='text-ee1'> 1h 45miin</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Hair Color</div>
+<div className='text-ee1' onClick={SecondChildSelectService}> 1h 45miin</div>
 </div>
-<div className='text-dd1'> ₹57</div>
+<div className='text-dd1' onClick={ChildSelectService}> ₹57</div>
                 </DropdownItem>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id='Blow Dry' onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1' onClick={SelectService}>Blow-Dry</div>
-<div className='text-ee1'> 35min</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Blow Dry</div>
+<div className='text-ee1' onClick={SecondChildSelectService}>35min</div>
 </div>
-<div className='text-dd1'> ₹35</div>
+<div className='text-dd1' onClick={ChildSelectService}>₹35</div>
                 </DropdownItem>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id="Balayage" onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1' onClick={SelectService}>Balayage</div>
-<div className='text-ee1'> 2h 30min</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Balayage</div>
+<div className='text-ee1' onClick={SecondChildSelectService}> 2h 30min</div>
 </div>
-<div className='text-dd1'> ₹150</div>
+<div className='text-dd1' onClick={ChildSelectService}> ₹150</div>
                 </DropdownItem>
                 <div tag='div' className="service-option-category" >
                   <div className='text-ff1'>Face</div>
                 </div>
-                <DropdownItem onClick={SelectService} tag='div' className="service-option" >
+                <DropdownItem id="Facial" onClick={SelectService} tag='div' className="service-option" >
                   <div>
-                  <div className='text-dd1' onClick={SelectService}>Facial</div>
-<div className='text-ee1'> 1h</div>
+                  <div className='text-dd1' onClick={SecondChildSelectService}>Facial</div>
+<div className='text-ee1' onClick={SecondChildSelectService}> 1h</div>
 </div>
-<div className='text-dd1'> ₹115</div>
+<div className='text-dd1' onClick={ChildSelectService}> ₹115</div>
                 </DropdownItem>
               </DropdownMenu>
-            </UncontrolledButtonDropdown>
+            </ButtonDropdown>
           </div>
         </div>}
         <div className="box-cc1 d-flex flex-column">

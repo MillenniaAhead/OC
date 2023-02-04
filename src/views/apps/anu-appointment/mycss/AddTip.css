@@ -4,7 +4,7 @@ div,p{
     color:black;
 }
 .add-tip-container,.select-payment-container{
-    display:grid;
+    display:flex;
 }
 .tip-value-boxes,.payment-options-box{
     display: grid;
@@ -57,20 +57,17 @@ div,p{
 }
 .left-container-aa3,.left-container-aa4{
     padding:25px;
-    grid-column-start: 1;
-    grid-column-end: 10;
+    width:68%
 }
 .text-bb3{
     font-size: 16px;
     font-weight: 500;
-    list-style: 22px;
     padding:10px;
     color:rgba(0, 0, 0, 0.4)
 }
 .text-cc3{
     font-size: 16px;
     font-weight: 400;
-    list-style: 22px;
 }
 .circle-logo-aa3{
     width:64px;
@@ -84,10 +81,12 @@ div,p{
 }
 .right-container-aa3{
     border-left:1px solid rgba(0, 0, 0, 0.2);
+    height:85vh;
     display:flex;
     flex-direction: column;
-    grid-column-start: 10;
-    grid-column-end: 12;
+    justify-content: space-between;
+    width:32%;
+    overflow-y: scroll;
 }
 .text-dd3{
     font-size: 18px;
@@ -100,25 +99,23 @@ div,p{
 .text-ee3{
     font-size:14px;
     font-weight: 400;
-    list-style: 18;
     color:rgba(0, 0, 0, 0.6)
 }
 .text-ff3{
     font-size:16px;
     font-weight: 500;
-    list-style: 20;
     color:#1bb70b;
 }
 .text-gg3{
     font-size:16px;
     font-weight: 700;
-    list-style: 20;
 }
 .text-hh3{
     font-size:16px;
     font-weight: 400;
-    list-style: 22;
+    line-height: 28px;
     color:#1bb70b;
+    padding-right: 10px;
 }
 .total-box-aa3,.bottom-box-aa3{
     padding:10px 30px;
@@ -156,9 +153,6 @@ div,p{
 .btn-box-aa3{
     padding-top:10px;
 }
-.right-child-bb3{
-    margin-top:140px;
-}
 .right-child-bb2{
     margin-top:20px;
 }
@@ -193,6 +187,9 @@ a{
     right:-10px;
     top:-10px;
 }
+.my-row-aa3{
+    margin-top:6px;
+}
 @media (max-width:900px){
     .add-tip-container,.select-payment-container{
         display:block;
@@ -200,6 +197,10 @@ a{
     .right-container-aa3{
         border:1px solid #d9d9d9;
         border-radius: 8px;
+        width:100%;
+    }
+    .left-container-aa3, .left-container-aa4{
+        width:100%;
     }
 }
 @media (max-width:700px){
@@ -214,9 +215,6 @@ a{
     }
     .text-aa3, .text-aa4{
         display: block;
-    }
-    .right-child-bb3{
-        margin-top:50px;
     }
     .item-list-box-aa3, .total-box-aa3, .bottom-box-aa3{
         padding:10px;

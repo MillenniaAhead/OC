@@ -3,45 +3,36 @@ import '../mycss3/AddTeamMemberForm.css'
 import '../mycss3/OpeningHours.css'
 import { Input, Label, Button } from 'reactstrap'
 import { X } from 'react-feather'
-
+import axios from 'axios'
 const OpeningHours = () => {
-    const [mondayTime, setMondayTime] = useState({})
-    const [tuesdayTime, setTuesdayTime] = useState({})
-    const [wednesdayTime, setWednesdayTime] = useState({})
-    const [thursdayTime, setThursdayTime] = useState({})
-    const [fridayTime, setFridayTime] = useState({})
-    const [saturdayTime, setSaturdayTime] = useState({})
+    const defaultTime = {start_time:'11:00am', end_time:"10:00pm"}
+    const [daysTime, setDaysTime] = useState({
+        monday: {...defaultTime},
+        tuesday: {...defaultTime},
+        wednesday: {...defaultTime},
+        thursday: {...defaultTime},
+        friday: {...defaultTime},
+        saturday: {...defaultTime},
+        sunday:{...defaultTime}
+        })
 
-    const mondayFun = (e) => {
-        setMondayTime({...mondayTime, [e.target.name]:e.target.value})
-    }
-    
-    const tuesdayFun = (e) => {
-        setTuesdayTime({...tuesdayTime, [e.target.name]:e.target.value})
-    }
+        const handleDayTime = (day, e) => {
+            setDaysTime({
+            ...daysTime,
+            [day]: { ...daysTime[day], [e.target.name]: e.target.value }
+            })
+            }            
 
-    const wednesdayFun = (e) => {
-        setWednesdayTime({...wednesdayTime, [e.target.name]:e.target.value})
-    }
-
-    const thursdayFun = (e) => {
-        setThursdayTime({...thursdayTime, [e.target.name]:e.target.value})
-    }
-
-    const fridayFun = (e) => {
-        setFridayTime({...fridayTime, [e.target.name]:e.target.value})
-    }
-
-    const saturdayFun = (e) => {
-        setSaturdayTime({...saturdayTime, [e.target.name]:e.target.value})
-    }
     const showData = () => {
-        console.log({one:mondayTime, two:tuesdayTime, three:wednesdayTime, four:thursdayTime, five:fridayTime, six:saturdayTime})
+        axios.post('http://localhost:4000/api/openingHours', daysTime)
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+        console.log(daysTime)
     }
     return (
         <div className="opening-hours-container-qqa" style={{marginBottom:"70px"}}>
             <div className="top-va" style={{borderBottom:"1px solid #1bb70b"}}>
-                <div><X size={45} strokeWidth={1.2} /></div>
+                <div style={{cursor:"pointer"}}><X size={45} strokeWidth={1.2} /></div>
                 <Button.Ripple className="btn-va" color='dark' onClick={showData}>Save</Button.Ripple>
             </div>
             <div className="opening-hours-body-">
@@ -56,7 +47,7 @@ const OpeningHours = () => {
                                 Monday
                             </Label>
                         </div>
-                        <Input onChange={mondayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('monday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -66,7 +57,7 @@ const OpeningHours = () => {
                             <option>12:00am</option>
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={mondayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('monday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -84,7 +75,7 @@ const OpeningHours = () => {
                                 Tuesday
                             </Label>
                         </div>
-                        <Input onChange={tuesdayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('tuesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -94,7 +85,7 @@ const OpeningHours = () => {
                             <option>12:00am</option>
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={tuesdayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('tuesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -112,7 +103,7 @@ const OpeningHours = () => {
                                 Wednesday
                             </Label>
                         </div>
-                        <Input onChange={wednesdayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('wednesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -122,7 +113,7 @@ const OpeningHours = () => {
                             <option>12:00am</option>
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onClick={wednesdayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('wednesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -140,7 +131,7 @@ const OpeningHours = () => {
                                 Thursday
                             </Label>
                         </div>
-                        <Input onChange={thursdayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('thursday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -150,7 +141,7 @@ const OpeningHours = () => {
                             <option>12:00am</option>
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={thursdayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('thursday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -168,7 +159,7 @@ const OpeningHours = () => {
                                 Friday
                             </Label>
                         </div>
-                        <Input onChange={fridayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('friday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -178,7 +169,7 @@ const OpeningHours = () => {
                             <option>12:00am</option>
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={fridayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('friday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -196,7 +187,7 @@ const OpeningHours = () => {
                                 Saturday
                             </Label>
                         </div>
-                        <Input onChange={saturdayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('saturday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>
@@ -206,7 +197,7 @@ const OpeningHours = () => {
                             <option>12:00am</option>
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={saturdayFun} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        <Input onChange={(e) => handleDayTime('saturday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
                             <option>6:00am</option>
                             <option>7:00am</option>
                             <option>8:00am</option>

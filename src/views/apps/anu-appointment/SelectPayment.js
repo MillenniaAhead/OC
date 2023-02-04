@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import "./mycss/AddTip.css"
 import "./mycss/SelectPayment.css"
 import { Modal, ModalBody, Input, InputGroup, InputGroupText } from 'reactstrap'
-import { Settings, ArrowLeft, X, Search, Slash, DollarSign, Columns, User, Trash2, MoreHorizontal } from 'react-feather'
+import { Settings, ArrowLeft, X, Search, Slash, DollarSign, Columns, User, Trash2, MoreHorizontal, Check } from 'react-feather'
 import cashpayment from '../images/cashpayment.svg'
 import voucherpayment from '../images/voucherpayment.svg'
 import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { actionCreators } from './appointmentRedux'
+import { useSelector } from "react-redux"
+import axios from 'axios'
 
 const SelectPayment = () => {
   //For modal
@@ -25,12 +24,33 @@ const SelectPayment = () => {
     setAmount(e.target.value)
   }
 
+  const reducerData = useSelector(state => state.AppointmentReducer.tips)
   //For redux
-  const dispatch = useDispatch()
-    const { selectPayment } = bindActionCreators(actionCreators, dispatch)
    const addPayment = () => {
-    selectPayment(amount)
+    axios.put("http://localhost:4000/api/newAppointments/63da67ac967f848f20a8e410", {tip:reducerData[0], payment:amount})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
    }
+
+   const [tipValue, setTipValue] = useState(!reducerData ? "No tip" : reducerData[0])
+
+   const DeleteTipValue = () => {
+    setTipValue("No tip")
+}
+  const DeleteAmount = () => {
+    setAmount("Select a amount")
+  }
+
+   const value1 = [...tipValue.split(' ')[1]]
+   value1.splice(0, 1)
+
+   const value2 = [...'₹115']
+   value2.splice(0, 1)
+
+   const toPay = Number(value2.join("")) + Number(value1.join(""))
+   const toPay2 = Number(value2.join(""))
+   const myAmount = [...amount]
+   myAmount.splice(0, 1)
 
   return (
     <div className="select-payment-container">
@@ -40,7 +60,7 @@ const SelectPayment = () => {
                 <div className="setting-icon-aa4" style={{cursor:"pointer"}}><Settings size={20}/></div>
             </div>
             <div className="payment-options-box">
-                <div className="p-option-1 payment-box" onClick={() => setCenteredModal1(!centeredModal1)}><div className='cash-icon'><img src={cashpayment} alt='cash'/></div><div className="text-cc4">Cash</div></div>
+                <div className="p-option-1 payment-box" style={amount !== "Select a amount" ? {border:'1px solid #1bb70b'} : {}} onClick={() => setCenteredModal1(!centeredModal1)}><div className='cash-icon'><img src={cashpayment} alt='cash'/></div><div className="text-cc4">Cash</div>{amount !== "Select a amount" ? <Check id="check-badge" strokeWidth={3}/> : ""}</div>
                 <div className="p-option-2 payment-box" onClick={() => setCenteredModal2(!centeredModal2)}><div className='voucher-icon'></div><img src={voucherpayment} alt='voucher'/><div className='text-cc4'>Voucher</div></div>
                 <div className="p-option-3 payment-box"><div className='split-payment-icon'><Columns style={{color:'#4ECB71'}} size={35} /></div> <div className='text-cc4'>Split payment</div></div>
                 <div className="p-option-4 payment-box"><div className="Others-icon"></div><DollarSign  style={{color:'#4ECB71'}} size={35}  /><div className='text-cc4'>Others</div></div>
@@ -62,34 +82,51 @@ const SelectPayment = () => {
                     <div className='text-ff3'>Facial</div>
                     <div className='text-gg3'>1*₹115</div>
                 </div>
-                <div style={{marginTop:"3px"}} className='text-ee3'> 1h with Kondeti Anusha</div>
+                <div style={{marginTop:"3px"}} className='text-ee3 w-75 pe-1'> 1h with Kondeti Anusha</div>
                 </div>
             </div>
             </div>
             <div className='right-child-bb3'>
             <div className="total-box-aa3">
-                <div className="subtotal d-flex justify-content-between">
+                <div className="subtotal d-flex justify-content-between my-row-aa3">
                     <div className='text-cc3'>Subtotal</div>
                     <div className='text-cc3'>₹115</div>
                 </div>
-                <div className="taxes d-flex justify-content-between">
+                <div className="taxes d-flex justify-content-between my-row-aa3">
                     <div className='text-cc3'>Taxes</div>
                     <div className='text-cc3'>₹0</div>
                 </div>
-                <div className="total d-flex justify-content-between">
+                <div className="total d-flex justify-content-between my-row-aa3">
                     <div className='text-cc3'>Total</div>
                     <div className='text-cc3'>₹115</div>
                 </div>
-                <div className="tip d-flex justify-content-between">
-                    <div className='text-hh3 d-flex'><span style={{padding:"1px 3px 0 0", cursor:"pointer"}} className='d-flex'><Trash2 size={20} style={{color:"black"}}/></span><span>Tip for Kondeti Anusha</span></div>
-                    <div className='text-cc3'>₹11.50</div>
-                </div>
+                {tipValue !== 'No tip' && tipValue !== "Custom amount" ? <div className="tip d-flex justify-content-between my-row-aa3">
+                    <div className='text-hh3 d-flex'><span style={{padding:"1px 3px 0 0", cursor:"pointer"}} className='d-flex'><Trash2 onClick={DeleteTipValue} size={20} style={{color:"black"}}/></span><span>Tip for Kondeti Anusha</span></div>
+                    <div className='text-cc3'>{reducerData[0].split(" ")[1]}</div>
+                </div> : "" }
+                {amount !== "Select a amount" ? <div className="total d-flex justify-content-between my-row-aa3">
+                    <div className='text-cc3 d-flex'><span style={{padding:"1px 3px 0 0", cursor:"pointer"}} className='d-flex'><Trash2 onClick={DeleteAmount} size={20}/></span><span>Cash</span></div>
+                    <div className='text-cc3'>{amount}</div>
+                </div> : ""}
             </div>
             <div className="bottom-box-aa3">
-                <div className="to-pay  d-flex justify-content-between">
+            {(tipValue === 'No tip' || tipValue === "Custom amount") && amount === "Select a amount" ? <div className="to-pay  d-flex justify-content-between my-row-aa3">
                     <div className="text-cc3">To pay</div>
-                    <div className='text-cc3'>₹115.50</div>
-                </div>
+                    <div className='text-cc3'>₹{Number(value2.join(""))}</div>
+                </div> : ""}
+            {tipValue !== 'No tip' && tipValue !== "Custom amount" && amount === "Select a amount" ? <div className="to-pay  d-flex justify-content-between my-row-aa3">
+                    <div className="text-cc3">To pay</div>
+                    <div className='text-cc3'>₹{Number(value2.join("")) + Number(value1.join(""))}</div>
+                </div> : ""}
+                
+                {(tipValue === 'No tip' || tipValue === "Custom amount") && amount !== "Select a amount" ?  <div className="total d-flex justify-content-between my-row-aa3">
+                    <div className='text-cc3'>Change</div>
+                    <div className='text-cc3'>₹{myAmount.join("") - toPay2}</div>
+                </div> : ""}
+                {tipValue !== 'No tip' && tipValue !== "Custom amount" && amount !== "Select a amount" ? <div className="total d-flex justify-content-between my-row-aa3">
+                    <div className='text-cc3'>Change</div>
+                    <div className='text-cc3'>₹{(myAmount.join("") - toPay).toFixed(1)}</div>
+                </div> : ""}
                 <div className='btn-box-aa3 d-flex justify-content-between'> 
                 <button className="three-dit btn-aa3"> <MoreHorizontal size={30}/></button>
                 <NavLink className='w-75 btn-bb3' onClick={addPayment} to='/selectpayment' ><button className="continue-aa3 btn-bb3">Continue</button></NavLink>

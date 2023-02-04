@@ -1,18 +1,22 @@
 .top-va{
     display: flex;
     justify-content: space-between;
-    padding:10px 20px;
+    padding:20px 20px  10px 20px
 }
 .form-box-va{
     border:1px solid rgba(0, 0, 0, 0.4);
     width:800px;
     margin:auto;
     border-radius: 8px;
-    margin-bottom:40px;;
+    margin-bottom:20px;;
 }
 .top-info-va{
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding:15px;
+}
+.top-info-vc{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding:15px 25px;
 }
 .top-info-vb{
     padding:15px;
@@ -27,7 +31,7 @@
 }
 .select-photo-va{
     width:160px;
-    height:140px;
+    height:160px;
     background:rgba(27, 183, 11, 0.36);
     border-radius: 90%;
     display: flex;
@@ -51,8 +55,8 @@
     border-radius: 20%;
 }
 .btn-vb{
-    width:40px;
-    height:40px;
+    width:45px;
+    height:45px;
     border-radius: 100%;
     margin-right: 15px;
     border: none;
@@ -153,6 +157,9 @@
     display: flex;
     padding:15px;
 }
+.range-wrapper-va{
+    width:70%;
+}
 @media(max-width:900px){
     .commission-input-wrapper-va{
         display: block;
@@ -162,7 +169,7 @@
     }
     .btn-va{
         position: fixed;
-        bottom:1%;
+        bottom:2.5%;
         width:96%;
         margin: auto;
         z-index: 100;
@@ -172,9 +179,7 @@
     }
     .form-box-va{
         width:96%;
-        margin:auto;
         height:auto;
-        margin-bottom: 30px;
     }
     .box-vc{
         display: block;
@@ -199,12 +204,15 @@
     .box-tb{
         display: block;
     }
+    .range-wrapper-va{
+        width:100%;
+    }
 }
 @media(max-width:600px){
     .btn-vb{
         margin-right: 5px;
-        width:25px;
-        height:25px
+        width:35px;
+        height:35px
     }
     .text-vc{
         font-size: 26px;

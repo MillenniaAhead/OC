@@ -7,7 +7,6 @@ import { X } from "react-feather"
 import Progress from "./Progress"
 import { Alert } from 'reactstrap'
 import axios from 'axios'
-import { DateSchema } from "yup"
 
 const StepThree = () => {
 
@@ -62,7 +61,7 @@ const StepThree = () => {
 
    //For dipatch action
    const dispatch = useDispatch()
-   const { StoreDealData } = bindActionCreators(actionCreators, dispatch) 
+  //  const { StoreDealData } = bindActionCreators(actionCreators, dispatch) 
    const { DeleteLastData } = bindActionCreators(actionCreators, dispatch) 
    const { ClearDealData } = bindActionCreators(actionCreators, dispatch) 
    const history = useHistory()
@@ -74,7 +73,6 @@ const StepThree = () => {
 
    const nextBtnFun = () => {
     const data = [...reducerData, {promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue}]
-
     //Checked both option
     if (toggle1 && toggle2) {
       if (discountCodeValue === "") {
@@ -85,36 +83,28 @@ const StepThree = () => {
           setVisible2(false)
         }, 3000)
       } else {
-        
+        ClearDealData()
         //axios
-        axios.post("http://localhost:5000/deals/post", {dealType:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:"", startDate:data[5].toString(), endDate:data[6].toString(), promotionValue:data[7], useLimit:data[8], minPurchaseValue:data[9], applyPromotion:data[10]})
+        axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], max_use_limit:data[8], min_purchase_amount:data[9], applyPromotion:data[10], promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue})
         .then(res => {
          console.log(res.data)
-        if (res.data === "deal added successfully") {
-        alert("deal added successfully")
         history.push('/promote/stepFour')
-       }
-     })
+       })
       .catch(err => console.log(err))
-
-        StoreDealData([{promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue}])
     }
 
     //Checked option1
   } else if (toggle1 && !toggle2) {
-      
+    ClearDealData()
+    console.log(data[5])
     //axios
-    axios.post("http://localhost:5000/deals/post", {dealType:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:"", vouchers:"", startDate:data[5].toString(), endDate:data[6].toString(), promotionValue:data[7], useLimit:data[8], minPurchaseValue:data[9], applyPromotion:data[10]})
+    axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], max_use_limit:data[8], min_purchase_amount:data[9], applyPromotion:data[10], promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue})
     .then(res => {
-      console.log(res.data)
-    if (res.data === "deal added successfully") {
-    alert("deal added successfully")
+       console.log(res)
      history.push('/promote/stepFour')
-   }
- })
-  .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
 
-  StoreDealData([{promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue}])
   //Checked option2
   } else if (toggle2 && !toggle1) {
     if (discountCodeValue === "") {
@@ -125,18 +115,14 @@ const StepThree = () => {
           setVisible2(false)
         }, 3000)
     } else {
-       //axios
-    axios.post("http://localhost:5000/deals/post", {dealType:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], startDate:data[5].toString(), endDate:data[6].toString(), promotionValue:data[7], useLimit:data[8], minPurchaseValue:data[9], applyPromotion:data[10]})
-    .then(res => {
-      console.log(res.data)
-    if (res.data === "deal added successfully") {
-    alert("deal added successfully")
+      ClearDealData()
+      //axios
+       axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], max_use_limit:data[8], min_purchase_amount:data[9], applyPromotion:data[10], promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue})
+       .then(res => {
+      console.log(res)
      history.push('/promote/stepFour')
-   }
-  })
+   })
    .catch(err => console.log(err))
-
-        StoreDealData([{promotion1:applyPromotion1, promotion2:applyPromotion2, discount_code:discountCodeValue}])
     }
     
     //Nothing checked

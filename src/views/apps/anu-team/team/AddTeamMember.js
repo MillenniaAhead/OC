@@ -4,6 +4,7 @@ import '../mycss3/AddTeamMember.css'
 import { NavLink } from 'react-router-dom'
 
 const AddTeamMember = () => {
+
   return (
     <div>
         <div className='d-flex justify-content-end p-1'><NavLink to="/team/teamMembers" style={{color:"black"}}><X size={45} strokeWidth={1.2}/></NavLink></div>

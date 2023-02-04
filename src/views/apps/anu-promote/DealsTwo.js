@@ -1,21 +1,33 @@
-import React, { useState } from 'react'
-import DealsList from "./DealsList"
-import { Filter, Search, ChevronLeft } from 'react-feather'
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Input, InputGroup, InputGroupText  } from 'reactstrap'
+import React, { useState, useEffect } from 'react'
+import modulo from '../images/modulo.svg'
+import './mycss1/DealsList.css'
+import { Filter, Sliders, Search, ChevronLeft, MoreHorizontal } from 'react-feather'
+import { UncontrolledButtonDropdown, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Input, InputGroup, InputGroupText  } from 'reactstrap'
 import {NavLink} from 'react-router-dom'
+import axios from "axios"
 
 export const DealsTwo = () => {
-    //For dropdown
-   const [dropdownOpen, setDropdownOpen] = useState(false)
+  //For dropdown
+  // const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [dropdownOpenx, setDropdownOpenx] = useState(false)
 
    //For side menu
    const [styleTwo, setstyleTwo] = useState({display:'block'})
    const [styleThree, setstyleThree] = useState()
    const [styleFour, setstyleFour] = useState({position: "relative", left: "-50%"})
 
+     //store data from backend
+     const [detail, setDetail] = useState([])
+     const [dealLength, setDealLength] = useState(0)
+  
+    //  //dropdown
+    //  const toggleDropdown = () => {
+    //   setDropdownOpen(!dropdownOpen)
+    // }
+
    //dropdown
-   const toggleDropdown = () => {
-     setDropdownOpen(!dropdownOpen)
+   const toggleDropdownx = () => {
+     setDropdownOpenx(!dropdownOpenx)
    }
 
    //On Click of arrow circle
@@ -30,6 +42,16 @@ export const DealsTwo = () => {
       setstyleFour({ position: "relative", left: "-50%" })
     }
   }
+
+  //Fetch api by axios
+  useEffect(() => {
+    axios.get("http://localhost:4000/api/deals")
+    .then((res) => {
+        setDetail(res.data)
+        setDealLength(res.data.length)
+    })
+    .catch((err) => console.log(err))
+  }, [])
 
   return (
       <div className="deal-list-container" style={{overflowY:"scroll"}}>
@@ -62,7 +84,7 @@ export const DealsTwo = () => {
        </div>
   <div className="deal-list-wrapper">
       <div  className="side-menu-wrapper-2 mb-1">
-   <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+   <ButtonDropdown isOpen={dropdownOpenx} toggle={toggleDropdownx}>
      <DropdownToggle caret>
            Promote
      </DropdownToggle>
@@ -90,7 +112,7 @@ export const DealsTwo = () => {
               </p>
               </div>
               <div>
-              <span className="no-of-deals">0</span>
+              <span className="no-of-deals">{dealLength}</span>
               </div>
               </div>
               <p className="text-h1">
@@ -119,7 +141,7 @@ export const DealsTwo = () => {
         <Input placeholder='Search by deal name' />
       </InputGroup>
             <div className="btn-box-b d-flex justify-content-between">
-           <button className="filter-deals"><div className="d-flex align-items-center"><p>Filter</p><Filter className="deals-filter-icon"/>
+           <button className="filter-deals"><div className="d-flex align-items-center"><p>Filter</p><Sliders className="deals-filter-icon"/>
            </div>
             </button>
               <button className="filter-deals my-filter-deals"><div className="d-flex align-items-center"><p>Created&#40;newest first&#41;</p><Filter size={20}/></div> </button>
@@ -127,7 +149,66 @@ export const DealsTwo = () => {
           </div>
         </div>
         <div className="deals-list-wrapper">
-                <DealsList/>
+        {detail.map((deal, key) => <div key={key} className="my-deal-box">
+        <div className='d-flex '>
+        <div className='image-a'>
+            <div>
+            <img src={modulo} alt="" />
+            </div>
+        </div>
+        <div className="list-detail-a">
+            <p className='text-n'>{deal.name}</p>
+            <p className='text-o'>{deal.promotion_value} discount for all services and products</p>
+            <p className='text-o'>{deal.start_date} to {deal.end_date === "Invalid Date" ? 'Outgoing' : deal.end_date}</p>
+        </div>
+        </div>
+        <div className='list-right-side'>
+        <div className='status'><p>STATUS</p></div>
+        <div className='total-sales'>
+            <p className='text-p'>Total sales</p>
+            <p className='text-p'>₹0</p>
+        </div>
+        {/* <UncontrolledButtonDropdown>
+      <DropdownToggle color='primary' caret>
+        Uncontrolled
+      </DropdownToggle>
+      <DropdownMenu>
+        <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
+          Option 1
+        </DropdownItem>
+        <DropdownItem href='/' tag='a' disabled onClick={e => e.preventDefault()}>
+          Option 2
+        </DropdownItem>
+        <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
+          Option 3
+        </DropdownItem>
+      </DropdownMenu>
+    </UncontrolledButtonDropdown> */}
+            <UncontrolledButtonDropdown>
+              <DropdownToggle>
+        <div style={{width:"50px", height:"fit-content"}} className='three-dot'>
+            <MoreHorizontal/>
+      </div>
+      </DropdownToggle>
+      <DropdownMenu style={{ minWidth:"fit-content", top:'20px'}}>
+        <DropdownItem style={{padding:"5px 10px"}} to={`/promote/steptwoedit/${deal._id}`} tag={NavLink} onClick={e => e.preventDefault()}>
+          Edit
+        </DropdownItem>
+        <DropdownItem style={{padding:"5px 10px"}} href='/' tag='a' onClick={e => e.preventDefault()}>
+          Deactivate
+        </DropdownItem>
+        <DropdownItem style={{padding:"5px 10px"}} href='/' tag='a' onClick={e => e.preventDefault()}>
+          Duplicate
+        </DropdownItem>
+        <DropdownItem style={{padding:"5px 10px"}} href='/' tag='a' onClick={e => e.preventDefault()}>
+          Archive
+        </DropdownItem>
+      </DropdownMenu>
+    </UncontrolledButtonDropdown>
+        </div>
+    </div> 
+    )}
+        <div className='d-flex justify-content-center mt-1'>{dealLength} of {dealLength}</div>
         </div>
       </div>
     </div>

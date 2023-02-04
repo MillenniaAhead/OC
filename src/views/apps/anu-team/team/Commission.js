@@ -1,23 +1,27 @@
 import React, { useState } from 'react'
 import { Button, Input, Label } from 'reactstrap'
 import '../mycss3/Permissions.css'
+import axios from 'axios'
 
 const Commission = () => {
-   const [commisssionData, setCommisssionData] = useState(['Calculate by item sale price before discount', 'Calculate by item sale price including tax', 'Calculate by service price before membership discount'])
+   const [commission0, setCommission] = useState(['Calculate by item sale price before discount', 'Calculate by item sale price including tax', 'Calculate by service price before membership discount'])
 
    const CommissionData = (event) => {
-    if (commisssionData.includes(event.target.value)) {
-      const deselect = commisssionData.filter(
+    if (commission0.includes(event.target.value)) {
+      const deselect = commission0.filter(
         (mycommission) => mycommission !== event.target.value
         )
-        setCommisssionData(deselect)
+        setCommission(deselect)
       } else {
-        setCommisssionData([...commisssionData, event.target.value])
+        setCommission([...commission0, event.target.value])
     }
   }
 
   const HandleSubmit = () => {
-    console.log(commisssionData)
+    axios.post('http://localhost:4000/api/commissions', { commission:commission0 })
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+    console.log(commission0)
   }
 
 
@@ -36,7 +40,7 @@ const Commission = () => {
       <div className="commission-body-x2a">
         <div className="d-flex align-items-center mb-1">
         <div className='form-check form-check-success'>
-            <Input onChange={CommissionData} name='commission' value='Calculate by item sale price before discount' type='checkbox' id='primary-checkbox1' defaultChecked />
+            <Input checked={commission0.some((commission) => commission === "Calculate by item sale price before discount")} onChange={CommissionData} name='commission' value='Calculate by item sale price before discount' type='checkbox' id='primary-checkbox1'/>
             <Label className='form-check-label' style={{color:'black', fontSize:'17px'}} for='primary-checkbox1'>
             Calculate by item sale price before discount
             </Label>
@@ -44,7 +48,7 @@ const Commission = () => {
         </div>
         <div className="d-flex align-items-center">
         <div className='form-check form-check-success'>
-            <Input onChange={CommissionData} name='commission' value='Calculate by item sale price including tax' type='checkbox' id='primary-checkbox2' defaultChecked />
+            <Input checked={commission0.some((commission) => commission === "Calculate by item sale price including tax")} onChange={CommissionData} name='commission' value='Calculate by item sale price including tax' type='checkbox' id='primary-checkbox2'/>
             <Label className='form-check-label' style={{color:'black', fontSize:'17px'}} for='primary-checkbox2'>
             Calculate by item sale price including tax
             </Label>
@@ -54,7 +58,7 @@ const Commission = () => {
 existing invoices are not impacted.</div>
         <div className="d-flex align-items-center">
         <div className='form-check form-check-success'>
-            <Input onChange={CommissionData} name='commission' value='Calculate by service price before membership discount' type='checkbox' id='primary-checkbox3' defaultChecked />
+            <Input checked={commission0.some((commission) => commission === "Calculate by service price before membership discount")} onChange={CommissionData} name='commission' value='Calculate by service price before membership discount' type='checkbox' id='primary-checkbox3'/>
             <Label className='form-check-label' style={{color:'black', fontSize:'17px'}} for='primary-checkbox3'>
             Calculate by service price before membership discount
             </Label>

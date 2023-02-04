@@ -27,14 +27,29 @@ const StepTwo = () => {
   const [promotionDetail, setPromotionDetail] = useState({name:"", description:""})
 
   //For product
-  const [product, setProduct] = useState([])
+  const [product, setProduct] = useState(["Product1", "Product2", "Product3"])
 
   //For service
-  const [service, setService] = useState([])
+  const [service, setService] = useState(["Haircut", "Beard Trim", "Classic Fill"])
 
-  //For date picker
-  const [picker1, setPicker1] = useState(new Date())
-  const [picker2, setPicker2] = useState(new Date())
+ //For date picker
+  const [picker1, setPicker1] = useState(new Date)
+  const [picker2, setPicker2] = useState(new Date)
+
+  const date1 = new Date(picker1)
+  const formattedDate1 = date1.toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  })
+
+  const date2 = new Date(picker2)
+  const formattedDate2 = date2.toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  })
+  
 
   //For color change of promotion value type box
   const [color1, setColor1] = useState('#1bb70b')
@@ -72,6 +87,13 @@ const StepTwo = () => {
 
   //For add and remove products 
   const addProduct = (event) => {
+    if (event.target.name === "all_products") {
+      if (product.length === 3) {
+        setProduct([])
+      } else {
+        setProduct(["Product1", "Product2", "Product3"])
+      }
+  } else { 
     if (product.includes(event.target.value)) {
       const deselect = product.filter(
         (myproduct) => myproduct !== event.target.value
@@ -81,9 +103,17 @@ const StepTwo = () => {
       setProduct([...product, event.target.value])
     }
   }
+  }
 
   //For add and remove servoces
   const addService = (event) => {
+    if (event.target.name === "all_services") {
+      if (service.length === 3) {
+          setService([])
+      } else {
+        setService(["Haircut", "Beard Trim", "Classic Fill"])
+      }
+  } else { 
     if (service.includes(event.target.value)) {
       const deselect = service.filter(
         (myservice) => myservice !== event.target.value
@@ -92,6 +122,7 @@ const StepTwo = () => {
       } else {
       setService([...service, event.target.value])
     }
+  }
   }
 
   //For change box color
@@ -222,7 +253,8 @@ const StepTwo = () => {
       //Navigate
       nextStep.push("/promote/stepthree")
       //Call action 
-      CollectDealData([promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue + promotionValueType, maxUseValue, minPurchaseValue])
+      console.log(formattedDate1)
+      CollectDealData([promotionDetail.name, promotionDetail.description, service, product, formattedDate1, formattedDate2, myPromotionValue + promotionValueType, maxUseValue, minPurchaseValue])
     }
   }
 
@@ -395,9 +427,10 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="all_services"
-                                value="All services"
+                                value="Haircut, Beard Trim, Classic Fill"
                                 id='all-services'
                                 onChange={addService}
+                                checked={service.some((service) => service === 'Haircut') && service.some((service) => service === 'Beard Trim') && service.some((service) => service === 'Classic Fill')}
                               />
                             </label>
                             <div className="list-item-names-d5">All services</div>
@@ -413,7 +446,6 @@ const StepTwo = () => {
                                 value="Hair"
                                 readOnly
                                 id='Hair'
-                                onChange={addService}
                               />
                             </label>
                             <div>
@@ -428,10 +460,10 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service2"
-                                value="Haircut "
+                                value="Haircut"
                                 id='Haircut'
                                 onChange={addService}
-                                readOnly
+                                checked={service.some((service) => service === "Haircut")}
                               />
                             </label>
                             <div>
@@ -450,7 +482,7 @@ const StepTwo = () => {
                                 value="Beard Trim"
                                 id='Beard-Trim'
                                 onChange={addService}
-                                readOnly
+                                checked={service.some((service) => service === "Beard Trim")}
                               />
                             </label>
                             <div>
@@ -468,7 +500,6 @@ const StepTwo = () => {
                                 name="service3"
                                 value="Brows & Lashes"
                                 id='Bows-&-Lashes'
-                                onChange={addService}
                                 readOnly
                               />
                             </label>
@@ -480,14 +511,14 @@ const StepTwo = () => {
                             <label
                               className="edit-list-label"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
                                 value="Classic Fill"
                                 id='Classic-Fill'
                                 onChange={addService}
-                                readOnly
+                                checked={service.some((service) => service === 'Classic Fill')}
                               />
                             </label>
                             <div>
@@ -546,11 +577,11 @@ const StepTwo = () => {
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="product1"
-                                value="All products"
-                                onClick={addProduct}
+                                name="all_products"
+                                value="Product1, Product2, Product"
+                                onChange={addProduct}
                                 id="all_products"
-                                readOnly
+                                checked={product.some((product) => product === 'Product1') && product.some((product) => product === 'Product2') && product.some((product) => product === 'Product3')}
                               />
                             </label>
                             <div className="list-item-names-d5">All products</div>
@@ -563,10 +594,10 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="product1"
-                                value="product1"
+                                value="Product1"
                                 id='product1'
-                                onClick={addProduct}
-                                readOnly
+                                onChange={addProduct}
+                                checked={product.some((product) => product === 'Product1')}
                               />
                             </label>
                             <div className="list-item-names-a5">product1</div>
@@ -578,11 +609,11 @@ const StepTwo = () => {
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="product2"
-                                value="product2"
+                                name="Product2"
+                                value="Product2"
                                 id='product2'
-                                onClick={addProduct}
-                                readOnly
+                                onChange={addProduct}
+                                checked={product.some((product) => product === 'Product2')}
                               />
                             </label>
                             <div className="list-item-names-a5">product2</div>
@@ -595,10 +626,10 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="product3"
-                                value="product3"
+                                value="Product3"
                                 id='product3'
-                                onClick={addProduct}
-                                readOnly
+                                onChange={addProduct}
+                                checked={product.some((product) => product === 'Product3')}
                               />
                             </label>
                             <div className="list-item-names-a5">product3</div>
@@ -721,21 +752,17 @@ const StepTwo = () => {
                       <p className="text-e5">Start date</p>
                       <div className="select-box">
                         <Flatpickr
-                          className="form-control"
                           value={picker1}
-                          onChange={(date) => setPicker1(date)}
-                          id="default-picker"
+                          onChange={setPicker1}
                         />
                       </div>
                     </div>
                     <div className="end-date-wrapper">
                       <p className="text-e5">End date</p>
                       <div className="select-box">
-                        <Flatpickr
-                          className="form-control"
+                      <Flatpickr
                           value={picker2}
-                          onChange={(date) => setPicker2(date)}
-                          id="default-picker"
+                          onChange={setPicker2}
                         />
                       </div>
                     </div>

@@ -21,12 +21,12 @@ const DealsList = () => {
 
   //Fetch api by axios
   useEffect(() => {
-    axios.get("http://localhost:5000/deals/get")
+    axios.get("http://localhost:4000/api/deals")
     .then((res) => {
         setDetail(res.data)
         setDealLength(res.data.length)
     })
-    .catch((err) => console.log(['Error from /deals/get', err]))
+    .catch((err) => console.log(err))
   }, [])
 
   return (
@@ -40,8 +40,8 @@ const DealsList = () => {
         </div>
         <div className="list-detail-a">
             <p className='text-n'>{deal.name}</p>
-            <p className='text-o'>10% discount for all services and products</p>
-            <p className='text-o'>20 dec 2022 to outgoing</p>
+            <p className='text-o'>{deal.promotion_value} discount for all services and products</p>
+            <p className='text-o'>{deal.start_date} to {deal.end_date === "Invalid Date" ? 'Outgoing' : deal.end_date}</p>
         </div>
         </div>
         <div className='list-right-side'>

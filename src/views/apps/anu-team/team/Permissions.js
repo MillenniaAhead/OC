@@ -2,113 +2,52 @@ import React, { useState } from 'react'
 import "../mycss3/Permissions.css"
 import { Table, Input, Button } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 
 const Permissions = () => {
   //BOOKINGS & CLIENTS
-  const [accessOwnCalendar, setAccessOwnCalendar] = useState(["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"])
-  const [accessOtherStaffCalendars, setAccessOtherStaffCalendars] = useState(["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"])
-  const [canBookAppointments, setCanBookAppointments] = useState(["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"])
-  const [home, setHome] = useState(["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"])
-  const [clients, setClients] = useState(["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"])
-  const [canSeeClientContactInfo, setCanSeeClientContactInfo] = useState(["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"])
-  const [canDownloadClients, setCanDownloadClients] = useState(["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"])
-  const [messages, setMessages] = useState(["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"])
 
-  const accessOwnCalendarFun = (e) => {
-      if (accessOwnCalendar.includes(e.target.value)) {
-        setAccessOwnCalendar(accessOwnCalendar.filter((level) => level !== e.target.value))
-     } else {
-      setAccessOwnCalendar([...accessOwnCalendar, e.target.value])
-     }
+  const accessLevels = ["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"]
+
+  const [accessOwnCalendar, setAccessOwnCalendar] = useState(accessLevels)
+  const [accessOtherStaffCalendars, setAccessOtherStaffCalendars] = useState(accessLevels)
+  const [canBookAppointments, setCanBookAppointments] = useState(accessLevels)
+  const [Home, setHome] = useState(accessLevels)
+  const [Clients, setClients] = useState(accessLevels)
+  const [canSeeClientContactInfo, setCanSeeClientContactInfo] = useState(accessLevels)
+  const [canDownloadClients, setCanDownloadClients] = useState(accessLevels)
+  const [Messages, setMessages] = useState(accessLevels)
+
+  const stateMapper = {
+    accessOwnCalendar: setAccessOwnCalendar,
+    accessOtherStaffCalendars: setAccessOtherStaffCalendars,
+    canBookAppointments: setCanBookAppointments,
+    Home: setHome,
+    Clients: setClients,
+    canSeeClientContactInfo: setCanSeeClientContactInfo,
+    canDownloadClients: setCanDownloadClients,
+    Messages: setMessages
+  }
+
+  const CollectPermissionData = (stateName, e) => {
+    const setState = stateMapper[stateName]
+    if (setState) {
+        setState((state) => {
+        if (state.includes(e.target.value)) {
+          return state.filter((level) => level !== e.target.value)
+        } else {
+          return [...state, e.target.value]
+        }
+      })
+    }
+  }
+
+  const SubmitData = () => {
+    axios.post("http://localhost:4000/api/permissions", { bookings_and_clients:[{ access_own_calendar:accessOwnCalendar, access_other_staff_calendars:accessOtherStaffCalendars, can_book_appointments:canBookAppointments, home:Home, clients:Clients, can_see_client_contact_info:canSeeClientContactInfo, can_download_clients:canDownloadClients, messages:Messages }]})
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
   }
   
-  const accessOtherStaffCalendarsFun = (e) => {
-      if (accessOtherStaffCalendars.includes(e.target.value)) {
-        setAccessOtherStaffCalendars(accessOtherStaffCalendars.filter((level) => level !== e.target.value))
-     } else {
-      setAccessOtherStaffCalendars([...accessOtherStaffCalendars, e.target.value])
-     }
-  }
-  
-  const canBookAppointmentsFun = (e) => {
-      if (canBookAppointments.includes(e.target.value)) {
-        setCanBookAppointments(canBookAppointments.filter((level) => level !== e.target.value))
-     } else {
-      setCanBookAppointments([...canBookAppointments, e.target.value])
-     }
-  }
-
-  const homeFun = (e) => {
-      if (home.includes(e.target.value)) {
-        setHome(home.filter((level) => level !== e.target.value))
-     } else {
-      setHome([...home, e.target.value])
-     }
-  }
-
-  const clientsFun = (e) => {
-      if (clients.includes(e.target.value)) {
-        setClients(clients.filter((level) => level !== e.target.value))
-     } else {
-      setClients([...clients, e.target.value])
-     }
-  }
-
-  const canSeeClientContactInfoFun = (e) => {
-      if (canSeeClientContactInfo.includes(e.target.value)) {
-        setCanSeeClientContactInfo(canSeeClientContactInfo.filter((level) => level !== e.target.value))
-     } else {
-      setCanSeeClientContactInfo([...canSeeClientContactInfo, e.target.value])
-     }
-  }
-
-  const canDownloadClientsFun = (e) => {
-      if (canDownloadClients.includes(e.target.value)) {
-        setCanDownloadClients(canDownloadClients.filter((level) => level !== e.target.value))
-     } else {
-      setCanDownloadClients([...canDownloadClients, e.target.value])
-     }
-  }
-
-  const messagesFun = (e) => {
-      if (messages.includes(e.target.value)) {
-        setMessages(messages.filter((level) => level !== e.target.value))
-     } else {
-      setMessages([...messages, e.target.value])
-     }
-  }
-
-  const showAccessOwnCalendar = () => {
-    console.log({AccessOwnCalendar:accessOwnCalendar})
-  }
-  
-  const showAccessOtherStaffCalendars = () => {
-    console.log({AccessOtherStaffCalendars:accessOtherStaffCalendars})
-  }
-
-  const showCanBookAppointments = () => {
-    console.log({CanBookAppointments:canBookAppointments})
-  }
-
-  const showHome = () => {
-    console.log({Home:home})
-  }
-
-  const showClients = () => {
-    console.log({Clients:clients})
-  }
-
-  const showCanSeeClientContactInfo = () => {
-    console.log({CanSeeClientContactInfo:canSeeClientContactInfo})
-  }
-
-  const showCanDownloadClients = () => {
-    console.log({CanDownloadClients:canDownloadClients})
-  }
-
-  const showMessages = () => {
-    console.log({Messages:messages})
-  }
   return (
     <div className='permission-container-x1a'>
         <div className='mb-1'>
@@ -122,14 +61,14 @@ owner accounts have full system access. </div>
 <div className="table-one-x1a">
 <div className="table-first-column-x1a">
     <div>BOOKINGS & CLIENTS</div>
-    <div onClick={showAccessOwnCalendar}>Access own calendar</div>
-    <div onClick={showAccessOtherStaffCalendars}>Access other staff calendars</div>
-    <div onClick={showCanBookAppointments}>Can book appointments</div>
-    <div onClick={showHome}>Home</div>
-    <div onClick={showClients}>Clients</div>
-    <div  onClick={showCanSeeClientContactInfo}>Can see client contact info</div>
-    <div onClick={showCanDownloadClients}>Can download clients</div>
-    <div onClick={showMessages}>Messages</div>
+    <div>Access own calendar</div>
+    <div>Access other staff calendars</div>
+    <div>Can book appointments</div>
+    <div>Home</div>
+    <div>Clients</div>
+    <div>Can see client contact info</div>
+    <div>Can download clients</div>
+    <div>Messages</div>
 </div>
 <div className="table-wrapper-x1a">
 <Table className='table-x1a'>
@@ -144,139 +83,139 @@ owner accounts have full system access. </div>
         <tr className="tr-x1a">
           <td>
             <div htmlFor='basic_a1' className='form-check form-check-dark'>
-            <Input checked={accessOwnCalendar.some((level) => level === 'BASIC')} onChange={accessOwnCalendarFun} value='BASIC' type='checkbox' id='basic_a1'/>
+            <Input checked={accessOwnCalendar.some((level) => level === 'BASIC')} onChange={(e) => CollectPermissionData("accessOwnCalendar", e)} value='BASIC' type='checkbox' id='basic_a1'/>
           </div>
           </td>
           <td><div className='form-check form-check-dark'>
-            <Input checked={accessOwnCalendar.some((level) => level === 'LOW')} onChange={accessOwnCalendarFun} value='LOW' type='checkbox' id='low_a1'/>
+            <Input checked={accessOwnCalendar.some((level) => level === 'LOW')} onChange={(e) => CollectPermissionData("accessOwnCalendar", e)} value='LOW' type='checkbox' id='low_a1'/>
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input checked={accessOwnCalendar.some((level) => level === 'MEDIUM')} onChange={accessOwnCalendarFun} value='MEDIUM' type='checkbox' id='medium_a1'/>
+            <Input checked={accessOwnCalendar.some((level) => level === 'MEDIUM')} onChange={(e) => CollectPermissionData("accessOwnCalendar", e)} value='MEDIUM' type='checkbox' id='medium_a1'/>
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input checked={accessOwnCalendar.some((level) => level === 'HIGH')} onChange={accessOwnCalendarFun} value='HIGH' type='checkbox' id='high_a1'/>
+            <Input checked={accessOwnCalendar.some((level) => level === 'HIGH')} onChange={(e) => CollectPermissionData("accessOwnCalendar", e)} value='HIGH' type='checkbox' id='high_a1'/>
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input checked={accessOwnCalendar.some((level) => level === 'OWNER')} onChange={accessOwnCalendarFun} value='OWNER' type='checkbox' id='owner_a1'/>
-          </div></td>
-        </tr>
-        <tr className="tr-x1a">
-          <td><div className='form-check form-check-dark'>
-            <Input value='BASIC' checked={accessOtherStaffCalendars.some((level) => level === 'BASIC')} onChange={accessOtherStaffCalendarsFun} type='checkbox' id='primary-checkboxb1'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value="LOW" checked={accessOtherStaffCalendars.some((level) => level === 'LOW')} onChange={accessOtherStaffCalendarsFun} type='checkbox' id='primary-checkboxb2'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value='MEDIUM' checked={accessOtherStaffCalendars.some((level) => level === 'MEDIUM')} onChange={accessOtherStaffCalendarsFun} type='checkbox' id='primary-checkboxb3'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value='HIGH' checked={accessOtherStaffCalendars.some((level) => level === 'HIGH')} onChange={accessOtherStaffCalendarsFun} type='checkbox' id='primary-checkboxb4'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value='OWNER' checked={accessOtherStaffCalendars.some((level) => level === 'OWNER')} onChange={accessOtherStaffCalendarsFun} type='checkbox' id='primary-checkboxb5'  />
+            <Input checked={accessOwnCalendar.some((level) => level === 'OWNER')} onChange={(e) => CollectPermissionData("accessOwnCalendar", e)} value='OWNER' type='checkbox' id='owner_a1'/>
           </div></td>
         </tr>
         <tr className="tr-x1a">
           <td><div className='form-check form-check-dark'>
-            <Input value='BASIC' checked={canBookAppointments.some((level) => level === 'BASIC')} onChange={canBookAppointmentsFun} type='checkbox' id='primary-checkboxc1'  />
+            <Input value='BASIC' checked={accessOtherStaffCalendars.some((level) => level === 'BASIC')} onChange={(e) => CollectPermissionData("accessOtherStaffCalendars", e)} type='checkbox' id='primary-checkboxb1'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value="LOW" checked={canBookAppointments.some((level) => level === 'LOW')} onChange={canBookAppointmentsFun} type='checkbox' id='primary-checkboxc2'  />
+            <Input value="LOW" checked={accessOtherStaffCalendars.some((level) => level === 'LOW')} onChange={(e) => CollectPermissionData("accessOtherStaffCalendars", e)} type='checkbox' id='primary-checkboxb2'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='MEDIUM' checked={canBookAppointments.some((level) => level === 'MEDIUM')} onChange={canBookAppointmentsFun} type='checkbox' id='primary-checkboxc3'  />
+            <Input value='MEDIUM' checked={accessOtherStaffCalendars.some((level) => level === 'MEDIUM')} onChange={(e) => CollectPermissionData("accessOtherStaffCalendars", e)} type='checkbox' id='primary-checkboxb3'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='HIGH' checked={canBookAppointments.some((level) => level === 'HIGH')} onChange={canBookAppointmentsFun} type='checkbox' id='primary-checkboxc4'  />
+            <Input value='HIGH' checked={accessOtherStaffCalendars.some((level) => level === 'HIGH')} onChange={(e) => CollectPermissionData("accessOtherStaffCalendars", e)} type='checkbox' id='primary-checkboxb4'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='OWNER' checked={canBookAppointments.some((level) => level === 'OWNER')} onChange={canBookAppointmentsFun} type='checkbox' id='primary-checkboxc5'  />
-          </div></td>
-        </tr>
-        <tr className="tr-x1a">
-          <td><div className='form-check form-check-dark'>
-            <Input value='BASIC' checked={home.some((level) => level === 'BASIC')} onChange={homeFun} type='checkbox' id='primary-checkboxd1'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value="LOW" checked={home.some((level) => level === 'LOW')} onChange={homeFun} type='checkbox' id='primary-checkboxd2'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value='MEDIUM' checked={home.some((level) => level === 'MEDIUM')} onChange={homeFun} type='checkbox' id='primary-checkboxd3'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value='HIGH' checked={home.some((level) => level === 'HIGH')} onChange={homeFun} type='checkbox' id='primary-checkboxd4'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value='OWNER' checked={home.some((level) => level === 'OWNER')} onChange={homeFun} type='checkbox' id='primary-checkboxd5'  />
+            <Input value='OWNER' checked={accessOtherStaffCalendars.some((level) => level === 'OWNER')} onChange={(e) => CollectPermissionData("accessOtherStaffCalendars", e)} type='checkbox' id='primary-checkboxb5'  />
           </div></td>
         </tr>
         <tr className="tr-x1a">
           <td><div className='form-check form-check-dark'>
-            <Input value='BASIC' checked={clients.some((level) => level === 'BASIC')} onChange={clientsFun} type='checkbox' id='primary-checkboxe1'  />
+            <Input value='BASIC' checked={canBookAppointments.some((level) => level === 'BASIC')} onChange={(e) => CollectPermissionData("canBookAppointments", e)} type='checkbox' id='primary-checkboxc1'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value="LOW" checked={clients.some((level) => level === 'LOW')} onChange={clientsFun} type='checkbox' id='primary-checkboxe2'  />
+            <Input value="LOW" checked={canBookAppointments.some((level) => level === 'LOW')} onChange={(e) => CollectPermissionData("canBookAppointments", e)} type='checkbox' id='primary-checkboxc2'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='MEDIUM' checked={clients.some((level) => level === 'MEDIUM')} onChange={clientsFun} type='checkbox' id='primary-checkboxe3'  />
+            <Input value='MEDIUM' checked={canBookAppointments.some((level) => level === 'MEDIUM')} onChange={(e) => CollectPermissionData("canBookAppointments", e)} type='checkbox' id='primary-checkboxc3'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='HIGH' checked={clients.some((level) => level === 'HIGH')} onChange={clientsFun} type='checkbox' id='primary-checkboxe4'  />
+            <Input value='HIGH' checked={canBookAppointments.some((level) => level === 'HIGH')} onChange={(e) => CollectPermissionData("canBookAppointments", e)} type='checkbox' id='primary-checkboxc4'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='OWNER' checked={clients.some((level) => level === 'OWNER')} onChange={clientsFun} type='checkbox' id='primary-checkboxe5'  />
-          </div></td>
-        </tr>
-        <tr className="tr-x1a">
-          <td><div className='form-check form-check-dark'>
-            <Input value='BASIC' checked={canSeeClientContactInfo.some((level) => level === 'BASIC')} onChange={canSeeClientContactInfoFun} type='checkbox' id='primary-checkboxf1'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value="LOW" checked={canSeeClientContactInfo.some((level) => level === 'LOW')} onChange={canSeeClientContactInfoFun} type='checkbox' id='primary-checkboxf2'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value='MEDIUM' checked={canSeeClientContactInfo.some((level) => level === 'MEDIUM')} onChange={canSeeClientContactInfoFun} type='checkbox' id='primary-checkboxf3'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value='HIGH' checked={canSeeClientContactInfo.some((level) => level === 'HIGH')} onChange={canSeeClientContactInfoFun} type='checkbox' id='primary-checkboxf4'  />
-          </div></td>
-          <td><div className='form-check form-check-dark'>
-            <Input value='OWNER' checked={canSeeClientContactInfo.some((level) => level === 'OWNER')} onChange={canSeeClientContactInfoFun} type='checkbox' id='primary-checkboxf5'  />
+            <Input value='OWNER' checked={canBookAppointments.some((level) => level === 'OWNER')} onChange={(e) => CollectPermissionData("canBookAppointments", e)} type='checkbox' id='primary-checkboxc5'  />
           </div></td>
         </tr>
         <tr className="tr-x1a">
           <td><div className='form-check form-check-dark'>
-            <Input value='BASIC' checked={canDownloadClients.some((level) => level === 'BASIC')} onChange={canDownloadClientsFun} type='checkbox' id='primary-checkboxg1'  />
+            <Input value='BASIC' checked={Home.some((level) => level === 'BASIC')} onChange={(e) => CollectPermissionData("Home", e)} type='checkbox' id='primary-checkboxd1'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value="LOW" checked={canDownloadClients.some((level) => level === 'LOW')} onChange={canDownloadClientsFun} type='checkbox' id='primary-checkboxg2'  />
+            <Input value="LOW" checked={Home.some((level) => level === 'LOW')} onChange={(e) => CollectPermissionData("Home", e)} type='checkbox' id='primary-checkboxd2'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='MEDIUM' checked={canDownloadClients.some((level) => level === 'MEDIUM')} onChange={canDownloadClientsFun} type='checkbox' id='primary-checkboxg3'  />
+            <Input value='MEDIUM' checked={Home.some((level) => level === 'MEDIUM')} onChange={(e) => CollectPermissionData("Home", e)} type='checkbox' id='primary-checkboxd3'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='HIGH' checked={canDownloadClients.some((level) => level === 'HIGH')} onChange={canDownloadClientsFun} type='checkbox' id='primary-checkboxg4'  />
+            <Input value='HIGH' checked={Home.some((level) => level === 'HIGH')} onChange={(e) => CollectPermissionData("Home", e)} type='checkbox' id='primary-checkboxd4'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='OWNER' checked={canDownloadClients.some((level) => level === 'OWNER')} onChange={canDownloadClientsFun} type='checkbox' id='primary-checkboxg5'  />
+            <Input value='OWNER' checked={Home.some((level) => level === 'OWNER')} onChange={(e) => CollectPermissionData("Home", e)} type='checkbox' id='primary-checkboxd5'  />
           </div></td>
         </tr>
         <tr className="tr-x1a">
           <td><div className='form-check form-check-dark'>
-            <Input value='BASIC' checked={messages.some((level) => level === 'BASIC')} onChange={messagesFun} type='checkbox' id='primary-checkboxh1'  />
+            <Input value='BASIC' checked={Clients.some((level) => level === 'BASIC')} onChange={(e) => CollectPermissionData("Clients", e)} type='checkbox' id='primary-checkboxe1'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value="LOW" checked={messages.some((level) => level === 'LOW')} onChange={messagesFun} type='checkbox' id='primary-checkboxh2'  />
+            <Input value="LOW" checked={Clients.some((level) => level === 'LOW')} onChange={(e) => CollectPermissionData("Clients", e)} type='checkbox' id='primary-checkboxe2'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='MEDIUM' checked={messages.some((level) => level === 'MEDIUM')} onChange={messagesFun} type='checkbox' id='primary-checkboxh3'  />
+            <Input value='MEDIUM' checked={Clients.some((level) => level === 'MEDIUM')} onChange={(e) => CollectPermissionData("Clients", e)} type='checkbox' id='primary-checkboxe3'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='HIGH' checked={messages.some((level) => level === 'HIGH')} onChange={messagesFun} type='checkbox' id='primary-checkboxh4'  />
+            <Input value='HIGH' checked={Clients.some((level) => level === 'HIGH')} onChange={(e) => CollectPermissionData("Clients", e)} type='checkbox' id='primary-checkboxe4'  />
           </div></td>
           <td><div className='form-check form-check-dark'>
-            <Input value='OWNER' checked={messages.some((level) => level === 'OWNER')} onChange={messagesFun} type='checkbox' id='primary-checkboxh5'  />
+            <Input value='OWNER' checked={Clients.some((level) => level === 'OWNER')} onChange={(e) => CollectPermissionData("Clients", e)} type='checkbox' id='primary-checkboxe5'  />
+          </div></td>
+        </tr>
+        <tr className="tr-x1a">
+          <td><div className='form-check form-check-dark'>
+            <Input value='BASIC' checked={canSeeClientContactInfo.some((level) => level === 'BASIC')} onChange={(e) => CollectPermissionData("canSeeClientContactInfo", e)} type='checkbox' id='primary-checkboxf1'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value="LOW" checked={canSeeClientContactInfo.some((level) => level === 'LOW')} onChange={(e) => CollectPermissionData("canSeeClientContactInfo", e)} type='checkbox' id='primary-checkboxf2'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value='MEDIUM' checked={canSeeClientContactInfo.some((level) => level === 'MEDIUM')} onChange={(e) => CollectPermissionData("canSeeClientContactInfo", e)} type='checkbox' id='primary-checkboxf3'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value='HIGH' checked={canSeeClientContactInfo.some((level) => level === 'HIGH')} onChange={(e) => CollectPermissionData("canSeeClientContactInfo", e)} type='checkbox' id='primary-checkboxf4'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value='OWNER' checked={canSeeClientContactInfo.some((level) => level === 'OWNER')} onChange={(e) => CollectPermissionData("canSeeClientContactInfo", e)} type='checkbox' id='primary-checkboxf5'  />
+          </div></td>
+        </tr>
+        <tr className="tr-x1a">
+          <td><div className='form-check form-check-dark'>
+            <Input value='BASIC' checked={canDownloadClients.some((level) => level === 'BASIC')} onChange={(e) => CollectPermissionData("canDownloadClients", e)} type='checkbox' id='primary-checkboxg1'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value="LOW" checked={canDownloadClients.some((level) => level === 'LOW')} onChange={(e) => CollectPermissionData("canDownloadClients", e)} type='checkbox' id='primary-checkboxg2'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value='MEDIUM' checked={canDownloadClients.some((level) => level === 'MEDIUM')} onChange={(e) => CollectPermissionData("canDownloadClients", e)} type='checkbox' id='primary-checkboxg3'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value='HIGH' checked={canDownloadClients.some((level) => level === 'HIGH')} onChange={(e) => CollectPermissionData("canDownloadClients", e)} type='checkbox' id='primary-checkboxg4'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value='OWNER' checked={canDownloadClients.some((level) => level === 'OWNER')} onChange={(e) => CollectPermissionData("canDownloadClients", e)} type='checkbox' id='primary-checkboxg5'  />
+          </div></td>
+        </tr>
+        <tr className="tr-x1a">
+          <td><div className='form-check form-check-dark'>
+            <Input value='BASIC' checked={Messages.some((level) => level === 'BASIC')} onChange={(e) => CollectPermissionData("Messages", e)} type='checkbox' id='primary-checkboxh1'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value="LOW" checked={Messages.some((level) => level === 'LOW')} onChange={(e) => CollectPermissionData("Messages", e)} type='checkbox' id='primary-checkboxh2'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value='MEDIUM' checked={Messages.some((level) => level === 'MEDIUM')} onChange={(e) => CollectPermissionData("Messages", e)} type='checkbox' id='primary-checkboxh3'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value='HIGH' checked={Messages.some((level) => level === 'HIGH')} onChange={(e) => CollectPermissionData("Messages", e)} type='checkbox' id='primary-checkboxh4'  />
+          </div></td>
+          <td><div className='form-check form-check-dark'>
+            <Input value='OWNER' checked={Messages.some((level) => level === 'OWNER')} onChange={(e) => CollectPermissionData("Messages", e)} type='checkbox' id='primary-checkboxh5'  />
           </div></td>
         </tr>
       </tbody>
@@ -1128,7 +1067,7 @@ owner accounts have full system access. </div>
     </div>
     </div>
     <div className="table-one-x1a">
-        <NavLink to="/businessSettings"><Button color="dark" className="fs-3 fw-bolder">Save Chages</Button></NavLink>
+        <NavLink to="#" onClick={SubmitData}><Button color="dark" className="fs-3 fw-bolder">Save Chages</Button></NavLink>
     </div>
         </div>
     </div>

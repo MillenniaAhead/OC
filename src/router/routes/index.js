@@ -13,7 +13,7 @@ import ReviewStocktakesRoutes from './ReviewStocktakes'
 
 //My work
 import AnuAppointment from './AnuAppointment'
-import SanPromote from './SanPromote'
+import AnuPromote from './AnuPromote'
 import SanReport from './SanReport'
 import AnuTeam from "./AnuTeam"
 
@@ -40,7 +40,7 @@ const DefaultRoute = '/overview'
 const Routes = [
   ...AnuTeam,
   ...SanReport,
-  ...SanPromote,
+  ...AnuPromote,
   ...AnuAppointment,
   ...OverviewRoutes,
   ...GroupRoutes,

@@ -1,12 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Button, InputGroup, Input, InputGroupText, Card, ButtonGroup, Col, CardText} from 'reactstrap'
 import "../mycss3/TeamMembers.css"
 import { ChevronsDown, Search, List, PhoneCall, Mail } from 'react-feather'
 import Avatar from '@components/avatar'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 
 const TeamMembers = () => {
   const [rSelected, setRSelected] = useState(1)
+  const [teamMember, setTeamMember] = useState([])
+
+  //Get all team memers from backend database
+  useEffect(() => {
+    axios.get('http://localhost:4000/api/teamMembers')
+    .then(res => {
+      console.log(res)
+      setTeamMember(res.data)
+    })
+    .catch(err => console.log(err))
+  }, [])
 
   return (
     <div className='team-member-container-ua'>
@@ -88,11 +100,11 @@ Costom order
       </UncontrolledButtonDropdown>
         </div>
         <div className="team-member-body-ua row">
-          <Card className='col-md-4 col-sm-12 p-2'>
+          {teamMember.length === 0 ? "No team member here" : teamMember.map((member, key) => <div key={key} className='col-md-4 col-sm-12'><Card style={{border:'1px solid rgba(0, 0, 0, 0.2)'}} className='p-2'>
             <div className='card-body-ua'>
-          <Avatar color='light-success' content='Kondeti Anusha' size='xl' initials />
-          <div className='text-ua'>Kondeti Anusha</div>
-          <div className='text-ub text-center'>+Add team member title</div>
+          <Avatar color='light-success' content={`${member.first_name} ${member.last_name}`} size='xl' initials />
+          <div className='text-ua'>{`${member.first_name} ${member.last_name}`}</div>
+          {member.team_member_title ? <div className="text-center text-ub">{member.team_member_title}</div> : <div className='text-ub text-center'>+Add team member title</div> }
           </div>
           <div className='box-ub mt-4'>
           <span className='me-2'>
@@ -102,8 +114,8 @@ Costom order
               <Mail style={{background:"rgba(246, 206, 61, 0.3)", color:"#F6CE3D", padding:"6px", width:'40px', height:"40px"}}/>
           </span>
           </div>
-          </Card>
-          <Card className='col-md-4 p-2'>
+          </Card></div>)}
+          {/* <Card style={{border:'1px solid rgba(0, 0, 0, 0.2)'}} className='col-md-4 p-2'>
             <div className='card-body-ua'>
           <Avatar color='light-success' content='Wendy Smith' size='xl' initials />
           <div className='text-ua'>Wendy Smith</div>
@@ -117,7 +129,7 @@ Costom order
               <Mail style={{background:"rgba(246, 206, 61, 0.3)", color:"#F6CE3D", padding:"6px", width:'40px', height:"40px"}}/>
           </span>
           </div>
-          </Card>
+          </Card> */}
         </div>
     </div>
   )

@@ -3,6 +3,7 @@ import '../mycss3/AddTeamMemberForm.css'
 import { ChevronDown, X } from 'react-feather'
 import { Button, Label, Input } from "reactstrap"
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
 
 const AddViaEmail = () => {
 const [formData, setFormData] = useState()
@@ -12,7 +13,11 @@ const CollectData = (e) => {
 }
 const HandleSubmit = () => {
         console.log(formData)
-}
+         //Invite a team member via email
+    axios.post('http://localhost:4000/api/teamMembers', formData)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
+    }
 
   return (
     <div className='add-via-email-ta mb-5'>

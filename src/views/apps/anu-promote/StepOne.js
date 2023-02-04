@@ -11,41 +11,20 @@ import  Progress from './Progress'
 
 const StepOne = () => {
 
-  //For selected deal
-  const [border1, setborder1] = useState({border:'1px solid #1bb70b'})
-  const [border2, setborder2] = useState()
-  const [border3, setborder3] = useState()
-  const [border4, setborder4] = useState()
   //For deal name
   const [dealType, setDealType] = useState('Promotion')
 
   //On click of deal boxes
   const selectDeal1 = () => {
-    setborder1({border:'1px solid #1bb70b'})
-    setborder2()
-    setborder3()
-    setborder4()
     setDealType('Promotion')
   }
   const selectDeal2 = () => {
-    setborder1()
-    setborder2({border:'1px solid #1bb70b'})
-    setborder3()
-    setborder4()
     setDealType('Splash sale')
   }
   const selectDeal3 = () => {
-    setborder1()
-    setborder2()
-    setborder3({border:'1px solid #1bb70b'})
-    setborder4()
     setDealType('Off-peak pricing')
   }
   const selectDeal4 = () => {
-    setborder1()
-    setborder2()
-    setborder3()
-    setborder4({border:'1px solid #1bb70b'})
     setDealType('Last-minute offer')
   }
   //For dispatch action
@@ -103,7 +82,7 @@ const StepOne = () => {
               <div
                   className="deal-type promotion-box"
                   onClick={selectDeal1}
-                  style={border1}
+                  style={dealType === "Promotion" ? {border:'1px solid #1bb70b'} : {}}
                 >
                 <div className="promotion-text">
                   <p
@@ -124,7 +103,7 @@ const StepOne = () => {
               <div
                 className="deal-type splash-sale-box"
                 onClick={selectDeal2}
-                style={border2}
+                style={dealType === "Splash sale" ? {border:'1px solid #1bb70b'} : {}}
               >
                 <div className="splash-sale-text">
                   <p className="text-d3"
@@ -147,7 +126,7 @@ const StepOne = () => {
               <div
                 className="deal-type off-peak-pricing-box"
                 onClick={selectDeal3}
-                style={border3}
+                style={dealType === "Off-peak pricing" ? {border:'1px solid #1bb70b'} : {}}
               >
                 <div className="off-peak-pricing-text">
                   <p className="text-d3"
@@ -171,7 +150,7 @@ const StepOne = () => {
               <div
                 className="deal-type last-minute-offer-box"
                 onClick={selectDeal4}
-                style={border4}
+                style={dealType === "Last-minute offer" ? {border:'1px solid #1bb70b'} : {}}
               >
                 <div className="last-minute-offer-text">
                   <p className="text-d3"
