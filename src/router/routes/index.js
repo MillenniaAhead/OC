@@ -15,6 +15,8 @@ import ReviewStocktakesRoutes from './ReviewStocktakes'
 import AnuAppointment from './AnuAppointment'
 import SanPromote from './SanPromote'
 import SanReport from './SanReport'
+import SanClient from './SanClient'
+import SanSetSales from './SanSetSales'
 
 /*
 Customization Routes
@@ -54,8 +56,9 @@ const Routes = [
   ...ChartsRoutes,
   ...ProductDetailsRoutes,
   ...CountDetailsRoutes,
-  ...ReviewStocktakesRoutes
-
+  ...ReviewStocktakesRoutes,
+  ...SanClient,
+  ...SanSetSales
   
 ]
 

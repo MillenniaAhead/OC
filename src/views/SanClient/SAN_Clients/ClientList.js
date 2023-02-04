@@ -6,7 +6,7 @@ import '@styles/react/apps/app-users.scss'
 import client from '../../../images/ClientList/client.jpg'
 import filter from '../../../images/ClientList/filers.jpg'
 import FirstName from '../../../images/ClientList/FirstName.jpg'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 
 const ClientList = () => {
@@ -50,7 +50,9 @@ const ClientList = () => {
       </UncontrolledButtonDropdown>
       <UncontrolledButtonDropdown></UncontrolledButtonDropdown>
             
-    <button type="button" style={{height:"60px", width:"150px", marginTop:'8px'}} class="btn btn-secondary" >Add client</button>
+    <NavLink to="/sanclient/addClient">
+    <button type="button" style={{height:"60px", width:"150px", marginTop:'8px'}} class="btn btn-dark" >Add client</button>
+    </NavLink>
 
             </div>
         </div>

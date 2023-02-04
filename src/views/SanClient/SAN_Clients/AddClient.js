@@ -79,7 +79,7 @@ const AddClient = () => {
       </Label>
       <Flatpickr
         value={picker}
-        data-enable-time
+        
         id='date-time-picker'
         className='form-control'
         onChange={date => setPicker(date)}
