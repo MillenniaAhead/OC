@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import Progress from "./Progress"
 import { NavLink, useHistory, useParams } from "react-router-dom"
 import Flatpickr from "react-flatpickr"
-import { Modal, ModalBody, Button, Alert, ModalHeader, Input, InputGroup, InputGroupText } from "reactstrap"
+import { Modal, ModalBody, Button, Alert, ModalHeader, Input, InputGroup, InputGroupText, Label } from "reactstrap"
 import { Search, X } from "react-feather"
 import { useDispatch } from "react-redux"
 import { bindActionCreators } from "redux"
@@ -52,10 +52,10 @@ const StepTwo = () => {
   const [block2, setBlock2] = useState({display:'none'})
 
   //For maxUse value
-  const [maxUseValue, setMaxUseValue] = useState('no-limits')
+  const [maxUseValue, setMaxUseValue] = useState(0)
 
   //For minPurchase value
-   const [minPurchaseValue, setMinPurchaseValue] = useState('no-limits')
+   const [minPurchaseValue, setMinPurchaseValue] = useState(0)
 
    //For check toggle one true or false
    const [toggle1, setToggle1] = useState(false)
@@ -71,21 +71,56 @@ const StepTwo = () => {
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
 
-  const [deal, setDeal] = useState({})
-
-//Axios
+//Get deal by id and set prefill data for edit deal
   const { id } = useParams() 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/deals/getIndivisual/${id}`)
+    axios.get(`http://localhost:4000/api/deals/${id}`)
     .then((res) =>  {
-        setDeal(res.data)
+        console.log(res.data)
+        setPromotionDetail({name:res.data.name, description:res.data.description})
+        setService(res.data.services)
+        setProduct(res.data.products)
+        setPicker1(res.data.start_date)
+        setPicker2(res.data.end_date)
+        setMyPromotionValue(res.data.promotion_value)
+        setPromotionValueType(res.data.promotion_value_type)
+        if (res.data.promotion_value_type === 'INR') {
+          setColor1('white')
+          setColor2('#1bb70b')
+        } 
+        if (res.data.max_use_limit === 1) {
+          setToggle1(true)
+          setMaxUseValue(1)
+        } else if (res.data.max_use_limit === 0) {
+          
+        } else {
+          setToggle2(true)
+          setMaxUseValue(res.data.max_use_limit)
+          setBlock1({display:"block"})
+        }
+        if (res.data.min_purchase_amount !== 0) {
+          setToggle3(true)
+          setBlock2({display:"block"})
+          setMinPurchaseValue(res.data.min_purchase_amount)
+        }
 })
-    .catch(err => console.log(['Error from getOneStudent', err]))
+    .catch(err => console.log(err))
+    return () => {
+
+    }
 }, [])
 
   //For add and remove products 
   const addProduct = (event) => {
+    if (event.target.name === "all_products") {
+      if (product.length === 3) {
+        setProduct([])
+      } else {
+        setProduct(["Product1", "Product2", "Product3"])
+      }
+  } else { 
+    console.log()
     if (product.includes(event.target.value)) {
       const deselect = product.filter(
         (myproduct) => myproduct !== event.target.value
@@ -94,6 +129,7 @@ const StepTwo = () => {
     } else {
       setProduct([...product, event.target.value])
     }
+  }
   }
 
   //For add and remove servoces
@@ -153,7 +189,7 @@ const StepTwo = () => {
       if (!toggle1) {
         setMaxUseValue(1)
       } else {
-        setMaxUseValue('no-limit')
+        setMaxUseValue(0)
       }
     } else {
       setVisible1(true)
@@ -179,7 +215,7 @@ const StepTwo = () => {
     } else {
       setBlock1({display:'none'})
       setToggle2(false)
-      setMaxUseValue("no-limits")
+      setMaxUseValue(0)
       setRedBox2()
       setRedStyle2({display:'none'})
     }
@@ -192,7 +228,7 @@ const StepTwo = () => {
       setBlock2({display:'block'})
       setMinPurchaseValue("")
     } else {
-      setMinPurchaseValue("no-limits")
+      setMinPurchaseValue(0)
       setBlock2({display:'none'})
       setRedBox3()
       setRedStyle3({display:'none'})
@@ -205,7 +241,6 @@ const StepTwo = () => {
    //For dispatch action from action.js
    const dispatch = useDispatch()
    const { CollectDealData } = bindActionCreators(actionCreators, dispatch) 
-   const { DeleteLastData } = bindActionCreators(actionCreators, dispatch) 
    const { ClearDealData } = bindActionCreators(actionCreators, dispatch) 
 
   //On next step click
@@ -234,16 +269,13 @@ const StepTwo = () => {
       }, 3000)
     } else {
       //Navigate
-      nextStep.push("/promote/stepthree")
+      nextStep.push(`/promote/stepthreeedit/${id}`)
       //Call action 
-      CollectDealData([promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue + promotionValueType, maxUseValue, minPurchaseValue])
+      console.log([promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue, promotionValueType, maxUseValue, minPurchaseValue])
+      CollectDealData([promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue,  promotionValueType, maxUseValue, minPurchaseValue])
     }
   }
 
-  //On click of Previous
-  const Previous = () => {
-    DeleteLastData()
-  }
   //On click of X
   const Clear = () => {
     ClearDealData()
@@ -332,7 +364,7 @@ const StepTwo = () => {
                         id="name"
                         className="input-a"
                         placeholder="Enter promotion name here"
-                        value={deal.name || ""}
+                        value={promotionDetail.name || ""}
                       />
                       <p style={redStyle} className="text-a5">
                         This field is required
@@ -353,6 +385,7 @@ const StepTwo = () => {
                         type="text"
                         onChange={updateValue}
                         name="description"
+                        value={promotionDetail.description}
                         id=""
                         className="input-a"
                         placeholder="Enter promotion description here"
@@ -382,12 +415,13 @@ const StepTwo = () => {
                           Edit
                         </div>
                       </div>
+                      {/* services modal */}
                       <Modal
                         isOpen={centeredModal1}
                         toggle={() => setCenteredModal1(!centeredModal1)}
-                        className="modal-dialog-centered"
+                        className="modal-dialog-centered my-modal-va p-0"
                       >
-          <ModalHeader toggle={() => setCenteredModal1(!centeredModal1)}><div className="modal-option-heading-a5">Select services</div></ModalHeader>
+          <div className="d-flex justify-content-between p-1"><div className="modal-option-heading-a5">Select services</div><X style={{cursor:'pointer'}} onClick={() => setCenteredModal1(!centeredModal1)}/></div>
                         <ModalBody className="my-modal-a5">
                           <div className="modal-option-search-box-wrapper-a5">
                           <InputGroup className="input-group-merge mt-1 mb-1">
@@ -397,114 +431,113 @@ const StepTwo = () => {
         <Input style={{fontSize:'22px', fontWeight:'500', color:'black'}} placeholder='' />
       </InputGroup>
                           </div>
-                          <div className="select-box-mini">
+                          <Label for="all-services"  className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="service"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="setAllServices"
-                                value="All services"
-                                onClick={addService}
+                                name="all_services"
+                                value="Haircut, Beard Trim, Classic Fill"
+                                id='all-services'
+                                onChange={addService}
+                                checked={service.some((service) => service === 'Haircut') && service.some((service) => service === 'Beard Trim') && service.some((service) => service === 'Classic Fill')}
                               />
                             </label>
                             <div className="list-item-names-d5">All services</div>
-                          </div>
-                          <div className="select-box-mini">
+                          </Label>
+                          <Label for='Hair' className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="service"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="Hair"
                                 value="Hair"
-                                onClick={addService}
                                 readOnly
+                                id='Hair'
                               />
                             </label>
                             <div>
                             <div className="list-item-names-b5">Hair</div>
                             </div>
-                          </div>
-                          <div className="select-box-mini">
+                          </Label>
+                          <Label for="Haircut" className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="service"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service2"
-                                value="Haircut "
-                                onClick={addService}
-                                readOnly
+                                value="Haircut"
+                                id='Haircut'
+                                onChange={addService}
+                                checked={service.some((service) => service === "Haircut")}
                               />
                             </label>
                             <div>
                             <div className="list-item-names-a5">Haircut</div>
                             <div className="list-item-names-c5">30 min</div>
                             </div>
-                          </div>
-                          <div className="select-box-mini">
+                          </Label>
+                          <Label for='Beard-Trim' className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="service"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
                                 value="Beard Trim"
-                                onClick={addService}
-                                readOnly
+                                id='Beard-Trim'
+                                onChange={addService}
+                                checked={service.some((service) => service === "Beard Trim")}
                               />
                             </label>
                             <div>
                             <div className="list-item-names-a5">Beard Trim</div>
                             <div className="list-item-names-c5">30 min</div>
                             </div>
-                          </div>
-                          <div className="select-box-mini">
+                          </Label>
+                          <Label for='Bows-&-Lashes' className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="service"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
                                 value="Brows & Lashes"
-                                onClick={addService}
+                                id='Bows-&-Lashes'
                                 readOnly
                               />
                             </label>
                             <div>
                             <div className="list-item-names-b5">Brows & Lashes</div>
                             </div>
-                          </div>
-                          <div className="select-box-mini">
+                          </Label>
+                          <Label for='Classic-Fill' className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="service"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
                                 value="Classic Fill"
-                                onClick={addService}
-                                readOnly
+                                id='Classic-Fill'
+                                onChange={addService}
+                                checked={service.some((service) => service === 'Classic Fill')}
                               />
                             </label>
                             <div>
                             <div className="list-item-names-a5">Classic Fill</div>
                             <div className="list-item-names-c5">1 h</div>
                             </div>
-                          </div>
+                          </Label>
                           <div className="d-flex justify-content-center mt-1">
                             <Button.Ripple
                               color="dark me-1"
@@ -535,12 +568,13 @@ const StepTwo = () => {
                           Edit
                         </div>
                       </div>
-                      <Modal
+                    {/* For products */}
+                    <Modal
                         isOpen={centeredModal2}
                         toggle={() => setCenteredModal1(!centeredModal2)}
-                        className="modal-dialog-centered"
+                        className="modal-dialog-centered my-modal-va p-0"
                       >
-          <ModalHeader toggle={() => setCenteredModal2(!centeredModal2)}><div className="modal-option-heading-a5">Select products</div></ModalHeader>
+          <div className="d-flex justify-content-between p-1"><div className="modal-option-heading-a5">Select products</div><X style={{cursor:'pointer'}} onClick={() => setCenteredModal2(!centeredModal2)}/></div>
                         <ModalBody>
                           <div className="modal-option-search-box-wrapper-a5">
                           <InputGroup className="input-group-merge mt-1 mb-1">
@@ -549,70 +583,70 @@ const StepTwo = () => {
         </InputGroupText>
         <Input style={{fontSize:'22px', fontWeight:'500', color:'black'}} placeholder='' />
       </InputGroup>                          </div>
-                          <div className="select-box-mini">
+                          <Label className="select-box-mini" for='all_products'>
                             <label
                               className="edit-list-label"
-                              htmlFor="product"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="product1"
-                                value="All products"
-                                onClick={addProduct}
-                                readOnly
-                              />
+                                name="all_products"
+                                value="Product1, Product2, Product"
+                                onChange={addProduct}
+                                id="all_products"
+                                checked={["Product1", "Product2", "Product3"].every(p => product.includes(p))}
+                                />
                             </label>
                             <div className="list-item-names-d5">All products</div>
-                          </div>
-                          <div className="select-box-mini">
+                          </Label>
+                          <Label for="product1" className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="product"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="product1"
-                                value="product1"
-                                onClick={addProduct}
-                                readOnly
+                                value="Product1"
+                                id='product1'
+                                onChange={addProduct}
+                                checked={product.some((product) => product === 'Product1')}
                               />
                             </label>
                             <div className="list-item-names-a5">product1</div>
-                          </div>
-                          <div className="select-box-mini">
+                          </Label>
+                          <Label for='product2' className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="product"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="product2"
-                                value="product2"
-                                onClick={addProduct}
-                                readOnly
+                                name="Product2"
+                                value="Product2"
+                                id='product2'
+                                onChange={addProduct}
+                                checked={product.some((product) => product === 'Product2')}
                               />
                             </label>
                             <div className="list-item-names-a5">product2</div>
-                          </div>
-                          <div className="select-box-mini">
+                          </Label>
+                          <Label for='product3' className="select-box-mini">
                             <label
                               className="edit-list-label"
-                              htmlFor="product"
                             >
-                              <input
+                              <Input
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="product3"
-                                value="product3"
-                                onClick={addProduct}
-                                readOnly
+                                value="Product3"
+                                id='product3'
+                                onChange={addProduct}
+                                checked={product.some((product) => product === 'Product3')}
                               />
                             </label>
                             <div className="list-item-names-a5">product3</div>
-                          </div>
+                          </Label>
                           <div className="d-flex justify-content-center mt-1">
                             <Button.Ripple
                               color="dark me-1"
@@ -643,6 +677,7 @@ const StepTwo = () => {
                           Edit
                         </div>
                       </div>
+                      {/* For memerships */}
                       <Modal
                         isOpen={centeredModal3}
                         toggle={() => setCenteredModal3(!centeredModal3)}

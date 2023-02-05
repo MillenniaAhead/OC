@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Progress from "./Progress"
 import { NavLink, useHistory } from "react-router-dom"
 import Flatpickr from "react-flatpickr"
-import { Modal, ModalBody, Button, Alert, ModalHeader, Input, InputGroup, InputGroupText, Label } from "reactstrap"
+import { Modal, ModalBody, Button, Alert, Input, InputGroup, InputGroupText, Label } from "reactstrap"
 import { Search, X } from "react-feather"
 import { useDispatch } from "react-redux"
 import { bindActionCreators } from "redux"
@@ -34,22 +34,7 @@ const StepTwo = () => {
 
  //For date picker
   const [picker1, setPicker1] = useState(new Date)
-  const [picker2, setPicker2] = useState(new Date)
-
-  const date1 = new Date(picker1)
-  const formattedDate1 = date1.toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric'
-  })
-
-  const date2 = new Date(picker2)
-  const formattedDate2 = date2.toLocaleDateString('en-US', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric'
-  })
-  
+  const [picker2, setPicker2] = useState()
 
   //For color change of promotion value type box
   const [color1, setColor1] = useState('#1bb70b')
@@ -66,10 +51,10 @@ const StepTwo = () => {
   const [block2, setBlock2] = useState({display:'none'})
 
   //For maxUse value
-  const [maxUseValue, setMaxUseValue] = useState('no-limits')
+  const [maxUseValue, setMaxUseValue] = useState(0)
 
   //For minPurchase value
-   const [minPurchaseValue, setMinPurchaseValue] = useState('no-limits')
+   const [minPurchaseValue, setMinPurchaseValue] = useState(0)
 
    //For check toggle one true or false
    const [toggle1, setToggle1] = useState(false)
@@ -94,6 +79,7 @@ const StepTwo = () => {
         setProduct(["Product1", "Product2", "Product3"])
       }
   } else { 
+    console.log()
     if (product.includes(event.target.value)) {
       const deselect = product.filter(
         (myproduct) => myproduct !== event.target.value
@@ -170,7 +156,7 @@ const StepTwo = () => {
       if (!toggle1) {
         setMaxUseValue(1)
       } else {
-        setMaxUseValue('no-limit')
+        setMaxUseValue(0)
       }
     } else {
       setVisible1(true)
@@ -196,7 +182,7 @@ const StepTwo = () => {
     } else {
       setBlock1({display:'none'})
       setToggle2(false)
-      setMaxUseValue("no-limits")
+      setMaxUseValue(0)
       setRedBox2()
       setRedStyle2({display:'none'})
     }
@@ -209,7 +195,7 @@ const StepTwo = () => {
       setBlock2({display:'block'})
       setMinPurchaseValue("")
     } else {
-      setMinPurchaseValue("no-limits")
+      setMinPurchaseValue(0)
       setBlock2({display:'none'})
       setRedBox3()
       setRedStyle3({display:'none'})
@@ -253,8 +239,7 @@ const StepTwo = () => {
       //Navigate
       nextStep.push("/promote/stepthree")
       //Call action 
-      console.log(formattedDate1)
-      CollectDealData([promotionDetail.name, promotionDetail.description, service, product, formattedDate1, formattedDate2, myPromotionValue + promotionValueType, maxUseValue, minPurchaseValue])
+      CollectDealData([promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue, promotionValueType, maxUseValue, minPurchaseValue])
     }
   }
 
@@ -404,6 +389,7 @@ const StepTwo = () => {
                           Edit
                         </div>
                       </div>
+                      {/* For services */}
                       <Modal
                         isOpen={centeredModal1}
                         toggle={() => setCenteredModal1(!centeredModal1)}
@@ -556,6 +542,7 @@ const StepTwo = () => {
                           Edit
                         </div>
                       </div>
+                      {/* For products */}
                       <Modal
                         isOpen={centeredModal2}
                         toggle={() => setCenteredModal1(!centeredModal2)}
@@ -578,11 +565,11 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="all_products"
-                                value="Product1, Product2, Product"
+                                value="Product1, Product2, Product3"
                                 onChange={addProduct}
                                 id="all_products"
-                                checked={product.some((product) => product === 'Product1') && product.some((product) => product === 'Product2') && product.some((product) => product === 'Product3')}
-                              />
+                                checked={["Product1", "Product2", "Product3"].every(p => product.includes(p))}
+                                />
                             </label>
                             <div className="list-item-names-d5">All products</div>
                           </Label>
@@ -753,7 +740,7 @@ const StepTwo = () => {
                       <div className="select-box">
                         <Flatpickr
                           value={picker1}
-                          onChange={setPicker1}
+                          onChange={date => setPicker1(date)}
                         />
                       </div>
                     </div>
@@ -762,7 +749,7 @@ const StepTwo = () => {
                       <div className="select-box">
                       <Flatpickr
                           value={picker2}
-                          onChange={setPicker2}
+                          onChange={date => setPicker2(date)}
                         />
                       </div>
                     </div>

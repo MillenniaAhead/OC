@@ -34,6 +34,11 @@ const AnuPromote = [
         layout: 'BlankLayout'
     },
     {
+        path: '/promote/stepthreeedit/:id',
+        component: lazy(() => import('../../views/apps/anu-promote/StepThreeEdit')),
+        layout: 'BlankLayout'
+    },
+    {
         path: '/promote/stepfour',
         component: lazy(() => import('../../views/apps/anu-promote/StepFour')),
         layout: 'BlankLayout'

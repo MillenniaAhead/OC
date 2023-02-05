@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import modulo from '../images/modulo.svg'
-import './mycss1/DealsList.css'
+import './mycss1/DealsTwo.css'
 import { Filter, Sliders, Search, ChevronLeft, MoreHorizontal } from 'react-feather'
 import { UncontrolledButtonDropdown, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Input, InputGroup, InputGroupText  } from 'reactstrap'
 import {NavLink} from 'react-router-dom'
@@ -122,9 +122,9 @@ export const DealsTwo = () => {
             </div>
               <div className="top-right">
               <NavLink className="btn-c" to="/promote/stepone">
-                <Button.Ripple size='lg'>
+                <Button color='dark' size='lg'>
                 Create new deal
-            </Button.Ripple>
+            </Button>
             </NavLink>
               </div>
               <div className="top-right-2">
@@ -149,7 +149,23 @@ export const DealsTwo = () => {
           </div>
         </div>
         <div className="deals-list-wrapper">
-        {detail.map((deal, key) => <div key={key} className="my-deal-box">
+        {detail.map((deal, key) => {
+
+          const start_date0 = new Date(deal.start_date).toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          })
+
+          const end_date0 = new Date(deal.end_date).toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          })
+
+        return (
+
+        <div key={key} className="my-deal-box">
         <div className='d-flex '>
         <div className='image-a'>
             <div>
@@ -158,8 +174,8 @@ export const DealsTwo = () => {
         </div>
         <div className="list-detail-a">
             <p className='text-n'>{deal.name}</p>
-            <p className='text-o'>{deal.promotion_value} discount for all services and products</p>
-            <p className='text-o'>{deal.start_date} to {deal.end_date === "Invalid Date" ? 'Outgoing' : deal.end_date}</p>
+            <p className='text-o'>{deal.promotion_value + deal.promotion_value_type} discount for all services and products</p>
+            <p className='text-o'>{start_date0} to {end_date0 === "Invalid Date" ? 'Outgoing' : end_date0}</p>
         </div>
         </div>
         <div className='list-right-side'>
@@ -168,22 +184,6 @@ export const DealsTwo = () => {
             <p className='text-p'>Total sales</p>
             <p className='text-p'>₹0</p>
         </div>
-        {/* <UncontrolledButtonDropdown>
-      <DropdownToggle color='primary' caret>
-        Uncontrolled
-      </DropdownToggle>
-      <DropdownMenu>
-        <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
-          Option 1
-        </DropdownItem>
-        <DropdownItem href='/' tag='a' disabled onClick={e => e.preventDefault()}>
-          Option 2
-        </DropdownItem>
-        <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
-          Option 3
-        </DropdownItem>
-      </DropdownMenu>
-    </UncontrolledButtonDropdown> */}
             <UncontrolledButtonDropdown>
               <DropdownToggle>
         <div style={{width:"50px", height:"fit-content"}} className='three-dot'>
@@ -191,7 +191,7 @@ export const DealsTwo = () => {
       </div>
       </DropdownToggle>
       <DropdownMenu style={{ minWidth:"fit-content", top:'20px'}}>
-        <DropdownItem style={{padding:"5px 10px"}} to={`/promote/steptwoedit/${deal._id}`} tag={NavLink} onClick={e => e.preventDefault()}>
+        <DropdownItem style={{padding:"5px 10px"}} to={`/promote/steptwoedit/${deal._id}`} tag={NavLink}>
           Edit
         </DropdownItem>
         <DropdownItem style={{padding:"5px 10px"}} href='/' tag='a' onClick={e => e.preventDefault()}>
@@ -206,8 +206,9 @@ export const DealsTwo = () => {
       </DropdownMenu>
     </UncontrolledButtonDropdown>
         </div>
-    </div> 
-    )}
+    </div>
+    ) 
+    })}
         <div className='d-flex justify-content-center mt-1'>{dealLength} of {dealLength}</div>
         </div>
       </div>

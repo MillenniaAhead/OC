@@ -1,4 +1,4 @@
-import { GET_ALL_DEALS_DATA, STORE_A_DEAL_DATA, COLLECT_A_DEAL_DATA, DELETE_LAST_DATA, CLEAR_DEAL_DATA } from './constant'
+import { COLLECT_A_DEAL_DATA, DELETE_LAST_DATA, CLEAR_DEAL_DATA } from './constant'
 
 const INI_DATA = {
     newDeal: []

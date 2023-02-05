@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { bindActionCreators } from "redux"
 import { actionCreators } from "./promoteRedux"
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useHistory, useParams } from 'react-router-dom'
 import { X } from "react-feather"
 import Progress from "./Progress"
 import { Alert } from 'reactstrap'
@@ -23,6 +23,23 @@ const StepThree = () => {
   //For check or uncheck toggle1 or toggle2
   const [toggle1, setToggle1] = useState(true)
   const [toggle2, setToggle2] = useState(false)
+
+  //Get deal by id and prefill data for edit deal
+
+  const { id } = useParams()
+  useEffect(() => {
+    axios.get(`http://localhost:4000/api/deals/${id}`)
+      .then(res => {
+        console.log(res.data)
+      setToggle1(res.data.promotion1)
+      setToggle2(res.data.promotion2)
+      if (res.data.promotion2) {
+        setBlock1({display:'block'})
+        setDiscountCodeValue(res.data.discount_code)
+      }
+      })
+      .catch(err => console.log(err))
+  }, [])
 
   //Discount field
   const discountCode = (e) => {
@@ -75,7 +92,7 @@ const StepThree = () => {
       } else {
         ClearDealData()
         //axios
-        axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], promotion_value_type:data[8], max_use_limit:data[9], min_purchase_amount:data[10], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})
+        axios.put(`http://localhost:4000/api/deals/${id}`, {name:data[0], description:data[1], services:data[2], products:data[3], memberships:[], vouchers:[], start_date:data[4], end_date:data[5], promotion_value:data[6], promotion_value_type:data[7], max_use_limit:data[8], min_purchase_amount:data[9], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})
         .then(res => {
          console.log(res.data)
         history.push('/promote/stepFour')
@@ -88,9 +105,9 @@ const StepThree = () => {
     ClearDealData()
     console.log(data[5])
     //axios
-    axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], promotion_value_type:data[8], max_use_limit:data[9], min_purchase_amount:data[10], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})
+    axios.put(`http://localhost:4000/api/deals/${id}`, {name:data[0], description:data[1], services:data[2], products:data[3], memberships:[], vouchers:[], start_date:data[4], end_date:data[5], promotion_value:data[6], promotion_value_type:data[7], max_use_limit:data[8], min_purchase_amount:data[9], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})
     .then(res => {
-       console.log(res)
+       console.log(res.data)
      history.push('/promote/stepFour')
     })
     .catch(err => console.log(err))
@@ -107,9 +124,9 @@ const StepThree = () => {
     } else {
       ClearDealData()
       //axios
-       axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], promotion_value_type:data[8], max_use_limit:data[9], min_purchase_amount:data[10], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})
-       .then(res => {
-      console.log(res)
+      axios.put(`http://localhost:4000/api/deals/${id}`, {name:data[0], description:data[1], services:data[2], products:data[3], memberships:[], vouchers:[], start_date:data[4], end_date:data[5], promotion_value:data[6], promotion_value_type:data[7], max_use_limit:data[8], min_purchase_amount:data[9], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})
+      .then(res => {
+      console.log(res.data)
      history.push('/promote/stepFour')
    })
    .catch(err => console.log(err))
@@ -141,12 +158,12 @@ const StepThree = () => {
         <div className="btns-wrapper">
           <div className="left-side left-side-a5">
             <div onClick={Clear} className="cross-symbol">
-              <NavLink to="/promote/deals">
+              <NavLink to="/promote/dealstwo">
                 <X size={45} strokeWidth={1} style={{color:'black'}} />
               </NavLink>
             </div>
             <div onClick={Previous} className="previous-page">
-              <NavLink to='/promote/steptwo' style={{color:"#1BB70B"}}>Previous</NavLink>
+              <NavLink to={`/promote/steptwoedit/${id}`} style={{color:"#1BB70B"}}>Previous</NavLink>
             </div>
           </div>
           <div className="right-side">
@@ -247,7 +264,7 @@ const StepThree = () => {
               <div style={block1}>
                   <div className="text-k5">Discount code</div>
                   <div className="box-a22" style={style2}>
-                  <input onChange={discountCode} value={discountCodeValue} type="text" name="" id="validationCustom03" placeholder="Enter a code, e.g. SALE10" required/>
+                  <input onChange={discountCode} value={discountCodeValue} type="text" name="" id="validationCustom03" placeholder="Enter a code, e.g. SALE10"/>
                   </div>
                 <div style={style1}>This field is required</div>
                 </div>
