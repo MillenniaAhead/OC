@@ -22,6 +22,11 @@ const AnuTeam = [
     layout:"BlankLayout"
   },
   {
+    path: '/team/addTeamMemberEditForm/:id',
+    component: lazy(() => import('../../views/apps/anu-team/team/AddTeamMemberEditForm')),
+    layout:"BlankLayout"
+  },
+  {
     path: '/team/addViaEmail',
     component: lazy(() => import('../../views/apps/anu-team/team/AddViaEmail')),
     layout:"BlankLayout"

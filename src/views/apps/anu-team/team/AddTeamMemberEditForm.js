@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Camera, X, Home, Search } from 'react-feather'
 import { Alert, Label, Input, InputGroup, InputGroupText, Button, Modal, ModalFooter, ModalBody, ButtonGroup, DropdownMenu, Dropdown, DropdownToggle, DropdownItem } from 'reactstrap'
 import classnames from 'classnames'
 import Flatpickr from 'react-flatpickr'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const AddTeamMemberEditForm = () => {
@@ -38,11 +38,8 @@ const AddTeamMemberEditForm = () => {
   const [switch1, setswitch1] = useState(true)
   //For select services from modal
   const [service, setService] = useState(["Haircut", "Beard Trim", "Classic Fill"])
-  //For Collect data from input fields
-  const [formData, setFormData] = useState({profile_image:'', first_name:'', last_name:'', team_member_title:'', notes:'', email:'', number:"", allow_calendar_bookings:switch1, services:service, color:'#FF6A8D', commission:"", team_member_permission:"Low", location:''})
   //for service section
   const [block1, setBlock1] = useState()
-
 
   //For collect commission modal data
   const [commissionData, setCommissionData] = useState({effective_date:picker3, commission_cycle:"", product_commission:'', service_commission:"", voucher_commission:"", membership_commission:""})
@@ -52,6 +49,41 @@ const AddTeamMemberEditForm = () => {
   const [display2, setDisplay2] = useState('none')
   const [display3, setDisplay3] = useState('none')
   const [display4, setDisplay4] = useState('none')
+
+  //For permission range
+  const [permissionRange, setPermissionRange] = useState(2)
+
+  //For Collect data from input fields
+  const [formData, setFormData] = useState({profile_image:'', first_name:'', last_name:'', team_member_title:'', notes:'', email:'', number:"", color:'#FF6A8D', commission:"", team_member_permission:"Low", location:''})
+
+  const { id } = useParams() 
+
+  //Get data by id for edit team member
+  useEffect(() => {
+      axios.get(`http://localhost:4000/api/teamMembers/${id}`)
+      .then(res => {
+        console.log(res.data)
+        setPicker1(res.data.start_date ? res.data.start_date : new Date())
+         if (res.data.end_date) {
+        setPicker2(res.data.end_date)
+        }
+        if (res.data.allow_calendar_bookings === false) {
+          setswitch1(false)
+          setBlock1({display:'none'})
+          setService([])
+        } else {
+          setService(res.data.services && res.data.services.length !== 0 ? res.data.services : ["Haircut", "Beard Trim", "Classic Fill"])
+        }
+        const levels = ["No access", "Basic", "Low", "Medium", "High"]
+        if (res.data.team_member_permission) {
+        const lowIndex = levels.indexOf(res.data.team_member_permission)
+        setPermissionRange(lowIndex)
+        }
+        setFormData({ first_name:res.data.first_name, last_name:res.data.last_name ? res.data.last_name : "", team_member_title:res.data.team_member_title ? res.data.team_member_title : "", notes:res.data.notes ? res.data.notes : "", email:res.data.email, number:res.data.number ? res.data.number : "", color:res.data.color ? res.data.color : "#FF6A8D", team_member_permission:res.data.team_member_permission ? res.data.team_member_permission : "Low", location:'', profile_image:'' })
+    })
+    .catch(err => console.log(err))
+  }, [])
+
 
   //For mobile number input field
   const toggleDropDown = () => {
@@ -81,6 +113,7 @@ const AddTeamMemberEditForm = () => {
   //For Collect data from input fields
   const collectData = (e) => {
     if (e.target.name === 'team_member_permission') {
+        setPermissionRange(e.target.value)
         const accessLevels = ["No access", "Basic", "Low", "Medium", "High"]
        const accessLevel = accessLevels[e.target.value]
        setFormData({...formData, [e.target.name]: accessLevel})
@@ -140,8 +173,8 @@ const AddTeamMemberEditForm = () => {
     } else {
     console.log({...formData, services:service, start_date:picker1, end_date:picker2, commission:[{ effective_date:picker3, commission_cycle:commissionData.commission_cycle, service_commission:commissionData.service_commission + rSelected1, product_commission:commissionData.product_commission + rSelected2, voucher_commission:commissionData.voucher_commission + rSelected3, membership_commission:commissionData.membership_commission + rSelected4}] })
 
-    //Post a team member to backend database
-    axios.post('http://localhost:4000/api/teamMembers', {...formData, services:service, start_date:picker1, end_date:picker2, commission:[{ effective_date:picker3, commission_cycle:commissionData.commission_cycle, service_commission:commissionData.service_commission + rSelected1, product_commission:commissionData.product_commission + rSelected2, voucher_commission:commissionData.voucher_commission + rSelected3, membership_commission:commissionData.membership_commission + rSelected4}] })
+    //Using put method to update a team member
+    axios.put(`http://localhost:4000/api/teamMembers/${id}`, {...formData, services:service, allow_calendar_bookings:switch1, start_date:picker1, end_date:picker2})
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
     console.log({...commissionData, effective_date:picker3})
@@ -385,7 +418,7 @@ sales ranges for services,products,vochers and membership. <NavLink to="#">Learn
                       <div className='mx-auto' style={{width:'fit-content', marginBottom:'7px'}}>
                       <label className='fw-bolder fs-4' htmlFor="team-member-permission">{formData.team_member_permission}</label>
                       </div>
-<input onChange={collectData} name='team_member_permission' defaultValue='2' type="range" className="w-100" min="0" max="4" id="team-member-permission"/>
+<input onChange={collectData} name='team_member_permission' value={permissionRange} type="range" className="w-100" min="0" max="4" id="team-member-permission"/>
 <div className="d-flex justify-content-between"><div className='text-ve fs-5'>No access</div><div className='text-ve fs-5'>High</div></div>
 </div>
                 </div>

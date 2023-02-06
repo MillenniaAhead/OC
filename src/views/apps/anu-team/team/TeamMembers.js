@@ -100,7 +100,7 @@ Costom order
       </UncontrolledButtonDropdown>
         </div>
         <div className="team-member-body-ua row">
-          {teamMember.length === 0 ? "No team member here" : teamMember.map((member, key) => <div key={key} className='col-md-4 col-sm-12'><Card style={{border:'1px solid rgba(0, 0, 0, 0.2)'}} className='p-2'>
+          {teamMember.length === 0 ? "No team member here" : teamMember.map((member, key) => <div key={key} className='col-md-4 col-sm-12'><NavLink to={`/team/addTeamMemberEditForm/${member._id}`}><Card style={{border:'1px solid rgba(0, 0, 0, 0.2)'}} className='p-2'>
             <div className='card-body-ua'>
           <Avatar color='light-success' content={`${member.first_name} ${member.last_name}`} size='xl' initials />
           <div className='text-ua'>{`${member.first_name} ${member.last_name}`}</div>
@@ -114,7 +114,7 @@ Costom order
               <Mail style={{background:"rgba(246, 206, 61, 0.3)", color:"#F6CE3D", padding:"6px", width:'40px', height:"40px"}}/>
           </span>
           </div>
-          </Card></div>)}
+          </Card></NavLink></div>)}
           {/* <Card style={{border:'1px solid rgba(0, 0, 0, 0.2)'}} className='col-md-4 p-2'>
             <div className='card-body-ua'>
           <Avatar color='light-success' content='Wendy Smith' size='xl' initials />
