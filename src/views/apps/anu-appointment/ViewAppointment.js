@@ -1,15 +1,75 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import "./mycss/ViewAppointment.css"
 import "./mycss/NewAppointment.css"
 import './mycss/AddTip.css'
-import { User, Star, FileText, X,  CheckCircle} from "react-feather"
-import { Button  } from 'reactstrap'
-import { NavLink } from "react-router-dom"
+import { User, Star, FileText, X} from "react-feather"
+import { NavLink, useHistory, useParams } from "react-router-dom"
+import axios from 'axios'
+import { ButtonDropdown, DropdownMenu, DropdownItem, Button, DropdownToggle, Alert } from 'reactstrap'
 
 const ViewAppointment = () => {
-  
+    // For dropdown
+    const [dropdownOpen, setDropdownOpen] = useState(false)
+    const toggleDropdown = () => {
+      setDropdownOpen(!dropdownOpen)
+    }
+
+    //For alert compo
+    const [visible, setVisible] = useState(false)
+
+    //Get data by id and store it
+  const [appointment, setAppointment] = useState({})
+  const { id } = useParams()
+  useEffect(() => {
+    axios.get(`http://localhost:4000/api/newAppointments/${id}`)
+    .then(res => {
+        console.log(res.data)
+        setAppointment(res.data)
+      })
+      .catch(err => console.log(err))
+    }, [])
+
+    //Change date format
+    const date = new Date(appointment.date)
+    const options = { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' }
+    const new_date =  date.toLocaleDateString('en-US', options)
+
+    const date1 = new Date(appointment.createdAt)
+    const options1 = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }
+    const new_date1 =  date1.toLocaleDateString('en-US', options1)
+
+    const options2 = { hour: 'numeric', minute: 'numeric', hour12: true }
+    const time = date1.toLocaleTimeString('en-US', options2)
+
+    //For delete a appointment
+    const history = useHistory()
+    const deleteAppointment = () => {
+      axios.delete(`http://localhost:4000/api/newAppointments/${id}`)
+      .then(res => {
+        console.log(res.data)
+        setVisible(true)
+        setTimeout(() => {
+        history.push('/timegraph')
+          setVisible(false)
+        }, 3000)
+      })
+      .catch(err => console.log(err))
+    }
+
+    //Redirect Edit appointment
+    const goToEdit = (id) => {
+       history.push(`/editAppointment/${id}`)
+    }
+    
   return (
     <div className="view-appointment-container">
+      <div className="my-alert-comp my-alert-comp-2">
+      <Alert color='success' isOpen={visible}>
+        <div className='alert-body text-center fs-4'>
+        Appointment deleted successfully
+        </div>
+      </Alert>
+      </div>
       <div className="top-container-aa2">
         <div> View Appointment</div>
         <NavLink to='/timegraph'>
@@ -18,25 +78,25 @@ const ViewAppointment = () => {
       </div>
       <div className="left-container-aa2">
         <div className="detail-wrapper-aa2">
-          <div className="date-box-aa2">Friday, 16 Dec 2022</div>
+          <div className="date-box-aa2">{new_date}</div>
           <div className="appointment-detail-box-aa2 d-flex justify-content-between">
-            <p className="time-aa2 text-aa2">10:00 am</p>
+            <p className="time-aa2 text-aa2">{appointment.start_time}</p>
             <div className="detail-text-aa2">
-              <p className="service-name-aa2 text-aa2">Haircut</p>
-              <p className="team-member-aa2 text-bb2 ">30 min with Wendy</p>
+              <p className="service-name-aa2 text-aa2">{appointment.services}</p>
+              <p className="team-member-aa2 text-bb2 ">{appointment.duration} {appointment.team_member}</p>
             </div>
             <div className="price-aa2 text-aa2 ">₹30</div>
           </div>
           <div className="total-detail-box-aa2 d-flex justify-content-between">
             <div className="khaali-aa2"></div>
-            <div className="total-time-aa2 text-dd2">30min</div>
+            <div className="total-time-aa2 text-dd2">{appointment.duration}</div>
             <div className="total-ammount-aa2 text-cc2">₹30</div>
           </div>
         </div>
         <div className="appointment-history">
           <p className="text-ee2">Appointment history</p>
           <p className="text-ff2">
-            Booked, reference 3768688 at Tue, 16 Dec 2022 at 11:00 am
+            Booked, reference 3768688 at {new_date1} at {time}
           </p>
         </div>
       </div>
@@ -77,7 +137,31 @@ const ViewAppointment = () => {
           <div className="btn-box-aa2">
             <p className="text-jj2">Total: ₹30 (30min)</p>
             <div className="btn-wrapper-aa2 d-flex justify-content-between">
-              <button className="checkout-bb2">More option</button>
+              <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
+              <DropdownToggle className="checkout-bb2" outline>
+        More option
+      </DropdownToggle>      
+      <DropdownMenu>
+        <DropdownItem className="fs-4" href='/' tag='a' onClick={e => {
+          e.preventDefault()
+          goToEdit(id)
+          }}>
+          Edit appointment
+        </DropdownItem>
+        <DropdownItem className="fs-4" href='/' tag='a' onClick={e => e.preventDefault()}>
+          Reschedule
+        </DropdownItem>
+        <DropdownItem className="fs-4" style={{color:'red'}} href='/' tag='a' onClick={e => {
+          e.preventDefault()
+          deleteAppointment(id)
+          }}>
+          Cancel
+        </DropdownItem>
+        <DropdownItem className="fs-4" style={{color:'red'}} href='/' tag='a' onClick={e => e.preventDefault()}>
+          No-show
+        </DropdownItem>
+      </DropdownMenu>
+    </ButtonDropdown>
               <Button.Ripple className="checkout-bb2" color='dark' to='/checkout'  tag={NavLink} >
           Checkout
         </Button.Ripple>

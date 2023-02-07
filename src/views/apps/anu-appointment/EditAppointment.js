@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./mycss/NewAppointment.css"
 import Flatpickr from 'react-flatpickr'
 import { Search, RefreshCw, ChevronDown, X } from 'react-feather'
 import { ButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, Label, InputGroup, InputGroupText, Alert } from 'reactstrap'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-const NewAppointment = () => {
+const EditAppointment = () => {
 
-  // For start time
+  // For start time options value logic
   const times = []
   for (let i = 0; i < 24; i++) {
     for (let j = 0; j < 60; j += 5) {
@@ -19,18 +19,16 @@ const NewAppointment = () => {
     }
   }
 
-  const history = useHistory()
-
   // For services dropdown
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [dropdownOpen2, setDropdownOpen2] = useState(false)
-
+  
   //For date-picker
   const [picker, setPicker] = useState(new Date())
   //For collect data
-  const [startTime, setStartTime] = useState(null)
+  const [startTime, setStartTime] = useState("")
   const [teamMember, setTeamMember] = useState('Select a team member')
-  const [myduration, setDuration] = useState(null)
+  const [myduration, setDuration] = useState("")
   const [service, setService] = useState(["Choose a service"])
 
   //For Alert message
@@ -43,6 +41,23 @@ const NewAppointment = () => {
   const [visible1, setVisible1] = useState(false)
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
+
+  //Get id by route path
+  const { id } = useParams()
+
+  //Get data by id for update a appintment
+  useEffect(() => {
+    axios.get(`http://localhost:4000/api/newAppointments/${id}`)
+    .then(res => {
+        console.log(res.data)
+        setPicker(res.data.date)
+        setStartTime(res.data.start_time)
+        setService(res.data.services)
+        setDuration(res.data.duration)
+        setTeamMember(res.data.team_member)
+    })
+    .catch(err => console.log(err))
+  }, [])
 
   //For select Start time
   const SelectStartTime = (current) => {
@@ -87,6 +102,9 @@ const SelectTeamMember = (current) => {
  setBorder2()
 }
 
+//For redirect
+const history = useHistory()
+
 //for submit function
   const saveAppointment = () => {
     if (service[0] === "Choose a service") {
@@ -105,9 +123,8 @@ const SelectTeamMember = (current) => {
          }, 3000)
     } else {
     const finalData = {date:picker, start_time:startTime, services:service, duration:myduration, team_member:teamMember}
-    console.log(finalData)
     // Store data to backend with the help of axios
-    axios.post('http://localhost:4000/api/newAppointments', finalData)
+    axios.put(`http://localhost:4000/api/newAppointments/${id}`, finalData)
     .then(res => {
       console.log(res)
       setVisible3(true)
@@ -123,7 +140,7 @@ const SelectTeamMember = (current) => {
   return (
     <div className='new-appointment-container'>
       <div className="top-container-aa1">
-      <div>New appointment</div>
+      <div>Edit appointment</div>
       <NavLink to='/timegraph'>
       <X size={30} className='top-cross-aa1'/>
       </NavLink>
@@ -132,11 +149,11 @@ const SelectTeamMember = (current) => {
       <div className="my-alert-comp my-alert-comp-2">
       <Alert color='success' isOpen={visible3}>
         <div className='alert-body text-center fs-4'>
-        Appointment created successfully
+        Appointment updated successfully
         </div>
       </Alert>
       </div>
-        <div className="my-alert-comp">
+        <div className="my-alert-comp-2">
       <Alert color='danger' isOpen={visible1}>
         <div className='alert-body text-center'>
         Please select a Service
@@ -171,7 +188,7 @@ const SelectTeamMember = (current) => {
             <Label className='form-label text-aa1' for='select-lg'>
             Start time
           </Label>
-          <Input type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectStartTime}>
+          <Input value={startTime}  type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectStartTime}>
             {times.map((time, key) => <option key={key}>{time.split(" ")[0].split(":")[1] < 10 ? `${time.split(" ")[0].split(":")[0]}:0${time.split(" ")[0].split(":")[1]} ${time.split(" ")[1]}` : time }</option>)}
           </Input>
           </div>
@@ -233,7 +250,7 @@ const SelectTeamMember = (current) => {
           <Label className='form-label text-aa1' for='select-lg'>
               Duration
               </Label>
-            <Input type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectDuration}>
+            <Input value={myduration} type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectDuration}>
               <option>10min</option>
               <option>15min</option>
               <option>20min</option>
@@ -254,7 +271,7 @@ const SelectTeamMember = (current) => {
           <Label className='form-label text-aa1' for='select-lg'>
               Team member
               </Label>
-              <Input style={border2} type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectTeamMember}>
+              <Input value={teamMember} style={border2} type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectTeamMember}>
                 <option value='Select a team member'>Select a team member</option>
                 <option value="Kondeti Anusha">Kondeti Anusha</option>
                 <option value="Wendy Smith">Wendy Smith</option>
@@ -263,12 +280,13 @@ const SelectTeamMember = (current) => {
 
           </div>
         </div>
-        { service[0] !== "Choose a service" && teamMember !== "Select a team member" && <div className="box-bb1 box-dd1">
+        {<div className="box-bb1 box-dd1">
         <div className="select-time d-flex flex-column">
             <Label className='form-label text-aa1' for='select-lg'>
-            Start time
+            {service.length}Start time
           </Label>
           <Input type='select' name='select' bsSize='lg' id='select-lg'>
+            {/* Start time options from top logic */}
           {times.map((time, key) => <option key={key}>{time.split(" ")[0].split(":")[1] < 10 ? `${time.split(" ")[0].split(":")[0]}:0${time.split(" ")[0].split(":")[1]} ${time.split(" ")[1]}` : time }</option>)}
           </Input>
           </div>
@@ -356,5 +374,5 @@ const SelectTeamMember = (current) => {
   )
 }
 
-export default NewAppointment
+export default EditAppointment
 

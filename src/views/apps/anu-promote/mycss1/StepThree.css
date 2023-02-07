@@ -57,6 +57,9 @@
     background-color: rgb(252, 111, 111);
     z-index: 1;
   }
+  .my-alert-comp-2{
+    background-color: rgb(159, 228, 159);
+  }
   @media (max-width:700px){
     .how-to-apply-promotion-container{
       width:96%;

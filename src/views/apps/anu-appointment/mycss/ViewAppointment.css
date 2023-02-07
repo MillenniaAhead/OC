@@ -127,7 +127,7 @@
 }
 .btn-box-aa2 {
   border-top: 1px solid rgba(0, 0, 0, 0.239);
-  margin-top: 100px;
+  margin-top: 40px;
   padding: 10px 30px;
 }
 .off-canvas-aa2 {
@@ -234,6 +234,7 @@
   font-weight:700;
   width:47%;
   margin-bottom: 10px;
+  color:black;
 }
 
 @media (max-width:900px){
