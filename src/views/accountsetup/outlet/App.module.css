@@ -1,0 +1,7 @@
+.wrapper{
+    height: 100% !important;
+    min-height: 100% !important;
+    background: url("./assets/2img.png") no-repeat top left , url("./assets/1img.png") no-repeat bottom right;
+    background-size: 20%;   
+    margin:0 20px;
+  }
