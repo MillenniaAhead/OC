@@ -4,8 +4,10 @@ import '../mycss3/Permissions.css'
 import axios from 'axios'
 
 const Commission = () => {
+  //For alert
+  const [visible1, setVisible1] = useState(false)
+  //For select commissions
    const [commission0, setCommission] = useState(['Calculate by item sale price before discount', 'Calculate by item sale price including tax', 'Calculate by service price before membership discount'])
-
    const CommissionData = (event) => {
     if (commission0.includes(event.target.value)) {
       const deselect = commission0.filter(
@@ -17,9 +19,16 @@ const Commission = () => {
     }
   }
 
+  //For store data to database
   const HandleSubmit = () => {
     axios.post('http://localhost:4000/api/commissions', { commission:commission0 })
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res)
+      setVisible1(true)
+      setTimeout(() => {
+        setVisible1(false)
+      }, 3000)
+    })
     .catch(err => console.log(err))
     console.log(commission0)
   }
@@ -27,6 +36,14 @@ const Commission = () => {
 
   return (
     <div className="commission-container-x2a" style={{marginBottom:"70px"}}>
+      {/* for alert */}
+      <div className="my-alert-comp my-alert-comp-2">
+      <Alert color='danger' isOpen={visible1}>
+        <div className='alert-body text-center'>
+        Commission added successfully
+        </div>
+      </Alert>
+      </div>
       <div className="top-x2a mt-2 mb-2">
       <div>
         <div className='mb-1'>

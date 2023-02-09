@@ -10,6 +10,7 @@ const AddTeamMember = () => {
         <div className='d-flex justify-content-end p-1'><NavLink to="/team/teamMembers" style={{color:"black"}}><X size={45} strokeWidth={1.2}/></NavLink></div>
         <div className="body-wa">
             <div className='fs-1 text-center mb-2 fw-bolder'>Add team members</div>
+            {/* Add manually */}
             <NavLink to='/team/addTeamMemberForm'>
             <div className="box-wa mb-2">
                 <div>
@@ -19,6 +20,7 @@ const AddTeamMember = () => {
                 <div><UserPlus size={30} className="ms-2"/></div>
             </div>
             </NavLink>
+            {/* Invite via email */}
             <NavLink to='/team/addViaEmail'>
             <div className="box-wb">
                 <div>

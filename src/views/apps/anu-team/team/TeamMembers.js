@@ -7,7 +7,9 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 
 const TeamMembers = () => {
+  //For dual button
   const [rSelected, setRSelected] = useState(1)
+  //For store data from backend
   const [teamMember, setTeamMember] = useState([])
 
   //Get all team memers from backend database
@@ -34,7 +36,7 @@ const TeamMembers = () => {
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
-Change the order
+          Change the order
           </DropdownItem>
           <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
           Download CSV
@@ -70,13 +72,14 @@ Change the order
         <Input placeholder='Search by name or title' />
       </InputGroup>
       </div>
+      {/* Surname filter modal */}
       <UncontrolledButtonDropdown className='dropdown-ua'>
         <DropdownToggle outline color='dark' caret>
           Surname
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
-Costom order
+          Costom order
           </DropdownItem>
           <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
           Surname (A-Z)
@@ -100,7 +103,7 @@ Costom order
       </UncontrolledButtonDropdown>
         </div>
         <div className="team-member-body-ua row">
-          {teamMember.length === 0 ? "No team member here" : teamMember.map((member, key) => <div key={key} className='col-md-4 col-sm-12'><NavLink to={`/team/addTeamMemberEditForm/${member._id}`}><Card style={{border:'1px solid rgba(0, 0, 0, 0.2)'}} className='p-2'>
+          {teamMember.length === 0 ? "No team member" : teamMember.map((member, key) => <div key={key} className='col-md-4 col-sm-12'><NavLink to={`/team/addTeamMemberEditForm/${member._id}`}><Card style={{border:'1px solid rgba(0, 0, 0, 0.2)'}} className='p-2'>
             <div className='card-body-ua'>
           <Avatar color='light-success' content={`${member.first_name} ${member.last_name}`} size='xl' initials />
           <div className='text-ua'>{`${member.first_name} ${member.last_name}`}</div>

@@ -52,13 +52,22 @@
   .my-alert-comp{
     width:40%;
     position: fixed;
-    top:1%;
+    top:2%;
     left:30%;
-    background-color: rgb(252, 111, 111);
     z-index: 1;
+    height:fit-content;
   }
-  .my-alert-comp-2{
-    background-color: rgb(159, 228, 159);
+  .my-alert-comp .alert-body{
+    background-color: rgb(250, 163, 163);
+  }
+  .my-alert-comp-2 .alert-body{
+    background-color: #a0e699;
+  }
+  .my-alert-comp div{
+    font-size:1.4rem;
+  }
+  .my-alert-comp-3{
+    top:12%;
   }
   @media (max-width:700px){
     .how-to-apply-promotion-container{

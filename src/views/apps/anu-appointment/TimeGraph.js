@@ -7,21 +7,23 @@ import interactionPlugin from '@fullcalendar/interaction'
 import axios from 'axios'
 
 const TimeGraph = () => {
-
+  //For select time area in graph (for appointments)
   const [events, setEvents] = useState([])
   
+  //For redirect
   const history = useHistory()
 
-  //Redirect to new appointment
+  //Redirect to new appointment (click on graph empty field)
   const myFunOne = () => {
     history.push(`/newappointment`)
   }
 
-
+  //On click on selected area in graph
   const myFunction = (id) => {
     history.push(`/viewappointment/${id}`)
   }
   
+  //For events in fullcalendar
   const myFun = (myData) => {
     const newEvents =  myData.map((data) => {
       const date = new Date(data.date)
@@ -39,7 +41,7 @@ const TimeGraph = () => {
   // Get end time
   const [myDuration] = duration.split("min")
   const minutes1 = Number(minutes) +  Number(myDuration)
-  const new_minutes1 = minutes1 > 59 ? minutes1 % 60 : minutes1
+  const new_minutes1 = minutes1 > 59 ? (minutes1 % 60 < 10 ? `0${minutes1 % 60}` : minutes1 % 60) : (minutes1 < 10 ? `0${minutes1}` : minutes1)
   
   if (minutes1 > 59) {
     hours = Number(hours) + 1 < 10 ? `0${Number(hours) + 1}` : Number(hours) + 1
@@ -51,6 +53,8 @@ const TimeGraph = () => {
 setEvents(newEvents)
   }
 
+
+  //Get all appointments from backend
   useEffect(() => {
     axios.get('http://localhost:4000/api/newAppointments')
     .then(res => {
@@ -80,6 +84,7 @@ setEvents(newEvents)
       />
     </div>
     <style>
+      {/* for set costum style in timegraph */}
         {`
         .fc-timegrid-slots tbody tr {
           height: 40px;

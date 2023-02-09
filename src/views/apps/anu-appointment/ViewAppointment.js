@@ -8,23 +8,34 @@ import axios from 'axios'
 import { ButtonDropdown, DropdownMenu, DropdownItem, Button, DropdownToggle, Alert } from 'reactstrap'
 
 const ViewAppointment = () => {
+
     // For dropdown
     const [dropdownOpen, setDropdownOpen] = useState(false)
+    //For alert compo
+    const [visible, setVisible] = useState(false)
+    //For store appointment data
+    const [appointment, setAppointment] = useState({})
+
+    //demo price to complete functionality
+    const [myPrice, setMyPrice] = useState("")
+    //demo services for complete functionality\
+    const myServices = [{ name:'Haircut', price:40}, {name:'Hair Color', price:57}, {name:'Blow Dry', price:35}, {name:'Balayage', price:150}, {name:'Facial', price:115}]
+
+    //for dropdown
     const toggleDropdown = () => {
       setDropdownOpen(!dropdownOpen)
     }
 
-    //For alert compo
-    const [visible, setVisible] = useState(false)
 
     //Get data by id and store it
-  const [appointment, setAppointment] = useState({})
   const { id } = useParams()
+
   useEffect(() => {
     axios.get(`http://localhost:4000/api/newAppointments/${id}`)
     .then(res => {
-        console.log(res.data)
+        console.log(res.data.services[0])
         setAppointment(res.data)
+        setMyPrice(myServices.filter((data) => data.name === res.data.services[0])[0].price)
       })
       .catch(err => console.log(err))
     }, [])
@@ -40,9 +51,11 @@ const ViewAppointment = () => {
 
     const options2 = { hour: 'numeric', minute: 'numeric', hour12: true }
     const time = date1.toLocaleTimeString('en-US', options2)
-
-    //For delete a appointment
+    
+    //Fot redirect
     const history = useHistory()
+
+    //For delete a appointment by id
     const deleteAppointment = () => {
       axios.delete(`http://localhost:4000/api/newAppointments/${id}`)
       .then(res => {
@@ -55,16 +68,12 @@ const ViewAppointment = () => {
       })
       .catch(err => console.log(err))
     }
-
-    //Redirect Edit appointment
-    const goToEdit = (id) => {
-       history.push(`/editAppointment/${id}`)
-    }
     
   return (
     <div className="view-appointment-container">
+      {/* for alert */}
       <div className="my-alert-comp my-alert-comp-2">
-      <Alert color='success' isOpen={visible}>
+      <Alert isOpen={visible}>
         <div className='alert-body text-center fs-4'>
         Appointment deleted successfully
         </div>
@@ -85,12 +94,12 @@ const ViewAppointment = () => {
               <p className="service-name-aa2 text-aa2">{appointment.services}</p>
               <p className="team-member-aa2 text-bb2 ">{appointment.duration} {appointment.team_member}</p>
             </div>
-            <div className="price-aa2 text-aa2 ">₹30</div>
+            <div className="price-aa2 text-aa2 ">₹{myPrice}</div>
           </div>
           <div className="total-detail-box-aa2 d-flex justify-content-between">
             <div className="khaali-aa2"></div>
             <div className="total-time-aa2 text-dd2">{appointment.duration}</div>
-            <div className="total-ammount-aa2 text-cc2">₹30</div>
+            <div className="total-ammount-aa2 text-cc2">₹{myPrice}</div>
           </div>
         </div>
         <div className="appointment-history">
@@ -135,17 +144,14 @@ const ViewAppointment = () => {
             </div>
           </div>
           <div className="btn-box-aa2">
-            <p className="text-jj2">Total: ₹30 (30min)</p>
+            <p className="text-jj2">Total: ₹{myPrice} {`(${appointment.duration})`}</p>
             <div className="btn-wrapper-aa2 d-flex justify-content-between">
               <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
               <DropdownToggle className="checkout-bb2" outline>
         More option
       </DropdownToggle>      
       <DropdownMenu>
-        <DropdownItem className="fs-4" href='/' tag='a' onClick={e => {
-          e.preventDefault()
-          goToEdit(id)
-          }}>
+        <DropdownItem className="fs-4" href='/' tag={NavLink} to={`/editAppointment/${id}`} >
           Edit appointment
         </DropdownItem>
         <DropdownItem className="fs-4" href='/' tag='a' onClick={e => e.preventDefault()}>
@@ -162,7 +168,7 @@ const ViewAppointment = () => {
         </DropdownItem>
       </DropdownMenu>
     </ButtonDropdown>
-              <Button.Ripple className="checkout-bb2" color='dark' to='/checkout'  tag={NavLink} >
+              <Button.Ripple className="checkout-bb2" color='dark' to={`/checkout/${id}`} tag={NavLink} >
           Checkout
         </Button.Ripple>
             </div>

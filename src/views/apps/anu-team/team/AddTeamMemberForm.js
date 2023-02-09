@@ -3,7 +3,7 @@ import { Camera, X, Home, Search } from 'react-feather'
 import { Alert, Label, Input, InputGroup, InputGroupText, Button, Modal, ModalFooter, ModalBody, ButtonGroup, DropdownMenu, Dropdown, DropdownToggle, DropdownItem } from 'reactstrap'
 import classnames from 'classnames'
 import Flatpickr from 'react-flatpickr'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 const AddTeamMemberForm = () => {
@@ -15,6 +15,7 @@ const AddTeamMemberForm = () => {
 
   //for alert box
   const [visible1, setVisible1] = useState(false)
+  const [visible2, setVisible2] = useState(false)
 
   //For mobile number input field
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -99,8 +100,10 @@ const AddTeamMemberForm = () => {
         setBorder1()
        }
       if (e.target.name === 'email') {
+        if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
         setStyle2({display:'none'})
         setBorder2()
+        }
        }
       }
   }
@@ -129,6 +132,9 @@ const AddTeamMemberForm = () => {
        setCommissionData({...commissionData, [e.target.name]:e.target.value})
   }
 
+  //For redirect
+  const history = useHistory()
+
    //On click of add new member
    const submitForm = () => {
     if (formData.first_name === "") {
@@ -138,7 +144,7 @@ const AddTeamMemberForm = () => {
         setTimeout(() => {
           setVisible1(false)
         }, 3000)
-    } else if (formData.email === "") {
+    } else if (formData.email === "" || !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
       setStyle2({display:'block'})
       setBorder2({border:'1px solid red'})
       setVisible1(true)
@@ -150,7 +156,14 @@ const AddTeamMemberForm = () => {
 
     //Post a team member to backend database
     axios.post('http://localhost:4000/api/teamMembers', {...formData, services:service, start_date:picker1, end_date:picker2, commission:[{ effective_date:picker3, commission_cycle:commissionData.commission_cycle, service_commission:commissionData.service_commission + rSelected1, product_commission:commissionData.product_commission + rSelected2, voucher_commission:commissionData.voucher_commission + rSelected3, membership_commission:commissionData.membership_commission + rSelected4}] })
-    .then((res) => console.log(res))
+    .then((res) => {
+      console.log(res)
+      setVisible2(true)
+      setTimeout(() => {
+        setVisible2(false)
+        history.push('/team/teamMembers')
+      }, 3000)
+    })
     .catch((err) => console.log(err))
     console.log({...commissionData, effective_date:picker3})
     }
@@ -166,8 +179,15 @@ const AddTeamMemberForm = () => {
         </div>
       </Alert>
       </div>
+          <div className="my-alert-comp my-alert-comp-2">
+      <Alert color='danger' isOpen={visible2}>
+        <div className='alert-body text-center'>
+        Team member added successfully
+        </div>
+      </Alert>
+      </div>
             <div className="top-va">
-                <NavLink to="/businessSettings"><div><X size={45}  strokeWidth={1.2}/></div></NavLink>
+                <NavLink to="/team/teamMembers"><div><X size={45}  strokeWidth={1.2}/></div></NavLink>
                 <Button.Ripple onClick={submitForm} className="btn-va" color='dark'>Add team member</Button.Ripple>
             </div>
             <div className="new-member-body-va">
@@ -189,7 +209,7 @@ const AddTeamMemberForm = () => {
                     First name
                     </Label>
                     <Input id='scroll_to_first_name'  style={border1} type='text' name="first_name" onChange={collectData} bsSize='lg' placeholder='' />
-                    <div className='fs-6 text-danger' style={style1}>This field is required</div>
+                    <div className='fs-6 text-danger' style={style1}>Name is required</div>
                     </div>
                     <div className="input-va">
                     <Label className='text-vb' for='last-name'>
@@ -236,7 +256,7 @@ const AddTeamMemberForm = () => {
                     Email
                     </Label>
                     <Input style={border2} type='text' name='email' id='email' onChange={collectData} bsSize='lg' placeholder='mail@example.com' />
-                    <div style={style2} className="text-danger fs-6">This field is required</div>
+                    <div style={style2} className="text-danger fs-6">Please provide a valid email</div>
                     </div>
         <div className='input-va'>
         <Label className='text-vb' for='mobile-number'>
@@ -316,6 +336,7 @@ const AddTeamMemberForm = () => {
                 <div className='text-vf'>Choose a colour to see this team members appointments in the calendar.</div>
                 </div>
                 <div className="top-info-vb">
+                  {/* Color options */}
                 <div className="text-vb mb-1">Select colour</div>
                 <div className='d-flex'>
                 <Label style={{border:formData.color === "#FF6A8D" ? '2px solid blue' : 'none'}} for='color-1' className='btn-vb btn-vb1'></Label>
@@ -578,7 +599,7 @@ timeframe when the cycle will reset.</div>
           <div className='text-vb'>Service commission</div>
           <div style={{background:'rgba(229, 229, 229, 0.4)', display:display1}} >
             <div className='d-flex flex-row-reverse' style={{padding:'4px'}}>
-          <X onClick={ () => { display1 === 'none' ? setDisplay1('block') : setDisplay1('none') }}/>
+          <X style={{cursor:'pointer'}} onClick={ () => { display1 === 'none' ? setDisplay1('block') : setDisplay1('none') }}/>
           </div>    
           <div className="commission-input-wrapper-va">
             <div className='d-flex'>
@@ -621,7 +642,7 @@ timeframe when the cycle will reset.</div>
           <div className='text-vb'>Product commission</div>
           <div style={{background:'rgba(229, 229, 229, 0.4)', display:display2}} >
             <div className='d-flex flex-row-reverse' style={{padding:'4px'}}>
-          <X onClick={ () => { display2 === 'none' ? setDisplay2('block') : setDisplay2('none') }}/>
+          <X style={{cursor:'pointer'}} onClick={ () => { display2 === 'none' ? setDisplay2('block') : setDisplay2('none') }}/>
           </div>    
           <div className="commission-input-wrapper-va">
             <div className='d-flex'>
@@ -664,7 +685,7 @@ timeframe when the cycle will reset.</div>
           <div className='text-vb'>Voucher commission</div>
           <div style={{ background:'rgba(229, 229, 229, 0.4)', display:display3}} >
             <div className='d-flex flex-row-reverse' style={{padding:'4px'}}>
-          <X onClick={ () => { display3 === 'none' ? setDisplay3('block') : setDisplay3('none') }}/>
+          <X style={{cursor:'pointer'}} onClick={ () => { display3 === 'none' ? setDisplay3('block') : setDisplay3('none') }}/>
           </div>    
           <div className="commission-input-wrapper-va">
             <div className='d-flex'>
@@ -707,7 +728,7 @@ timeframe when the cycle will reset.</div>
           <div className='text-vb'>Membership commission</div>
           <div style={{background:'rgba(229, 229, 229, 0.4)', display:display4}} >
             <div className='d-flex flex-row-reverse' style={{padding:'4px'}}>
-          <X onClick={ () => { display4 === 'none' ? setDisplay4('block') : setDisplay4('none') }}/>
+          <X style={{cursor:'pointer'}} onClick={ () => { display4 === 'none' ? setDisplay4('block') : setDisplay4('none') }}/>
           </div>    
           <div className="commission-input-wrapper-va">
             <div className='d-flex'>

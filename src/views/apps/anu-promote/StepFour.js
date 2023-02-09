@@ -3,11 +3,40 @@ import './mycss1/StepFour.css'
 import { NavLink } from 'react-router-dom'
 import ticketG from "../images/ticket-g.svg"
 import { CheckCircle, X, Calendar, Tag } from 'react-feather'
+import { actionCreators } from "./promoteRedux"
+import { useDispatch, useSelector } from "react-redux"
+import { bindActionCreators } from "redux"
 
 const StepFour = () => {
+
+  //for redux
+  const dispatch = useDispatch()
+  const { ClearDealData } = bindActionCreators(actionCreators, dispatch) 
+
+  //Get data from reducer
+  const reducerData = useSelector(state => state.PromoteReducer.newDeal)
+  console.log(reducerData)
+
+  //Change date formate
+  const start_date = new Date(reducerData[5]).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  })
+  const end_date = reducerData[6] ? new Date(reducerData[6]).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  }) : "Outgoing"
+
+  //clear data in redux store
+  const clearData = () => {
+    ClearDealData()
+  }
+
   return (
     <div className="step-four-container">
-    <div className="cross-btn-wrapper">
+    <div className="cross-btn-wrapper" onClick={clearData}>
       <NavLink to="/promote/dealstwo">
       <X size={45} strokeWidth={1} style={{color:'black'}} />
       </NavLink>
@@ -29,7 +58,7 @@ const StepFour = () => {
                 <Tag size={35} className='icon-a1' />
                 </div>
                 <div>
-                <p>10% discount on this product and this service</p>
+                <p>{reducerData[7] + reducerData[8]} discount on all product and all service</p>
                 </div>
               </div>
               <div  className='detail-dabba'>
@@ -45,12 +74,12 @@ const StepFour = () => {
                     <Calendar size={35} className='icon-a1'/>
                 </div>
                 <div>
-                <p>Promotion starts on 21 Dec 2022 and end on never</p>
+                <p>Promotion starts on {start_date} and {end_date === "Outgoing" ? "Outgoing" : `end on ${end_date}`}</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="sucess-btn">
+          <div className="sucess-btn" onClick={clearData}>
             <NavLink to="/promote/dealstwo" className="done-btn">Done</NavLink>
           </div>
     </div>

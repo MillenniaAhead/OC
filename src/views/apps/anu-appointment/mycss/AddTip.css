@@ -202,8 +202,14 @@ a{
     .left-container-aa3, .left-container-aa4{
         width:100%;
     }
+    .right-container-aa3{
+        height:50vh;
+    }
 }
 @media (max-width:700px){
+    .right-container-aa3{
+        height:120%;
+    }
     .left-container-aa3, .left-container-aa4{
       padding:5px;
     }

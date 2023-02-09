@@ -2,17 +2,15 @@ import React, {useState} from "react"
 import "./mycss/NewAppointment.css"
 import "./mycss/ViewAppointment.css"
 import './mycss/AddTip.css'
-import { User, Star, FileText, CheckCircle, X, CheckSquare } from "react-feather"
+import { User, CheckCircle, X, CheckSquare } from "react-feather"
 import { Offcanvas, OffcanvasBody, Button } from 'reactstrap'
 import { NavLink } from "react-router-dom"
 
 const ViewAppointmentTwo = () => {
   //For canvas
-  const [canvasPlacement, setCanvasPlacement] = useState('end')
   const [canvasOpen, setCanvasOpen] = useState(false)
   
   const toggleCanvasEnd = () => {
-    setCanvasPlacement('end')
     setCanvasOpen(!canvasOpen)
   }
 
@@ -80,8 +78,9 @@ const ViewAppointmentTwo = () => {
           </div>
         </div>
       </div>
-      
-      <Offcanvas className="off-canvas-container-aa2" direction={canvasPlacement} isOpen={canvasOpen} toggle={toggleCanvasEnd}>
+
+      {/* Offcanvas */}
+      <Offcanvas className="off-canvas-container-aa2" direction='end' isOpen={canvasOpen} toggle={toggleCanvasEnd}>
         <OffcanvasBody className='off-canvas-aa2 p-0'
         >
           <div className="offcanvas-left-box-aa2 d-flex align-items-center flex-column">

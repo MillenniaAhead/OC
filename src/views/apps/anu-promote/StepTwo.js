@@ -254,6 +254,28 @@ const StepTwo = () => {
 
   return (
     <div className="step-two-container">
+      {/* for alerts */}
+      <div className="my-alert-comp">
+      <Alert isOpen={visible1}>
+        <div className='alert-body text-center'>
+        Limit total number of uses is checked
+        </div>
+      </Alert>
+      </div>
+       <div className="my-alert-comp">
+      <Alert isOpen={visible2}>
+        <div className='alert-body text-center'>
+        Limit to one use per client is checked
+        </div>
+      </Alert>
+      </div>
+       <div className="my-alert-comp">
+      <Alert isOpen={visible3}>
+        <div className='alert-body text-center'>
+        Please fill all required fields
+        </div>
+      </Alert>
+      </div>
       <div className="head-component-wrapper">
         <div className="head-container">
           <div className="btns-wrapper">
@@ -280,27 +302,6 @@ const StepTwo = () => {
           <div className="progress-wrapper">
             <Progress width="50%" />
           </div>
-          <div className="my-alert-comp">
-         <Alert isOpen={visible1}>
-           <div className='alert-body text-center'>
-           Limit total number of uses is checked
-           </div>
-         </Alert>
-         </div>
-          <div className="my-alert-comp">
-         <Alert color='danger' isOpen={visible2}>
-           <div className='alert-body text-center'>
-           Limit to one use per client is checked
-           </div>
-         </Alert>
-          <div className="my-alert-comp">
-         <Alert color='danger' isOpen={visible3}>
-           <div className='alert-body text-center'>
-           Please fill all required fields
-           </div>
-         </Alert>
-         </div>
-         </div>
         </div>
       </div>
       <div className="step-two-body-container">
@@ -651,6 +652,7 @@ const StepTwo = () => {
                           Edit
                         </div>
                       </div>
+                      {/* for membership */}
                       <Modal
                         isOpen={centeredModal3}
                         toggle={() => setCenteredModal3(!centeredModal3)}
@@ -698,6 +700,7 @@ const StepTwo = () => {
                           Edit
                         </div>
                       </div>
+                      {/* for voucher */}
                       <Modal
                         isOpen={centeredModal4}
                         toggle={() => setCenteredModal4(!centeredModal4)}

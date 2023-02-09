@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react'
 import modulo from '../images/modulo.svg'
 import './mycss1/DealsTwo.css'
 import { Filter, Sliders, Search, ChevronLeft, MoreHorizontal } from 'react-feather'
-import { UncontrolledButtonDropdown, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Input, InputGroup, InputGroupText  } from 'reactstrap'
+import { UncontrolledButtonDropdown, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Input, InputGroup, InputGroupText, Alert  } from 'reactstrap'
 import {NavLink} from 'react-router-dom'
 import axios from "axios"
 
 export const DealsTwo = () => {
   //For dropdown
-  // const [dropdownOpen, setDropdownOpen] = useState(false)
   const [dropdownOpenx, setDropdownOpenx] = useState(false)
 
    //For side menu
@@ -16,14 +15,12 @@ export const DealsTwo = () => {
    const [styleThree, setstyleThree] = useState()
    const [styleFour, setstyleFour] = useState({position: "relative", left: "-50%"})
 
-     //store data from backend
-     const [detail, setDetail] = useState([])
-     const [dealLength, setDealLength] = useState(0)
-  
-    //  //dropdown
-    //  const toggleDropdown = () => {
-    //   setDropdownOpen(!dropdownOpen)
-    // }
+   //for alert
+   const [visible, setVisible] = useState(false)
+
+   //store data from backend
+   const [detail, setDetail] = useState([])
+   const [dealLength, setDealLength] = useState(0)
 
    //dropdown
    const toggleDropdownx = () => {
@@ -51,10 +48,33 @@ export const DealsTwo = () => {
         setDealLength(res.data.length)
     })
     .catch((err) => console.log(err))
-  }, [])
+  })
+
+  //For delete a deal from database
+  const deleteDealFun = (id) => {
+    axios.delete(`http://localhost:4000/api/deals/${id}`)
+    .then(res => {
+      console.log(res)
+      setVisible(true)
+      setTimeout(() => {
+        setVisible(false)
+      }, 3000)
+    })
+    .catch(err => console.log(err))
+  }
 
   return (
+    <>
       <div className="deal-list-container" style={{overflowY:"scroll"}}>
+        {/* alert */}
+      <div className="my-alert-comp my-alert-comp-2 my-alert-comp-3">
+      <Alert isOpen={visible}>
+        <div className='alert-body text-center fs-4'>
+        Deal deleted successfully
+        </div>
+      </Alert>
+      </div>
+        {/* side menu */}
     <div className="side-menu-wrapper" style={styleTwo}>
            <div className="side-menu-container">
              <div className="promote-text-wrapper">
@@ -83,6 +103,7 @@ export const DealsTwo = () => {
          </button>
        </div>
   <div className="deal-list-wrapper">
+    {/* side menu dropdown */}
       <div  className="side-menu-wrapper-2 mb-1">
    <ButtonDropdown isOpen={dropdownOpenx} toggle={toggleDropdownx}>
      <DropdownToggle caret>
@@ -148,9 +169,11 @@ export const DealsTwo = () => {
             </div>
           </div>
         </div>
+        {/* display all deal (using map method) */}
         <div className="deals-list-wrapper">
         {detail.map((deal, key) => {
 
+          // Change date formate
           const start_date0 = new Date(deal.start_date).toLocaleDateString('en-US', {
             day: 'numeric',
             month: 'short',
@@ -185,22 +208,24 @@ export const DealsTwo = () => {
             <p className='text-p'>₹0</p>
         </div>
             <UncontrolledButtonDropdown>
-              <DropdownToggle>
+              <DropdownToggle color='light'>
         <div style={{width:"50px", height:"fit-content"}} className='three-dot'>
             <MoreHorizontal/>
       </div>
       </DropdownToggle>
-      <DropdownMenu style={{ minWidth:"fit-content", top:'20px'}}>
-        <DropdownItem style={{padding:"5px 10px"}} to={`/promote/steptwoedit/${deal._id}`} tag={NavLink}>
+      <DropdownMenu style={{ minWidth:"fit-content"}}>
+        <DropdownItem to={`/promote/steptwoedit/${deal._id}`} tag={NavLink}>
           Edit
         </DropdownItem>
-        <DropdownItem style={{padding:"5px 10px"}} href='/' tag='a' onClick={e => e.preventDefault()}>
+        <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
           Deactivate
         </DropdownItem>
-        <DropdownItem style={{padding:"5px 10px"}} href='/' tag='a' onClick={e => e.preventDefault()}>
+        <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
           Duplicate
         </DropdownItem>
-        <DropdownItem style={{padding:"5px 10px"}} href='/' tag='a' onClick={e => e.preventDefault()}>
+        <DropdownItem href='/' tag='div' onClick={() => {
+          deleteDealFun(deal._id)
+        }}>
           Archive
         </DropdownItem>
       </DropdownMenu>
@@ -213,6 +238,7 @@ export const DealsTwo = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

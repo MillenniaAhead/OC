@@ -6,10 +6,6 @@ const AnuAppointment = [
     component: lazy(() => import('../../views/apps/anu-appointment/TimeGraph'))
   },
   {
-    path: '/timeGraphTwo',
-    component: lazy(() => import('../../views/apps/anu-appointment/TimeGraphTwo'))
-  },
-  {
     path: '/newappointment',
     component: lazy(() => import('../../views/apps/anu-appointment/NewAppointment')),
     layout: 'BlankLayout'
@@ -30,15 +26,15 @@ const AnuAppointment = [
     layout: 'BlankLayout'
   },
   {
-    path: '/checkout',
+    path: '/checkout/:id',
     component: lazy(() => import('../../views/apps/anu-appointment/CheckOut'))
   },
   {
-    path: '/addtip',
+    path: '/addtip/:id',
     component: lazy(() => import('../../views/apps/anu-appointment/AddTip'))
   },
   {
-    path: '/selectpayment',
+    path: '/selectpayment/:id',
     component: lazy(() => import('../../views/apps/anu-appointment/SelectPayment'))
   }
 ]

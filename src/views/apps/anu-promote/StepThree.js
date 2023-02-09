@@ -17,6 +17,7 @@ const StepThree = () => {
   //For alert compo
   const [visible, setVisible] = useState(false)
   const [visible2, setVisible2] = useState(false)
+  const [visible3, setVisible3] = useState(false)
   //For required
   const [style1, setStyle1] = useState({display:'none'})
   const [style2, setStyle2] = useState()
@@ -51,7 +52,7 @@ const StepThree = () => {
 
    //For dipatch action
    const dispatch = useDispatch()
-  //  const { StoreDealData } = bindActionCreators(actionCreators, dispatch) 
+   const { CollectDealData } = bindActionCreators(actionCreators, dispatch) 
    const { DeleteLastData } = bindActionCreators(actionCreators, dispatch) 
    const { ClearDealData } = bindActionCreators(actionCreators, dispatch) 
    const history = useHistory()
@@ -60,7 +61,6 @@ const StepThree = () => {
    const reducerData = useSelector(state => state.PromoteReducer.newDeal)
 
    //On click of next step
-
    const nextBtnFun = () => {
     const data = [...reducerData, {promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue}]
     //Checked both option
@@ -73,25 +73,33 @@ const StepThree = () => {
           setVisible2(false)
         }, 3000)
       } else {
-        ClearDealData()
         //axios
+        CollectDealData([toggle1, toggle2, discountCodeValue])
         axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], promotion_value_type:data[8], max_use_limit:data[9], min_purchase_amount:data[10], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})
         .then(res => {
-         console.log(res.data)
-        history.push('/promote/stepFour')
+          console.log(res)
+          setVisible3(true)
+         setTimeout(() => {
+           setVisible3(false)
+           history.push('/promote/stepFour')
+         }, 3000)
        })
       .catch(err => console.log(err))
     }
 
     //Checked option1
   } else if (toggle1 && !toggle2) {
-    ClearDealData()
     console.log(data[5])
     //axios
+    CollectDealData([toggle1, toggle2, discountCodeValue])
     axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], promotion_value_type:data[8], max_use_limit:data[9], min_purchase_amount:data[10], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})
     .then(res => {
        console.log(res)
-     history.push('/promote/stepFour')
+       setVisible3(true)
+      setTimeout(() => {
+        setVisible3(false)
+        history.push('/promote/stepFour')
+      }, 3000)
     })
     .catch(err => console.log(err))
 
@@ -105,12 +113,16 @@ const StepThree = () => {
           setVisible2(false)
         }, 3000)
     } else {
-      ClearDealData()
       //axios
+      CollectDealData([toggle1, toggle2, discountCodeValue])
        axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], promotion_value_type:data[8], max_use_limit:data[9], min_purchase_amount:data[10], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})
        .then(res => {
-      console.log(res)
-     history.push('/promote/stepFour')
+        console.log(res)
+        setVisible3(true)
+       setTimeout(() => {
+         setVisible3(false)
+         history.push('/promote/stepFour')
+       }, 3000)
    })
    .catch(err => console.log(err))
     }
@@ -136,6 +148,27 @@ const StepThree = () => {
 
   return (
     <div className="step-three-container">
+      <div className="my-alert-comp my-alert-comp-2">
+      <Alert color='success' isOpen={visible3}>
+        <div className='alert-body text-center fs-4'>
+        deal created successfully
+        </div>
+      </Alert>
+      </div>
+      <div className="my-alert-comp">
+      <Alert color='danger' isOpen={visible}>
+        <div className='alert-body text-center'>
+        Please enable at least one option
+        </div>
+      </Alert>
+      </div>
+      <div className="my-alert-comp">
+      <Alert color='danger' isOpen={visible2}>
+        <div className='alert-body text-center'>
+        Please fill all required fields
+        </div>
+      </Alert>
+      </div>
       <div className="head-container-wrapper">
         <div className="head-container">
         <div className="btns-wrapper">
@@ -160,20 +193,6 @@ const StepThree = () => {
         </div>
       </div>
       </div>
-      <div className="my-alert-comp">
-      <Alert color='danger' isOpen={visible}>
-        <div className='alert-body text-center'>
-        Please enable at least one option
-        </div>
-      </Alert>
-      </div>
-      <div className="my-alert-comp">
-      <Alert color='danger' isOpen={visible2}>
-        <div className='alert-body text-center'>
-        Please fill all required fields
-        </div>
-      </Alert>
-      </div>
       <div className="step-two-body-container">
         <div className="step-two-body-wrapper">
           <div className="step-two-heading-box">
@@ -190,6 +209,7 @@ const StepThree = () => {
           </div>
           <div className="how-to-apply-promotion-container">
             <div className="how-to-apply-promotion-wrapper">
+              {/* toggler 1 */}
               <div className="step-three-option option-one">
                 <div className="toggle-btn">
                 <div className="form-check form-switch">
@@ -217,6 +237,7 @@ const StepThree = () => {
                     </p>
                   </div>
               </div>
+              {/* toggler 2 */}
               <div className="step-three-option option-two"  style={{marginBottom:'5px'}}>
                 <div className="toggle-btn">
                   <div className="form-check form-switch">

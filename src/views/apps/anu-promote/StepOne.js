@@ -79,6 +79,7 @@ const StepOne = () => {
           </div>
           <div className="deal-types-container">
             <div className="deal-types-container-a">
+              {/* Promotion */}
               <div
                   className="deal-type promotion-box"
                   onClick={selectDeal1}
@@ -100,6 +101,7 @@ const StepOne = () => {
                   <img src={Ticket} alt="Ticket" />
                 </div>
               </div>
+              {/* Splash sale */}
               <div
                 className="deal-type splash-sale-box"
                 onClick={selectDeal2}
@@ -123,6 +125,7 @@ const StepOne = () => {
                   <img style={{width:'22px'}} src={Modulo} alt="Modulo" />
                 </div>
               </div>
+              {/* Off-peak pricing */}
               <div
                 className="deal-type off-peak-pricing-box"
                 onClick={selectDeal3}
@@ -147,6 +150,7 @@ const StepOne = () => {
                   <img src={Database} alt="Database" />
                 </div>
               </div>
+              {/* Last-minute offer */}
               <div
                 className="deal-type last-minute-offer-box"
                 onClick={selectDeal4}

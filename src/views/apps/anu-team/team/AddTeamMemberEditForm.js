@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Camera, X, Home, Search } from 'react-feather'
-import { Alert, Label, Input, InputGroup, InputGroupText, Button, Modal, ModalFooter, ModalBody, ButtonGroup, DropdownMenu, Dropdown, DropdownToggle, DropdownItem } from 'reactstrap'
+import { Alert, Label, Input, InputGroup, InputGroupText, Button, Modal, ModalFooter, ModalBody, ButtonGroup, DropdownMenu, Dropdown, DropdownToggle, DropdownItem, UncontrolledButtonDropdown } from 'reactstrap'
 import classnames from 'classnames'
 import Flatpickr from 'react-flatpickr'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const AddTeamMemberEditForm = () => {
@@ -15,6 +15,8 @@ const AddTeamMemberEditForm = () => {
 
   //for alert box
   const [visible1, setVisible1] = useState(false)
+  const [visible2, setVisible2] = useState(false)
+  const [visible3, setVisible3] = useState(false)
 
   //For mobile number input field
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -154,6 +156,9 @@ const AddTeamMemberEditForm = () => {
        setCommissionData({...commissionData, [e.target.name]:e.target.value})
   }
 
+  //For redirect
+  const history = useHistory()
+
    //On click of add new member
    const submitForm = () => {
     if (formData.first_name === "") {
@@ -175,28 +180,82 @@ const AddTeamMemberEditForm = () => {
 
     //Using put method to update a team member
     axios.put(`http://localhost:4000/api/teamMembers/${id}`, {...formData, services:service, allow_calendar_bookings:switch1, start_date:picker1, end_date:picker2})
-    .then((res) => console.log(res))
+    .then((res) => {
+      console.log(res)
+      setVisible2(true)
+      setTimeout(() => {
+        setVisible2(false)
+        history.push('/team/teamMembers')
+      }, 3000)
+    })
     .catch((err) => console.log(err))
     console.log({...commissionData, effective_date:picker3})
     }
   }
 
+  //For delete a team member
+
+  const deleteTeamMember = () => {
+    axios.delete(`http://localhost:4000/api/teamMembers/${id}`)
+    .then(res => {
+      console.log(res)
+      setVisible3(true)
+      setTimeout(() => {
+        setVisible3(false)
+        history.push('/team/teamMembers')
+      }, 3000)
+    })
+    .catch(err => console.log(err))
+  }
+
     return (
         <div className="add-team-member-form-container-va" style={{marginBottom:"70px"}}>
           {/* For alerts */}
-          <div className="my-alert-comp">
-      <Alert color='danger' isOpen={visible1}>
+      <div className="my-alert-comp">
+      <Alert isOpen={visible1}>
         <div className='alert-body text-center'>
         Please fill all required fields
         </div>
       </Alert>
       </div>
+      <div className="my-alert-comp my-alert-comp-2">
+      <Alert isOpen={visible2}>
+        <div className='alert-body text-center'>
+        Team member updated successfully
+        </div>
+      </Alert>
+      </div>
+      <div className="my-alert-comp my-alert-comp-2">
+      <Alert isOpen={visible3}>
+        <div className='alert-body text-center'>
+        Team member deleted successfully
+        </div>
+      </Alert>
+      </div>
             <div className="top-va">
-                <NavLink to="/businessSettings"><div><X size={45}  strokeWidth={1.2}/></div></NavLink>
-                <Button.Ripple onClick={submitForm} className="btn-va" color='dark'>Add team member</Button.Ripple>
+                <NavLink to="/team/teamMembers"><div><X size={45}  strokeWidth={1.2}/></div></NavLink>
+                <div>
+                <UncontrolledButtonDropdown className='me-1'>
+        <DropdownToggle outline color='dark' caret>
+          Options
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem href='/' tag='a' onClick={e => e.preventDefault()}>
+          Resend email invitation
+          </DropdownItem>
+          <DropdownItem className='text-danger' href='/' tag='a' onClick={e => {
+            e.preventDefault()
+            deleteTeamMember()
+            }}>
+          Delete team member
+          </DropdownItem>
+        </DropdownMenu>
+      </UncontrolledButtonDropdown>
+                <Button.Ripple onClick={submitForm} className="btn-va" color='dark'>Save</Button.Ripple>
+                </div>
             </div>
             <div className="new-member-body-va">
-                <div className='mb-2 text-vc'>Add new team member</div>
+                <div className='mb-2 text-vc'>Edit team member</div>
                 <div className="form-box-va">
                     <div className='top-info-va'>
                     <div className='text-va'>Basic info</div>
@@ -342,6 +401,7 @@ const AddTeamMemberEditForm = () => {
                 <div className='text-vf'>Choose a colour to see this team members appointments in the calendar.</div>
                 </div>
                 <div className="top-info-vb">
+                  {/* Color options */}
                 <div className="text-vb mb-1">Select colour</div>
                 <div className='d-flex'>
                 <Label style={{border:formData.color === "#FF6A8D" ? '2px solid blue' : 'none'}} for='color-1' className='btn-vb btn-vb1'></Label>
@@ -604,7 +664,7 @@ timeframe when the cycle will reset.</div>
           <div className='text-vb'>Service commission</div>
           <div style={{background:'rgba(229, 229, 229, 0.4)', display:display1}} >
             <div className='d-flex flex-row-reverse' style={{padding:'4px'}}>
-          <X onClick={ () => { display1 === 'none' ? setDisplay1('block') : setDisplay1('none') }}/>
+          <X style={{cursor:'pointer'}} onClick={ () => { display1 === 'none' ? setDisplay1('block') : setDisplay1('none') }}/>
           </div>    
           <div className="commission-input-wrapper-va">
             <div className='d-flex'>
@@ -647,7 +707,7 @@ timeframe when the cycle will reset.</div>
           <div className='text-vb'>Product commission</div>
           <div style={{background:'rgba(229, 229, 229, 0.4)', display:display2}} >
             <div className='d-flex flex-row-reverse' style={{padding:'4px'}}>
-          <X onClick={ () => { display2 === 'none' ? setDisplay2('block') : setDisplay2('none') }}/>
+          <X style={{cursor:'pointer'}} onClick={ () => { display2 === 'none' ? setDisplay2('block') : setDisplay2('none') }}/>
           </div>    
           <div className="commission-input-wrapper-va">
             <div className='d-flex'>
@@ -690,7 +750,7 @@ timeframe when the cycle will reset.</div>
           <div className='text-vb'>Voucher commission</div>
           <div style={{ background:'rgba(229, 229, 229, 0.4)', display:display3}} >
             <div className='d-flex flex-row-reverse' style={{padding:'4px'}}>
-          <X onClick={ () => { display3 === 'none' ? setDisplay3('block') : setDisplay3('none') }}/>
+          <X style={{cursor:'pointer'}} onClick={ () => { display3 === 'none' ? setDisplay3('block') : setDisplay3('none') }}/>
           </div>    
           <div className="commission-input-wrapper-va">
             <div className='d-flex'>
@@ -733,7 +793,7 @@ timeframe when the cycle will reset.</div>
           <div className='text-vb'>Membership commission</div>
           <div style={{background:'rgba(229, 229, 229, 0.4)', display:display4}} >
             <div className='d-flex flex-row-reverse' style={{padding:'4px'}}>
-          <X onClick={ () => { display4 === 'none' ? setDisplay4('block') : setDisplay4('none') }}/>
+          <X style={{cursor:'pointer'}} onClick={ () => { display4 === 'none' ? setDisplay4('block') : setDisplay4('none') }}/>
           </div>    
           <div className="commission-input-wrapper-va">
             <div className='d-flex'>

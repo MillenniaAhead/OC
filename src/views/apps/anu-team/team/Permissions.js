@@ -5,8 +5,10 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 
 const Permissions = () => {
-  //BOOKINGS & CLIENTS
-
+  //For alert
+  const [visible1, setVisible1] = useState(false)
+  
+  //For BOOKINGS & CLIENTS
   const accessLevels = ["BASIC", "LOW", "MEDIUM", "HIGH", "OWNER"]
 
   const [accessOwnCalendar, setAccessOwnCalendar] = useState(accessLevels)
@@ -29,6 +31,7 @@ const Permissions = () => {
     Messages: setMessages
   }
 
+  // For collect data by user selection
   const CollectPermissionData = (stateName, e) => {
     const setState = stateMapper[stateName]
     if (setState) {
@@ -42,14 +45,29 @@ const Permissions = () => {
     }
   }
 
+  // For send data to backend database
   const SubmitData = () => {
     axios.post("http://localhost:4000/api/permissions", { bookings_and_clients:[{ access_own_calendar:accessOwnCalendar, access_other_staff_calendars:accessOtherStaffCalendars, can_book_appointments:canBookAppointments, home:Home, clients:Clients, can_see_client_contact_info:canSeeClientContactInfo, can_download_clients:canDownloadClients, messages:Messages }]})
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data)
+        setVisible1(true)
+            setTimeout(() => {
+              setVisible1(false)
+            }, 3000)
+              })
       .catch(err => console.log(err))
   }
   
   return (
     <div className='permission-container-x1a'>
+      {/* for alert */}
+      <div className="my-alert-comp my-alert-comp-2">
+      <Alert color='danger' isOpen={visible1}>
+        <div className='alert-body text-center'>
+        Permissions added successfully
+        </div>
+      </Alert>
+      </div>
         <div className='mb-1'>
             <span className='text-x1a'>Settings</span>
             <span className='text-x1c' style={{marginLeft:'8px'}}>Permissions</span>
@@ -58,7 +76,8 @@ const Permissions = () => {
         <div className="permission-body-x1a">
             <div className='text-x1a mb-2'>Setup which sections are accesible to each user permission level.  All logged in staff can access the calendar, and
 owner accounts have full system access. </div>
-<div className="table-one-x1a">
+      {/* BOOKINGS & CLIENTS */}
+    <div className="table-one-x1a">
 <div className="table-first-column-x1a">
     <div>BOOKINGS & CLIENTS</div>
     <div>Access own calendar</div>
@@ -222,6 +241,7 @@ owner accounts have full system access. </div>
     </Table>
     </div>
     </div>
+    {/* SERVICES */}
     <div className="table-one-x1a">
     <div className="table-first-column-x1a">
         <div>SERVICES</div>
@@ -280,6 +300,7 @@ owner accounts have full system access. </div>
         </Table>
     </div>
     </div>
+    {/* SALES */}
     <div className="table-one-x1a">
 <div className="table-first-column-x1a">
     <div>SALES</div>
@@ -462,6 +483,7 @@ owner accounts have full system access. </div>
     </Table>
     </div>
     </div>
+    {/* STAFF */}
     <div className="table-one-x1a">
 <div className="table-first-column-x1a">
     <div>STAFF</div>
@@ -590,6 +612,7 @@ owner accounts have full system access. </div>
     </Table>
     </div>
     </div>
+    {/* INVENTORY */}
     <div className="table-one-x1a">
     <div className="table-first-column-x1a">
         <div>INVENTORY</div>
@@ -668,6 +691,7 @@ owner accounts have full system access. </div>
         </Table>
     </div>
     </div>
+    {/* REPORTS */}
     <div className="table-one-x1a">
     <div className="table-first-column-x1a">
         <div>REPORTS</div>
@@ -706,6 +730,7 @@ owner accounts have full system access. </div>
         </Table>
     </div>
     </div>
+    {/* SETUP */}
     <div className="table-one-x1a">
 <div className="table-first-column-x1a">
     <div>SETUP</div>
@@ -852,6 +877,7 @@ owner accounts have full system access. </div>
     </Table>
     </div>
     </div>
+    {/* VOUCHERS */}
     <div className="table-one-x1a">
     <div className="table-first-column-x1a">
         <div>VOUCHERS</div>
@@ -910,6 +936,7 @@ owner accounts have full system access. </div>
         </Table>
     </div>
     </div>
+    {/* CONSULTATION FORMS */}
     <div className="table-one-x1a">
     <div className="table-first-column-x1a">
         <div>CONSULTATION FORMS</div>
@@ -988,6 +1015,7 @@ owner accounts have full system access. </div>
         </Table>
     </div>
     </div>
+    {/* NOTES */}
     <div className="table-one-x1a">
     <div className="table-first-column-x1a">
         <div>NOTES</div>

@@ -10,6 +10,7 @@ import { Modal, ModalBody, ButtonDropdown, DropdownToggle, DropdownMenu, Dropdow
 import { NavLink } from "react-router-dom"
 
 const Integrations = () => {
+  //for modal
   const [centeredModal, setCenteredModal] = useState(false)
 
    //For side menu
@@ -32,7 +33,6 @@ const Integrations = () => {
 
    //For dropdown
    const [dropdownOpen, setDropdownOpen] = useState(false)
-
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen)
   }
@@ -40,6 +40,7 @@ const Integrations = () => {
   return (
     <div className="promote-container-wrapper">
     <div className="promote-container">
+      {/* side menu */}
       <div className="side-menu-wrapper" style={styleTwo}>
         <div className="side-menu-container">
           <div className="promote-text-wrapper">
@@ -68,6 +69,7 @@ const Integrations = () => {
         </button>
       </div>
       <div className="deals-component-wrapper">
+        {/* side menu dropdown */}
       <div  className="side-menu-wrapper-2">
     <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
     <DropdownToggle caret>
@@ -160,8 +162,8 @@ const Integrations = () => {
           </div>
         </div>
       </div>
+      {/* facebook add modal */}
         <Modal isOpen={centeredModal} toggle={() => setCenteredModal(!centeredModal)} className='modal-dialog-centered modal-lg ps-0'>
-         
           <ModalBody>
           <div className="my-deals-container d-flex justify-content-between">
             <X style={{cursor:'pointer'}} onClick={() => setCenteredModal(!centeredModal)} />

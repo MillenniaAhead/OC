@@ -86,7 +86,6 @@
     width:100%
 }
 .service-field{
-    padding:10px;
     background-color: white;
 }
 select:focus,input:focus,textarea:focus{
@@ -215,7 +214,7 @@ textarea{
         width: fit-content;
     }
 }
-@media (max-width:900px){
+@media (max-width:920px){
     .new-appointment-container,.view-appointment-container{
         display:block;
     }

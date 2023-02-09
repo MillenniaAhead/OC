@@ -46,10 +46,12 @@ const WorkingHours = () => {
     setWorkingHours({...workingHours, [e.target.name]:e.target.value})
   }
 
+  //For collect data
   const CollectRepeatData = (e) => {
      setRepeatData({[e.target.name]:e.target.value})
   }
 
+  //Final data by subbmit click
   const HandleWorkingHours = () => {
     console.log(workingHours)
     console.log(repeatData)

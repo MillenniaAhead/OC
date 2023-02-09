@@ -272,7 +272,7 @@ const StepTwo = () => {
       nextStep.push(`/promote/stepthreeedit/${id}`)
       //Call action 
       console.log([promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue, promotionValueType, maxUseValue, minPurchaseValue])
-      CollectDealData([promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue,  promotionValueType, maxUseValue, minPurchaseValue])
+      CollectDealData(["", promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue,  promotionValueType, maxUseValue, minPurchaseValue])
     }
   }
 

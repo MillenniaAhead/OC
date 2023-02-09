@@ -27,7 +27,6 @@ const Deals = () => {
    
    //For dropdown
    const [dropdownOpen, setDropdownOpen] = useState(false)
-
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen)
   }
@@ -35,6 +34,7 @@ const Deals = () => {
   return (
     <div className="promote-container-wrapper">
     <div className="promote-container">
+      {/* Side menu */}
       <div className="side-menu-wrapper" style={styleTwo}>
         <div className="side-menu-container">
           <div className="promote-text-wrapper">
@@ -65,6 +65,7 @@ const Deals = () => {
         </button>
       </div>
       <div className="deals-component-wrapper">
+        {/* side menu dropdown */}
       <div  className="side-menu-wrapper-2">
     <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
       <DropdownToggle caret>

@@ -5,6 +5,9 @@ import { Input, Label, Button } from 'reactstrap'
 import { X } from 'react-feather'
 import axios from 'axios'
 const OpeningHours = () => {
+    //For alert
+    const [visible1, setVisible1] = useState(false)
+    //For select start and end time
     const defaultTime = {start_time:'11:00am', end_time:"10:00pm"}
     const [daysTime, setDaysTime] = useState({
         monday: {...defaultTime},
@@ -16,21 +19,37 @@ const OpeningHours = () => {
         sunday:{...defaultTime}
         })
 
-        const handleDayTime = (day, e) => {
-            setDaysTime({
-            ...daysTime,
-            [day]: { ...daysTime[day], [e.target.name]: e.target.value }
-            })
-            }            
+    //For collect data from dropdown
+    const handleDayTime = (day, e) => {
+        setDaysTime({
+        ...daysTime,
+        [day]: { ...daysTime[day], [e.target.name]: e.target.value }
+        })
+        }            
 
+    // For send data to database
     const showData = () => {
         axios.post('http://localhost:4000/api/openingHours', daysTime)
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res)
+            setVisible1(true)
+            setTimeout(() => {
+              setVisible1(false)
+            }, 3000)
+              })
         .catch(err => console.log(err))
         console.log(daysTime)
     }
     return (
         <div className="opening-hours-container-qqa" style={{marginBottom:"70px"}}>
+            {/* for alert */}
+      <div className="my-alert-comp my-alert-comp-2">
+      <Alert color='danger' isOpen={visible1}>
+        <div className='alert-body text-center'>
+        Opening hours added successfully
+        </div>
+      </Alert>
+      </div>
             <div className="top-va" style={{borderBottom:"1px solid #1bb70b"}}>
                 <div style={{cursor:"pointer"}}><X size={45} strokeWidth={1.2} /></div>
                 <Button.Ripple className="btn-va" color='dark' onClick={showData}>Save</Button.Ripple>
@@ -40,6 +59,7 @@ const OpeningHours = () => {
                     Opening hours
                 </div>
                 <div className="main-box-qqa">
+                    {/* Monday */}
                     <div className="child-box-qqa">
                         <div className='form-check form-check-success d-flex align-items-center checkbox-qqa'>
                             <Input type='checkbox' id='primary-checkbox1' defaultChecked />
@@ -68,6 +88,7 @@ const OpeningHours = () => {
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
+                    {/* Tuesday */}
                     <div className="child-box-qqa">
                         <div className='form-check form-check-success d-flex align-items-center checkbox-qqa'>
                             <Input type='checkbox' id='primary-checkbox2' defaultChecked />
@@ -96,6 +117,7 @@ const OpeningHours = () => {
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
+                    {/* Wednesday */}
                     <div className="child-box-qqa">
                         <div className='form-check form-check-success d-flex align-items-center checkbox-qqa'>
                             <Input type='checkbox' id='primary-checkbox3' defaultChecked />
@@ -124,6 +146,7 @@ const OpeningHours = () => {
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
+                    {/* Thursday */}
                     <div className="child-box-qqa">
                         <div className='form-check form-check-success d-flex align-items-center checkbox-qqa'>
                             <Input type='checkbox' id='primary-checkbox4' defaultChecked />
@@ -152,6 +175,7 @@ const OpeningHours = () => {
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
+                    {/* Friday */}
                     <div className="child-box-qqa">
                         <div className='form-check form-check-success d-flex align-items-center checkbox-qqa'>
                             <Input type='checkbox' id='primary-checkbox5' defaultChecked />
@@ -180,6 +204,7 @@ const OpeningHours = () => {
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
+                    {/* Saturday */}
                     <div className="child-box-qqa">
                         <div className='form-check form-check-success d-flex align-items-center checkbox-qqa'>
                             <Input type='checkbox' id='primary-checkbox6' defaultChecked />
@@ -208,6 +233,7 @@ const OpeningHours = () => {
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
+                    {/* Sunday */}
                     <div className="child-box-qqb">
                         <div className='form-check form-check-success d-flex align-items-center checkbox-qqb'>
                             <Input type='checkbox' id='primary-checkbox7' defaultChecked/>

@@ -8,19 +8,8 @@ import axios from 'axios'
 
 const EditAppointment = () => {
 
-  // For start time options value logic
-  const times = []
-  for (let i = 0; i < 24; i++) {
-    for (let j = 0; j < 60; j += 5) {
-      const hour = i % 12 || 12
-      const minute = j < 10 ? 0 + j : j
-      const amPm = i >= 12 ? "pm" : "am"
-      times.push(`${hour}:${minute} ${amPm}`)
-    }
-  }
-
   // For services dropdown
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [dropdownOpen1, setDropdownOpen1] = useState(false)
   const [dropdownOpen2, setDropdownOpen2] = useState(false)
   
   //For date-picker
@@ -30,6 +19,7 @@ const EditAppointment = () => {
   const [teamMember, setTeamMember] = useState('Select a team member')
   const [myduration, setDuration] = useState("")
   const [service, setService] = useState(["Choose a service"])
+  const [notes, setNotes] = useState("")
 
   //For Alert message
   const [display1, setDisplay1] = useState("none")
@@ -42,10 +32,27 @@ const EditAppointment = () => {
   const [visible2, setVisible2] = useState(false)
   const [visible3, setVisible3] = useState(false)
 
+  //demo price to complete functionality
+  const [myPrice, setMyPrice] = useState("")
+  //demo services for complete functionality\
+  const myServices = [{ name:'Haircut', price:40}, {name:'Hair Color', price:57}, {name:'Blow Dry', price:35}, {name:'Balayage', price:150}, {name:'Facial', price:115}]
+  
+
+  // For start time options value logic
+  const times = []
+  for (let i = 0; i < 24; i++) {
+    for (let j = 0; j < 60; j += 5) {
+      const hour = i % 12 || 12
+      const minute = j < 10 ? 0 + j : j
+      const amPm = i >= 12 ? "pm" : "am"
+      times.push(`${hour}:${minute} ${amPm}`)
+    }
+  }
+
   //Get id by route path
   const { id } = useParams()
-
-  //Get data by id for update a appintment
+  
+  //Get data by id for update a appointment
   useEffect(() => {
     axios.get(`http://localhost:4000/api/newAppointments/${id}`)
     .then(res => {
@@ -55,6 +62,8 @@ const EditAppointment = () => {
         setService(res.data.services)
         setDuration(res.data.duration)
         setTeamMember(res.data.team_member)
+        setNotes(res.data.appointment_note)
+        setMyPrice(myServices.filter((data) => data.name === res.data.services[0])[0].price)
     })
     .catch(err => console.log(err))
   }, [])
@@ -65,8 +74,8 @@ const EditAppointment = () => {
   }
 
   //For services dropdown
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen)
+  const toggleDropdown1 = () => {
+    setDropdownOpen1(!dropdownOpen1)
   }
   const toggleDropdown2 = () => {
     setDropdownOpen2(!dropdownOpen2)
@@ -81,13 +90,13 @@ const EditAppointment = () => {
   //For select Service name
   const ChildSelectService = (e) => {
     setService([e.target.parentElement.id])
-    toggleDropdown()
+    toggleDropdown1()
     e.stopPropagation()
   }
   //For select Service name
   const SecondChildSelectService = (e) => {
     setService([e.target.parentElement.parentElement.id])
-    toggleDropdown()
+    toggleDropdown1()
     e.stopPropagation()
   }
 
@@ -102,11 +111,17 @@ const SelectTeamMember = (current) => {
  setBorder2()
 }
 
+//For appointment notes
+const notesFun = (e) => {
+  setNotes(e.target.value)
+}
+
 //For redirect
 const history = useHistory()
 
-//for submit function
+//for submit (On Click on save appointment)
   const saveAppointment = () => {
+    //If service not selected
     if (service[0] === "Choose a service") {
        setDisplay1('block')
        setBorder1({borderColor:'red'})
@@ -114,6 +129,7 @@ const history = useHistory()
         setTimeout(() => {
           setVisible1(false)
         }, 3000)
+        //If team member not selected
       } else if (teamMember === "Select a team member") {
         setDisplay2('block')
         setBorder2({borderColor:'red'})
@@ -122,8 +138,8 @@ const history = useHistory()
            setVisible2(false)
          }, 3000)
     } else {
-    const finalData = {date:picker, start_time:startTime, services:service, duration:myduration, team_member:teamMember}
-    // Store data to backend with the help of axios
+    const finalData = {date:picker, start_time:startTime, services:service, duration:myduration, team_member:teamMember, appointment_note:notes}
+    // Update data with the help of axios
     axios.put(`http://localhost:4000/api/newAppointments/${id}`, finalData)
     .then(res => {
       console.log(res)
@@ -139,20 +155,7 @@ const history = useHistory()
 
   return (
     <div className='new-appointment-container'>
-      <div className="top-container-aa1">
-      <div>Edit appointment</div>
-      <NavLink to='/timegraph'>
-      <X size={30} className='top-cross-aa1'/>
-      </NavLink>
-      </div>
-      <div className="left-container-aa1">
-      <div className="my-alert-comp my-alert-comp-2">
-      <Alert color='success' isOpen={visible3}>
-        <div className='alert-body text-center fs-4'>
-        Appointment updated successfully
-        </div>
-      </Alert>
-      </div>
+      {/* For alert */}
         <div className="my-alert-comp-2">
       <Alert color='danger' isOpen={visible1}>
         <div className='alert-body text-center'>
@@ -167,6 +170,20 @@ const history = useHistory()
         </div>
       </Alert>
       </div>
+      <div className="my-alert-comp my-alert-comp-2">
+      <Alert color='success' isOpen={visible3}>
+        <div className='alert-body text-center fs-4'>
+        Appointment updated successfully
+        </div>
+      </Alert>
+      </div>
+      <div className="top-container-aa1">
+      <div>Edit appointment</div>
+      <NavLink to='/timegraph'>
+      <X size={30} className='top-cross-aa1'/>
+      </NavLink>
+      </div>
+      <div className="left-container-aa1">
           <div className="box-aa1">
         <div style={{cursor:"pointer"}} className="date-box-aa1 d-flex align-items-center" >
       <Flatpickr
@@ -184,6 +201,7 @@ const history = useHistory()
         <div style={{cursor:"pointer"}} className="repeatation d-flex align-items-center" ><div style={{paddingRight:"4px"}} className='d-flex align-items-start repeat'><RefreshCw strokeWidth={2.5} size={15}/></div><div className='repeat'> Repeat</div></div>
         </div>
         <div className="box-bb1">
+          {/* for start time dropdown */}
           <div className="select-time d-flex flex-column">
             <Label className='form-label text-aa1' for='select-lg'>
             Start time
@@ -192,12 +210,13 @@ const history = useHistory()
             {times.map((time, key) => <option key={key}>{time.split(" ")[0].split(":")[1] < 10 ? `${time.split(" ")[0].split(":")[0]}:0${time.split(" ")[0].split(":")[1]} ${time.split(" ")[1]}` : time }</option>)}
           </Input>
           </div>
+          {/* for services dropdwon */}
           <div className="service d-flex flex-column">
             <label htmlFor="" className='text-aa1'>
               service
               </label>
-            <ButtonDropdown isOpen={dropdownOpen} toggle={toggleDropdown} style={border1}  className="service-field">
-              <DropdownToggle style={{padding:"0"}} color="light">
+            <ButtonDropdown isOpen={dropdownOpen1} toggle={toggleDropdown1} style={border1}  className="service-field">
+              <DropdownToggle style={{padding:"10px"}} color="light">
               <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>{service[0]}</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu' style={{width:"100%", height:'300px', overflow:'scroll'}}>
@@ -246,11 +265,13 @@ const history = useHistory()
             </ButtonDropdown>
             <div style={{display:display1}} className='mb-1 empty-warning'>Service is required</div>
           </div>
+          {/* for duration dropdown */}
           <div className="duration d-flex flex-column">
           <Label className='form-label text-aa1' for='select-lg'>
               Duration
               </Label>
             <Input value={myduration} type='select' name='select' bsSize='lg' id='select-lg' onChange={SelectDuration}>
+              <option>5min</option>
               <option>10min</option>
               <option>15min</option>
               <option>20min</option>
@@ -267,6 +288,7 @@ const history = useHistory()
               <option>1h 15min</option>
               </Input>
           </div>
+          {/* for team-member dropdwon */}
           <div className="team-member d-flex flex-column">
           <Label className='form-label text-aa1' for='select-lg'>
               Team member
@@ -281,21 +303,22 @@ const history = useHistory()
           </div>
         </div>
         {<div className="box-bb1 box-dd1">
+          {/* for start time dropdown 2 */}
         <div className="select-time d-flex flex-column">
             <Label className='form-label text-aa1' for='select-lg'>
             {service.length}Start time
           </Label>
           <Input type='select' name='select' bsSize='lg' id='select-lg'>
-            {/* Start time options from top logic */}
           {times.map((time, key) => <option key={key}>{time.split(" ")[0].split(":")[1] < 10 ? `${time.split(" ")[0].split(":")[0]}:0${time.split(" ")[0].split(":")[1]} ${time.split(" ")[1]}` : time }</option>)}
           </Input>
           </div>
+          {/* for services dropdwon 2 */}
           <div className="service d-flex flex-column">
             <label htmlFor="" className='text-aa1'>
               service
               </label>
             <ButtonDropdown isOpen={dropdownOpen2} toggle={toggleDropdown2}  className="service-field">
-              <DropdownToggle style={{padding:"0"}} color="light">
+              <DropdownToggle style={{padding:"10px"}} color="light">
               <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>Select a service</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu' style={{width:"100%", height:'300px', overflow:'scroll'}}>
@@ -346,7 +369,7 @@ const history = useHistory()
         </div>}
         <div className="box-cc1 d-flex flex-column">
           <label htmlFor="Appointment notes" className='text-aa1'>Appointment notes</label>
-          <textarea className='text-bb1' name="" id="" cols="30" rows="10" placeholder='Add an appointment note (visible to team only)'></textarea>
+          <textarea value={notes} onChange={notesFun} className='text-bb1' name="" id="" cols="30" rows="10" placeholder='Add an appointment note (visible to team only)'></textarea>
         </div>
       </div>
       <div className="right-container-aa1">
@@ -363,7 +386,7 @@ const history = useHistory()
         <div className="description-text-aa1">Use the search to add a client or <br /> keep empty to save as walk-in</div>
         </div>
         <div className="bottom-box-aa1">
-        <div className="total-amount text-cc1">Total free (0min)</div>
+        <div className="total-amount text-cc1">₹{myPrice} {`(${myduration})`}</div>
         <div className="btn-box-aa1 d-flex justify-content-between">
           <button className='express-checkout btn-aa1'>Express checkout</button>
           <button className="save-appointment btn-aa1" onClick={saveAppointment}>Save appointment</button>
