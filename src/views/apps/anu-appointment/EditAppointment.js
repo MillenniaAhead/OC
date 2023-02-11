@@ -86,18 +86,21 @@ const EditAppointment = () => {
     setService([e.target.id])
     setDisplay1("none")
     setBorder1()
+    setMyPrice(myServices.filter((data) => data.name === e.target.id)[0].price)
   } 
   //For select Service name
   const ChildSelectService = (e) => {
     setService([e.target.parentElement.id])
     toggleDropdown1()
     e.stopPropagation()
+    setMyPrice(myServices.filter((data) => data.name === e.target.parentElement.id)[0].price)
   }
   //For select Service name
   const SecondChildSelectService = (e) => {
     setService([e.target.parentElement.parentElement.id])
     toggleDropdown1()
     e.stopPropagation()
+    setMyPrice(myServices.filter((data) => data.name === e.target.parentElement.parentElement.id)[0].price)
   }
 
 //For select Duration

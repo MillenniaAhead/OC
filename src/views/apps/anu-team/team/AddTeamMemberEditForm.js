@@ -126,8 +126,10 @@ const AddTeamMemberEditForm = () => {
         setBorder1()
        }
       if (e.target.name === 'email') {
-        setStyle2({display:'none'})
-        setBorder2()
+        if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+          setStyle2({display:'none'})
+          setBorder2()
+          }
        }
       }
   }
@@ -168,7 +170,7 @@ const AddTeamMemberEditForm = () => {
         setTimeout(() => {
           setVisible1(false)
         }, 3000)
-    } else if (formData.email === "") {
+      } else if (formData.email === "" || !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
       setStyle2({display:'block'})
       setBorder2({border:'1px solid red'})
       setVisible1(true)
@@ -321,7 +323,7 @@ const AddTeamMemberEditForm = () => {
                     Email
                     </Label>
                     <Input value={formData.email} style={border2} type='text' name='email' id='email' onChange={collectData} bsSize='lg' placeholder='mail@example.com' />
-                    <div style={style2} className="text-danger fs-6">This field is required</div>
+                    <div style={style2} className="text-danger fs-6">Please enter a valid email</div>
                     </div>
         <div className='input-va'>
         <Label className='text-vb' for='mobile-number'>

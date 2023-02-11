@@ -91,7 +91,7 @@ const StepTwo = () => {
   }
   }
 
-  //For add and remove servoces
+  //For add and remove services
   const addService = (event) => {
     if (event.target.name === "all_services") {
       if (service.length === 3) {
@@ -742,6 +742,7 @@ const StepTwo = () => {
                       <p className="text-e5">Start date</p>
                       <div className="select-box">
                         <Flatpickr
+                          className="form-control"
                           value={picker1}
                           onChange={date => setPicker1(date)}
                         />
@@ -751,6 +752,7 @@ const StepTwo = () => {
                       <p className="text-e5">End date</p>
                       <div className="select-box">
                       <Flatpickr
+                          className="form-control"
                           value={picker2}
                           onChange={date => setPicker2(date)}
                         />
