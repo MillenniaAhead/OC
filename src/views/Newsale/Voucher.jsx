@@ -1,6 +1,8 @@
 import Glass from "../../assets/images/Newsale/images/search.png"
 import Search from "../../assets/images/Newsale/images/search-new.png"
 
+import axios from "axios"
+
 // ** React Imports
 import { Fragment, useState } from "react"
 
@@ -14,6 +16,25 @@ const Voucher = () => {
 
   // // ** States
   const [show, setShow] = useState(false)
+  const [name, setName] = useState("")
+
+  const handlename = (e) => {
+    setName(e.target.value)
+  }
+
+  const handlestatus = () => {
+    console.log({ name })
+    axios
+      .post("http://localhost:4000/api/vouchersold", {
+        name
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
     <div>
@@ -114,6 +135,8 @@ const Voucher = () => {
 
               <div style={{ marginTop: "-5px" }} className="input-group mb-2">
                 <input
+                  value={name}
+                  onChange={handlename}
                   type="text"
                   className="form-control"
                   placeholder="All statuses"
@@ -145,6 +168,7 @@ const Voucher = () => {
                 </div>
                 <div>
                   <button
+                    onClick={handlestatus}
                     style={{ background: "#4E4E4E", color: "white" }}
                     type="button"
                     className="btn rounded-1 px-2"

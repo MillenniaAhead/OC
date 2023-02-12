@@ -1,8 +1,31 @@
-import React from "react"
+import React, { useState } from "react"
 import Glass from "../../assets/images/Newsale/images/search.png"
 import Sales from "../../assets/images/Newsale/images/history.png"
 
+import axios from "axios"
+
 const SalesHistory = () => {
+
+  const [search, setSearch] = useState("")
+
+  const handlesearch = (e) => {
+    setSearch(e.target.value)
+  }
+
+  const handleHistory = () => {
+    console.log({ search })
+    axios
+      .post("http://localhost:4000/api/saleshistory", {
+        search
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <div>
       <div
@@ -41,6 +64,7 @@ const SalesHistory = () => {
             <div className="input-group col-md-4">
               <span className="input-group-append">
                 <button
+                  onClick={handleHistory}
                   style={{ background: "white" }}
                   className="btn border border-end-0"
                   type="button"
@@ -49,6 +73,8 @@ const SalesHistory = () => {
                 </button>
               </span>
               <input
+                value={search}
+                onChange={handlesearch}
                 className="form-control border-right-0 border"
                 type="search"
                 placeholder="Search by Invoice or Client"

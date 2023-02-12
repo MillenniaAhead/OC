@@ -28,8 +28,8 @@ const Memberships = () => {
   const handleApi = () => {
     console.log({ name })
     axios
-      .get("https://reqres.in/api/memberships", {
-        name
+      .post("http://localhost:4000/api/membership", {
+        name   
       })
       .then((result) => {
         console.log(result.data)

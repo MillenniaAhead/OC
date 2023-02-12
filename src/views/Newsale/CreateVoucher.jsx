@@ -38,7 +38,7 @@ const CreateVoucher = () => {
   const handleSearchModal = () => {
     console.log({ search })
     axios
-      .get("https://reqres.in/api/search", {
+      .post("http://localhost:4000/api/createvoucher", {
         search
       })
       .then((result) => {
@@ -52,7 +52,7 @@ const CreateVoucher = () => {
   const handleCreateVoucher = () => {
     console.log({ name, value, retailPrice })
     axios
-      .get("https://reqres.in/api/create", {
+      .post("http://localhost:4000/api/createvoucher", {
         name,
         value,
         retailPrice
@@ -179,7 +179,7 @@ const CreateVoucher = () => {
               <input
                 value={value}
                 onChange={handlevalue}
-                type="text"
+                type="number"
                 className="form-control border"
               />
             </div>
@@ -197,7 +197,7 @@ const CreateVoucher = () => {
               <input
                 value={retailPrice}
                 onChange={handleRetailPrice}
-                type="text"
+                type="number"
                 className="form-control border"
               />
             </div>

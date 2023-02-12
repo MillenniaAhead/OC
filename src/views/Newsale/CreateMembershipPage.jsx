@@ -47,7 +47,7 @@ const CreateMembershipPage = () => {
       termsConditions
     })
     axios
-      .get("https://reqres.in/api/create", {
+      .post("http://localhost:4000/api/createmembership", {
         name,
         description,
         services,

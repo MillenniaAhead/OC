@@ -17,7 +17,7 @@ const Products = () => {
   const handleApi = () => {
     console.log({ name })
     axios
-      .get("https://reqres.in/api/name", {
+      .post("http://localhost:4000/api/products", {
         name
       })
       .then((result) => {

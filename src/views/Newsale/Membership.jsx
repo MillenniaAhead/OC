@@ -1,6 +1,8 @@
 import Glass from "../../assets/images/Newsale/images/search.png"
 import Group from "../../assets/images/Newsale/images/Group 298.png"
 
+import axios from "axios"
+
 // ** React Imports
 import { Fragment, useState } from "react"
 
@@ -13,12 +15,37 @@ import { Sliders } from "react-feather"
 const Membership = () => {
   // ** States
   const [show, setShow] = useState(false)
+  const [status, setStatus] = useState("")
+  const [types, setTypes] = useState("")
+
+  const handlestatus = (e) => {
+    setStatus(e.target.value)
+  }
+
+  const handletypes = (e) => {
+    setTypes(e.target.value)
+  }
+
+
+  const handlemeMebership = () => {
+    console.log({ status, types })
+    axios
+      .post("http://localhost:4000/api/membershipsold", {
+        status,
+        types
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
     <div>
       <div
         style={{ marginTop: "50px", marginLeft: "200px" }}
-        clsasName="d-flex justify-content-between"
       >
         <div>
           <p className="fw-bolder" style={{ fontSize: "30px", color: "black" }}>
@@ -105,6 +132,8 @@ const Membership = () => {
 
               <div style={{ marginTop: "-5px" }} className="input-group mb-3">
                 <input
+                  value={status}
+                  onChange={handlestatus}
                   type="text"
                   className="form-control"
                   placeholder="All statuses"
@@ -124,6 +153,8 @@ const Membership = () => {
 
               <div style={{ marginTop: "-5px" }} className="input-group mb-2">
                 <input
+                  value={types}
+                  onChange={handletypes}
                   type="text"
                   className="form-control"
                   placeholder="All types"
@@ -154,6 +185,7 @@ const Membership = () => {
                 </div>
                 <div>
                   <button
+                    onClick={handlemeMebership}
                     style={{ background: "#4E4E4E", color: "white" }}
                     type="button"
                     className="btn rounded-1 px-2"

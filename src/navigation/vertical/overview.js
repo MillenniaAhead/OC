@@ -1,11 +1,11 @@
 // ** Icons Import
-import { Home, Circle } from 'react-feather'
+import { Home } from 'react-feather'
 
 export default [
   {
     id: 'overview',
-    title: 'Overview',
-    icon: <Home size={20} />,
-    navLink: '/overview'
+    title: 'Home', 
+    icon: <Home style={{width: '30px', height: '30px'}} size={20} color='black'/>,
+    navLink: '/home'
   }
 ]

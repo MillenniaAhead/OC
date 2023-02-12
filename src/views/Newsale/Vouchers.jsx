@@ -19,7 +19,7 @@ const Vouchers = () => {
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
   const [retailPrice, setRetailPrice] = useState("")
-  const [voucher, setVoucher] = useState("")
+  const [voucherName, setVoucherName] = useState("")
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -34,16 +34,16 @@ const Vouchers = () => {
   }
 
   const handleVoucher = (e) => {
-    setVoucher(e.target.value)
+    setVoucherName(e.target.value)
   }
 
   const handleCreateVoucher = () => {
-    console.log({ price, retailPrice, voucher })
+    console.log({ price, retailPrice, voucherName })
     axios
-      .get("https://reqres.in/api/create", {
+      .post("http://localhost:4000/api/voucher", {
         price,
         retailPrice,
-        voucher
+        voucherName
       })
       .then((result) => {
         console.log(result.data)
@@ -56,7 +56,7 @@ const Vouchers = () => {
   const handleApi = () => {
     console.log({ name })
     axios
-      .get("https://reqres.in/api/name", {
+      .get("http://localhost:4000/api/voucher", {
         name
       })
       .then((result) => {
@@ -273,7 +273,7 @@ const Vouchers = () => {
                           value={price}
                           onChange={handlePrice}
                           style={{ height: "50px" }}
-                          type="text"
+                          type="number"
                           className="form-control"
                           placeholder="Enter value"
                         />
@@ -291,7 +291,7 @@ const Vouchers = () => {
                         <input
                           value={retailPrice}
                           onChange={handleRetailPrice}
-                          type="text"
+                          type="number"
                           className="form-control"
                           placeholder="Enter retail price"
                         />
@@ -336,7 +336,7 @@ const Vouchers = () => {
                           width: "460px",
                           height: "45px"
                         }}
-                        value={voucher}
+                        value={voucherName}
                         onChange={handleVoucher}
                         type="text"
                         className="form-control rounded-1"

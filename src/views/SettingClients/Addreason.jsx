@@ -1,3 +1,4 @@
+import axios from "axios"
 import { Fragment, useState } from "react"
 import { Menu, Lock } from "react-feather"
 
@@ -8,6 +9,31 @@ const Addreason = () => {
   const [name, setName] = useState("")
   const [name2, setName2] = useState("")
   const [name3, setName3] = useState("")
+
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleName2 = (e) => {
+    setName2(e.target.value)
+  }
+
+  const handleName3 = (e) => {
+    setName3(e.target.value)
+  }
+
+const handleApi = () => {
+  console.log({name, name2, name3})
+  axios.post("http://localhost:4000/api/reason", {
+    name, name2, name3 
+  })
+  .then((result) => {
+    console.log(result.data)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+}
 
   return (
     <div style={{ marginTop: "30px" }} className="container">
@@ -146,6 +172,8 @@ const Addreason = () => {
                     <label style={{ color: "black" }}> Name</label>
                     <div style={{ marginTop: "5px" }} className="input-group">
                       <input
+                        value={name}
+                        onChange={handleName}
                         type="text"
                         className="form-control"
                         placeholder="Duplicate appointment"
@@ -169,6 +197,7 @@ const Addreason = () => {
                       Delete
                     </button>
                     <button
+                      onClick={handleApi}
                       type="button"
                       className="btn btn-secondary px-2 py-1"
                       data-bs-dismiss="modal"
@@ -228,6 +257,8 @@ const Addreason = () => {
                     <label style={{ color: "black" }}> Name</label>
                     <div style={{ marginTop: "5px" }} className="input-group">
                       <input
+                        value={name2}
+                        onChange={handleName2}
                         type="text"
                         className="form-control"
                         placeholder="Appointment made by mistake"
@@ -251,6 +282,7 @@ const Addreason = () => {
                       Delete
                     </button>
                     <button
+                      onClick={handleApi}
                       type="button"
                       className="btn btn-secondary px-2 py-1"
                       data-bs-dismiss="modal"
@@ -313,6 +345,8 @@ const Addreason = () => {
                     <label style={{ color: "black" }}> Name</label>
                     <div style={{ marginTop: "5px" }} className="input-group">
                       <input
+                        value={name3}
+                        onChange={handleName3}
                         type="text"
                         className="form-control"
                         placeholder="Client not available"
@@ -336,6 +370,7 @@ const Addreason = () => {
                       Delete
                     </button>
                     <button
+                      onClick={handleApi}
                       type="button"
                       className="btn btn-secondary px-2 py-1"
                       data-bs-dismiss="modal"

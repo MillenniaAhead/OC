@@ -90,7 +90,7 @@ const NewProduct = () => {
       reorderQuantity
     })
     axios
-      .get("https://reqres.in/api/newproduct", {
+      .post("http://localhost:4000/api/newproduct", {
         name,
         code,
         ammount,
@@ -351,7 +351,7 @@ const NewProduct = () => {
               <input
                 value={supplyPrice}
                 onChange={handleSupplyPrice}
-                type="text"
+                type="number"
                 className="form-control rounded-1"
                 placeholder="0.00"
               />
@@ -659,7 +659,7 @@ const NewProduct = () => {
                   value={stockQuantity}
                   onChange={handleStockQuantity}
                   style={{ width: "585px", height: "45px", marginTop: "5px" }}
-                  type="text"
+                  type="number"
                   className="form-control rounded-1"
                   placeholder="0"
                 />
@@ -696,7 +696,7 @@ const NewProduct = () => {
               <input
                 value={lowstocklevel}
                 onChange={handleLowStockLevel}
-                type="text"
+                type="number"
                 className="form-control px-1 py-1 rounded-1"
                 placeholder="0"
               />
@@ -720,7 +720,7 @@ const NewProduct = () => {
               <input
                 value={reorderQuantity}
                 onChange={handleReorderQuantity}
-                type="text"
+                type="number"
                 className="form-control px-1 py-1 rounded-1"
                 placeholder="0"
               />

@@ -1,6 +1,8 @@
 import Glass from "../../assets/images/Newsale/images/search.png"
 import Search from "../../assets/images/Newsale/images/search-new.png"
 
+import axios from "axios"
+
 // // ** React Imports
 import { Fragment, useState } from "react"
 
@@ -13,6 +15,31 @@ import { Sliders } from "react-feather"
 const Appointments = () => {
   // // ** States
   const [show, setShow] = useState(false)
+  const [member, setMember] = useState("")
+  const [channel, setChannel] = useState("")
+
+  const handlemember = (e) => {
+    setMember(e.target.value)
+  }
+
+  const handlechannel = (e) => {
+    setChannel(e.target.value)
+  }
+
+  const handleAppointments = () => {
+    console.log({ member, channel })
+    axios
+      .post("http://localhost:4000/api/appointments", {
+       member,
+       channel
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
     <div>
@@ -135,6 +162,8 @@ const Appointments = () => {
 
               <div style={{ marginTop: "-5px" }} className="input-group mb-2">
                 <input
+                  value={member}
+                  onChange={handlemember}
                   type="text"
                   className="form-control"
                   placeholder="All team members"
@@ -150,6 +179,8 @@ const Appointments = () => {
 
               <div style={{ marginTop: "-5px" }} className="input-group mb-2">
                 <input
+                  value={channel}
+                  onChange={handlechannel}
                   type="text"
                   className="form-control"
                   placeholder="All channels"
@@ -181,6 +212,7 @@ const Appointments = () => {
                   </div>
                   <div>
                     <button
+                      onClick={handleAppointments}
                       style={{ background: "#4E4E4E", color: "white" }}
                       type="button"
                       className="btn rounded-1 px-2"

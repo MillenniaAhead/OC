@@ -18,7 +18,7 @@ const Services = () => {
   const handleApi = () => {
     console.log({ name })
     axios
-      .get("https://reqres.in/api/services", {
+      .post("http://localhost:4000/api/services", {
         name
       })
       .then((result) => {
