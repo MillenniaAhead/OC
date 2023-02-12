@@ -36,7 +36,7 @@ the cart menu.</p>
                     
                         </div>
                             </div>
-                            <div className="mt-2 border me-5 ps-3 pt-3">
+                            <div className="mt-2 border text-dark me-5 ps-3 pt-3">
                             <Label className='form-label' for='input-large'>
                             <span className='text-dark fw-bolder fs-5 mt-2'>1.Tip value</span>
                             </Label>
@@ -47,9 +47,9 @@ the cart menu.</p>
                             <Label className='form-label' for='input-large'>
                             <span className='text-dark fw-bolder fs-5 mt-2'>2.Tip value</span>
                             </Label>
-                            <InputGroup className='mb-2'>
+                            <InputGroup className='mb-2 '>
                             <InputGroupText>%</InputGroupText>
-                            <Input  placeholder='18' />
+                            <Input  value='18' />
                         </InputGroup>
                             <Label className='form-label' for='input-large'>
                             <span className='text-dark fw-bolder fs-5 mt-2'>3.Tip value</span>
