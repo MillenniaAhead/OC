@@ -22,7 +22,7 @@ export default [
     icon: <Smile style={{width: '30px', height: '30px'}} color='black' />,
     action: 'read',
     resource: 'ACL',
-    navLink: '/'
+    navLink: '/sanclient/client'
   },
   {
     id: 'catalogue',

@@ -25,6 +25,7 @@ import NewSaleRoutes from './Newsale'
 import HomeRoute from './Home'
 import CalenderRoute from './Calender'
 import SettingClients from './Settingclients'
+import SanSetSalesRoutes from './SanSetSales'
 
 // ** Document title
 const TemplateTitle = '%s - Vuexy React Admin Template'
@@ -57,7 +58,8 @@ const Routes = [
   ...NewSaleRoutes,
   ...SettingClients,
   ...HomeRoute,
-  ...CalenderRoute
+  ...CalenderRoute,
+  ...SanSetSalesRoutes
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }

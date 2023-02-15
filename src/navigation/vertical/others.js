@@ -8,7 +8,7 @@ export default [
     icon: <Volume1 style={{width: '30px', height: '30px'}} color='black'/>,
     action: 'read',
     resource: 'ACL',
-    navLink: '/promote'
+    navLink: '/promote/deals'
   },
   {
     id: 'Reports',
@@ -16,7 +16,7 @@ export default [
     icon: <ExternalLink style={{width: '30px', height: '30px'}} color='black'/>,
     action: 'read',
     resource: 'ACL',
-    navLink: '/'
+    navLink: '/san-reports/client-list'
   },
   {
     id: 'Settings',
@@ -24,7 +24,7 @@ export default [
     icon: <Settings style={{width: '30px', height: '30px'}} color='black'/>,
     action: 'read',
     resource: 'ACL',
-    navLink: '/sources'
+    navLink: '/sansetsale/saleinvoice'
   },
   {
     id: 'Support',
