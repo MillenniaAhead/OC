@@ -99,6 +99,18 @@ const StepTwo = () => {
       } else {
         setService(["Haircut", "Beard Trim", "Classic Fill"])
       }
+  } else if (event.target.name === "Hair") {
+    if (service.includes("Haircut", "Beard Trim")) {
+      setService(service.filter(service => service !== "Haircut" && service !== "Beard Trim"))
+    } else {
+      if (service.includes("Haircut")) {
+      setService([...service, "Beard Trim"])
+    } else if (service.includes("Beard Trim")) {
+      setService([...service, "Haircut"])
+    } else {
+      setService([...service, "Haircut", "Beard Trim"])
+    }
+    } 
   } else { 
     if (service.includes(event.target.value)) {
       const deselect = service.filter(
@@ -380,7 +392,7 @@ const StepTwo = () => {
                   <div className="edit-options">
                     <div className="option-1 edit-option">
                       <div className="option-text">
-                        <p className="text-f5">All services</p>
+                        <p className="text-f5">{service.length === 3 ? "All services" : `${service.length} services`}</p>
                       </div>
                       <div className="edit-btn">
                         <div
@@ -430,9 +442,10 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="Hair"
-                                value="Hair"
-                                readOnly
+                                value="Haircut, Beard Trim"
                                 id='Hair'
+                                onChange={addService}
+                                checked={service.some((service) => service === 'Haircut') && service.some((service) => service === 'Beard Trim')}
                               />
                             </label>
                             <div>
@@ -485,9 +498,10 @@ const StepTwo = () => {
                                 className="edit-checkbox"
                                 type="checkbox"
                                 name="service3"
-                                value="Brows & Lashes"
+                                value="Classic Fill"
                                 id='Bows-&-Lashes'
-                                readOnly
+                                onChange={addService}
+                                checked={service.some((service) => service === 'Classic Fill')}
                               />
                             </label>
                             <div>
@@ -501,7 +515,7 @@ const StepTwo = () => {
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service3"
+                                name="Brows_and_Lashes"
                                 value="Classic Fill"
                                 id='Classic-Fill'
                                 onChange={addService}
@@ -533,7 +547,7 @@ const StepTwo = () => {
                     </div>
                     <div className="option-2 edit-option">
                       <div className="option-text">
-                        <p className="text-f5">All products</p>
+                        <p className="text-f5">{product.length === 3 ? "All products" : `${product.length} products`}</p>
                       </div>
                       <div className="edit-btn">
                         <div

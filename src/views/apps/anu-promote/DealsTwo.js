@@ -197,7 +197,7 @@ export const DealsTwo = () => {
         </div>
         <div className="list-detail-a">
             <p className='text-n'>{deal.name}</p>
-            <p className='text-o'>{deal.promotion_value + deal.promotion_value_type} discount for all services and products</p>
+            <p className='text-o'>{deal.promotion_value + deal.promotion_value_type} discount for {deal.services.length === 3 ? "All services" : `${deal.services.length} services`} and {deal.products.length === 3 ? "All products" : `${deal.products.length} products`}</p>
             <p className='text-o'>{start_date0} to {end_date0 === "Invalid Date" ? 'Outgoing' : end_date0}</p>
         </div>
         </div>

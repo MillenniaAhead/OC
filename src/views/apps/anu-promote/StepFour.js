@@ -58,7 +58,7 @@ const StepFour = () => {
                 <Tag size={35} className='icon-a1' />
                 </div>
                 <div>
-                <p>{reducerData[7] + reducerData[8]} discount on all product and all service</p>
+                <p>{reducerData[7] + reducerData[8]} discount on {reducerData[3].length === 3 ? "All services" : `${reducerData[3].length} services`} and {reducerData[4].length === 3 ? "All products" : `${reducerData[4].length} products`}</p>
                 </div>
               </div>
               <div  className='detail-dabba'>
@@ -66,7 +66,7 @@ const StepFour = () => {
                 <img src={ticketG} alt="" />
                 </div>
                 <div>
-                <p>Promotion can be redeemed at Point of Sale</p>
+                <p>Promotion can be redeemed {reducerData[11] && !reducerData[12] ? "at Point of Sale" : ""} {reducerData[12] && !reducerData[11] ? "by discount code" : ""} {reducerData[11] && reducerData[12] ? "at Point of Sale and by discount code" : ""}</p>
                 </div>
               </div>
               <div  className='detail-dabba'>
@@ -74,7 +74,7 @@ const StepFour = () => {
                     <Calendar size={35} className='icon-a1'/>
                 </div>
                 <div>
-                <p>Promotion starts on {start_date} and {end_date === "Outgoing" ? "Outgoing" : `end on ${end_date}`}</p>
+                <p>Promotion starts on {start_date} and {end_date === "Outgoing" ? "is Outgoing" : `end on ${end_date}`}</p>
                 </div>
               </div>
             </div>
