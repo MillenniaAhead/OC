@@ -10,6 +10,7 @@ import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 import ProductDetailsRoutes from './ProductDetails' 
 import ReviewStocktakesRoutes from './ReviewStocktakes'
+// import AccountSetUpRoutes from './AccountSetUp'
 
 //My work
 import AnuAppointment from './AnuAppointment'
@@ -38,6 +39,7 @@ const DefaultRoute = '/overview'
 
 // ** Merge Routes
 const Routes = [
+  // ...AccountSetUpRoutes,
   ...AnuTeam,
   ...SanReport,
   ...AnuPromote,

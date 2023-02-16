@@ -203,7 +203,7 @@ const notesFun = (e) => {
               service
               </label>
             <ButtonDropdown isOpen={dropdownOpen1} toggle={toggleDropdown1} style={border1}  className="service-field">
-              <DropdownToggle style={{padding:"10"}} color="light">
+              <DropdownToggle style={{padding:"10", background:'white'}} color="light">
               <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>{service[0]}</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu' style={{width:"100%", height:'300px', overflow:'scroll'}}>
@@ -305,7 +305,7 @@ const notesFun = (e) => {
               service
               </label>
             <ButtonDropdown isOpen={dropdownOpen2} toggle={toggleDropdown2}  className="service-field">
-              <DropdownToggle style={{padding:"10"}} color="light">
+              <DropdownToggle style={{padding:"10", background:'white'}} color="light">
               <div className='text-bb1 d-flex justify-content-between' style={{background:'white'}}><div>Select a service</div> <div size={10}><ChevronDown/></div></div>
               </DropdownToggle>
               <DropdownMenu className='dropdown-menu' style={{width:"100%", height:'300px', overflow:'scroll'}}>
