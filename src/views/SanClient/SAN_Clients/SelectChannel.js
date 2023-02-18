@@ -12,7 +12,7 @@ const SelectChannel = () => {
                   <div>
                     <a ><img src={X} alt="" /></a>
                     <a  className=" fs-4 text-success">Previous</a></div>
-                  <div><button type="button" class="btn btn-dark nextButton">Next Step</button></div>
+                  <div><button type="button" className="btn btn-dark nextButton">Next Step</button></div>
             </div>
             <div>
                 <p className='text-muted fs-5 text-center'>New appointment automated message</p>
@@ -38,13 +38,13 @@ const SelectChannel = () => {
               <Input type='switch' id='switch-success' name='success' defaultChecked />
             </div></div>
         </div>
-        <button type="button" class="btn btn-success my-1 btn-sm">FREE</button>
+        <button type="button" className="btn btn-success my-1 btn-sm">FREE</button>
         <p className="fs-6 mt-1">
         Send this automated message via <br />
         email.Customise your email with <br />
         important information for clients.
         </p>
-        <button type="button" class="bg-white border py-1 px-2 fw-bold  my-2 border-1 rounded">Preview and edit</button>
+        <button type="button" className="bg-white border py-1 px-2 fw-bold  my-2 border-1 rounded">Preview and edit</button>
 
          </div>
         </div>
@@ -71,13 +71,13 @@ const SelectChannel = () => {
               <Input type='switch' id='switch-success' name='success' defaultChecked />
             </div></div>
         </div>
-        <button type="button" class="btn btn-success my-1 btn-sm">FREE</button>
+        <button type="button" className="btn btn-success my-1 btn-sm">FREE</button>
         <p className="fs-6 mt-1">
          Send this automated message via app <br />
           notification, to all your clients who use <br />
           Outlet control marketplace app.
         </p>
-        <button type="button" class="bg-white border fw-bold my-2  px-2 py-1 border-1 rounded">Preview </button>
+        <button type="button" className="bg-white border fw-bold my-2  px-2 py-1 border-1 rounded">Preview </button>
 
          </div>
         </div>

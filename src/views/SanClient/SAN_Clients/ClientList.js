@@ -51,7 +51,7 @@ const ClientList = () => {
       <UncontrolledButtonDropdown></UncontrolledButtonDropdown>
             
     <NavLink to="/sanclient/addClient">
-    <button type="button" style={{height:"60px", width:"150px", marginTop:'8px'}} class="btn btn-dark" >Add client</button>
+    <button type="button" style={{height:"60px", width:"150px", marginTop:'8px'}} className="btn btn-dark" >Add client</button>
     </NavLink>
 
             </div>
@@ -133,7 +133,7 @@ online.</h3>
           <td className='text-nowrap'><div  spacing={2} className=" d-flex">
                       <div className=' fs-2 w-40 h-40' > {row.avatar}</div>
                     <div className='ms-1 '>
-                      <Link  >{row.Clint_name} </Link><br/>{row.email}
+                      <Link to="#" >{row.Clint_name} </Link><br/>{row.email}
                       </div>
                   </div></td>
           <td className='text-nowrap'>{row.Mobile_number}</td>

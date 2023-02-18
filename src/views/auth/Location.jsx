@@ -89,15 +89,15 @@ const Location = () => {
         </p>
         <div
           style={{ width: "550px", marginRight: "160px" }}
-          class="input-group mb-3"
+          className="input-group mb-3"
         >
-          <span style={{ background: "#F5F5F5" }} class="input-group-text">
+          <span style={{ background: "#F5F5F5" }} className="input-group-text">
          <img src={Map} alt="map" />
           </span>
           <input
             style={{ backgroundColor: "#F5F5F5" }}
             type="text"
-            class="form-control"
+            className="form-control"
           />
         </div>
         <div

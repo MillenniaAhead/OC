@@ -19,12 +19,12 @@ const CardsLayout = () => {
           <Container>
               <Row>
                   <Col xs ={12} >
-                                 <div class="d-flex flex-column align-items-center">
-                                      <div class=""><h5>No products yet</h5></div>
-                                      <div class="">  <p className='text-secondary '> Your products will appear here.<br></br> Import
+                                 <div className="d-flex flex-column align-items-center">
+                                      <div className=""><h5>No products yet</h5></div>
+                                      <div className="">  <p className='text-secondary '> Your products will appear here.<br></br> Import
                         products in minutes and<br></br>  start selling them
                         online and at your location.</p></div>
-                                      <div class="">  <ImportProductsModal /></div>
+                                      <div className="">  <ImportProductsModal /></div>
                                                                 
                                </div>      
               

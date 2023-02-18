@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { Fragment, useState } from 'react'
 // ** Reactstrap Imports
 import { Button, Modal, ModalHeader, ModalBody, Input, Label, ModalFooter} from 'reactstrap'
@@ -13,6 +14,28 @@ const ModalConfig = [
 ]
 const Addpaytype = () => {
     const [modal, setModal] = useState(null)
+    const [pay, setPay] = useState({
+      payment:""
+    })
+    const setData = (e) => {
+      console.log(e?.target?.value)
+      const {name, value} = e?.target
+      setPay((preval) => {
+          return {
+              ...preval,
+              [name]: value
+          }
+       })
+     }
+     
+     const handleSave = async (e) => {
+      e?.preventDefault()
+  
+      console.log(pay)
+      axios.post('http://localhost:8000/api/sansetsales/pay', pay)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+    }
 
   const toggleModal = id => {
     if (modal !== id) {
@@ -46,13 +69,13 @@ const Addpaytype = () => {
             <Label className='form-label text-dark fw-bolder' for='basicInput'>
             Name
             </Label>
-            <Input type='text' id='basicInput'  placeholder='e.g. Mastercard'/>
+            <Input type='text' onChange={setData} value={pay.payment} name='payment' id='basicInput'  placeholder='e.g. Mastercard'/>
             </div>
             
           </ModalBody>
           <ModalFooter>
           
-          <Button color='dark' onClick={() => toggleModal(item.id)}>
+          <Button color='dark' onClick={handleSave}> 
               Save
             </Button>
           </ModalFooter>

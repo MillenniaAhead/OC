@@ -31,7 +31,7 @@ const ImportProductsModal = () => {
 
   const renderModal = ModalConfig.map(item => {
     return (
-      <Fragment key={item.id} class="mx-auto">
+      <Fragment key={item.id} className="mx-auto">
         <div>
           <Button color='secondary' onClick={() => toggleModal(item.id)} key={item.title} >
             {item.btnTitle}
@@ -50,10 +50,10 @@ const ImportProductsModal = () => {
           <hr className='black'></hr>
           <ModalBody className='text-center'>
           <span>Import products</span>
-          <h3 class="text-black bold mt-2">Upload file</h3>
+          <h3 className="text-black bold mt-2">Upload file</h3>
           <p>Upload a CSV file with your product data, or download and fill the template below. <Link> Learn more </Link></p>
-                <div class="card mx-auto text-center mt-3 mb-3 ">
-                    <div class=" mt-3 mb-3">
+                <div className="card mx-auto text-center mt-3 mb-3 ">
+                    <div className=" mt-3 mb-3">
                     <p>For the best quality upload, input your data into the template below, <br></br>
 then upload the file to import.</p>
                      <span>Download template</span>

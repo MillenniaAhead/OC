@@ -24,8 +24,8 @@ const ApplyDefultmodal = () => {
   }
   const renderModal = ModalConfig.map(item => {
     return (
-      <Fragment key={item.id} className="mx-auto">
-        <div>
+      <Fragment key={item.id} >
+        <div className="mx-auto">
         <Button.Ripple color='dark' outline onClick={() => toggleModal(item.id)} key={item.title} >              
                 {item.btnTitle}
           </Button.Ripple>

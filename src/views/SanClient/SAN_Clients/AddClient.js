@@ -6,11 +6,43 @@ import Cleave from 'cleave.js/react'
 import Flatpickr from 'react-flatpickr'
 import 'cleave.js/dist/addons/cleave-phone.us'
 import 'flatpickr/dist/flatpickr.css'
+import axios from 'axios'
 
 
 const AddClient = () => {
     const options = { phone: true, phoneRegionCode: 'IN' }
     const [picker, setPicker] = useState(new Date())
+    const [client, setClient] = useState({
+      firstName:"",
+      lastName:"",
+      phone:"",
+      email:"",
+      gender:"",
+      birthdate:picker,
+      clientInfo:"",
+      additionalPhone:"",
+      clientSource:"",
+      language:""
+    })
+    const setData = (e) => {
+      console.log(e?.target?.value)
+      const {name, value} = e?.target
+      setClient((preval) => {
+          return {
+              ...preval,
+              [name]: value
+          }
+       })
+     }
+     
+     const handleSave = async (e) => {
+      e.preventDefault()
+  
+    console.log(client)
+      axios.post('http://localhost:8000/api/sanclients/client', client)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+    }
     return (
         <div >
             <div className='d-flex justify-content-between mx-4 mt-3'>
@@ -18,7 +50,7 @@ const AddClient = () => {
                     <img src={X} alt="" />
                 </div>
                 <div>
-                <button type="button" class="btn btn-dark px-4 py-1">Save</button>
+                <button type="button" onClick={handleSave} className="btn btn-dark px-4 py-1">Save</button>
                 </div>
             </div>
             <div className="container-fulid mt-3">
@@ -36,22 +68,22 @@ const AddClient = () => {
         <Form>
           <Row>
             <Col md='6' sm='12' className='mb-1'>
-              <Label className='form-label' for='nameMulti'>
+              <Label className='form-label'  for='nameMulti'>
                 First Name
               </Label>
-              <Input type='text' name='name' id='nameMulti' placeholder='First Name' />
+              <Input type='text'onChange={setData} value={client.firstName} name="firstName" id='nameMulti' placeholder='First Name' />
             </Col>
             <Col md='6' sm='12' className='mb-1'>
               <Label className='form-label' for='lastNameMulti'>
                 Last Name
               </Label>
-              <Input type='text' name='lastname' id='lastNameMulti' placeholder='Last Name' />
+              <Input type='text' onChange={setData} value={client.lastName} name='lastName' id='lastNameMulti' placeholder='Last Name' />
             </Col>
             <Col md='6' sm='12' className='mb-1'>
             <Label for='phone-number'>Phone Number</Label>
       <InputGroup className='input-group-merge'>
         <InputGroupText>+91</InputGroupText>
-        <Cleave className='form-control' placeholder='1 234 567 8900' options={options} id='phone-number' />
+        <Cleave className='form-control'name='phone' onChange={setData} value={client.phone} placeholder='1 234 567 8900' options={options} id='phone-number' />
       </InputGroup>
               
             </Col>
@@ -59,13 +91,13 @@ const AddClient = () => {
               <Label className='form-label' for='EmailMulti'>
                 Email
               </Label>
-              <Input type='email' name='Email' id='EmailMulti' placeholder='Email' />
+              <Input type='email' onChange={setData} value={client.email} name='email' id='EmailMulti' placeholder='Email' />
             </Col>
             <Col md='12' sm='12' className='mb-1'>
             <Label className='form-label' for='select-basic'>
             Gender
           </Label>
-          <Input type='select' name='select' id='select-basic'>
+          <Input type='select' onChange={setData}  name='gender' id='select-basic'>
             <option>Select Option</option>
             <option>Male</option>
             <option>Female</option>
@@ -78,11 +110,16 @@ const AddClient = () => {
        Birth of Date
       </Label>
       <Flatpickr
+         
         value={picker}
-        
+        name="birthdate"
         id='date-time-picker'
         className='form-control'
-        onChange={date => setPicker(date)}
+       
+          onChange={(date) => {
+            setPicker(date) 
+            
+          }}
       />
       </Fragment>
             </Col>
@@ -100,7 +137,7 @@ const AddClient = () => {
           <CardBody>
           <CardText>
             <h5>Client info</h5>
-          <Input type='textarea' name='text' id='exampleText' rows='3' placeholder='Textarea' />
+          <Input type='textarea' onChange={setData} value={client.clientInfo} name='clientInfo' id='exampleText' rows='3' placeholder='Textarea' />
           </CardText>
         
           </CardBody>
@@ -115,12 +152,12 @@ const AddClient = () => {
           <Label for='phone-number'>Phone Number</Label>
       <InputGroup className='input-group-merge'>
         <InputGroupText>+91</InputGroupText>
-        <Cleave className='form-control' placeholder='1 234 567 8900' options={options} id='phone-number' />
+        <Cleave className='form-control' name='additionalPhone' placeholder='1 234 567 8900' options={options} id='phone-number' />
       </InputGroup>
       <Label className='form-label' for='select-basic'>
       Client source
           </Label>
-          <Input type='select' name='select' id='select-basic'>
+          <Input type='select' onChange={setData}  name='clientSource' id='select-basic'>
             <option>Walk-in</option>
             <option>...</option>
             <option>...</option>
@@ -192,7 +229,7 @@ marketing notifications
                         <div className='m-2'>
                           <h5>Preferred language</h5>
 
-          <Input type='select' name='select' id='select-basic'>
+          <Input type='select' onChange={setData} name='language' id='select-basic'>
             <option>Select languages</option>
             <option>English</option>
             <option>Hindi</option>

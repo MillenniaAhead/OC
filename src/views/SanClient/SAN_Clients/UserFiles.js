@@ -10,7 +10,7 @@ const UserFiles = () => {
             </div>
             
             <div className='me-3'>
-            <button type="button" class="btn btn-dark px-5 py-1">
+            <button type="button" className="btn btn-dark px-5 py-1">
                 Add files
             </button>
                            </div>

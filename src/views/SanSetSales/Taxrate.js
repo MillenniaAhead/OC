@@ -26,7 +26,7 @@ const Taxrate = () => {
                     <img className='d-block mx-auto my-3' src={tax} alt="" />
                 <p className='fs-5 text-center'>Add your tax rates and use groups for multiple taxes, <br />
 for example combining city and state taxes</p>
-<div className='d-flex justify-content-center my-3'><TaxAdd /></div>
+<div className='d-flex justify-content-center my-3'><TaxAdd/></div>
         </div>
         <div className='d-flex justify-content-between mx-5 mt-5 '>
             <div>

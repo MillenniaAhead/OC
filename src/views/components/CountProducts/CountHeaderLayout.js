@@ -6,10 +6,10 @@ import Countsbodylayout from './Countslayout/Countsbodylayout'
 const CountHeaderLayout = () => {
   return (
     <div>
-          <div class="d-flex justify-content-between">
+          <div className="d-flex justify-content-between">
               <div>x</div>
               <div><h2> Counts product </h2></div>
-              <div class="d-flex  align-items-center ">
+              <div className="d-flex  align-items-center ">
                  <CountCustomButton />
                  <CustomButtonGroup />
 

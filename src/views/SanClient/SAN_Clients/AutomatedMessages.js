@@ -30,8 +30,8 @@ const AutomatedMessages = () => {
                 appointment is booked <br />
                 for them.</p>
                     <div>
-                    <button type="button" class="btn btn-success">EMAIL</button>
-                    <button type="button" class="btn btn-success ms-2">APP</button>
+                    <button type="button" className="btn btn-success">EMAIL</button>
+                    <button type="button" className="btn btn-success ms-2">APP</button>
                     </div>
             </div>
                    </div>
@@ -48,8 +48,8 @@ apponintment reminder</h5>
 clients ahead of their <br />
 appointment.</p>
                     <div >
-                    <button type="button" class="btn btn-success">EMAIL</button>
-                    <button type="button" class="btn btn-success ms-2">APP</button>
+                    <button type="button" className="btn btn-success">EMAIL</button>
+                    <button type="button" className="btn btn-success ms-2">APP</button>
                     </div>
             </div>
                    </div>
@@ -67,8 +67,8 @@ clients when their <br />
 appointment start time is <br />
 changed.</p>
                     <div >
-                    <button type="button" class="btn btn-success">EMAIL</button>
-                    <button type="button" class="btn btn-success ms-2">APP</button>
+                    <button type="button" className="btn btn-success">EMAIL</button>
+                    <button type="button" className="btn btn-success ms-2">APP</button>
                     </div>
             </div>
                    </div>
@@ -86,8 +86,8 @@ appointment is checked <br />
 out, with a link to leave a <br />
 review.</p>
                     <div >
-                    <button type="button" class="btn btn-success">EMAIL</button>
-                    <button type="button" class="btn btn-success ms-2">APP</button>
+                    <button type="button" className="btn btn-success">EMAIL</button>
+                    <button type="button" className="btn btn-success ms-2">APP</button>
                     </div>
             </div>
                    </div>
@@ -104,8 +104,8 @@ review.</p>
                 appointment is booked <br />
                 for them.</p>
                     <div >
-                    <button type="button" class="btn btn-success">EMAIL</button>
-                    <button type="button" class="btn btn-success ms-2">APP</button>
+                    <button type="button" className="btn btn-success">EMAIL</button>
+                    <button type="button" className="btn btn-success ms-2">APP</button>
                     </div>
             </div>
                    </div>
@@ -122,8 +122,8 @@ review.</p>
                 appointment is booked <br />
                 for them.</p>
                     <div >
-                    <button type="button" class="btn btn-success">EMAIL</button>
-                    <button type="button" class="btn btn-success ms-2">APP</button>
+                    <button type="button" className="btn btn-success">EMAIL</button>
+                    <button type="button" className="btn btn-success ms-2">APP</button>
                     </div>
             </div>
                    </div>
@@ -140,7 +140,7 @@ review.</p>
                 appointment is booked <br />
                 for them.</p>
                     <div >
-                    <button type="button" class="btn btn-secondary">Disabled</button>
+                    <button type="button" className="btn btn-secondary">Disabled</button>
                    
                     </div>
             </div>

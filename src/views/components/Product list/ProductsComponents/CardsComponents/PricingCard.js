@@ -19,7 +19,7 @@ const PricingCard = () => {
                      </FormGroup>                                     
 
                      <Label for ="retailSales"> Retail sales</Label><br></br>  
-                     <span class="text-secondary">Allow sales of this product at checkout.</span>  
+                     <span className="text-secondary">Allow sales of this product at checkout.</span>  
                      <div className=' d-flex justify-content-start align-content-center'>
                         <div className='form-switch form-check-success'>
                         <Input type='switch' id='switch-success' name='success' defaultChecked />
@@ -29,7 +29,7 @@ const PricingCard = () => {
                       
                      <div class ="container">
                             <div class =" row">
-                              <div class="col-4"> 
+                              <div className="col-4"> 
                                  <InputGroup>
                                     <FormGroup>
                                         <Label for="retailPrice"> Retail price</Label>
@@ -37,7 +37,7 @@ const PricingCard = () => {
                                     </FormGroup>
                                  </InputGroup>
                                </div>
-                              <div class="col-4"> 
+                              <div className="col-4"> 
                               <InputGroup>
                                     <FormGroup>
                                         <Label for="specialPrice"> Special price </Label>
@@ -45,7 +45,7 @@ const PricingCard = () => {
                                     </FormGroup>
                                  </InputGroup>
                               </div>
-                              <div class="col-4"> 
+                              <div className="col-4"> 
                               <InputGroup>
                                     <FormGroup>
                                         <Label for="markup">Markup </Label>

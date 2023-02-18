@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, Input, Label, ModalFooter} from 'reactstrap'
 import lock from '../../images/SSS/lock.png'
 import menup from '../../images/SSS/menu.png'
-
+import axios from 'axios'
 const ModalConfig = [
   
   {
@@ -14,6 +14,28 @@ const ModalConfig = [
 
 const Cashmodal = () => {
     const [modal, setModal] = useState(null)
+    const [cash, setcash] = useState({
+      cashPay:""
+    })
+    const setData = (e) => {
+      console.log(e?.target?.value)
+      const {name, value} = e?.target
+      setcash((preval) => {
+          return {
+              ...preval,
+              [name]: value
+          }
+       })
+     }
+     
+     const handleCash = async (e) => {
+      e?.preventDefault()
+  
+      console.log(cash)
+      axios.post('http://localhost:8000/api/sansetsales/cash', cash)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+    }
 
     const toggleModal = id => {
       if (modal !== id) {
@@ -50,13 +72,13 @@ const Cashmodal = () => {
               <Label className='form-label text-dark fw-bolder' for='basicInput'>
               Name
               </Label>
-              <Input type='text' id='basicInput'  placeholder='Cash'/>
+              <Input type='text' onChange={setData} value={cash.cashPay} name='cashPay' id='basicInput'  placeholder='Cash'/>
               </div>
               
             </ModalBody>
             <ModalFooter>
             
-            <Button color='dark' onClick={() => toggleModal(item.id)}>
+            <Button color='dark' onClick={handleCash}>
                 Save
               </Button>
             </ModalFooter>

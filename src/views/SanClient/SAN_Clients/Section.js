@@ -19,7 +19,7 @@ const Section = () => {
                     <h3>Add sections to your consultation form</h3>
                 </div>
                 <div>
-                <button type="button" class="btn btn-secondary px-4 py-1">Next Step</button>
+                <button type="button" className="btn btn-secondary px-4 py-1">Next Step</button>
                 </div>
                 
             </div>

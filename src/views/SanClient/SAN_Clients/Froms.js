@@ -12,7 +12,7 @@ const Froms = () => {
             <div >
             
             
-            <button type="button" class="btn btn-dark px-4 fw-normal fs-4 py-2">Create form</button>
+            <button type="button" className="btn btn-dark px-4 fw-normal fs-4 py-2">Create form</button>
 
             </div>
         </div>

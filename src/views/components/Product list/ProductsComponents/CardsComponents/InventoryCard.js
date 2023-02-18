@@ -47,7 +47,7 @@ const InventoryCard = () => {
 future stock orders.<Link> Learn more </Link></p> 
                         <div class ="container">
                             <div class =" row">
-                              <div class="col-6"> 
+                              <div className="col-6"> 
                                  <InputGroup>
                                     <FormGroup>
                                         <Label for="lowstock"> Low stock level </Label>
@@ -56,7 +56,7 @@ future stock orders.<Link> Learn more </Link></p>
                                     </FormGroup>
                                  </InputGroup>
                                </div>
-                              <div class="col-6"> 
+                              <div className="col-6"> 
                               <InputGroup>
                                     <FormGroup>
                                         <Label for="recordquantity"> Reorder quantity </Label>
