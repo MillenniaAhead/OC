@@ -68,8 +68,8 @@ const AddTip = () => {
                 <div className="text-aa3"><NavLink to={`/checkout/${id}`}><div className="back-arrow-aa3"><ArrowLeft size={30}/></div></NavLink><div> Add a tip amount</div></div>
                 <div className="setting-icon-aa3" style={{cursor:"pointer"}}><Settings size={20} /></div>
             </div>
-            <div className="tip-value-boxes">
                 {/* Tip boxes */}
+            <div className="tip-value-boxes">
                 <div className="tip-value-1 tip-box" id='No tip' style={tipValue === "No tip" ? {border:'1px solid #1bb70b'} : {}}  onClick={SelectTip} >No tip
                 {tipValue === "No tip" && <Check id="check-badge" strokeWidth={3}/>}</div>
 

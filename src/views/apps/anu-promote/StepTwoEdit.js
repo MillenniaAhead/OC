@@ -425,7 +425,7 @@ const StepTwo = () => {
                   <div className="edit-options">
                     <div className="option-1 edit-option">
                       <div className="option-text">
-                      <p className="text-f5">{service.length === 3 ? "All services" : `${service.length} services`} </p>
+                      <p className="text-f5">{service.length === 3 ? "All services" : `${service.length} services`}</p>
                       </div>
                       <div className="edit-btn">
                         <div
@@ -492,7 +492,7 @@ const StepTwo = () => {
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service2"
+                                name="service"
                                 value="Haircut"
                                 id='Haircut'
                                 onChange={addService}
@@ -511,7 +511,7 @@ const StepTwo = () => {
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service3"
+                                name="service"
                                 value="Beard Trim"
                                 id='Beard-Trim'
                                 onChange={addService}
@@ -530,7 +530,7 @@ const StepTwo = () => {
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="service3"
+                                name="service"
                                 value="Classic Fill"
                                 id='Bows-&-Lashes'
                                 onChange={addService}
@@ -548,7 +548,7 @@ const StepTwo = () => {
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="Brows_and_Lashes"
+                                name="service"
                                 value="Classic Fill"
                                 id='Classic-Fill'
                                 onChange={addService}
@@ -576,7 +576,7 @@ const StepTwo = () => {
                             </Button>
                           </div>
                         </ModalBody>
-                      </Modal>
+                       </Modal>
                     </div>
                     <div className="option-2 edit-option">
                       <div className="option-text">

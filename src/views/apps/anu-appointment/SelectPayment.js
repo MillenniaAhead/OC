@@ -93,8 +93,8 @@ const SelectPayment = () => {
                 <div className="text-aa4"><NavLink to={`/addtip/${id}`} ><div className="back-arrow-aa4"><ArrowLeft size={30}/></div></NavLink><div> Select payment</div></div>
                 <div className="setting-icon-aa4" style={{cursor:"pointer"}}><Settings size={20}/></div>
             </div>
-            <div className="payment-options-box">
                 {/* for payment option boxes */}
+            <div className="payment-options-box">
                 <div className="p-option-1 payment-box" style={amount !== "Select a amount" ? {border:'1px solid #1bb70b'} : {}} onClick={() => setCenteredModal1(!centeredModal1)}><div className='cash-icon'><img src={cashpayment} alt='cash'/></div>
                 <div className="text-cc4">Cash</div>{amount !== "Select a amount" ? <Check id="check-badge" strokeWidth={3}/> : ""}</div>
 

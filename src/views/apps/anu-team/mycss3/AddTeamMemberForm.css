@@ -115,7 +115,8 @@
     display: flex;
     border:none;
     align-items: center;
-    color:#1bb70b
+    color:#1bb70b;
+    cursor:pointer;
 }
 .input-va{
     width:50%;

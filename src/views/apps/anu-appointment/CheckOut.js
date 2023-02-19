@@ -67,6 +67,8 @@ const CheckOut = () => {
                 <div><MoreVertical size={25}/></div>
             </div>
         </div> */}
+
+        {/* Appointment select box */}
         <div className="service-box-aa5">
             <div className="time-day-box-aa5">
                 <div className="text-dd5">{appointment.start_time} - end_time</div>

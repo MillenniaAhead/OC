@@ -48,8 +48,8 @@ const NewAppointment = () => {
     }
   }
 
-      //demo services for complete functionality\
-      const myServices = [{ name:'Haircut', price:40}, {name:'Hair Color', price:57}, {name:'Blow Dry', price:35}, {name:'Balayage', price:150}, {name:'Facial', price:115}]
+  //demo services for complete functionality\
+  const myServices = [{ name:'Haircut', price:40}, {name:'Hair Color', price:57}, {name:'Blow Dry', price:35}, {name:'Balayage', price:150}, {name:'Facial', price:115}]
 
 
   //For redirect

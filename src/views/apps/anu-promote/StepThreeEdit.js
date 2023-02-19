@@ -166,6 +166,7 @@ const StepThree = () => {
 
   return (
     <div className="step-three-container">
+      {/* Aler comp */}
       <div className="my-alert-comp my-alert-comp-2">
       <Alert color='success' isOpen={visible3}>
         <div className='alert-body text-center fs-4'>

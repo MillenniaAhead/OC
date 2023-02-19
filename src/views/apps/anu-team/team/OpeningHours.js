@@ -40,6 +40,13 @@ const OpeningHours = () => {
         .catch(err => console.log(err))
         console.log(daysTime)
     }
+
+    //For time array
+    const hoursArray = [
+        "12:00am", "1:00am", "2:00am", "3:00am", "4:00am", "5:00am", "6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am",
+        "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm", "8:00pm", "9:00pm", "10:00pm", "11:00pm"
+      ]
+
     return (
         <div className="opening-hours-container-qqa" style={{marginBottom:"70px"}}>
             {/* for alert */}
@@ -67,24 +74,13 @@ const OpeningHours = () => {
                                 Monday
                             </Label>
                         </div>
-                        <Input onChange={(e) => handleDayTime('monday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        {/* dropdown */}
+                        <Input value={defaultTime.start_time} onChange={(e) => handleDayTime('monday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={(e) => handleDayTime('monday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        <Input value={defaultTime.end_time} onChange={(e) => handleDayTime('monday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
@@ -96,24 +92,13 @@ const OpeningHours = () => {
                                 Tuesday
                             </Label>
                         </div>
-                        <Input onChange={(e) => handleDayTime('tuesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        {/* dropdown */}
+                        <Input value={defaultTime.start_time} onChange={(e) => handleDayTime('tuesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={(e) => handleDayTime('tuesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        <Input value={defaultTime.end_time} onChange={(e) => handleDayTime('tuesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
@@ -125,24 +110,13 @@ const OpeningHours = () => {
                                 Wednesday
                             </Label>
                         </div>
-                        <Input onChange={(e) => handleDayTime('wednesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        {/* dropdown */}
+                        <Input value={defaultTime.start_time} onChange={(e) => handleDayTime('wednesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={(e) => handleDayTime('wednesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        <Input value={defaultTime.end_time} onChange={(e) => handleDayTime('wednesday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
@@ -154,24 +128,13 @@ const OpeningHours = () => {
                                 Thursday
                             </Label>
                         </div>
-                        <Input onChange={(e) => handleDayTime('thursday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        {/* dropdown */}
+                        <Input value={defaultTime.start_time} onChange={(e) => handleDayTime('thursday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={(e) => handleDayTime('thursday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        <Input value={defaultTime.end_time} onChange={(e) => handleDayTime('thursday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
@@ -183,24 +146,13 @@ const OpeningHours = () => {
                                 Friday
                             </Label>
                         </div>
-                        <Input onChange={(e) => handleDayTime('friday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        {/* dropdown */}
+                        <Input value={defaultTime.start_time} onChange={(e) => handleDayTime('friday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={(e) => handleDayTime('friday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        <Input value={defaultTime.end_time} onChange={(e) => handleDayTime('friday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>
@@ -212,24 +164,13 @@ const OpeningHours = () => {
                                 Saturday
                             </Label>
                         </div>
-                        <Input onChange={(e) => handleDayTime('saturday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        {/* dropdown */}
+                        <Input value={defaultTime.start_time} onChange={(e) => handleDayTime('saturday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='start_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='dash-qqa'>-</div>
-                        <Input onChange={(e) => handleDayTime('saturday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
-                            <option>6:00am</option>
-                            <option>7:00am</option>
-                            <option>8:00am</option>
-                            <option>9:00am</option>
-                            <option>10:00am</option>
-                            <option>11:00am</option>
-                            <option>12:00am</option>
+                        <Input value={defaultTime.end_time} onChange={(e) => handleDayTime('saturday', e)} type='select' style={{ color: 'black' }} className='fs-4 select-qqa' name='end_time' id='select-lg'>
+                        {hoursArray.map((hour, key) => <option key={key}>{hour}</option>)}
                         </Input>
                         <div className='plus-qqa'>+</div>
                     </div>

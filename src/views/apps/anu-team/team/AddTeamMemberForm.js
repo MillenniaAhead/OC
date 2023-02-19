@@ -46,7 +46,7 @@ const AddTeamMemberForm = () => {
 
 
   //For collect commission modal data
-  const [commissionData, setCommissionData] = useState({effective_date:picker3, commission_cycle:"", product_commission:'', service_commission:"", voucher_commission:"", membership_commission:""})
+  const [commissionData, setCommissionData] = useState({effective_date:picker3, commission_cycle:"Every day", product_commission:'', service_commission:"", voucher_commission:"", membership_commission:""})
 
   // For commission boxes
   const [display1, setDisplay1] = useState('none')
@@ -62,12 +62,24 @@ const AddTeamMemberForm = () => {
   //For select services from modal
   const addService = (event) => {
     if (event.target.name === "all_services") {
-        if (service.length === 3) {
-            setService([])
-        } else {
-          setService(["Haircut", "Beard Trim", "Classic Fill"])
-        }
-    } else { 
+      if (service.length === 3) {
+          setService([])
+      } else {
+        setService(["Haircut", "Beard Trim", "Classic Fill"])
+      }
+  } else if (event.target.name === "Hair") {
+    if (service.includes("Haircut", "Beard Trim")) {
+      setService(service.filter(service => service !== "Haircut" && service !== "Beard Trim"))
+    } else {
+      if (service.includes("Haircut")) {
+      setService([...service, "Beard Trim"])
+    } else if (service.includes("Beard Trim")) {
+      setService([...service, "Haircut"])
+    } else {
+      setService([...service, "Haircut", "Beard Trim"])
+    }
+    } 
+  } else { 
     if (service.includes(event.target.value)) {
       const deselect = service.filter(
         (myservice) => myservice !== event.target.value
@@ -100,10 +112,8 @@ const AddTeamMemberForm = () => {
         setBorder1()
        }
       if (e.target.name === 'email') {
-        if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
         setStyle2({display:'none'})
         setBorder2()
-        }
        }
       }
   }
@@ -152,10 +162,10 @@ const AddTeamMemberForm = () => {
           setVisible1(false)
         }, 3000)
     } else {
-    console.log({...formData, services:service, start_date:picker1, end_date:picker2, commission:[{ effective_date:picker3, commission_cycle:commissionData.commission_cycle, service_commission:commissionData.service_commission + rSelected1, product_commission:commissionData.product_commission + rSelected2, voucher_commission:commissionData.voucher_commission + rSelected3, membership_commission:commissionData.membership_commission + rSelected4}] })
 
     //Post a team member to backend database
-    axios.post('http://localhost:4000/api/teamMembers', {...formData, services:service, start_date:picker1, end_date:picker2, commission:[{ effective_date:picker3, commission_cycle:commissionData.commission_cycle, service_commission:commissionData.service_commission + rSelected1, product_commission:commissionData.product_commission + rSelected2, voucher_commission:commissionData.voucher_commission + rSelected3, membership_commission:commissionData.membership_commission + rSelected4}] })
+    const myCommission = [{ effective_date:picker3, commission_cycle:commissionData.commission_cycle, service_commission:commissionData.service_commission, service_commission_type:rSelected1, product_commission:commissionData.product_commission, product_commission_type:rSelected2, voucher_commission:commissionData.voucher_commission, voucher_commission_type:rSelected3, membership_commission:commissionData.membership_commission, membership_commission_type:rSelected4}]
+    axios.post('http://localhost:4000/api/teamMembers', {...formData, services:service, start_date:picker1, end_date:picker2, commission:myCommission })
     .then((res) => {
       console.log(res)
       setVisible2(true)
@@ -339,43 +349,43 @@ const AddTeamMemberForm = () => {
                   {/* Color options */}
                 <div className="text-vb mb-1">Select colour</div>
                 <div className='d-flex'>
-                <Label style={{border:formData.color === "#FF6A8D" ? '2px solid blue' : 'none'}} for='color-1' className='btn-vb btn-vb1'></Label>
+                <Label style={{border:formData.color === "#FF6A8D" ? '2px solid black' : 'none'}} for='color-1' className='btn-vb btn-vb1'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#FF6A8D' id='color-1' defaultChecked/>
             </div>
-                <Label style={{border:formData.color === "#E775EA" ? '2px solid blue' : 'none'}} for='color-2' className='btn-vb btn-vb2'></Label>
+                <Label style={{border:formData.color === "#E775EA" ? '2px solid black' : 'none'}} for='color-2' className='btn-vb btn-vb2'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#E775EA' id='color-2'/>
             </div>
-                <Label style={{border:formData.color === "#ABC6EF" ? '2px solid blue' : 'none'}} for='color-3' className='btn-vb btn-vb3'></Label>
+                <Label style={{border:formData.color === "#ABC6EF" ? '2px solid black' : 'none'}} for='color-3' className='btn-vb btn-vb3'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#ABC6EF' id='color-3'/>
             </div>
-                <Label style={{border:formData.color === "#588CEB" ? '2px solid blue' : 'none'}} for='color-4' className='btn-vb btn-vb4'></Label>
+                <Label style={{border:formData.color === "#588CEB" ? '2px solid black' : 'none'}} for='color-4' className='btn-vb btn-vb4'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#588CEB' id='color-4'/>
             </div>
-                <Label style={{border:formData.color === "#5FE2E2" ? '2px solid blue' : 'none'}} for='color-5' className='btn-vb btn-vb5'></Label>
+                <Label style={{border:formData.color === "#5FE2E2" ? '2px solid black' : 'none'}} for='color-5' className='btn-vb btn-vb5'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#5FE2E2' id='color-5'/>
             </div>
-                <Label style={{border:formData.color === "#16D8B5" ? '2px solid blue' : 'none'}} for='color-6' className='btn-vb btn-vb6'></Label>
+                <Label style={{border:formData.color === "#16D8B5" ? '2px solid black' : 'none'}} for='color-6' className='btn-vb btn-vb6'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#16D8B5' id='color-6'/>
             </div>
-                <Label style={{border:formData.color === "#57C589" ? '2px solid blue' : 'none'}} for='color-7' className='btn-vb btn-vb7'></Label>
+                <Label style={{border:formData.color === "#57C589" ? '2px solid black' : 'none'}} for='color-7' className='btn-vb btn-vb7'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#57C589' id='color-7'/>
             </div>
-                <Label style={{border:formData.color === "#E4D16BA6" ? '2px solid blue' : 'none'}} for='color-8' className='btn-vb btn-vb8'></Label>
+                <Label style={{border:formData.color === "#E4D16BA6" ? '2px solid black' : 'none'}} for='color-8' className='btn-vb btn-vb8'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#E4D16BA6' id='color-8'/>
             </div>
-                <Label style={{border:formData.color === "#E4E831" ? '2px solid blue' : 'none'}} for='color-9' className='btn-vb btn-vb9'></Label>
+                <Label style={{border:formData.color === "#E4E831" ? '2px solid black' : 'none'}} for='color-9' className='btn-vb btn-vb9'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#E4E831' id='color-9'/>
             </div>
-                <Label style={{border:formData.color === "#E8C263" ? '2px solid blue' : 'none'}} for='color-10' className='btn-vb btn-vb10'></Label>
+                <Label style={{border:formData.color === "#E8C263" ? '2px solid black' : 'none'}} for='color-10' className='btn-vb btn-vb10'></Label>
                 <div style={{display:'none'}} className='form-check form-check-primary'>
             <Input name='color' onChange={collectData}  type='radio' value='#E8C263' id='color-10'/>
             </div>
@@ -389,7 +399,7 @@ const AddTeamMemberForm = () => {
                 </div>
                 <div className="top-info-vb">
                     <div className='services-box-va'>
-                    <div className='text-vf'>All services {service.length}</div>
+                    <div className='text-vf'>{service.length === 3 ? "All services" : `${service.length} services`}</div>
                     <div onClick={() => setCenteredModal1(!centeredModal1)} style={{color:"#1bb70b", cursor:'pointer'}} className='text-vf'>Edit</div>
                     </div>
                 </div>
@@ -401,7 +411,7 @@ const AddTeamMemberForm = () => {
 sales ranges for services,products,vochers and membership. <NavLink to="#">Learn more</NavLink></div>
                  </div>
                     <div className="top-info-vb">
-                        <div style={{cursor:'pointer', width:'fit-content'}} onClick={() => setCenteredModal(!centeredModal)} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></div>
+                        <div onClick={() => setCenteredModal(!centeredModal)} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></div>
             </div>
             </div>
             <div className="form-box-va">
@@ -426,7 +436,7 @@ sales ranges for services,products,vochers and membership. <NavLink to="#">Learn
                         toggle={() => setCenteredModal1(!centeredModal1)}
                         className="modal-dialog-centered my-modal-va p-0"
                       >
-          <div className="d-flex justify-content-between p-1"><div className="modal-option-heading-a5">Select services</div><X style={{cursor:'pointer'}} onClick={() => setCenteredModal1(!centeredModal1)} /></div>
+          <div className="d-flex justify-content-between p-1"><div className="modal-option-heading-a5">Select services</div><X style={{cursor:'pointer'}} onClick={() => setCenteredModal1(!centeredModal1)}/></div>
                         <ModalBody className="my-modal-a5">
                           <div className="modal-option-search-box-wrapper-a5">
                           <InputGroup className="input-group-merge mt-1 mb-1">
@@ -459,9 +469,11 @@ sales ranges for services,products,vochers and membership. <NavLink to="#">Learn
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="services"
-                                value="Hair, Beard Trim"
+                                name="Hair"
+                                value="Haircut, Beard Trim"
                                 id='Hair'
+                                onChange={addService}
+                                checked={service.some((service) => service === 'Haircut') && service.some((service) => service === 'Beard Trim')}
                               />
                             </label>
                             <div>
@@ -475,11 +487,11 @@ sales ranges for services,products,vochers and membership. <NavLink to="#">Learn
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="services"
+                                name="service"
                                 value="Haircut"
                                 id='Haircut'
-                                checked={service.some((service) => service === 'Haircut')}
                                 onChange={addService}
+                                checked={service.some((service) => service === "Haircut")}
                               />
                             </label>
                             <div>
@@ -494,11 +506,11 @@ sales ranges for services,products,vochers and membership. <NavLink to="#">Learn
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="services"
+                                name="service"
                                 value="Beard Trim"
                                 id='Beard-Trim'
                                 onChange={addService}
-                                checked={service.some((service) => service === 'Beard Trim')}
+                                checked={service.some((service) => service === "Beard Trim")}
                               />
                             </label>
                             <div>
@@ -513,9 +525,11 @@ sales ranges for services,products,vochers and membership. <NavLink to="#">Learn
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="services"
+                                name="service"
                                 value="Classic Fill"
                                 id='Bows-&-Lashes'
+                                onChange={addService}
+                                checked={service.some((service) => service === 'Classic Fill')}
                               />
                             </label>
                             <div>
@@ -529,7 +543,7 @@ sales ranges for services,products,vochers and membership. <NavLink to="#">Learn
                               <Input
                                 className="edit-checkbox"
                                 type="checkbox"
-                                name="services"
+                                name="service"
                                 value="Classic Fill"
                                 id='Classic-Fill'
                                 onChange={addService}
@@ -557,7 +571,7 @@ sales ranges for services,products,vochers and membership. <NavLink to="#">Learn
                             </Button>
                           </div>
                         </ModalBody>
-                      </Modal>
+            </Modal>
 
             {/* //Commission modal */}
             <Modal isOpen={centeredModal} toggle={() => setCenteredModal(!centeredModal)} className='modal-dialog-centered my-modal-va p-0'>
@@ -581,7 +595,7 @@ on different sales ranges for services, products, vouchers and memberships.</div
       <Label className='form-label text-vb' for='select-lg'>
             Commission cycle
           </Label>
-          <Input onChange={CollectCommissionData} type='select' name='commission_cycle' id='select-lg'>
+          <Input onChange={CollectCommissionData} value={commissionData.commission_cycle} type='select' name='commission_cycle' id='select-lg'>
             <option>Every day</option>
             <option>Every week</option>
             <option>Every 2 weeks</option>
@@ -623,7 +637,7 @@ timeframe when the cycle will reset.</div>
                 </Label>
             <InputGroup>
         <InputGroupText>%</InputGroupText>
-        <Input name="service_commission" onChange={CollectCommissionData} bsSize='lg' placeholder='0.00' />
+        <Input name="service_commission" value={commissionData.service_commission} onChange={CollectCommissionData} bsSize='lg' placeholder='0.00' />
       </InputGroup>
       </div>
       <ButtonGroup style={{alignSelf:'end'}} className='ms-1 me-1 toggle-ua'>
@@ -636,7 +650,7 @@ timeframe when the cycle will reset.</div>
             </div>
           </div>
           </div> 
-          <button onClick={() => { display1 === 'none' ? setDisplay1('block') : setDisplay1('none') }} style={{background:'white'}} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></button>
+          <div onClick={() => { display1 === 'none' ? setDisplay1('block') : setDisplay1('none') }} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></div>
           </div>
           <div className="top-info-vc">
           <div className='text-vb'>Product commission</div>
@@ -666,7 +680,7 @@ timeframe when the cycle will reset.</div>
                 </Label>
             <InputGroup>
         <InputGroupText>%</InputGroupText>
-        <Input onChange={CollectCommissionData} name='product_commission' bsSize='lg' placeholder='0.00' />
+        <Input onChange={CollectCommissionData} value={commissionData.product_commission} name='product_commission' bsSize='lg' placeholder='0.00' />
       </InputGroup>
       </div>
       <ButtonGroup style={{alignSelf:'end'}} className='ms-1 me-1 toggle-ua'>
@@ -679,7 +693,7 @@ timeframe when the cycle will reset.</div>
             </div>
           </div>
           </div> 
-          <button onClick={() => { display2 === 'none' ? setDisplay2('block') : setDisplay2('none') }} style={{background:'white'}} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></button>
+          <div onClick={() => { display2 === 'none' ? setDisplay2('block') : setDisplay2('none') }} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></div>
           </div>
           <div className="top-info-vc">
           <div className='text-vb'>Voucher commission</div>
@@ -709,7 +723,7 @@ timeframe when the cycle will reset.</div>
                 </Label>
             <InputGroup>
         <InputGroupText>%</InputGroupText>
-        <Input onChange={CollectCommissionData} name='voucher_commission' bsSize='lg' placeholder='0.00' />
+        <Input onChange={CollectCommissionData} value={commissionData.voucher_commission} name='voucher_commission' bsSize='lg' placeholder='0.00' />
       </InputGroup>
       </div>
       <ButtonGroup style={{alignSelf:'end'}} className='ms-1 me-1 toggle-ua'>
@@ -722,7 +736,7 @@ timeframe when the cycle will reset.</div>
             </div>
           </div>
           </div> 
-          <button onClick={() => { display3 === 'none' ? setDisplay3('block') : setDisplay3('none') }} style={{background:'white'}} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></button>
+          <div onClick={() => { display3 === 'none' ? setDisplay3('block') : setDisplay3('none') }} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></div>
           </div>
           <div className="top-info-vc">
           <div className='text-vb'>Membership commission</div>
@@ -752,20 +766,20 @@ timeframe when the cycle will reset.</div>
                 </Label>
             <InputGroup>
         <InputGroupText>%</InputGroupText>
-        <Input onChange={CollectCommissionData} name='membership_commission' bsSize='lg' placeholder='0.00' />
+        <Input onChange={CollectCommissionData} value={commissionData.membership_commission} name='membership_commission' bsSize='lg' placeholder='0.00' />
       </InputGroup>
       </div>
       <ButtonGroup style={{alignSelf:'end'}} className='ms-1 me-1 toggle-ua'>
           <Button color='success' onClick={() => setRSelected4("%")} active={rSelected4 === "%"}>
             %
           </Button>
-          <Button color='success' onClick={() => setRSelected4("%")} active={rSelected4 === ""}>
+          <Button color='success' onClick={() => setRSelected4("")} active={rSelected4 === ""}>
           </Button>
         </ButtonGroup>
             </div>
           </div>
           </div> 
-          <button onClick={() => { display4 === 'none' ? setDisplay4('block') : setDisplay4('none') }} style={{background:'white'}} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></button>
+          <div onClick={() => { display4 === 'none' ? setDisplay4('block') : setDisplay4('none') }} className="btn-vc"><span className="plus-va me-1">+</span><span className="text-vf">Add commission</span></div>
           </div>
           <ModalFooter>
             <Button color='dark' onClick={() => setCenteredModal(!centeredModal)}>

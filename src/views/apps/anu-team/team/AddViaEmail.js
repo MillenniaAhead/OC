@@ -23,10 +23,8 @@ const CollectData = (e) => {
                 setBlock1({display:"none"})
                 setBorder1()
         } else if (e.target.name === "email") {
-                if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
                 setBlock2({display:"none"})
                 setBorder2()
-                }
         }
 }
 
@@ -50,7 +48,8 @@ const HandleSubmit = () => {
                 setVisible1(false)
         }, 3000)
     } else {
-    axios.post('http://localhost:4000/api/teamMembers', formData)
+        const myCommission = [{ effective_date:new Date(), commission_cycle:"Every day", service_commission:"", service_commission_type:"%", product_commission:"", product_commission_type:"%", voucher_commission:"", voucher_commission_type:"%", membership_commission:"", membership_commission_type:"%"}]
+    axios.post('http://localhost:4000/api/teamMembers', {profile_image:"", first_name:formData.first_name, last_name:formData.last_name, team_member_title:'', notes:'', email:formData.email, number:Number(""), allow_calendar_bookings:true, color:'#FF6A8D', services:["Haircut", "Beard Trim", "Classic Fill"], team_member_permission:"Low", location:'', start_date:new Date(), end_date:null, commission:myCommission})
     .then((res) => {
         console.log(res)
         setVisible2(true)
