@@ -39,9 +39,7 @@ const DefaultRoute = '/overview'
 
 // ** Merge Routes
 const Routes = [
-  ...SanReport,
-  ...SanPromote,
-  ...AnuAppointment,
+  ...AnuServicesRoutes,
   ...OverviewRoutes,
   ...GroupRoutes,
   ...OrganizationRoutes,
