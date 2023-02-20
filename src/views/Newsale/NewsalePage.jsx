@@ -2,7 +2,7 @@ import React from "react"
 import Client from "../../assets/images/Newsale/images/Add client.png"
 import Basket from "../../assets/images/Newsale/images/basket.png"
 import Checklist from "../../assets/images/Newsale/images/checklist.png"
-import { ChevronLeft } from 'react-feather'
+// import { ChevronLeft } from 'react-feather'
 
 const NewsalePage = () => {
   return (
@@ -16,7 +16,6 @@ const NewsalePage = () => {
         <a style={{color: 'black'}} className="fs-5" href="/payment">Payment transactions</a>
         <a style={{color: 'black'}} className="fs-5" href="/voucher">Voucher sold</a>
         <a style={{color: 'black'}} className="fs-5" href="/membership">Memberships sold</a>
-       
       </div>
       <div
         className="border d-none d-md-block"
@@ -131,7 +130,7 @@ const NewsalePage = () => {
         style={{ width: "360px", height: "565px" }}
       >
         <div
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", width: '120%' }}
           className="border-bottom py-1"
         >
           <div style={{marginBottom: '-10px'}} className="d-sm-block d-md-none  d-flex justify-content-between">

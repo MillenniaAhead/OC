@@ -37,9 +37,19 @@ const Voucher = () => {
   }
 
   return (
-    <div>
+    <div style={{marginTop: '-28px'}}>
+      <div style={{marginLeft: '-28px', width: '220px'}} className="py-2 px-2 border d-flex flex-column gap-2">
+        <p style={{marginTop: '5px', fontWeight: 600}} className="fs-4">Sales</p>
+        <a style={{color: 'black'}} className="fs-5" href="/newsale">New sale</a>
+        <a style={{color: 'black'}} className="fs-5" href="/dailysales">Daily sales</a>
+        <a style={{color: 'black'}} className="fs-5" href="/appointments">Appointments</a>
+        <a style={{color: 'black'}} className="fs-5" href="/saleshistory">Sales history</a>
+        <a style={{color: 'black'}} className="fs-5" href="/payment">Payment transactions</a>
+        <a style={{color: 'black'}} className="fs-5" href="/voucher">Voucher sold</a>
+        <a style={{color: 'black'}} className="fs-5" href="/membership">Memberships sold</a>
+      </div>
       <div
-        style={{ marginTop: "50px", marginLeft: "200px" }}
+        style={{ marginTop: "-350px", marginLeft: "220px" }}
         className="d-flex justify-content-between px-2"
       >
         <div>
@@ -51,7 +61,7 @@ const Voucher = () => {
             <span style={{ color: "#1BB70B" }}> Learn more</span>
           </p>
         </div>
-        <div style={{ marginRight: "100px"}}>
+        <div style={{ marginRight: "55px"}}>
           <button
             style={{ color: 'black', width: "130px", height: "48px", fontSize: "18px" }}
             className="btn border fw-semibold"
@@ -63,7 +73,7 @@ const Voucher = () => {
 
       <div
         style={{
-          marginLeft: "200px",
+          marginLeft: "240px",
           background: "rgba(242, 242, 247, 0.8)",
           width: "915px"
         }}

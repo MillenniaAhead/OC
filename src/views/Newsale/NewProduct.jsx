@@ -3,6 +3,7 @@ import X from "../../assets/images/Newsale/images/x.png"
 import Camera from "../../assets/images/Newsale/images/camera.png"
 import Plus from "../../assets/images/Newsale/images/plus-circle.png"
 import { Link } from "react-router-dom"
+import { Alert } from "reactstrap"
 
 import axios from "axios"
 
@@ -20,6 +21,8 @@ const NewProduct = () => {
   const [stockQuantity, setStockQuantity] = useState("")
   const [lowstocklevel, setLowStockLevel] = useState("")
   const [reorderQuantity, setReorderQuantity] = useState("")
+
+  const [visible, setVisible] = useState(false)
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -107,6 +110,7 @@ const NewProduct = () => {
       })
       .then((result) => {
         console.log(result.data)
+        setVisible(true)
       })
       .catch((error) => {
         console.log(error)
@@ -127,6 +131,13 @@ const NewProduct = () => {
         >
           Save
         </button>
+
+        <Alert style={{width: '60%', marginLeft: '60px', marginTop: '20px'}} color='info' isOpen={visible} toggle={() => setVisible(false)}>
+         <div className='alert-body'>
+         Product added succesfully.
+         </div>
+        </Alert>
+
       </div>
       <div
         style={{ color: "black" }}

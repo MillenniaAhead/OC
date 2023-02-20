@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import X from "../../assets/images/Newsale/images/x.png"
 import Member from "../../assets/images/Newsale/images/member.png"
 import { Link } from "react-router-dom"
+import { Alert } from "reactstrap"
 
 import axios from "axios"
 
@@ -12,6 +13,8 @@ const CreateMembershipPage = () => {
   const [sessions, setSessions] = useState("")
   const [price, setPrice] = useState("")
   const [termsConditions, setTermsConditions] = useState("")
+
+  const [visible, setVisible] = useState(false)
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -57,6 +60,7 @@ const CreateMembershipPage = () => {
       })
       .then((result) => {
         console.log(result.data)
+        setVisible(true)
       })
       .catch((error) => {
         console.log(error)
@@ -78,6 +82,13 @@ const CreateMembershipPage = () => {
           Create membership
         </button>
       </div>
+
+       <Alert style={{width: '60%', marginLeft: '195px', marginTop: '20px'}} color='info' isOpen={visible} toggle={() => setVisible(false)}>
+         <div className='alert-body'>
+         Membership created succesfully.
+         </div>
+        </Alert>
+
       <div
         style={{ color: "black" }}
         className="d-flex justify-content-center mt-2 fs-2 fw-bolder"

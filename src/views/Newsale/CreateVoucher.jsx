@@ -9,7 +9,7 @@ import axios from "axios"
 import { Fragment, useState } from "react"
 
 // // ** Reactstrap Imports
-import { Modal, ModalBody, ModalHeader } from "reactstrap"
+import { Modal, ModalBody, ModalHeader, Alert } from "reactstrap"
 
 const CreateVoucher = () => {
   // // ** States
@@ -18,6 +18,8 @@ const CreateVoucher = () => {
   const [value, setValue] = useState("")
   const [retailPrice, setRetailPrice] = useState("")
   const [search, setSearch] = useState("")
+
+  const [visible, setVisible] = useState(false)
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -59,6 +61,7 @@ const CreateVoucher = () => {
       })
       .then((result) => {
         console.log(result.data)
+        setVisible(true)
       })
       .catch((error) => {
         console.log(error)
@@ -108,6 +111,12 @@ const CreateVoucher = () => {
           Next step
         </button>
       </div>
+
+      <Alert style={{width: '100%', marginTop: '20px'}} color='info' isOpen={visible} toggle={() => setVisible(false)}>
+         <div className='alert-body'>
+         Voucher created succesfully.
+         </div>
+        </Alert>
 
       <div className="d-flex justify-content-start py-5">
         {/* 1 */}

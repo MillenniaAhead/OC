@@ -8,6 +8,8 @@ import UiElementRoutes from './UiElements'
 import PageLayoutsRoutes from './PageLayouts'
 import ProductDetailsRoutes from './ProductDetails' 
 import ReviewStocktakesRoutes from './ReviewStocktakes'
+import AnuServicesRoutes from './Service'
+import SanClientRoutes from './SanClient'
 
 //My work
 import AnuAppointment from './AnuAppointment'
@@ -57,7 +59,10 @@ const Routes = [
   ...SettingClients,
   ...HomeRoute,
   ...CalenderRoute,
-  ...SanSetSalesRoutes
+  ...SanSetSalesRoutes,
+  ...SanClientRoutes,
+  ...SanPromote,
+  ...SanReport
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }
