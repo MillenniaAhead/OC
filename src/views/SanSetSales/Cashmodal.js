@@ -46,7 +46,8 @@ const Cashmodal = () => {
     }
     const renderModal = ModalConfig.map(item => {
       return (
-        <Fragment key={item.id} className="mx-auto">
+        <Fragment key={item.id} >
+          <div className="mx-auto">
           <div onClick={() => toggleModal(item.id)} className="d-flex justify-content-between">
         <div className='text-dark'>
             <img src={menup} alt="" /> <span className='fs-4 ms-1 fw-bold'>Cash</span>
@@ -62,8 +63,7 @@ const Cashmodal = () => {
             className={`modal-dialog-centered ${item.modalClass}`}
           >
             <ModalHeader className='pb-2 ' toggle={() => toggleModal(item.id)}>
-              <h3 className='fw-bolder text-dark'>{item.modalTitle}</h3>
-              {item.title}
+            <p className='fs-3 fw-bolder text-dark'>{item.modalTitle}</p>
             </ModalHeader>
            
             <ModalBody >
@@ -83,6 +83,7 @@ const Cashmodal = () => {
               </Button>
             </ModalFooter>
           </Modal>
+          </div>
         </Fragment>
       )
     })

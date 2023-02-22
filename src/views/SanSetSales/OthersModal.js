@@ -48,7 +48,8 @@ const OthersModal = () => {
         }
         const renderModal = ModalConfig.map(item => {
           return (
-            <Fragment key={item.id} className="mx-auto">
+            <Fragment key={item.id} >
+              <div className="mx-auto">
               <div onClick={() => toggleModal(item.id)} className="border rounded mx-5 mt-2 p-2">
                 <div className="d-flex justify-content-between">
                     <div className='text-dark'>
@@ -66,8 +67,7 @@ const OthersModal = () => {
                 className={`modal-dialog-centered ${item.modalClass}`}
               >
                 <ModalHeader className='pb-2 ' toggle={() => toggleModal(item.id)}>
-                  <h3 className='fw-bolder text-dark'>{item.modalTitle}</h3>
-                  {item.title}
+                <p className='fs-3 fw-bolder text-dark'>{item.modalTitle}</p>
                 </ModalHeader>
                
                 <ModalBody >
@@ -90,6 +90,7 @@ const OthersModal = () => {
                   </Button>
                 </ModalFooter>
               </Modal>
+              </div>
             </Fragment>
           )
         })

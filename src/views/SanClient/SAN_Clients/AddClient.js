@@ -136,7 +136,7 @@ const AddClient = () => {
           <hr />
           <CardBody>
           <CardText>
-            <h5>Client info</h5>
+            Client info
           <Input type='textarea' onChange={setData} value={client.clientInfo} name='clientInfo' id='exampleText' rows='3' placeholder='Textarea' />
           </CardText>
         

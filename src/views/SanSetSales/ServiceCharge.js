@@ -1,11 +1,49 @@
-import React from 'react'
-import { Label, Input, InputGroup, InputGroupText } from 'reactstrap'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { Label, Input, InputGroup, InputGroupText, Button } from 'reactstrap'
+import X from '../../images/ClientList/x.png'
 
 
 const ServiceCharge = () => {
+  const [service, setService] = useState({
+    name:"",
+    dec:"",
+    apply:"",
+    automatically:"",
+    rateType:"",
+    taxRate:""
+  })
+  const setData = (e) => {
+    console.log(e?.target?.value)
+    const {name, value} = e?.target
+    setService((preval) => {
+        return {
+            ...preval,
+            [name]: value
+        }
+     })
+   }
+   
+   const handleAdd = async (e) => {
+    e?.preventDefault()
+
+    console.log(service)
+    axios.post('http://localhost:8000/api/sansetsales/service', service)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
+  }
+
     return (
+      <div>
+      <div className='d-flex justify-content-between'>
+      <div><img src={X} alt="" /></div>
+      <div> <Button.Ripple color='dark' onClick={handleAdd}>Add</Button.Ripple>
+</div>
+</div>
         <div className='mx-5'>
             <div className="mx-5">
+             
+              </div>
                 <div className="text-center">
                     <h1 className='text-dark fw-bolder'>Add a new service charge</h1>
                     <p className='fs-5'>Create a service charge to apply to services and items sold at checkout.</p>
@@ -20,7 +58,7 @@ const ServiceCharge = () => {
             <div><p>0/100</p></div>
               </div>
             
-            <Input type='email' id='basicInput' placeholder='Enter Email' />
+            <Input type='email' onChange={setData} value={service.name} name='name' id='basicInput' placeholder='Enter Name' />
                     </div>
                     <div className='w-50 p-3'>
                     
@@ -29,7 +67,7 @@ const ServiceCharge = () => {
             <div><p>0/360</p></div>
               </div>
             
-              <Input type='textarea' name='text' id='exampleText' rows='3' placeholder='Enter a description of your service charge' />
+              <Input type='textarea' onChange={setData} value={service.dec} name='dec' id='exampleText' rows='3' placeholder='Enter a description of your service charge' />
               <p>For internal use only</p>
                     </div>
                 </div>
@@ -42,20 +80,20 @@ const ServiceCharge = () => {
                     <div className="p-2">
                 <h5 className='text-dark fw-bolder'>Apply service charge on</h5>            
                 <div className='form-check form-check-success mt-1'>
-            <Input type='radio' name='radio' id='radio-success' defaultChecked />
+            <Input type='radio' value="Full" onChange={setData}  name="apply" id='radio-success'  />
             <Label className='form-check-label' for='radio-success'>
             Full sale value
             </Label>
           </div>
                 <div className='form-check form-check-success mt-1'>
-            <Input type='radio' name='radio' id='radio-success' defaultChecked />
+            <Input type='radio' onChange={setData} value="Only" name="apply" id='radio-success'  />
             <Label className='form-check-label' for='radio-success'>
             Only selected item types
             </Label>
           </div>
           <h5 className='text-dark fw-bolder mt-2'>Additional options</h5>
           <div className='form-check form-check-success mb-2'>
-            <Input type='checkbox' id='success-checkbox' defaultChecked />
+            <Input type='checkbox' onChange={setData} value="Automatically" id='success-checkbox' defaultChecked />
             <Label className='form-check-label' for='success-checkbox'>
             Automatically apply during checkout
             </Label>
@@ -107,7 +145,7 @@ const ServiceCharge = () => {
           <Label className='form-label text-dark'  for='select-basic'>
           Tax
           </Label>
-          <Input type='select' name='select' id='select-basic'>
+          <Input type='select' onChange={setData} name='select' id='select-basic'>
             <option>No Tax</option>
             <option>10%</option>
             <option>20%</option>
@@ -116,7 +154,8 @@ const ServiceCharge = () => {
                 </div>
                 </div>
             </div>
-        </div>
+        
+      </div>
     )
 }
 
