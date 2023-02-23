@@ -19,6 +19,7 @@ import dataTables from '@src/views/tables/data-tables/store'
 import permissions from '@src/views/apps/roles-permissions/store'
 import PromoteReducer from '../views/apps/san-promote/promoteRedux/Reducer'
 import AppointmentReducer from '../views/apps/anu-appointment/appointmentRedux/Reducer'
+import UserReducer from '../views/auth/Redux/reducers'
 
 const rootReducer = {
   AppointmentReducer,
@@ -40,7 +41,8 @@ const rootReducer = {
   organizationList,
   organizationUsers,
   overview,
-  groupdetails
+  groupdetails,
+  UserReducer
 }
 
 export default rootReducer

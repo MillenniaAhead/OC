@@ -1,14 +1,32 @@
-import React from "react"
+import React, { useState } from "react"
 import X from "../../assets/images/pages/type/x.png"
 
+import { useDispatch } from "react-redux"
+import { bindActionCreators } from "redux"
+import { actionCreators } from "./Redux"
+import { NavLink } from 'react-router-dom'
+
 const Details = () => {
+ const [name, setName] = useState('')
+ const [website, setWebsite] = useState('')
+
+  //For dispatch action
+  const dispatch = useDispatch()
+  const { CollectUserData } = bindActionCreators(actionCreators, dispatch) 
+
+ //On next step click
+  const userData = () => {
+   CollectUserData([name, website])
+   console.log(name, website)
+  }
+
   return (
     <div>
       <div className="d-flex justify-content-between px-5 py-2 border-bottom border-2">
         <img style={{width: '35px', height: '35px', marginTop: '5px'}} src={X} alt="x" />
-        <a style={{background: '#4E4E4E', color: 'white'}} href="/type" type="button" className="px-4 py-1 btn rounded-1">
+        <NavLink onClick={userData} style={{background: '#4E4E4E', color: 'white'}} to="/type" type="button" className="px-4 py-1 btn rounded-1">
           Next step
-        </a>
+        </NavLink>
       </div>
       <p
         style={{ fontWeight: 400, cursor: "default", color: 'black' }}
@@ -46,6 +64,8 @@ const Details = () => {
           type="text"
           className="card px-2 py-2 rounded-1"
           placeholder="Salon"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <p style={{ marginTop: "-2px", cursor: "default", color: 'black' }}>
           Website
@@ -61,6 +81,8 @@ const Details = () => {
           type="text"
           className="card px-2 py-2 rounded-1"
           placeholder="www.yoursite.com"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
         />
       </div>
     </div>

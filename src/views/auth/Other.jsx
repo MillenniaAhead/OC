@@ -17,94 +17,52 @@ import Plus from "../../assets/images/pages/type/Plus Math.png"
 import Scales from "../../assets/images/pages/type/Kitchen Scales.png"
 import Running from "../../assets/images/pages/type/Running.png"
 import Ropes from "../../assets/images/pages/type/Battle Ropes.png"
-
 import Layout from "../../assets/images/pages/type/Group Layouts.png"
 
+import { useDispatch } from "react-redux"
+import { bindActionCreators } from "redux"
+import { actionCreators } from "./Redux"
+import { NavLink } from 'react-router-dom'
+
 const Other = () => {
+  const [business, setBusiness] = useState([])
 
-  const [isActive, setIsActive] = useState(false)
-  const [isActive2, setIsActive2] = useState(false)
-  const [isActive3, setIsActive3] = useState(false)
-  const [isActive4, setIsActive4] = useState(false)
-  const [isActive5, setIsActive5] = useState(false)
-  const [isActive6, setIsActive6] = useState(false)
-  const [isActive7, setIsActive7] = useState(false)
-  const [isActive8, setIsActive8] = useState(false)
-  const [isActive9, setIsActive9] = useState(false)
-  const [isActive10, setIsActive10] = useState(false)
-  const [isActive11, setIsActive11] = useState(false)
-  const [isActive12, setIsActive12] = useState(false)
-  const [isActive13, setIsActive13] = useState(false)
-  const [isActive14, setIsActive14] = useState(false)
-  const [isActive15, setIsActive15] = useState(false)
+ const selectBusiness = (e) => {
+  if (business.includes(e.target.textContent)) {
+      setBusiness(business.filter((type) => type !== e.target.textContent))
+  } else {
+    setBusiness([...business, e.target.textContent])
+  }
+  console.log(e.target.textContent)
+ }
 
-  const handleClick = () => {
-    setIsActive(current => !current)
-   }
- 
-   const handleClick2 = () => {
-     setIsActive2(current => !current)
-    }
- 
-    const handleClick3 = () => {
-     setIsActive3(current => !current)
-    }
- 
-    const handleClick4 = () => {
-     setIsActive4(current => !current)
-    }
- 
-    const handleClick5 = () => {
-     setIsActive5(current => !current)
-    }
- 
-    const handleClick6 = () => {
-     setIsActive6(current => !current)
-    }
- 
-    const handleClick7 = () => {
-     setIsActive7(current => !current)
-    }
- 
-    const handleClick8 = () => {
-     setIsActive8(current => !current)
-    }
- 
-    const handleClick9 = () => {
-     setIsActive9(current => !current)
-    }
- 
-    const handleClick10 = () => {
-     setIsActive10(current => !current)
-    }
- 
-    const handleClick11 = () => {
-     setIsActive11(current => !current)
-    }
- 
-    const handleClick12 = () => {
-     setIsActive12(current => !current)
-    }
- 
-    const handleClick13 = () => {
-     setIsActive13(current => !current)
-    }
- 
-    const handleClick14 = () => {
-     setIsActive14(current => !current)
-    }
- 
-    const handleClick15 = () => {
-     setIsActive15(current => !current)
-    }
+ const selectBusinessImage = (e) => {
+  if (business.includes(e.target.id)) {
+    setBusiness(business.filter((type) => type !== e.target.id))
+} else {
+  setBusiness([...business, e.target.id])
+}
+console.log(e.target.textContent)
+  e.stopPropagation()
+ }
+
+  //For dispatch action
+  const dispatch = useDispatch()
+  const { CollectUserData } = bindActionCreators(actionCreators, dispatch) 
+
+ //On next step click
+ const SendData = () => {
+  CollectUserData([business])
+  console.log(business)
+ }
 
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center px-3 py-1 border-bottom border-1">
         <div className="d-flex justify-content-between align-items-center">
         <img style={{width: '35px', height: '35px', marginTop: '5px'}} src={X} alt="x" />
-          <a
-            href="/type"
+          <NavLink
+            to="/type"
             style={{
               marginTop: "18px",
               marginBottom: "10px",
@@ -115,12 +73,12 @@ const Other = () => {
             }}
           >
             Previous
-          </a>
+          </NavLink>
         </div>
 
-        <a style={{background: '#4E4E4E', color: 'white'}} href="/team" type="button" className="px-4 py-1 btn rounded-1">
+        <NavLink onClick={SendData} style={{background: '#4E4E4E', color: 'white'}} to="/team" type="button" className="px-4 py-1 btn rounded-1">
           Next step
-        </a>
+        </NavLink>
       </div>
       <div style={{ height: "2px" }} className="progress">
         <div style={{ width: "30%", background: '#1E49E2' }} className="progress-bar"></div>
@@ -154,8 +112,8 @@ const Other = () => {
       <div>
         <div className="d-flex mt-3">
           <div
-            onClick={handleClick}
-            style={{ backgroundColor: isActive ? '#D1E3F4CC' : '', color: isActive ? 'white' : '', width: "150px", height: "100px", marginLeft: "265px", cursor: 'pointer' }}
+            onClick={selectBusiness}
+            style={business.includes("Hair Salon") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "265px", cursor: 'pointer'} : {border: "", width: "150px", height: "100px", marginLeft: "265px", cursor: 'pointer'}}
             className="card border-1"
           >
             <img
@@ -164,6 +122,8 @@ const Other = () => {
               height={28}
               src={Head}
               alt="head"
+              onClick={selectBusinessImage}
+              id="Hair Salon"
             />
             <p
               style={{
@@ -173,13 +133,14 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Hair Salon
             </p>
           </div>
           <div
-            onClick={handleClick2}
-            style={{ backgroundColor: isActive2 ? '#D1E3F4CC' : '', color: isActive2 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' }}
+            onClick={selectBusiness}
+            style={business.includes("Nail Salon") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
           >
             <img
@@ -188,6 +149,8 @@ const Other = () => {
               height={28}
               src={Nail}
               alt="nail"
+              id="Nail Salon"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -197,13 +160,14 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Nail Salon
             </p>
           </div>
           <div
-           onClick={handleClick3}
-            style={{ backgroundColor: isActive3 ? '#D1E3F4CC' : '', color: isActive3 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' }}
+            onClick={selectBusiness}
+            style={business.includes("Barber shop") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
           >
             <img
@@ -212,6 +176,8 @@ const Other = () => {
               height={28}
               src={Barber}
               alt="barber"
+              id="Barber shop"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -221,14 +187,15 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Barber shop
             </p>
           </div>
 
           <div
-           onClick={handleClick4}
-            style={{ backgroundColor: isActive4 ? '#D1E3F4CC' : '', color: isActive4 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' }}
+            onClick={selectBusiness}
+            style={business.includes("Aesthetics") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
           >
             <img
@@ -237,6 +204,8 @@ const Other = () => {
               height={28}
               src={Meme}
               alt="meme"
+              id="Aesthetics"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -246,13 +215,14 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Aesthetics
             </p>
           </div>
           <div
-           onClick={handleClick5}
-            style={{ backgroundColor: isActive5 ? '#D1E3F4CC' : '', color: isActive5 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' }}
+            onClick={selectBusiness}
+            style={business.includes("Massage") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
           >
             <img
@@ -261,6 +231,8 @@ const Other = () => {
               height={28}
               src={Bed}
               alt="bed"
+              id="Massage"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -270,6 +242,7 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Massage
             </p>
@@ -278,9 +251,9 @@ const Other = () => {
 
         <div className="d-flex">
           <div
-           onClick={handleClick6}
-            style={{ backgroundColor: isActive6 ? '#D1E3F4CC' : '', color: isActive6 ? 'white' : '', width: "150px", height: "100px", marginLeft: "265px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Spa") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "265px", cursor: 'pointer'} : {border: "", width: "150px", height: "100px", marginLeft: "265px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -288,6 +261,8 @@ const Other = () => {
               height={28}
               src={Spa}
               alt="spa"
+              id="Spa"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -297,14 +272,15 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Spa
             </p>
           </div>
           <div
-           onClick={handleClick7}
-            style={{ backgroundColor: isActive7 ? '#D1E3F4CC' : '', color: isActive7 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Waxing Salon") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -312,6 +288,8 @@ const Other = () => {
               height={28}
               src={Perfume}
               alt="perfume"
+              id="Waxing Salon"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -321,14 +299,15 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Waxing Salon
             </p>
           </div>
           <div
-           onClick={handleClick8}
-            style={{ backgroundColor: isActive8 ? '#D1E3F4CC' : '', color: isActive8 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Tanning Studio") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -336,6 +315,8 @@ const Other = () => {
               height={28}
               src={Recliner}
               alt="Recliner"
+              id="Tanning Studio"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -345,14 +326,15 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Tanning Studio
             </p>
           </div>
           <div
-            onClick={handleClick9}
-            style={{ backgroundColor: isActive9 ? '#D1E3F4CC' : '', color: isActive9 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Eyebrows & Lashes") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -360,6 +342,8 @@ const Other = () => {
               height={28}
               src={Eye}
               alt="eye"
+              id="Eyebrows & Lashes"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -369,14 +353,15 @@ const Other = () => {
                 fontSize: "13px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Eyebrows & Lashes
             </p>
           </div>
           <div
-            onClick={handleClick10}
-            style={{ backgroundColor: isActive10 ? '#D1E3F4CC' : '', color: isActive10 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Tattoo & Piercing") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -384,6 +369,8 @@ const Other = () => {
               height={28}
               src={Arrow}
               alt="arrow"
+              id="Tattoo & Piercing"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -393,6 +380,7 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Tattoo & Piercing
             </p>
@@ -401,9 +389,9 @@ const Other = () => {
 
         <div className="d-flex">
           <div
-            onClick={handleClick11}
-            style={{ backgroundColor: isActive11 ? '#D1E3F4CC' : '', color: isActive11 ? 'white' : '', width: "150px", height: "100px", marginLeft: "265px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Therapy Center") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "265px", cursor: 'pointer'} : {border: "", width: "150px", height: "100px", marginLeft: "265px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -411,6 +399,8 @@ const Other = () => {
               height={28}
               src={Plus}
               alt="plus"
+              id="Therapy Center"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -420,14 +410,15 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Therapy Center
             </p>
           </div>
           <div
-            onClick={handleClick12}
-            style={{ backgroundColor: isActive12 ? '#D1E3F4CC' : '', color: isActive12 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Weight Loss") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -435,6 +426,8 @@ const Other = () => {
               height={28}
               src={Scales}
               alt="scales"
+              id="Weight Loss"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -444,14 +437,15 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Weight Loss
             </p>
           </div>
           <div
-            onClick={handleClick13}
-            style={{ backgroundColor: isActive13 ? '#D1E3F4CC' : '', color: isActive13 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Personal Trainer") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -459,6 +453,8 @@ const Other = () => {
               height={28}
               src={Running}
               alt="Running"
+              id="Personal Trainer"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -468,14 +464,15 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Personal Trainer
             </p>
           </div>
           <div
-            onClick={handleClick14}
-            style={{ backgroundColor: isActive14 ? '#D1E3F4CC' : '', color: isActive14 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Gym & Fitness") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -483,6 +480,8 @@ const Other = () => {
               height={28}
               src={Ropes}
               alt="ropes"
+              id="Gym & Fitness"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -492,14 +491,15 @@ const Other = () => {
                 fontSize: "14px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Gym & Fitness
             </p>
           </div>
           <div
-           onClick={handleClick15}
-            style={{ backgroundColor: isActive15 ? '#D1E3F4CC' : '', color: isActive15 ? 'white' : '', width: "150px", height: "100px", marginLeft: "15px", marginTop: '-10px', cursor: 'pointer' }}
+            style={business.includes("Other") ? {border:'1px solid green', backgroundColor:"lightgreen", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer' } : {border: "", width: "150px", height: "100px", marginLeft: "15px", cursor: 'pointer'}}
             className="card border-1"
+            onClick={selectBusiness}
           >
             <img
               style={{ marginLeft: "58px", marginTop: "26px" }}
@@ -507,6 +507,8 @@ const Other = () => {
               height={28}
               src={Layout}
               alt="layout"
+              id="Other"
+              onClick={selectBusinessImage}
             />
             <p
               style={{
@@ -516,6 +518,7 @@ const Other = () => {
                 fontSize: "15px",
                 cursor: "default"
               }}
+              onClick={selectBusiness}
             >
               Other
             </p>

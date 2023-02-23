@@ -1,0 +1,1 @@
+export const COLLECT_USER_DATA = 'COLLECT_USER_DATA'

@@ -1,14 +1,36 @@
-import React from "react"
+import React, { useState } from "react"
 import X from "../../assets/images/pages/type/x.png"
 
+import { useDispatch } from "react-redux"
+import { bindActionCreators } from "redux"
+import { actionCreators } from "./Redux"
+import { NavLink } from 'react-router-dom'
+
 const Software = () => {
+  const [software, setSoftware] = useState('')
+
+  //For dispatch action
+  const dispatch = useDispatch()
+  const { CollectUserData } = bindActionCreators(actionCreators, dispatch) 
+
+  const selectSoftware = (e) => {
+    setSoftware(e.target.value)
+    console.log(e.target.value)
+  }
+
+ //On next step click
+  const userData = () => {
+   CollectUserData([software])
+   console.log(software)
+  }
+
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center px-5 py-1 border-bottom border-1">
         <div className="d-flex justify-content-between align-items-center">
         <img style={{width: '35px', height: '35px', marginTop: '5px'}} src={X} alt="x" />
-          <a
-            href="/location"
+          <NavLink
+            to="/location"
             style={{
               marginTop: "18px",
               marginBottom: "10px",
@@ -19,12 +41,12 @@ const Software = () => {
             }}
           >
             Previous
-          </a>
+          </NavLink>
         </div>
 
-        <a style={{background: '#4E4E4E', color: 'white'}} href="/hear" type="button" className="px-4 py-1 btn rounded-1">
+        <NavLink onClick={userData} style={{background: '#4E4E4E', color: 'white'}} to="/hear" type="button" className="px-4 py-1 btn rounded-1">
           Next step
-        </a>
+        </NavLink>
       </div>
       <div style={{ height: "2px" }} className="progress">
         <div style={{ width: "67%", background: '#1E49E2' }} className="progress-bar"></div>
@@ -61,14 +83,16 @@ const Software = () => {
       >
         <div
           style={{ marginLeft: "10px", marginTop: "25px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
+            value='Acuity'
+            onChange={selectSoftware}
             style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-1"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -81,14 +105,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Booksy'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-2"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -101,14 +127,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Janeapp'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-3"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -121,14 +149,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Kitomba'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-4"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -141,14 +171,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Square'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-5"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -161,14 +193,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Mind body'
+            onChange={selectSoftware}
+           style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-6"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -181,14 +215,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Ovatu'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-7"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -201,14 +237,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Phorest'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-8"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -221,14 +259,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Salon Iris'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-9"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -241,14 +281,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Shortcuts'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-10"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -261,14 +303,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Treatwell'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-11"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -281,14 +325,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Squire'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-12"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -301,14 +347,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Styleseat'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-13"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -321,14 +369,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Timely'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-14"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -341,14 +391,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Vagaro'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-15"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -361,14 +413,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Zenoti'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-16"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -381,14 +435,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='I’m not using any software'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-17"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
@@ -401,14 +457,16 @@ const Software = () => {
 
         <div
           style={{ marginLeft: "10px", marginTop: "20px" }}
-          className="form-check"
+          className="form-check form-check-success"
         >
           <input
-          style={{width: '25px', height: '25px'}}
+            value='Other'
+            onChange={selectSoftware}
+            style={{width: '25px', height: '25px'}}
             className="form-check-input h4"
             type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
+            name="software"
+            id="software-18"
           />
           <label
             style={{ fontSize: "18px", marginTop: "1px", color: 'black' }}
