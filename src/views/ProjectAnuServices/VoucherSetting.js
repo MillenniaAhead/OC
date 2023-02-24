@@ -1,6 +1,7 @@
 // import { form } from 'react-bootstrap';
 // import Button from 'react-bootstrap/Button';  
 import './App.css'
+
 export default function VoucherSettingList () {
   return (
 <div class="row justify-content-center">

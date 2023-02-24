@@ -2,7 +2,8 @@
 import { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody} from "reactstrap"
 import AddCatMod from './AddCatModal'
-const CategoryMod = () => {
+
+function CategoryMod ()  {
 const [formModal, setFormModal] = useState(false)
     return (
   <div>

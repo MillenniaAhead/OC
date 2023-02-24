@@ -1,59 +1,59 @@
 import { lazy } from 'react'
 // import './App.css'
 const ProjectAnuServicesRoutes = [
-  // {
-  //   path: '/AddCatModal',
-  //   component: lazy(() => import('../../views/ProjectAnuSevices/AddCatModal'))
-  // },
-  // {
-  //   path: '/AddNewModal',
-  //   component: lazy(() => import('../../views/ProjectAnuSevices/AddNewModal'))
-  // },
+  {
+    path: '/AddCatModal',
+    component: lazy(() => import('../../views/ProjectAnuServices/AddCatModal'))
+  },
+  {
+    path: '/AddNewModal',
+    component: lazy(() => import('../../views/ProjectAnuServices/AddNewModal'))
+  },
   {
     path: '/AttractClient',
-    component: lazy(() => import('../../views/ProjectAnuSevices/AttractClient'))
+    component: lazy(() => import('../../views/ProjectAnuServices/AttractClient'))
   },
-  // {
-  //   path: '/CategoryModal',
-  //   component: lazy(() => import('../../views/ProjectAnuSevices/CategoryModal'))
-  // },
+  {
+    path: '/CategoryModal',
+    component: lazy(() => import('../../views/ProjectAnuServices/CategoryModal'))
+  },
   {
     path: '/CreateMemberShip',
-    component: lazy(() => import('../../views/ProjectAnuSevices/CreateMemberShip'))
+    component: lazy(() => import('../../views/ProjectAnuServices/CreateMemberShip'))
   },
   {
     path: '/MemberShip',
-    component: lazy(() => import('../../views/ProjectAnuSevices/MemberShip'))
+    component: lazy(() => import('../../views/ProjectAnuServices/MemberShip'))
   },
   
   {
     path: '/NewProduct',
-    component: lazy(() => import('../../views/ProjectAnuSevices/NewProduct'))
+    component: lazy(() => import('../../views/ProjectAnuServices/NewProduct'))
   },
   {
     path: '/SelectCategory',
-    component: lazy(() => import('../../views/ProjectAnuSevices/SelectCategory'))
+    component: lazy(() => import('../../views/ProjectAnuServices/SelectCategory'))
   },
   {
     path: '/SelectMember',
-    component: lazy(() => import('../../views/ProjectAnuSevices/SelectMember'))
+    component: lazy(() => import('../../views/ProjectAnuServices/SelectMember'))
   },
   {
     path: '/VoucherSetting',
-    component: lazy(() => import('../../views/ProjectAnuSevices/VoucherSetting'))
+    component: lazy(() => import('../../views/ProjectAnuServices/VoucherSetting'))
   },
   {
     path: '/Voucher',
-    component: lazy(() => import('../../views/ProjectAnuSevices/Voucher'))
+    component: lazy(() => import('../../views/ProjectAnuServices/Voucher'))
   },
   {
-    path: '/VoucherTypes',
-    component: lazy(() => import('../../views/ProjectAnuSevices/VoucherTypes'))
+    path: '/VoucherType',
+    component: lazy(() => import('../../views/ProjectAnuServices/VoucherType'))
+  },
+  {
+    path: '/SelectMemModal',
+    component: lazy(() => import('../../views/ProjectAnuServices/SelectMemModal'))
   }
-  // {
-  //   path: '/SelectMemModal',
-  //   component: lazy(() => import('../../views/ProjectAnuSevices/SelectMemModal'))
-  // }
 
 ]
 

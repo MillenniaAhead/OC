@@ -8,7 +8,7 @@ import DashboardRoutes from './Dashboards'
 import UiElementRoutes from './UiElements'
 import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
-
+import ProjectAnuServicesRoutes from './ProjectAnuServicesRoutes'
 /*
 Customization Routes
 */
@@ -38,7 +38,8 @@ const Routes = [
   ...PageLayoutsRoutes,
   ...FormRoutes,
   ...TablesRoutes,
-  ...ChartsRoutes
+  ...ChartsRoutes,
+  ...ProjectAnuServicesRoutes
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }
