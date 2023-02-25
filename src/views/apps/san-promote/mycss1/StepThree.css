@@ -1,0 +1,74 @@
+.how-to-apply-promotion-container{
+    width:678px;
+    min-height:185px;
+    border:1px solid #D9D9D9;
+    border-radius: 8px;
+  }
+  .how-to-apply-promotion-wrapper{
+    padding:24px 32px;
+  }
+  .step-three-option{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 24px;
+  }
+  .option-text-wrapper{
+    margin-left:16px;
+  }
+  .form-switch .form-check-input:focus {
+    border-color: rgba(0, 0, 0, 0.25);
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(0,0,0,0.25)'/></svg>");
+  }
+  .form-switch .form-check-input:checked {
+    background-color: #1BB70B;
+    border-color: #1BB70B;
+    border: none;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,1.0)'/></svg>");
+  }
+  .text-a22{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+  .text-b22{
+    font-size:'13px';
+    font-weight: '400';
+    line-height:'19px';
+    margin:'4px 0 0 0';
+    color:rgba(0, 0, 0, 0.7)
+  }
+  .box-a22{
+    padding:2px;
+    border:1px solid #d9d9d9;
+    width:fit-content;
+    border-radius:4px;
+  }
+  .box-a22 input{
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+  .my-alert-comp{
+    width:40%;
+    position: fixed;
+    top:1%;
+    left:30%;
+    background-color: rgb(252, 111, 111);
+    z-index: 1;
+  }
+  @media (max-width:700px){
+    .how-to-apply-promotion-container{
+      width:96%;
+      height:auto;
+      margin:auto;
+      margin-bottom: 15%;
+    }
+    .my-alert-comp{
+      width:80%;
+      left:10%;
+    }
+    .how-to-apply-promotion-wrapper{
+      padding:18px 10px;
+    }
+  }

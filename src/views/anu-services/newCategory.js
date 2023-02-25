@@ -1,48 +1,62 @@
 import { React, useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input} from "reactstrap"
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input, Badge } from "reactstrap"
+import axios from 'axios'
 
-function  NewCategory () {
-    const [formModal, setFormModal] = useState(false)
-    return (
-        <div>
-             <Button color='white' onClick={() => setFormModal(!formModal)}>
-         NewCategory
-        </Button>
-        <Modal isOpen={formModal} toggle={() => setFormModal(!formModal)} className='modal-dialog-centered'>
-          <ModalHeader toggle={() => setFormModal(!formModal)}>New Category</ModalHeader>
-          <ModalBody>
-          <div className='mb-2'>
-          <Label for="formGroupExampleInput" class="form-label d-flex justify-content-start fw-semibold">Category name </Label>
-        <Input type="text" class="form-control" id="formGroupExampleInput" placeholder="e.g.  Hair Services  " />
-            </div>
-            <div className='mb-2'>
-            <div class="mb-2">
-     <Label for="formGroupExampleInput2" class="form-label d-flex justify-content-start fw-semibold">Appointment color</Label>
-     <div class="form-floating">
-     <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-     </select>
-     <Label for="floatingSelect"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="#A5DFF8" class="bi bi-circle-fill mt-3 ms-1" viewBox="0 0 16 16">
-      <circle cx="8" cy="8" r="8"/>
-     </svg></Label>
-<p class="fw-light">See your Calendar Settings page under Setup to set how colors are
-displayed on the calendar</p>
-      </div>
+function NewCategory() {
+  const [formModal, setFormModal] = useState(false)
+  const [formData, setFormData] = useState({})
 
-      <div class="mb-3">
-      <Label for="exampleFormControlTextarea1" class="form-label d-flex justify-content-start fw-semibold">Category description</Label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Add a short description" rows="4"></textarea>
-      </div>
-      </div>
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <Button color='dark' onClick={() => setFormModal(!formModal)}>
-             Save
-            </Button>{' '}
-          </ModalFooter>
-          </Modal>
-        </div>
-    )
+  const formDataFun = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  export default NewCategory
+  const postData = (e) => {
+    e.preventDefault()
+    console.log(formData)
+    axios.post("http://localhost:7000/api/newCategory", formData)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch(err => console.log(err))
+  }
+  return (
+    <div>
+      <Button color='white' onClick={() => setFormModal(!formModal)}>
+        NewCategory
+      </Button>
+      <Modal isOpen={formModal} toggle={() => setFormModal(!formModal)} className='modal-dialog-centered'>
+        <ModalHeader toggle={() => setFormModal(!formModal)}>New Category</ModalHeader>
+        <ModalBody>
+          <div className='mb-2'>
+            <Label htmlFor="formGroupExampleInput" className="form-label d-flex justify-content-start fw-semibold">Category name </Label>
+            <Input onChange={formDataFun} type="text" className="form-control" id="formGroupExampleInput" placeholder="e.g.  Hair Services  " />
+          </div>
+          <div className='mb-2'>
+            <div className="mb-2">
+              <Label htmlFor="formGroupExampleInput2" className="form-label d-flex justify-content-start fw-semibold">Appointment color</Label>
+              <div className="form-floating">
+                <Input onChange={formDataFun} type="text" className="form-control" id="formGroupExampleInput" placeholder=" " />
+                <p className="fw-light">See your Calendar Settings page under Setup to set how colors are
+                  displayed on the calendar</p>
+              </div>
+
+              <div className="mb-3">
+                <Label htmlFor="exampleFormControlTextarea1" className="form-label d-flex justify-content-start fw-semibold">Category description</Label>
+                <textarea className="form-control" id="exampleFormControlTextarea1" placeholder="Add a short description" rows="4"></textarea>
+              </div>
+            </div>
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <Button color='dark' onClick={() => setFormModal(!formModal)}>
+            <Badge color='dark' onClick={postData}>
+              Save
+            </Badge>
+          </Button>{' '}
+        </ModalFooter>
+      </Modal>
+    </div>
+  )
+}
+
+export default NewCategory

@@ -1,0 +1,86 @@
+#dashboard-container{
+    width:100%;
+}
+.text-aaa1{
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 27px;
+}
+.text-bbb1{
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 48px;
+    margin-top:12px;
+}
+.text-ccc1{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color:rgba(0, 0, 0, 0.8);
+    margin:15px 0;
+}
+.text-ddd1{
+    font-weight:500;
+    font-size:18px;
+    line-height:20px;
+    margin-right:2px;
+}
+.text-eee1{
+    font-size:30px;
+    line-height:36px;
+    font-weight:700;
+    margin-bottom:10px
+}
+.text-fff1{
+    font-size:17px;
+    line-height:20px;
+    font-weight: 400;
+}
+ul li,.text-ggg1{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color:rgba(0, 0, 0, 0.4)
+}
+.text-ggg1{
+    color:black;
+}
+ul{
+    list-style: none;
+}
+li span{
+   color:black
+}
+.card-body-aaa1{
+    border:1px solid #d9d9d9;
+    border-radius:10px;
+}
+.date-picker-aaa1{
+    width:230px;
+    padding:10px 15px;
+    border:1px solid #d9d9d9;
+    font-weight:700;
+    border-radius:4px;
+}
+.filter-aaa1{
+    width:130px
+}
+.my-top-xxx1{
+    margin: 32px 0px;
+    display:flex
+}
+.top-box-xxx2{
+    display: flex;
+    justify-content: space-between;
+}
+@media (max-width:600px){
+    .date-picker-aaa1{
+        width:70%
+    }
+    .my-top-xxx1{
+        margin: 16px 0px;
+    }
+    .top-box-xxx2{
+        display: block;
+    }
+}

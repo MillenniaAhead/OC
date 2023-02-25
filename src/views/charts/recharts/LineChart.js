@@ -8,64 +8,64 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 // ** Chart Data
 const data = [
   {
-    name: '7/12',
-    pv: 280
+    name: '10 Dec',
+    pv: 0
   },
   {
     name: '8/12',
-    pv: 200
+    pv: 1
   },
   {
-    name: '9/12',
-    pv: 220
+    name: '11 Dec',
+    pv: 2
   },
   {
-    name: '10/12',
-    pv: 180
+    name: '12 Dec',
+    pv: 3
   },
   {
-    name: '11/12',
-    pv: 270
+    name: '13 Dec',
+    pv: 4
   },
   {
-    name: '12/12',
-    pv: 250
+    name: '14 Dec',
+    pv: 5
   },
   {
-    name: '13/12',
-    pv: 70
+    name: '15 Dec',
+    pv: 10
   },
   {
-    name: '14/12',
-    pv: 90
+    name: '16 Dec',
+    pv: 6
   },
   {
-    name: '15/12',
-    pv: 200
+    name: '17 Dec',
+    pv: 8
   },
   {
-    name: '16/12',
-    pv: 150
+    name: '18 Dec',
+    pv: 7
   },
   {
-    name: '17/12',
-    pv: 160
+    name: '19 Dec',
+    pv: 11
   },
   {
-    name: '18/12',
-    pv: 100
+    name: '20 Dec',
+    pv: 9
   },
   {
-    name: '19/12',
-    pv: 150
+    name: '21 Dec',
+    pv: 13
   },
   {
-    name: '20/12',
-    pv: 100
+    name: '22 Dec',
+    pv: 12
   },
   {
-    name: '21/12',
-    pv: 50
+    name: '23 Dec',
+    pv: 14
   }
 ]
 

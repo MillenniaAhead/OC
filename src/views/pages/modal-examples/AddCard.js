@@ -76,7 +76,7 @@ const AddCardExample = () => {
 
   return (
     <Fragment>
-      <Card>
+      <Card style={{width: '400px'}}>
         <CardBody className='text-center'>
           <CreditCard className='font-large-2 mb-1' />
           <CardTitle tag='h5'>Add New Card</CardTitle>
