@@ -1,17 +1,17 @@
-// import { form } from 'react-bootstrap';
-// import Button from 'react-bootstrap/Button';
 import SelectMemberShipModal from './SelectMemModal'
 import './App.css'
 import axios from 'axios'
+import { Alert } from 'reactstrap'
 import { useState } from 'react'
 
-function CreateMemberShipProduct  ()  {
+function CreateMemberShipProduct() {
   const [formData, setFormData] = useState({})
+  const [visible, setVisible] = useState(true)
   const formDataFun = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     console.log(e.target.value)
   }
-  
+
   const postData = (e) => {
     e.preventDefault()
     console.log(formData)
@@ -25,10 +25,12 @@ function CreateMemberShipProduct  ()  {
     <div className="row justify-content-center">
       <form className="container">
         <div className="d-flex justify-content-end">
-          {/* <button color='primary' onClick={() => setFormModal(!formModal)} > */}
           <button onClick={postData} >Save</button>
-          {/* </button> */}
-
+          <Alert color='primary' isOpen={visible} toggle={() => setVisible(false)}>
+            <div className='alert-body'>
+              Data Added Successfully
+            </div>
+          </Alert>
         </div>
       </form>
       <div className="container">
@@ -44,7 +46,7 @@ function CreateMemberShipProduct  ()  {
                 <input onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="name" required /></div>
               <div className="mb-3">
                 <label htmlFor="exampleFormControl Textarea1" className="form-label d-flex justify-content-start"><h5><b>Membership description</b></h5></label>
-              <textarea onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="Add Membership Description" required /></div>
+                <textarea onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="Add Membership Description" required /></div>
             </div>
           </div>
         </div>
@@ -85,7 +87,7 @@ function CreateMemberShipProduct  ()  {
                         <div className="input-group-prepend">
                         </div >
                         <input onChange={formDataFun} name='name' type="number" className="form-control" id="validationDefault01" placeholder="5" required /></div>
-                        </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -134,7 +136,7 @@ function CreateMemberShipProduct  ()  {
                                       <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z" />
                                     </svg></div></div>
                                   </div >
-                                  <input onChange={formDataFun} name='name' type="number" className="form-control" id="validationDefault01" placeholder="5" required /></div>                        
+                                  <input onChange={formDataFun} name='name' type="number" className="form-control" id="validationDefault01" placeholder="5" required /></div>
                               </div>
                             </div>
                           </div>
@@ -193,7 +195,7 @@ function CreateMemberShipProduct  ()  {
                 <div className='App-members input-group-text row justify-content-center w-70 h-75 '><b>Online Membership sales are coming soon to </b>
                   <span>
                     <b>India with payments in fresha</b></span></div>
-                              </div>
+              </div>
             </div>
           </div>
         </div>
@@ -207,8 +209,8 @@ function CreateMemberShipProduct  ()  {
                 <div>
                   <span className="form-group d-flex flex-row">
                     <label htmlFor="exampleFormControlTextarea1" className="form-label d-flex justify-content-start"><b>Terms & Conditions</b></label><label htmlFor="aria-describedby="> (Optional)</label></span>
-                  
-                    <textarea onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="Add Terms & Conditions" required /></div>
+
+                  <textarea onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="Add Terms & Conditions" required /></div>
               </div>
             </div>
           </div>

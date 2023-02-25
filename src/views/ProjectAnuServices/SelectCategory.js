@@ -1,15 +1,13 @@
-// import { form  } from 'react-bootstrap';
-// import Button from 'react-bootstrap/Button';
 import './App.css'
 import CategoryMod from './CategoryModal'
 import AddNewModal from './AddNewModal'
 import axios from 'axios'
+import { Alert } from 'reactstrap'
 import { useState } from 'react'
 
- function SelectCategoryProduct  ()  {
-  // const [formModal, setFormModal] = useState(false)
+function SelectCategoryProduct() {
   const [formData, setFormData] = useState({})
-
+  const [visible, setVisible] = useState(true)
   const formDataFun = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     console.log(e.target.value)
@@ -27,10 +25,13 @@ import { useState } from 'react'
     <div className="row justify-content-center">
       <form className="container">
         <div className="d-flex justify-content-end">
-          {/* <button color='primary' onClick={() => setFormModal(!formModal)} > */}
           <button onClick={postData} >Save</button>
-          {/* </button> */}
-          </div>
+          <Alert color='primary' isOpen={visible} toggle={() => setVisible(false)}>
+            <div className='alert-body'>
+              Data Added Successfully
+            </div>
+          </Alert>
+        </div>
         <h2 className="justify-content-center">Add a New Product </h2>
       </form>
       <div className="form-control w-50 h-50 ">

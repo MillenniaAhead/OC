@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Alert } from 'reactstrap'
 
 function AddNewProduct() {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
   const [formData, setFormData] = useState({})
 
   const formDataFun = (e) => {

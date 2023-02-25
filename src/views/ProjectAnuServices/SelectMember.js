@@ -1,12 +1,12 @@
-// import { form } from 'react-bootstrap';
-// import Button from 'react-bootstrap/Button';
 import SelectMemberShipModal from './SelectMemModal'
 import './App.css'
 import axios from 'axios'
+import { Alert } from 'reactstrap'
 import { useState } from 'react'
 
-function SelectMemberShip  () {
+function SelectMemberShip() {
   const [formData, setFormData] = useState({})
+  const [visible, setVisible] = useState(true)
   const formDataFun = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
     console.log(e.target.value)
@@ -25,10 +25,12 @@ function SelectMemberShip  () {
     <div className="row justify-content-center">
       <form className="container">
         <div className="d-flex justify-content-end">
-          {/* <button color='primary' onClick={() => setFormModal(!formModal)} > */}
           <button onClick={postData} >Save</button>
-          {/* </button> */}
-
+          <Alert color='primary' isOpen={visible} toggle={() => setVisible(false)}>
+            <div className='alert-body'>
+              Data Added Successfully
+            </div>
+          </Alert>
         </div>
       </form>
       <div className="container">
@@ -41,14 +43,14 @@ function SelectMemberShip  () {
               <div className="mb-3 border-top">
                 <span className="form-group d-flex flex-row">
                   <label htmlFor="formGroupExampleInput"><h5><b>Membership Name</b></h5></label></span>
-               <input onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="name" required /></div>
-                 </div>
-              <div className="mb-3">
-                <label htmlFor="exampleFormControl Textarea1" className="form-label d-flex justify-content-start"><h5><b>Membership description</b></h5></label>
-                <textarea onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="Add Membership Description" required /></div>
+                <input onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="name" required /></div>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControl Textarea1" className="form-label d-flex justify-content-start"><h5><b>Membership description</b></h5></label>
+              <textarea onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="Add Membership Description" required /></div>
+          </div>
         </div>
-        </div>
-       <span>
+        <span>
           < div className="row justify-content-center ">
             <div className="form-control w-50 h-50 ">
               <div className="form-group">
@@ -59,7 +61,7 @@ function SelectMemberShip  () {
                   <span className="form-group d-flex flex-row">
                     <label htmlFor="formGroupExampleInput"><h5><b>Included services</b></h5></label></span>
                 </div>
-               <span><div className="input-group-prepend">
+                <span><div className="input-group-prepend">
                   <span className="input-group-text row justify-content-start w-75 h-50 ">0 Services</span>
                 </div></span>
               </div>
@@ -82,7 +84,6 @@ function SelectMemberShip  () {
                         <div className="input-group-prepend">
                         </div >
                         <input onChange={formDataFun} name='name' type="number" className="form-control" id="validationDefault01" placeholder="5" required /></div>
-                        {/* <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" 5" /> */}
                     </div>
                   </div>
                 </div>
@@ -90,7 +91,7 @@ function SelectMemberShip  () {
             </div>
           </div>
         </span>
-       <span>
+        <span>
           <div className="row justify-content-center ">
             <div className="form-control w-50 h-50 ">
               <div className="form-group">
@@ -101,7 +102,7 @@ function SelectMemberShip  () {
                   <span className="form-group d-flex flex-row">
                     <label htmlFor="formGroupExampleInput"><h5><b>Included services</b></h5></label></span>
                 </div>
-               <span><div className="input-group-prepend">
+                <span><div className="input-group-prepend">
                   <span className="input-group-text row justify-content-start w-75 h-50 ">0 Services<a href="#" className="link-success row justify-content-end ">Edit</a></span>
                 </div></span>
                 <div className="row">
@@ -132,7 +133,6 @@ function SelectMemberShip  () {
                                     </svg></div></div>
                                   </div >
                                   <input onChange={formDataFun} name='name' type="number" className="form-control" id="validationDefault01" placeholder="5" required /></div>
-                                  {/* <input type="text" className="form-control" id="inlineFormInputGroup" placeholder=" " rows=" " /> */}
                               </div>
                             </div>
                           </div>
@@ -159,7 +159,7 @@ function SelectMemberShip  () {
               </div>
             </div></div>
         </span>
-       <span>
+        <span>
           < div className="row justify-content-center ">
             <div className="form-control w-50 h-50 ">
               <div className="form-group">
@@ -179,7 +179,7 @@ function SelectMemberShip  () {
             </div>
           </div>
         </span>
-       <span>
+        <span>
           < div className="row justify-content-center ">
             <div className="form-control w-50 h-50 ">
               <div className="form-group">
@@ -196,7 +196,7 @@ function SelectMemberShip  () {
             </div>
           </div>
         </span>
-       <span>
+        <span>
           <div className="row justify-content-center ">
             <div className="form-control w-50 h-50 ">
               <div className="form-group">
@@ -207,9 +207,7 @@ function SelectMemberShip  () {
                   <div>
                     <span className="form-group d-flex flex-row">
                       <label htmlFor="exampleFormControlTextarea1" className="form-label d-flex justify-content-start"><b>Terms & Conditions</b></label><label htmlFor="aria-describedby="> (Optional)</label></span>
-                      <textarea onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="Add Terms & Conditions" required /></div>
-
-                    {/* <textarea className="form-control w-50 h-50" id="exampleFormControlTextarea1" rows="2" placeholder="Add Terms & Conditions"></textarea></div> */}
+                    <textarea onChange={formDataFun} name='name' type="text" className="form-control" id="validationDefault01" placeholder="Add Terms & Conditions" required /></div>
                 </div>
               </div>
             </div>

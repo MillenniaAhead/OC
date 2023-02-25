@@ -35,11 +35,11 @@ function AttractNewClient () {
 <div className="App-attract">
 <div className="row">
   <div className="col-md-12 bs-linebreak">
-<p className="text-sm-start"><a href=" ">Online booking</a></p>
-<p className="text-sm-start"> <a href=" "> Market Palace</a></p>
-<p className="text-sm-start"><a href=" "> Reserve with Google</a></p>
-<p className="text-sm-start"><a href=" "> Facebook and Instagram booking</a></p>
- <p className="text-sm-start"><a href=" "> Link builder</a></p>
+<span className="text-sm-start"><a href=" ">Online booking</a></span>
+<span className="text-sm-start"> <a href=" "> Market Palace</a></span>
+<span className="text-sm-start"><a href=" "> Reserve with Google</a></span>
+<span className="text-sm-start"><a href=" "> Facebook and Instagram booking</a></span>
+ <span className="text-sm-start"><a href=" "> Link builder</a></span>
 </div>
 </div>
      </div>
