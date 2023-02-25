@@ -1,6 +1,7 @@
 // ** React Imports
 import { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import axios from 'axios'
 
 // ** Custom Hooks
 import { useSkin } from '@hooks/useSkin'
@@ -31,7 +32,10 @@ const defaultValues = {
   email: '',
   terms: false,
   username: '',
-  password: ''
+  password: '',
+  mobilenumber: '',
+  country: ''
+
 }
 
 const Register = () => {
@@ -51,6 +55,10 @@ const Register = () => {
     source = require(`@src/assets/images/pages/${illustration}`).default
 
   const onSubmit = data => {
+    console.log(data)
+    axios.post("http://localhost:4000/api/register",  data)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
     const tempData = { ...data }
     delete tempData.terms
     if (Object.values(tempData).every(field => field.length > 0) && data.terms === true) {
@@ -209,11 +217,12 @@ const Register = () => {
                   </a>
                 </Label>
               </div>
-              <Link to='/verify'>
-               <button  className='btn' style={{background: '#4E4E4E', color: 'white', width: '300px', marginTop: '-5px'}} type='submit' block>
+             
+             
+               <button  className='btn' style={{background: '#4E4E4E', color: 'white', width: '300px', marginTop: '-5px'}} type='submit' >
                 Sign up
               </button>
-              </Link>
+            
              
             </Form>
             <p style={{marginBottom: '-45px'}} className='text-center mt-1'>

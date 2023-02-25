@@ -1,75 +1,37 @@
 // ** Icons Import
-import { Box, Menu, Circle, EyeOff, Folder, LifeBuoy, Shield } from 'react-feather'
+import { Volume1, ExternalLink, Settings, HelpCircle } from 'react-feather'
 
 export default [
-  {
-    id: 'misc',
-    title: 'Misc',
-    icon: <Box />,
-    children: [
       {
-        id: 'access-control',
-        title: 'Access Control',
-        icon: <Shield size={20} />,
+        id: 'Promote',
+        title: 'Promote',
+        icon: <Volume1 style={{width: '30px', height: '30px'}} color='black'/>,
         action: 'read',
         resource: 'ACL',
-        navLink: '/access-control'
+        navLink: '/promote'
       },
       {
-        id: 'menuLevels',
-        title: 'Menu Levels',
-        icon: <Menu />,
-        children: [
-          {
-            id: 'secondLevel',
-            title: 'Second Level 2.1',
-            icon: <Circle />,
-            navLink: '#'
-          },
-          {
-            id: 'secondLevel1',
-            title: 'Second Level 2.2',
-            icon: <Circle />,
-            children: [
-              {
-                id: 'ThirdLevel',
-                title: 'Third Level 3.1',
-                icon: <Circle />,
-                navLink: '#'
-              },
-              {
-                id: 'ThirdLevel1',
-                title: 'Third Level 3.2',
-                icon: <Circle />,
-                navLink: '#'
-              }
-            ]
-          }
-        ]
+        id: 'Reports',
+        title: 'Reports',
+        icon: <ExternalLink style={{width: '30px', height: '30px'}} color='black'/>,
+        action: 'read',
+        resource: 'ACL',
+        navLink: '/'
       },
       {
-        id: 'disabledMenu',
-        title: 'Disabled Menu',
-        icon: <EyeOff />,
-        navLink: '#',
-        disabled: true
+        id: 'Settings',
+        title: 'Settings',
+        icon: <Settings style={{width: '30px', height: '30px'}} color='black'/>,
+        action: 'read',
+        resource: 'ACL',
+        navLink: '/sources'
       },
       {
-        id: 'documentation',
-        title: 'Documentation',
-        icon: <Folder />,
-        externalLink: true,
-        newTab: true,
-        navLink: 'https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/documentation'
-      },
-      {
-        id: 'raiseSupport',
-        title: 'Raise Support',
-        icon: <LifeBuoy />,
-        externalLink: true,
-        newTab: true,
-        navLink: 'https://pixinvent.ticksy.com/'
+        id: 'Support',
+        title: 'Support',
+        icon: <HelpCircle style={{width: '30px', height: '30px'}} color='black' />,
+        action: 'read',
+        resource: 'ACL',
+        navLink: '/'
       }
     ]
-  }
-]

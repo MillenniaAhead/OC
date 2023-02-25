@@ -1,16 +1,17 @@
 // ** Routes Imports
 import AppRoutes from './Apps'
-import FormRoutes from './Forms'
 import PagesRoutes from './Pages'
 import TablesRoutes from './Tables'
 import ChartsRoutes from './Charts'
 import DashboardRoutes from './Dashboards'
 import UiElementRoutes from './UiElements'
-import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 import ProductDetailsRoutes from './ProductDetails' 
 import ReviewStocktakesRoutes from './ReviewStocktakes'
-import AccountSetUpRoutes from './AccountSetUp'
+import ProductDetailsRoutes from './ProductDetails' 
+import ReviewStocktakesRoutes from './ReviewStocktakes'
+import AnuServicesRoutes from './Service'
+import SanClientRoutes from './SanClient'
 
 //My work
 import AnuAppointment from './AnuAppointment'
@@ -26,6 +27,11 @@ import GroupRoutes from './Groups'
 import OrganizationRoutes from './Organization'
 
 import CountDetailsRoutes from './CountDetails'
+import NewSaleRoutes from './Newsale'
+import HomeRoute from './Home'
+import CalenderRoute from './Calender'
+import SettingClients from './Settingclients'
+import SanSetSalesRoutes from './SanSetSales'
 
 // ** Document title
 const TemplateTitle = '%s - Vuexy React Admin Template'
@@ -51,14 +57,19 @@ const Routes = [
   ...AppRoutes,
   ...PagesRoutes,
   ...UiElementRoutes,
-  ...ExtensionsRoutes,
   ...PageLayoutsRoutes,
-  ...FormRoutes,
   ...TablesRoutes,
   ...ChartsRoutes,
   ...ProductDetailsRoutes,
   ...CountDetailsRoutes,
-  ...ReviewStocktakesRoutes
+  ...ReviewStocktakesRoutes,
+  ...AnuServicesRoutes,
+  ...NewSaleRoutes,
+  ...HomeRoute,
+  ...CalenderRoute,
+  ...SettingClients,
+  ...SanSetSalesRoutes,
+  ...SanClientRoutes
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }

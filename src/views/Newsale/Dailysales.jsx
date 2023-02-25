@@ -2,9 +2,19 @@ import React from "react"
 
 const Dailysales = () => {
   return (
-    <div>
+    <div style={{marginTop: '-28px'}}>
+      <div style={{marginLeft: '-28px', width: '220px'}} className="py-2 px-2 border d-flex flex-column gap-2">
+        <p style={{marginTop: '5px', fontWeight: 600}} className="fs-4">Sales</p>
+        <a style={{color: 'black'}} className="fs-5" href="/newsale">New sale</a>
+        <a style={{color: 'black'}} className="fs-5" href="/dailysales">Daily sales</a>
+        <a style={{color: 'black'}} className="fs-5" href="/appointments">Appointments</a>
+        <a style={{color: 'black'}} className="fs-5" href="/saleshistory">Sales history</a>
+        <a style={{color: 'black'}} className="fs-5" href="/payment">Payment transactions</a>
+        <a style={{color: 'black'}} className="fs-5" href="/voucher">Voucher sold</a>
+        <a style={{color: 'black'}} className="fs-5" href="/membership">Memberships sold</a>
+      </div>
       <div
-        style={{ marginTop: "50px", marginLeft: "200px" }}
+        style={{ marginTop: "-350px", marginLeft: "220px" }}
         className="d-flex justify-content-between"
       >
         <div>
@@ -18,7 +28,7 @@ const Dailysales = () => {
         </div>
         <div style={{ marginRight: "100px" }}>
           <button
-            style={{ width: "130px", height: '50px', fontSize: '18px' }}
+            style={{ width: "130px", height: '50px', fontSize: '18px', color: 'black' }}
             className="btn border fw-semibold"
           >
             Export
@@ -28,7 +38,7 @@ const Dailysales = () => {
 
       <div
         style={{
-          marginLeft: "200px",
+          marginLeft: "220px",
           background: "rgba(242, 242, 247, 0.8)",
           width: "952px"
         }}
@@ -51,7 +61,7 @@ const Dailysales = () => {
           style={{
             width: "480px",
             height: "620px",
-            marginLeft: "205px",
+            marginLeft: "220px",
             marginBottom: "60px"
           }}
         >
@@ -148,7 +158,7 @@ const Dailysales = () => {
         {/* 2 */}
         <div
           className="border rounded-3"
-          style={{ width: "450px", height: "450px", marginRight: "60px" }}
+          style={{ width: "450px", height: "450px", marginRight: "40px" }}
         >
           <div>
             <p className="fw-bolder px-2 py-2" style={{color: 'black',  fontSize: "20px" }}>

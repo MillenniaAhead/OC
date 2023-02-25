@@ -1,15 +1,32 @@
-import React from "react"
+import React, { useState } from "react"
 import X from "../../assets/images/pages/type/x.png"
 import Map from "../../assets/images/pages/type/map-pin.png"
 
+import { useDispatch } from "react-redux"
+import { bindActionCreators } from "redux"
+import { actionCreators } from "./Redux"
+import { NavLink } from 'react-router-dom'
+
 const Location = () => {
+  const [name, setName] = useState('')
+
+  //For dispatch action
+  const dispatch = useDispatch()
+  const { CollectUserData } = bindActionCreators(actionCreators, dispatch) 
+
+ //On next step click
+  const userData = () => {
+   CollectUserData([name])
+   console.log(name)
+  }
+
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center px-5 py-1 border-bottom border-1">
         <div className="d-flex justify-content-between align-items-center">
         <img style={{width: '35px', height: '35px', marginTop: '5px'}} src={X} alt="x" />
-          <a
-            href="/size"
+          <NavLink
+            to="/team"
             style={{
               marginTop: "18px",
               marginBottom: "10px",
@@ -20,17 +37,18 @@ const Location = () => {
             }}
           >
             Previous
-          </a>
+          </NavLink>
         </div>
 
-        <a
+        <NavLink
+          onClick={userData}
           style={{background: '#4E4E4E', color: 'white'}}
-          href="/software"
+          to="/software"
           type="button"
           className="px-4 py-1 btn rounded-1"
         >
           Next step
-        </a>
+        </NavLink>
       </div>
       <div style={{ height: "2px" }} className="progress">
         <div style={{ width: "54%", background: '#1E49E2' }} className="progress-bar"></div>
@@ -89,15 +107,17 @@ const Location = () => {
         </p>
         <div
           style={{ width: "550px", marginRight: "160px" }}
-          class="input-group mb-3"
+          className="input-group mb-3"
         >
-          <span style={{ background: "#F5F5F5" }} class="input-group-text">
+          <span style={{ background: "#F5F5F5" }} className="input-group-text">
          <img src={Map} alt="map" />
           </span>
           <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             style={{ backgroundColor: "#F5F5F5" }}
             type="text"
-            class="form-control"
+            className="form-control"
           />
         </div>
         <div

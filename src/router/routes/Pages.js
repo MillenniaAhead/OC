@@ -85,14 +85,6 @@ const PagesRoutes = [
     }
   },
   {
-    path: '/size',
-    component: lazy(() => import('../../views/auth/Teamsize')),
-    layout: 'BlankLayout',
-    meta: {
-      authRoute: true
-    }
-  },
-  {
     path: '/location',
     component: lazy(() => import('../../views/auth/Location')),
     layout: 'BlankLayout',

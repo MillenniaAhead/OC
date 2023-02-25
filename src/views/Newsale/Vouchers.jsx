@@ -19,7 +19,7 @@ const Vouchers = () => {
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
   const [retailPrice, setRetailPrice] = useState("")
-  const [voucher, setVoucher] = useState("")
+  const [voucherName, setVoucherName] = useState("")
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -34,16 +34,16 @@ const Vouchers = () => {
   }
 
   const handleVoucher = (e) => {
-    setVoucher(e.target.value)
+    setVoucherName(e.target.value)
   }
 
   const handleCreateVoucher = () => {
-    console.log({ price, retailPrice, voucher })
+    console.log({ price, retailPrice, voucherName })
     axios
-      .get("https://reqres.in/api/create", {
+      .post("http://localhost:4000/api/voucher", {
         price,
         retailPrice,
-        voucher
+        voucherName
       })
       .then((result) => {
         console.log(result.data)
@@ -56,7 +56,7 @@ const Vouchers = () => {
   const handleApi = () => {
     console.log({ name })
     axios
-      .get("https://reqres.in/api/name", {
+      .get("http://localhost:4000/api/voucher", {
         name
       })
       .then((result) => {
@@ -68,14 +68,24 @@ const Vouchers = () => {
   }
 
   return (
-    <div className="d-flex">
+    <div style={{marginTop: '-28px'}} className="d-flex">
+      <div style={{marginLeft: '-28px', width: '375px'}} className="py-2 px-2 border d-flex flex-column gap-2">
+        <p style={{marginTop: '5px', fontWeight: 600}} className="fs-4">Sales</p>
+        <a style={{color: 'black'}} className="fs-5" href="/newsale">New sale</a>
+        <a style={{color: 'black'}} className="fs-5" href="/dailysales">Daily sales</a>
+        <a style={{color: 'black'}} className="fs-5" href="/appointments">Appointments</a>
+        <a style={{color: 'black'}} className="fs-5" href="/saleshistory">Sales history</a>
+        <a style={{color: 'black'}} className="fs-5" href="/payment">Payment transactions</a>
+        <a style={{color: 'black'}} className="fs-5" href="/voucher">Voucher sold</a>
+        <a style={{color: 'black'}} className="fs-5" href="/membership">Memberships sold</a>
+      </div>
       <div
         className="border d-none d-md-block"
         style={{
           width: "890px",
           height: "680px",
           background: "#F8F8FB",
-          marginLeft: "115px"
+          marginLeft: "-5px"
         }}
       >
         <div style={{ color: "black" }} className="fs-3 py-4 px-5 fw-bolder">
@@ -273,7 +283,7 @@ const Vouchers = () => {
                           value={price}
                           onChange={handlePrice}
                           style={{ height: "50px" }}
-                          type="text"
+                          type="number"
                           className="form-control"
                           placeholder="Enter value"
                         />
@@ -291,7 +301,7 @@ const Vouchers = () => {
                         <input
                           value={retailPrice}
                           onChange={handleRetailPrice}
-                          type="text"
+                          type="number"
                           className="form-control"
                           placeholder="Enter retail price"
                         />
@@ -336,7 +346,7 @@ const Vouchers = () => {
                           width: "460px",
                           height: "45px"
                         }}
-                        value={voucher}
+                        value={voucherName}
                         onChange={handleVoucher}
                         type="text"
                         className="form-control rounded-1"
@@ -382,8 +392,8 @@ const Vouchers = () => {
         </div>
       </div>
 
-      <div className="border-top" style={{ width: "360px", height: "565px" }}>
-      <div style={{ cursor: "pointer" }} className="border-bottom py-1">
+      <div className="border-top" style={{ width: "500px", height: "565px" }}>
+      <div style={{ cursor: "pointer", width: '120%' }} className="border-bottom py-1">
           <div
             style={{ marginBottom: "-10px" }}
             className="d-sm-block d-md-none d-flex justify-content-between"

@@ -843,14 +843,6 @@ export const searchArr = [
         link: '/forms/form-validation'
       },
       {
-        id: 109,
-        target: 'formRepeater',
-        isBookmarked: false,
-        title: 'Form Repeater',
-        icon: 'RotateCw',
-        link: '/forms/form-repeater'
-      },
-      {
         id: 110,
         target: 'tablesReactstrap',
         isBookmarked: false,

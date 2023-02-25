@@ -15,9 +15,19 @@ const PaymentPage = () => {
   const [show, setShow] = useState(false)
 
   return (
-    <div>
+    <div style={{marginTop: '-28px'}}>
+      <div style={{marginLeft: '-28px', width: '220px'}} className="py-2 px-2 border d-flex flex-column gap-2">
+        <p style={{marginTop: '5px', fontWeight: 600}} className="fs-4">Sales</p>
+        <a style={{color: 'black'}} className="fs-5" href="/newsale">New sale</a>
+        <a style={{color: 'black'}} className="fs-5" href="/dailysales">Daily sales</a>
+        <a style={{color: 'black'}} className="fs-5" href="/appointments">Appointments</a>
+        <a style={{color: 'black'}} className="fs-5" href="/saleshistory">Sales history</a>
+        <a style={{color: 'black'}} className="fs-5" href="/payment">Payment transactions</a>
+        <a style={{color: 'black'}} className="fs-5" href="/voucher">Voucher sold</a>
+        <a style={{color: 'black'}} className="fs-5" href="/membership">Memberships sold</a>
+      </div>
       <div
-        style={{ marginTop: "50px", marginLeft: "200px" }}
+        style={{ marginTop: "-350px", marginLeft: "220px" }}
         className="d-flex justify-content-between"
       >
         <div>
@@ -28,7 +38,7 @@ const PaymentPage = () => {
             View, filter and export the history of your payments.
           </p>
         </div>
-        <div style={{ marginRight: "100px" }}>
+        <div style={{ marginRight: "95px" }}>
           <button
             style={{ width: "120px", height: "50px", fontSize: "18px", color:'black' }}
             className="btn border fw-semibold"
@@ -40,7 +50,7 @@ const PaymentPage = () => {
 
       <div
         style={{
-          marginLeft: "200px",
+          marginLeft: "220px",
           background: "rgba(242, 242, 247, 0.8)",
           width: "915px"
         }}
@@ -171,7 +181,7 @@ const PaymentPage = () => {
 
       <div
         className="border mt-2"
-        style={{ width: "915px", height: "280px", marginLeft: "200px" }}
+        style={{ width: "915px", height: "280px", marginLeft: "220px" }}
       >
         <div
           style={{ marginTop: "100px" }}

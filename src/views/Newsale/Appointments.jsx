@@ -1,6 +1,8 @@
 import Glass from "../../assets/images/Newsale/images/search.png"
 import Search from "../../assets/images/Newsale/images/search-new.png"
 
+import axios from "axios"
+
 // // ** React Imports
 import { Fragment, useState } from "react"
 
@@ -13,11 +15,46 @@ import { Sliders } from "react-feather"
 const Appointments = () => {
   // // ** States
   const [show, setShow] = useState(false)
+  const [member, setMember] = useState("")
+  const [channel, setChannel] = useState("")
+
+  const handlemember = (e) => {
+    setMember(e.target.value)
+  }
+
+  const handlechannel = (e) => {
+    setChannel(e.target.value)
+  }
+
+  const handleAppointments = () => {
+    console.log({ member, channel })
+    axios
+      .post("http://localhost:4000/api/appointments", {
+       member,
+       channel
+      })
+      .then((result) => {
+        console.log(result.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   return (
-    <div>
+    <div style={{marginTop: '-28px'}}>
+       <div style={{marginLeft: '-28px', width: '220px'}} className="py-2 px-2 border d-flex flex-column gap-2">
+        <p style={{marginTop: '5px', fontWeight: 600}} className="fs-4">Sales</p>
+        <a style={{color: 'black'}} className="fs-5" href="/newsale">New sale</a>
+        <a style={{color: 'black'}} className="fs-5" href="/dailysales">Daily sales</a>
+        <a style={{color: 'black'}} className="fs-5" href="/appointments">Appointments</a>
+        <a style={{color: 'black'}} className="fs-5" href="/saleshistory">Sales history</a>
+        <a style={{color: 'black'}} className="fs-5" href="/payment">Payment transactions</a>
+        <a style={{color: 'black'}} className="fs-5" href="/voucher">Voucher sold</a>
+        <a style={{color: 'black'}} className="fs-5" href="/membership">Memberships sold</a>
+      </div>
       <div
-        style={{ marginTop: "50px", marginLeft: "200px" }}
+        style={{ marginTop: "-350px", marginLeft: "220px" }}
         className="d-flex justify-content-between"
       >
         <div>
@@ -29,7 +66,7 @@ const Appointments = () => {
             <span style={{ color: "#1BB70B" }}>Learn more</span>
           </p>
         </div>
-        <div style={{ marginRight: "100px" }}>
+        <div style={{ marginRight: "80px" }}>
           <button
             style={{
               width: "120px",
@@ -46,7 +83,7 @@ const Appointments = () => {
 
       <div
         style={{
-          marginLeft: "200px",
+          marginLeft: "220px",
           background: "rgba(242, 242, 247, 0.8)",
           width: "930px"
         }}
@@ -135,6 +172,8 @@ const Appointments = () => {
 
               <div style={{ marginTop: "-5px" }} className="input-group mb-2">
                 <input
+                  value={member}
+                  onChange={handlemember}
                   type="text"
                   className="form-control"
                   placeholder="All team members"
@@ -150,6 +189,8 @@ const Appointments = () => {
 
               <div style={{ marginTop: "-5px" }} className="input-group mb-2">
                 <input
+                  value={channel}
+                  onChange={handlechannel}
                   type="text"
                   className="form-control"
                   placeholder="All channels"
@@ -181,6 +222,7 @@ const Appointments = () => {
                   </div>
                   <div>
                     <button
+                      onClick={handleAppointments}
                       style={{ background: "#4E4E4E", color: "white" }}
                       type="button"
                       className="btn rounded-1 px-2"

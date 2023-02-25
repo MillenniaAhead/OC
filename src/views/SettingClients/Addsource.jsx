@@ -1,3 +1,4 @@
+import axios from "axios"
 import { Fragment, useState } from "react"
 import { Menu, Lock } from "react-feather"
 
@@ -13,6 +14,23 @@ const Addsource = () => {
   const [name5, setName5] = useState("")
   const [name6, setName6] = useState("")
  
+  const handleName = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleApi = () => {
+    console.log({name})
+    axios.post("http://localhost:4000/api/sources", {
+      name 
+    })
+    .then((result) => {
+      console.log(result.data)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
   return (
     <div className="container pt-2">
       <p style={{ fontSize: "14px", color: "black", marginLeft: "165px" }}>
@@ -64,6 +82,8 @@ const Addsource = () => {
                   <label style={{ color: "black" }}> Name</label>
                   <div style={{ marginTop: "5px" }} className="input-group">
                     <input
+                      value={name}
+                      onChange={handleName}
                       type="text"
                       className="form-control"
                       placeholder="e.g. Local promotion"
@@ -85,6 +105,7 @@ const Addsource = () => {
                   <div className="d-flex justify-content-end">
                     <div>
                       <button
+                        onClick={handleApi}
                         style={{
                           background: "#4E4E4E",
                           color: "white"
