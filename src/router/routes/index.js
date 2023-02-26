@@ -16,8 +16,6 @@ import AccountSetUpRoutes from './AccountSetUp'
 import AnuAppointment from './AnuAppointment'
 import AnuPromote from './AnuPromote'
 import SanReport from './SanReport'
-import SanClient from './SanClient'
-import SanSetSales from './SanSetSales'
 import AnuTeam from "./AnuTeam"
 
 /*
