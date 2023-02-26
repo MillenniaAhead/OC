@@ -8,10 +8,9 @@ import UiElementRoutes from './UiElements'
 import PageLayoutsRoutes from './PageLayouts'
 import ProductDetailsRoutes from './ProductDetails' 
 import ReviewStocktakesRoutes from './ReviewStocktakes'
-import ProductDetailsRoutes from './ProductDetails' 
-import ReviewStocktakesRoutes from './ReviewStocktakes'
 import AnuServicesRoutes from './Service'
 import SanClientRoutes from './SanClient'
+import AccountSetUpRoutes from './AccountSetUp'
 
 //My work
 import AnuAppointment from './AnuAppointment'
