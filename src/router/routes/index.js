@@ -17,7 +17,7 @@ import AnuAppointment from './AnuAppointment'
 import AnuPromote from './AnuPromote'
 import SanReport from './SanReport'
 import AnuTeam from "./AnuTeam"
-
+import ProjectAnuServicesRoutes from './ProjectAnuServicesRoutes'
 /*
 Customization Routes
 */
@@ -66,7 +66,8 @@ const Routes = [
   ...CalenderRoute,
   ...SettingClients,
   ...SanSetSalesRoutes,
-  ...SanClientRoutes
+  ...SanClientRoutes,
+  ...ProjectAnuServicesRoutes
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }
