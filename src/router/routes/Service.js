@@ -18,7 +18,7 @@ const AnuServicesRoutes = [
     component: lazy(() => import('../../views/anu-services/newPackage'))
   },
   {
-    path: '/anu-services/newproduct',
+    path: '/anu-services/newProduct',
     component: lazy(() => import('../../views/anu-services/newproduct'))
   },
   {
