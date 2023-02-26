@@ -1,6 +1,5 @@
 import React from 'react' 
 import X from '../../../images/ClientList/x.png'
-// import { GrClose} from 'react-icons/gr'
 
 const AutomationRule = () => {
     return (
@@ -12,7 +11,7 @@ const AutomationRule = () => {
                     <hr />
                     </div>
                     
-                  <div><button  type="button" class="btn btn-secondary nextButton">Next Step</button></div>
+                  <div><button  type="button" className="btn btn-secondary nextButton">Next Step</button></div>
             </div>
             <div>
                 <p className='text-center'>New appointment automated message</p>

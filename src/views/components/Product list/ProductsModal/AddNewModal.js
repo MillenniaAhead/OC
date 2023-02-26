@@ -53,14 +53,14 @@ const AddNewModal = () => {
             <div className='text-center'>
               <h3 className='text-black bold'>Add a new product</h3>
             </div>
-              <div class="container">
-                    <div class="row">
-                      <div class="col-8">
+              <div className="container">
+                    <div className="row">
+                      <div className="col-8">
                           <BasicinfoCard />
                           <PricingCard />
                           <InventoryCard />
                       </div>
-                      <div class="col-4">
+                      <div className="col-4">
                           <Card>
                               <CardBody>
                                  <CardText>Product photos</CardText>

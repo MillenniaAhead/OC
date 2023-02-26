@@ -1,7 +1,6 @@
 import React from 'react'
 import filter from '../../../images/ClientList/filers.jpg'
 import database from '../../../images/ClientList/database.png'
-// import { div } from '@mui/material'
 
 const UserDeposit = () => {
     return (

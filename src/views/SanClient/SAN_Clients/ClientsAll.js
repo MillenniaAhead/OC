@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap'
-// import Nav from 'react-bootstrap/Nav'
-// import Row from 'react-bootstrap/Row'
-// import Tab from 'react-bootstrap/Tab'
 import AutomatedMessages from './AutomatedMessages'
 import ClientList from './ClientList'
-import Froms from './Froms'
+import Paperless from './Paperless'
 import Notification from './Notification'
 import Reviews from './Reviews'
 
@@ -86,7 +83,7 @@ const ClientsAll = () => {
     </Nav>
     <TabContent activeTab={active}>
       <TabPane tabId='1'>
-        <h1>Clients</h1>
+      <ClientList/>
       </TabPane>
       <TabPane tabId='2'>
       <ClientList/>
@@ -98,7 +95,7 @@ const ClientsAll = () => {
       <AutomatedMessages/>
       </TabPane>
       <TabPane tabId='5'>
-      <Froms/>
+      <Paperless/>
       </TabPane>
       <TabPane tabId='6'>
       <Notification/>

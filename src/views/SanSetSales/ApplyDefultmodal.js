@@ -24,8 +24,8 @@ const ApplyDefultmodal = () => {
   }
   const renderModal = ModalConfig.map(item => {
     return (
-      <Fragment key={item.id} className="mx-auto">
-        <div>
+      <Fragment key={item.id} >
+        <div className="mx-auto">
         <Button.Ripple color='dark' outline onClick={() => toggleModal(item.id)} key={item.title} >              
                 {item.btnTitle}
           </Button.Ripple>
@@ -37,8 +37,7 @@ const ApplyDefultmodal = () => {
           className={`modal-dialog-centered ${item.modalClass}`}
         >
           <ModalHeader className='pb-2 ' toggle={() => toggleModal(item.id)}>
-            <h3 className='fw-bolder text-dark'>{item.modalTitle}</h3>
-            {item.title}
+          <p className='fs-3 fw-bolder text-dark'>{item.modalTitle}</p>
           </ModalHeader>
          
           <ModalBody >

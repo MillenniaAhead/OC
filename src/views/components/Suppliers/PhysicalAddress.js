@@ -23,15 +23,15 @@ const PhysicalAddress = () => {
                         <Label for="Suburb"> Suburb</Label>
                         <Input type="text" name="Suburb" id="Suburb"  />
                      </FormGroup> 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-6">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-6">
                                 <FormGroup>
                         <Label for="city"> City</Label>
                         <Input type="text" name="city" id="city"  />
                      </FormGroup>
                                 </div>
-                                <div class="col-6">
+                                <div className="col-6">
                                 <FormGroup>
                         <Label for="state"> State</Label>
                         <Input type="text" name="state" id="state"  />

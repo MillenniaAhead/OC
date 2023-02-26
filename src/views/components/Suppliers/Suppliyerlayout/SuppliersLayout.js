@@ -18,10 +18,10 @@ const SuppliersLayout = () => {
           <Container>
               <Row>
                   <Col xs ={12} >
-                  <div class="d-flex flex-column align-items-center">
-                                      <div class=""><h5>No suppliers here yet.</h5></div>
-                                      <div class=""> <p>Your suppliers will appear here</p></div>
-                                      <div class=""> <SuppliersModal /> </div>
+                  <div className="d-flex flex-column align-items-center">
+                                      <div className=""><h5>No suppliers here yet.</h5></div>
+                                      <div className=""> <p>Your suppliers will appear here</p></div>
+                                      <div className=""> <SuppliersModal /> </div>
                                                                 
                                </div>
                          </Col>

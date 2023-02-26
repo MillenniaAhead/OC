@@ -12,6 +12,7 @@ import tv from '../../../images/snr/greentv.png'
 import hand from '../../../images/snr/hand.png'
 
 import { Card, CardBody,  CardImg, CardTitle, CardText, CardFooter  } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 
 const Paperless = () => {
     return (
@@ -21,7 +22,7 @@ const Paperless = () => {
                 <ul style={{listStyle:'none'}} className='fs-5 mt-5 pt-5 float-end '>
                     <li><h1 className='fw-bolder'>Go paperless with online <br />
                         forms for clients</h1></li>
-                        <li><p >Automatically get clients sharing important info a head of <br />
+                        <li><p>Automatically get clients sharing important info a head of <br />
 their visit:</p></li>
                         
                              <li> <img src={check} alt="" /> Build your own forms or use our ready-mode templates</li>
@@ -29,7 +30,8 @@ their visit:</p></li>
                         <li><img src={check} alt="" /> Automatically request clients to fill forms ahead of their visit</li>
 
                         <li className='pt-5 mt-4'><h3>Free unlimited use</h3></li>
-                        <li className='mt-5 pt-2'><button type="button" class="btn btn-dark px-5 fw-bold fs-4 py-2">Star Now</button>
+                        <li className='mt-5 pt-2'><NavLink to='/sanclient/form'><button type="button" className="btn btn-dark px-5 fw-bold fs-4 py-2">Star Now</button>
+                        </NavLink>
                         <button type="button" style={{textDecoration:'none'}} className="btn btn-link text-success fw-bold ms-4 fs-4">Learn more</button></li>
                         </ul>
 
@@ -59,7 +61,7 @@ their visit:</p></li>
         <CardImg top src={s} alt='card1' />
         <CardBody>
          
-          <CardText>
+         
            <p>john smith,23.12.2021</p>
           <div className='d-flex justify-content-between'>
             <div>
@@ -72,7 +74,7 @@ their visit:</p></li>
             </div>
             
           </div>
-          </CardText>
+          
         </CardBody>
         
       </Card>

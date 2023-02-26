@@ -1,5 +1,4 @@
 import React from 'react'
-// import { div } from '@mui/material'
 import credit from '../../../images/ClientList/creditCard.png'
 
 const UserPayment = () => {

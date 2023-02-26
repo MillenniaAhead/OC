@@ -26,7 +26,7 @@ const BasicinfoCard = () => {
                      <Label className='text-success'>Select a brand</Label>
                         <div class ="container">
                             <div class =" row">
-                              <div class="col-6"> 
+                              <div className="col-6"> 
                                  <InputGroup>
                                     <FormGroup>
                                         <Label for="measure"> Measure </Label>
@@ -34,7 +34,7 @@ const BasicinfoCard = () => {
                                     </FormGroup>
                                  </InputGroup>
                                </div>
-                              <div class="col-6"> 
+                              <div className="col-6"> 
                               <InputGroup>
                                     <FormGroup>
                                         <Label for="amount"> Amount </Label>

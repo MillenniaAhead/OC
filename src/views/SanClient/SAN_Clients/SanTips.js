@@ -1,7 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Input, Label, InputGroup, InputGroupText, Button } from 'reactstrap'
-
+import axios from 'axios'
 const SanTips = () => {
+    const [tip, setTip] = useState({
+        tip1:"",
+        tip2:"",
+        tip3:"",
+        tip4:"",
+        tip5:"",
+        notip:""
+      })
+      const setData = (e) => {
+        console.log(e?.target?.value)
+        const {name, value} = e?.target
+        setTip((preval) => {
+            return {
+                ...preval,
+                [name]: value
+            }
+         })
+       }
+       
+       const handleTip = async (e) => {
+        e?.preventDefault()
+    
+        console.log(tip)
+        axios.post('http://localhost:8000/api/sanclients/tip', tip)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
+      }
+
     return (
         <div>
             <div className="container">
@@ -36,53 +64,126 @@ the cart menu.</p>
                     
                         </div>
                             </div>
-                            <div className="mt-2 border me-5 ps-3 pt-3">
+                            <div className="mt-2 border text-dark me-5 ps-3 pt-3">
                             <Label className='form-label' for='input-large'>
                             <span className='text-dark fw-bolder fs-5 mt-2'>1.Tip value</span>
                             </Label>
                             <InputGroup className='mb-2'>
                             <InputGroupText>%</InputGroupText>
-                            <Input  placeholder='10' />
+                            <Input type='select' onChange={setData} value={10} name='tip1'  id='select-sm'>
+            <option>5</option>
+            <option>8</option>
+            <option >10</option>
+            <option>15</option>
+            <option>18</option>
+            <option>20</option>
+            <option>25</option>
+            <option>30</option>
+            <option>35</option>
+            <option>40</option>
+            <option>45</option>
+            <option>50</option>
+          </Input>
                         </InputGroup>
                             <Label className='form-label' for='input-large'>
                             <span className='text-dark fw-bolder fs-5 mt-2'>2.Tip value</span>
                             </Label>
-                            <InputGroup className='mb-2'>
+                            <InputGroup className='mb-2 '>
                             <InputGroupText>%</InputGroupText>
-                            <Input  placeholder='18' />
+                            <Input type='select' onChange={setData} value={15} name='tip2'  id='select-sm'>
+            <option>5</option>
+            <option>8</option>
+            <option >10</option>
+            <option >15</option>
+            <option>18</option>
+            <option>20</option>
+            <option>25</option>
+            <option>30</option>
+            <option>35</option>
+            <option>40</option>
+            <option>45</option>
+            <option>50</option>
+          </Input>
                         </InputGroup>
                             <Label className='form-label' for='input-large'>
                             <span className='text-dark fw-bolder fs-5 mt-2'>3.Tip value</span>
                             </Label>
                             <InputGroup className='mb-2'>
                             <InputGroupText>%</InputGroupText>
-                            <Input  placeholder='25' />
+                            <Input type='select' onChange={setData} value={25} name='tip3'  id='select-sm'>
+            <option>5</option>
+            <option>8</option>
+            <option >10</option>
+            <option>15</option>
+            <option>18</option>
+            <option>20</option>
+            <option >25</option>
+            <option>30</option>
+            <option>35</option>
+            <option>40</option>
+            <option>45</option>
+            <option>50</option>
+          </Input>
                         </InputGroup>
                             <Label className='form-label' for='input-large'>
                             <span className='text-dark fw-bolder fs-5 mt-2'>4.Tip value</span>
                             </Label>
                             <InputGroup className='mb-2'>
                             <InputGroupText>%</InputGroupText>
-                            <Input  placeholder='35' />
+                            <Input type='select' onChange={setData}value={35} name='tip4'  id='select-sm'>
+            <option>5</option>
+            <option>8</option>
+            <option >10</option>
+            <option>15</option>
+            <option>18</option>
+            <option>20</option>
+            <option >25</option>
+            <option>30</option>
+            <option >35</option>
+            <option>40</option>
+            <option>45</option>
+            <option>50</option>
+          </Input>
                         </InputGroup>
                             <Label className='form-label' for='input-large'>
                             <span className='text-dark fw-bolder fs-5 mt-2'>5.Tip value</span>
                             </Label>
                             <InputGroup className='mb-2'>
                             <InputGroupText>%</InputGroupText>
-                            <Input  placeholder='45' />
+                            <Input type='select' onChange={setData} value={45} name='tip5'  id='select-sm'>
+            <option>5</option>
+            <option>8</option>
+            <option >10</option>
+            <option>15</option>
+            <option>18</option>
+            <option>20</option>
+            <option >25</option>
+            <option>30</option>
+            <option>35</option>
+            <option>40</option>
+            <option >45</option>
+            <option>50</option>
+          </Input>
                         </InputGroup>
                             <Label className='form-label' for='input-large'>
                             <span className='text-dark fw-bolder fs-5 mt-2'>Default section</span>
                             </Label>
                             <InputGroup className='mb-2'>
                             <InputGroupText>%</InputGroupText>
-                            <Input  placeholder='No tip' />
+                            <Input type='select' onChange={setData} value={"No tip"} name='notip'  id='select-sm'>
+            <option>No tip</option>
+            <option>8</option>
+            <option>15</option>
+            <option >25</option>
+            <option>30</option>
+            <option>35</option>
+            <option>45</option>
+          </Input>
                         </InputGroup>
                             </div>
                             
                         </div>
-                        <div className='float-end me-5 mt-2'><Button.Ripple color='dark'>Save</Button.Ripple></div>
+                        <div className='float-end me-5 mt-2'><Button.Ripple color='dark' onClick={handleTip}>Save</Button.Ripple></div>
                     </div>
                 </div>
             </div>

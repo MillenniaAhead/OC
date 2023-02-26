@@ -18,8 +18,16 @@ const SanClientRoutes = [
     component: lazy(() => import('../../views/SanClient/SAN_Clients/SanTips'))
   },
   {
-    path: '/sanclient/paperless',
-    component: lazy(() => import('../../views/SanClient/SAN_Clients/Paperless'))
+    path: '/sanclient/form',
+    component: lazy(() => import('../../views/SanClient/SAN_Clients/Froms.js'))
+  },
+  {
+    path: '/sanclient/selectchannel',
+    component: lazy(() => import('../../views/SanClient/SAN_Clients/SelectChannel'))
+  },
+  {
+    path: '/sanclient/appoinment',
+    component: lazy(() => import('../../views/SanClient/SAN_Clients/NewAppointment'))
   },
   {
     path: '/sanclient/addClient',

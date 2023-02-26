@@ -1,70 +1,34 @@
 import React from 'react'
-import {  Card, CardImg, CardBody, Row, Col, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import {Table,  Card, CardImg, CardBody, Row, Col, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
 import '../CSS/ClientList.css'
-import Table from '../../apps/user/list/Table'
-
-// ** Custom Components
-import StatsHorizontal from '@components/widgets/stats/StatsHorizontal'
-
-// ** Icons Imports
-import { User, UserPlus, UserCheck, UserX } from 'react-feather'
-
 // ** Styles
 import '@styles/react/apps/app-users.scss'
-
-// import Dropdown from 'react-bootstrap/Dropdown'
-// import Card from 'react-bootstrap/Card'
-// import { TableContainer,Table,TableHead,TableBody,TableRow,TableCell,Paper } from '@mui/material'
-// import Avatar from '@mui/material/Avatar'
-// import Stack from '@mui/material/Stack'
 import client from '../../../images/ClientList/client.jpg'
 import filter from '../../../images/ClientList/filers.jpg'
 import FirstName from '../../../images/ClientList/FirstName.jpg'
+import { Link, NavLink } from 'react-router-dom'
 
 
 const ClientList = () => {
-    // const tableData = [
-    //   {
-    //     "avatar": "J",
-    //     "Clint_name": "Jack Doe",
-    //     "email": "ckeam0@bing.com",
-    //     "Mobile_number":  '-',
-    //     "gender": "Male",
-    //     "reviews": "-",
-    //     "total_sales": "-"
-    //   }, {
-    //     "avatar": "M",
-    //     "Clint_name": "Mack Doe",
-    //     "email": "ngreveson1@rambler.ru",
-    //     "Mobile_number":'-',
-    //     "gender": "Male",
-    //     "reviews": "-",
-    //     "total_sales": "-"
-    //   }, {
-    //     "avatar": "L",
-    //     "Clint_name": "Liam  Doe",
-    //     "email": "cdidomenico2@walmart.com",
-    //     "Mobile_number":'-',
-    //     "gender": "Male",
-    //     "reviews": "-",
-    //     "total_Sales": "-"
-    //   }, {
-    //     "avatar": "S",
-    //     "Clint_name": "Shane Doe",
-    //     "email": "svandermark3@ihg.com",
-    //     "Mobile_number":'-',
-    //     "gender": "male",
-    //     "reviews": "-",
-    //     "total_sales": "-"
-    //   }, {
-    //     "avatar": "L",
-    //     "Clint_name": "Look Doe",
-    //     "email": "agreated4@jugem.jp",
-    //     "Mobile_number": "-",
-    //     "gender": "Male",
-    //     "reviews": "-",
-    //     "total_sales": "-"
-    //   }]
+  const tableData = [
+    {
+      avatar: "J",
+      Clint_name: "Jack Doe",
+      email: "ckeam0@bing.com",
+      Mobile_number:  '-',
+      gender: "Male",
+      reviews:"-",
+      total_sales: "-"
+    }, {
+      avatar: "M",
+      Clint_name: "Mack Doe",
+     email: "ngreveson1@rambler.ru",
+      Mobile_number:'-',
+     gender: "Male",
+      reviews: "-",
+     total_sales: "-"
+    }
+]
     return (
         <div>
             <div>
@@ -74,17 +38,6 @@ const ClientList = () => {
                 <p className='fs-5'>View, add, edit and delete your client’s details. Learn more</p>
             </div>
             <div className='d-flex align-items-start'>
-            {/* <Dropdown className='p-2' style={{marginRight:'15px'}}>
-      <Dropdown.Toggle style={{height:"60px", width:"150px"}} variant="light" id="dropdown-basic">
-       Options
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown> */}
     <UncontrolledButtonDropdown className='mt-2'>
         <DropdownToggle color='white'  caret>
           Option
@@ -97,7 +50,9 @@ const ClientList = () => {
       </UncontrolledButtonDropdown>
       <UncontrolledButtonDropdown></UncontrolledButtonDropdown>
             
-    <button type="button" style={{height:"60px", width:"150px", marginTop:'8px'}} class="btn btn-secondary" >Add client</button>
+    <NavLink to="/sanclient/addClient">
+    <button type="button" style={{height:"60px", width:"150px", marginTop:'8px'}} className="btn btn-dark" >Add client</button>
+    </NavLink>
 
             </div>
         </div>
@@ -112,12 +67,7 @@ online.</h3>
                     </div>
                     <div className='col-4 client '>
                    
-                {/* <Card className=' mx-auto' style={{ width: '215px', marginTop:'85px' }}>
-      <Card.Img variant="top" src={client} />
-      <Card.Body>
-        
-      </Card.Body>
-    </Card> */}
+              
                 <Card style={{ width: '215px', margin:'75px auto 0px' }}>
         <CardImg top src={client} alt='card2' />
         <CardBody>
@@ -149,74 +99,57 @@ online.</h3>
             </div>
 
             <div  className='mt-3 mx-4'>
-            {/* <TableContainer style={{backgroundColor:'#F0F2F5'}} component={Paper}>
-      <Table aria-label = 'sample table'>
-          <TableHead>
-              <TableRow>
-                <TableCell><b>Clint name </b></TableCell>
-                <TableCell><b>Mobile number</b></TableCell>
-                <TableCell><b>Gender</b></TableCell>
-                <TableCell><b>Reviews</b></TableCell>
-                <TableCell><b>Total Sales</b></TableCell>
-              </TableRow>
-           </TableHead> 
-        <TableBody>
-         {
+            
+    <Table responsive>
+      <thead >
+        <tr className='bg-white'>
+          <th scope='col' className='text-nowrap'>
+          Clint name
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Mobile number
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Gender
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Reviews
+          </th>
+          <th scope='col' className='text-nowrap'>
+          Total Sales
+          </th>
+          <th scope='col' className='text-nowrap'>
+            
+          </th>
+          
+        </tr>
+      </thead>
+      <tbody>
+      {
           tableData.map(row => (
             
-              <TableRow 
-                 key = {row.Clint_name}     
-              >
-                <TableCell>
-                  <Stack direction="row" spacing={2} className="m-2 ">
-                      <Avatar className='m-2 fs-2 w-40 h-40' > {row.avatar}</Avatar>
-                    <div className='m-1 '>
-                      <Link  >{row.Clint_name} </Link><br/>{row.email}
+        <tr  key = {row.Clint_name}>
+         
+          <td className='text-nowrap'><div  spacing={2} className=" d-flex">
+                      <div className=' fs-2 w-40 h-40' > {row.avatar}</div>
+                    <div className='ms-1 '>
+                      <Link to="#" >{row.Clint_name} </Link><br/>{row.email}
                       </div>
-                  </Stack>
-                
-                </TableCell>
-                <TableCell>{row.Mobile_number}</TableCell>
-                <TableCell>{row.gender} </TableCell>
-                <TableCell>{row.reviews}</TableCell>
-                <TableCell>{row.total_sales}</TableCell>
-              </TableRow>
-            
-          ))
-         }
-        </TableBody>
-      </Table>
-    </TableContainer> */}
+                  </div></td>
+          <td className='text-nowrap'>{row.Mobile_number}</td>
+          <td className='text-nowrap'>{row.gender}</td>
+          <td className='text-nowrap'>{row.reviews}</td>
+          <td className='text-nowrap'>{row.total_sales}</td>
+          
+        </tr>
+        ))
+      }
+      </tbody>
+    </Table>
   
-  <div className='app-user-list'>
-      <Row>
-        
-        {/* <Col lg='3' sm='6'>
-          <StatsHorizontal
-            color='danger'
-            statTitle='Paid Users'
-            icon={<UserPlus size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>4,567</h3>}
-          />
-        </Col> */}
-        <Col lg='3' sm='6'>
-          <StatsHorizontal
-            color='success'
-            statTitle='Active Users'
-            icon={<UserCheck size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>19,860</h3>}
-          />
-        </Col>
-        <Col lg='12' sm='6'>
-          <StatsHorizontal
-            color='warning'
-            statTitle='Pending Users'
-            icon={<UserX size={20} />}
-            renderStats={<h3 className='fw-bolder mb-75'>237</h3>}
-          />
-        </Col>
-      </Row>
-      <Table />
+  <div >
+      
+      
     </div>
             </div>
         </div>

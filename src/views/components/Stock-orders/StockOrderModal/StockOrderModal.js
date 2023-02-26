@@ -55,9 +55,9 @@ const StockOrderModal = () => {
                 <span className='text-secondary'>Choose which supplier to order products from. To manage suppliers, click <Link>here</Link></span>
             </div>
                 <div class ="text-center mt-5 mb-5 card">
-                    <div class="mt-5 mb-5">
+                    <div className="mt-5 mb-5">
                     <h5>Didn’t find anything</h5>
-                    <span class="">Try searching for another product</span>
+                    <span className="">Try searching for another product</span>
                     </div>
                 </div>
           </ModalBody>

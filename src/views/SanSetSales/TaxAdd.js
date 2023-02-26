@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import light from '../../images/SSS/light.png'
 // ** Reactstrap Imports
 import { Button, Modal, ModalHeader, ModalBody, Input, ModalFooter} from 'reactstrap'
@@ -25,8 +25,8 @@ const TaxAdd = () => {
   }
   const renderModal = ModalConfig.map(item => {
     return (
-      <Fragment key={item.id} className="mx-auto">
-        <div>
+      <React.Fragment key={item.id} >
+        <div className="mx-auto">
           <Button color='secondary' onClick={() => toggleModal(item.id)} key={item.title} >
             {item.btnTitle}
           </Button>
@@ -81,7 +81,7 @@ understand all implications</p>
             </Button>
           </ModalFooter>
         </Modal>
-      </Fragment>
+      </React.Fragment>
     )
   })
 

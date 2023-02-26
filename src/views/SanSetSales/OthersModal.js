@@ -2,12 +2,12 @@ import React, { Fragment, useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, Input, Label, ModalFooter} from 'reactstrap'
 import lock from '../../images/SSS/lock.png'
 import menup from '../../images/SSS/menu.png'
-
+import axios from 'axios'
 const ModalConfig = [
   
   {
     id: 4,
-    modalTitle: 'Edit payment type',
+    modalTitle: 'Edit otherment type',
     modalClass: 'Default Modal'
   }
 ]
@@ -16,6 +16,28 @@ const ModalConfig = [
 const OthersModal = () => {
    
         const [modal, setModal] = useState(null)
+        const [other, setOther] = useState({
+          otherName:""
+        })
+        const setData = (e) => {
+          console.log(e?.target?.value)
+          const {name, value} = e?.target
+          setOther((preval) => {
+              return {
+                  ...preval,
+                  [name]: value
+              }
+           })
+         }
+         
+         const handleOther = async (e) => {
+          e?.preventDefault()
+      
+          console.log(other)
+          axios.post('http://localhost:8000/api/sansetsales/other', other)
+          .then(res => console.log(res.data))
+          .catch(err => console.log(err))
+        }
 
         const toggleModal = id => {
           if (modal !== id) {
@@ -26,7 +48,8 @@ const OthersModal = () => {
         }
         const renderModal = ModalConfig.map(item => {
           return (
-            <Fragment key={item.id} className="mx-auto">
+            <Fragment key={item.id} >
+              <div className="mx-auto">
               <div onClick={() => toggleModal(item.id)} className="border rounded mx-5 mt-2 p-2">
                 <div className="d-flex justify-content-between">
                     <div className='text-dark'>
@@ -44,8 +67,7 @@ const OthersModal = () => {
                 className={`modal-dialog-centered ${item.modalClass}`}
               >
                 <ModalHeader className='pb-2 ' toggle={() => toggleModal(item.id)}>
-                  <h3 className='fw-bolder text-dark'>{item.modalTitle}</h3>
-                  {item.title}
+                <p className='fs-3 fw-bolder text-dark'>{item.modalTitle}</p>
                 </ModalHeader>
                
                 <ModalBody >
@@ -54,7 +76,7 @@ const OthersModal = () => {
                   <Label className='form-label text-dark fw-bolder' for='basicInput'>
                   Name
                   </Label>
-                  <Input type='text' id='basicInput'  placeholder='Other'/>
+                  <Input type='text' onChange={setData} value={other.otherName} name='otherName' id='basicInput'  placeholder='Other'/>
                   </div>
                   
                 </ModalBody>
@@ -63,11 +85,12 @@ const OthersModal = () => {
                 <Button color='danger' onClick={() => toggleModal(item.id)}>
                     Delete
                   </Button>
-                <Button color='dark' onClick={() => toggleModal(item.id)}>
+                <Button color='dark' onClick={handleOther}>
                     Save
                   </Button>
                 </ModalFooter>
               </Modal>
+              </div>
             </Fragment>
           )
         })

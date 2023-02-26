@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { Button } from 'reactstrap'
 import service from '../../images/SSS/invoiceservice.png'
 
@@ -14,7 +15,7 @@ const InvoiceService = () => {
                
             </div>
             <div >
-            <button type="button" className="btn btn-dark me-4 mt-1 px-3 fw-normal fs-4 py-1">Add</button>
+            <NavLink to="/sansetsale/charge"><button type="button" className="btn btn-dark me-4 mt-1 px-3 fw-normal fs-4 py-1">Add</button></NavLink>
 
             </div>
         </div>

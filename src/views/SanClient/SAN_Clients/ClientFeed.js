@@ -4,9 +4,6 @@ import Rcalender from '../../../images/ClientList/roundCalender.png'
 import send from '../../../images/ClientList/send.png'
 import logo from '../../../images/ClientList/logo.png'
 import Avatar from '@components/avatar'
-// import div from '@mui/material/div'
-// import { Avatar } from 'antd'
-
 
 const ClientFeed = () => {
     return (
