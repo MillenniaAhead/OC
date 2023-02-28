@@ -67,7 +67,8 @@ const Routes = [
   ...SettingClients,
   ...SanSetSalesRoutes,
   ...SanClientRoutes,
-  ...ProjectAnuServicesRoutes
+  ...ProjectAnuServicesRoutes,
+  ...AccountSetUpRoutes
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }
