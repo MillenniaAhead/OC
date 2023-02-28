@@ -4,8 +4,9 @@ import tv from '../../../images/section/tv.png'
 import plusSqure from '../../../images/section/plus-square.png'
 import mike from '../../../images/section/image 9.png'
 import star from '../../../images/section/star.png'
-import card from '../../../images/section/22.png'
+
 import { Badge } from 'reactstrap'
+import AddASection from './AddASection'
 
 const Section = () => {
     return (
@@ -76,20 +77,7 @@ const Section = () => {
                     </div>
                    </div>
                    <div className="col-lg-10">
-                   <div className='text-center'
-      style={{
-        width: 850,
-        height: 415,
-        border: '1px solid rgba(217, 217, 217, 0.80)',
-        backgroundColor:'rgba(27, 183, 11, 0.24)',
-        margin:'30px auto',
-        borderRadius:'10px'
-        
-      }}
-    >
-           <img className='d-block mx-auto mt-5 pt-4' src={card} alt="" />          <h1 className='mt-2'>Add your first section</h1>
-           <p>Drag and drop or <a className='text-success'>click</a> here to add a section</p>
-                    </div>
+                   <AddASection/>
                    </div>
                 </div>
             </div>

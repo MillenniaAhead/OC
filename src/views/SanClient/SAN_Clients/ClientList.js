@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {  useState, useEffect } from 'react'
 import {Table,  Card, CardImg, CardBody, Row, Col, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
 import '../CSS/ClientList.css'
 // ** Styles
@@ -7,28 +7,23 @@ import client from '../../../images/ClientList/client.jpg'
 import filter from '../../../images/ClientList/filers.jpg'
 import FirstName from '../../../images/ClientList/FirstName.jpg'
 import { Link, NavLink } from 'react-router-dom'
+import axios from 'axios'
 
 
-const ClientList = () => {
-  const tableData = [
-    {
-      avatar: "J",
-      Clint_name: "Jack Doe",
-      email: "ckeam0@bing.com",
-      Mobile_number:  '-',
-      gender: "Male",
-      reviews:"-",
-      total_sales: "-"
-    }, {
-      avatar: "M",
-      Clint_name: "Mack Doe",
-     email: "ngreveson1@rambler.ru",
-      Mobile_number:'-',
-     gender: "Male",
-      reviews: "-",
-     total_sales: "-"
-    }
-]
+const ClientList = () => { 
+   
+const [data, setData] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/sanclients/client')
+      .then(res => {
+        setData(res.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, [])
+ 
     return (
         <div>
             <div>
@@ -126,14 +121,14 @@ online.</h3>
       </thead>
       <tbody>
       {
-          tableData.map(row => (
+          data.map(row => (
             
-        <tr  key = {row.Clint_name}>
+        <tr  key = {row._id}>
          
           <td className='text-nowrap'><div  spacing={2} className=" d-flex">
                       <div className=' fs-2 w-40 h-40' > {row.avatar}</div>
                     <div className='ms-1 '>
-                      <Link to="#" >{row.Clint_name} </Link><br/>{row.email}
+                      <Link to="#" >{row.firstName} {row.lastName} </Link><br/>{row.email}
                       </div>
                   </div></td>
           <td className='text-nowrap'>{row.Mobile_number}</td>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { Table } from 'reactstrap'
 
 const Froms = () => {
@@ -12,7 +13,7 @@ const Froms = () => {
             <div >
             
             
-            <button type="button" className="btn btn-dark px-4 fw-normal fs-4 py-2">Create form</button>
+            <NavLink to='/sanclient/section'><button type="button" className="btn btn-dark px-4 fw-normal fs-4 py-2">Create form</button></NavLink>
 
             </div>
         </div>

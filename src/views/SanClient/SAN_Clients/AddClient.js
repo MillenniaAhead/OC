@@ -37,8 +37,6 @@ const AddClient = () => {
      
      const handleSave = async (e) => {
       e.preventDefault()
-  
-    console.log(client)
       axios.post('http://localhost:8000/api/sanclients/client', client)
       .then(res => console.log(res.data))
       .catch(err => console.log(err))
