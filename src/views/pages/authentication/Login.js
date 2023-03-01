@@ -55,32 +55,32 @@ const ToastContent = ({ name, role }) => (
 )
 
 const defaultValues = {
-  password: 'admin',
-  loginEmail: 'admin@demo.com'
+  password: '',
+  loginEmail: ''
 }
 
 const Login = () => {
+  const [visible, setvisible] = useState(false)
+  const [message, setMessage] = useState("")
+  // const [email, setEmail] = useState("")
 
-  const [email, setEmail] = useState("")
+  // const handleEmail = (e) => {
+  //   setEmail(e.target.value)
+  // }
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value)
-  }
-
-  const handleApi = () => {
-    console.log({ email })
-    axios
-      .get("https://reqres.in/api/login", {
-        email
-      })
-      .then((result) => {
-        console.log(result.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
+  // const handleApi = () => {
+  //   console.log({ email })
+  //   axios
+  //     .get("https://reqres.in/api/login", {
+  //       email
+  //     })
+  //     .then((result) => {
+  //       console.log(result.data)
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  // }
   // ** Hooks
   const { skin } = useSkin()
   const dispatch = useDispatch()
@@ -97,8 +97,13 @@ const Login = () => {
 
   const onSubmit = data => {
     if (Object.values(data).every(field => field.length > 0)) {
-      useJwt
-        .login({ email: data.loginEmail, password: data.password })
+      axios.post('http://localhost:4000/api/login', {email:data.loginEmail, password:data.password})
+      .then(res => {
+        const { success } = res.data
+        
+        if (success) {
+          useJwt
+        .login(res.data.user)
         .then(res => {
           const data = { ...res.data.userData, accessToken: res.data.accessToken, refreshToken: res.data.refreshToken }
           dispatch(handleLogin(data))
@@ -110,6 +115,16 @@ const Login = () => {
           )
         })
         .catch(err => console.log(err))
+        } else {
+          setvisible(true)
+          setMessage(res.data.error)
+          setTimeout(() => {
+            setvisible(false)
+          }, 3000)
+        }
+
+      })
+      .catch(err => console.log(err))
     } else {
       for (const key in data) {
         if (data[key].length === 0) {
@@ -123,6 +138,15 @@ const Login = () => {
 
   return (
     <div style={{background: 'white' }}>
+
+<div className="my-alert-comp">
+      <Alert isOpen={visible}>
+        <div className='alert-body text-center fs-4'>
+        {message}
+        </div>
+      </Alert>
+      </div>
+
       <Row style={{marginTop: '-3px'}} className='auth-inner'>
         <Col style={{marginRight: '-100px'}} className='d-none d-lg-flex' lg='8' sm='12'>
             <img style={{height: '665px', width: '740px', marginLeft: '-10px', objectFit: 'cover', objectPosition:'left'}} className='img-fluid' src={source} alt='Login Cover' />
@@ -174,8 +198,8 @@ const Login = () => {
                   control={control}
                   render={({ field }) => (
                     <Input
-                      onChange={handleEmail}
-                      autoFocus
+                    // onChange={handleEmail}
+                    autoFocus
                       type='email'
                       placeholder='john@example.com'
                       invalid={errors.loginEmail && true}
@@ -214,7 +238,7 @@ const Login = () => {
                   Remember Me
                 </Label>
               </div>
-              <button onClick={handleApi} className='btn' style={{ marginTop: '-6px', background: '#4E4E4E', color: 'white', width: '300px'}} type='submit' block>
+              <button className='btn' style={{ marginTop: '-6px', background: '#4E4E4E', color: 'white', width: '300px'}} type='submit'>
                 Sign in
               </button>
               <div style={{marginTop: '4px'}} className='divider'>

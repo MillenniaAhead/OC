@@ -229,7 +229,7 @@ checkout</div>
              </CardHeader>
              <CardBody>
              <div className='box-xa'>
-                <NavLink to="/team/teamMembers">
+                <NavLink to="/anuteam/teamMembers">
                     <div>
                     <div className="text-xc">Team members</div>
                     <div className="text-xd">Add, edit and delete your team members</div>
@@ -238,7 +238,7 @@ checkout</div>
                 </NavLink>
                 </div>
                 <div className='box-xa'>
-                <NavLink to="/team/workingHours">
+                <NavLink to="/anuteam/workingHours">
                     <div>
                     <div className="text-xc">Working hours</div>
                     <div className="text-xd">Manage working hours of your team members</div>
@@ -247,7 +247,7 @@ checkout</div>
                 </NavLink>
                 </div>
                 <div className='box-xa'>
-                <NavLink to="/team/permissions">
+                <NavLink to="/anuteam/permissions">
                     <div>
                     <div className="text-xc">Permissions</div>
                     <div className="text-xd">Configure level of access to Fresha for each of your
@@ -257,7 +257,7 @@ team members</div>
                 </NavLink>
                 </div>
                 <div className='box-xa'>
-                <NavLink to="/team/commission">
+                <NavLink to="/anuteam/commission">
                     <div>
                     <div className="text-xc">Commisions</div>
                     <div className="text-xd">Set up the calculation of commissions for  team

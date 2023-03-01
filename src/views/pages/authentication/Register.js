@@ -55,34 +55,35 @@ const Register = () => {
     source = require(`@src/assets/images/pages/${illustration}`).default
 
   const onSubmit = data => {
-    console.log(data)
-    axios.post("http://localhost:4000/api/register",  data)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
     const tempData = { ...data }
     delete tempData.terms
     if (Object.values(tempData).every(field => field.length > 0) && data.terms === true) {
-      const { username, email, password } = data
-      useJwt
-        .register({ username, email, password })
-        .then(res => {
-          if (res.data.error) {
-            for (const property in res.data.error) {
-              if (res.data.error[property] !== null) {
-                setError(property, {
-                  type: 'manual',
-                  message: res.data.error[property]
-                })
+      axios.post("http://localhost:4000/api/register",  data)
+      .then(res => {
+        if (res.data.success) {
+          useJwt
+          .register(res.data.user)
+          .then(res => {
+            if (res.data.error) {
+              for (const property in res.data.error) {
+                if (res.data.error[property] !== null) {
+                  setError(property, {
+                    type: 'manual',
+                    message: res.data.error[property]
+                  })
+                }
               }
+            } else {
+              const data = { ...res.data, accessToken: res.data.accessToken }
+              ability.update(res.data.ability)
+              dispatch(handleLogin(data))
+              history.push('/')
             }
-          } else {
-            const data = { ...res.data.user, accessToken: res.data.accessToken }
-            ability.update(res.data.user.ability)
-            dispatch(handleLogin(data))
-            history.push('/')
-          }
-        })
-        .catch(err => console.log(err))
+          })
+          .catch(err => console.log(err))
+        }
+      })
+      .catch(err => console.log(err))
     } else {
       for (const key in data) {
         if (data[key].length === 0) {

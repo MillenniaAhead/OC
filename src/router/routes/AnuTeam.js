@@ -7,47 +7,47 @@ const AnuTeam = [
     layout:"BlankLayout"
   },
   {
-    path: '/team/teamMembers',
+    path: '/anuTeam/teamMembers',
     component: lazy(() => import('../../views/apps/anu-team/team/TeamMembers')),
     layout:"BlankLayout"
   },
   {
-    path: '/team/addTeamMember',
+    path: '/anuTeam/addTeamMember',
     component: lazy(() => import('../../views/apps/anu-team/team/AddTeamMember')),
     layout:"BlankLayout"
   },
   {
-    path: '/team/addTeamMemberForm',
+    path: '/anuTeam/addTeamMemberForm',
     component: lazy(() => import('../../views/apps/anu-team/team/AddTeamMemberForm')),
     layout:"BlankLayout"
   },
   {
-    path: '/team/addTeamMemberEditForm/:id',
+    path: '/anuTeam/addTeamMemberEditForm/:id',
     component: lazy(() => import('../../views/apps/anu-team/team/AddTeamMemberEditForm')),
     layout:"BlankLayout"
   },
   {
-    path: '/team/addViaEmail',
+    path: '/anuTeam/addViaEmail',
     component: lazy(() => import('../../views/apps/anu-team/team/AddViaEmail')),
     layout:"BlankLayout"
   },
   {
-    path: '/team/workingHours',
+    path: '/anuTeam/workingHours',
     component: lazy(() => import('../../views/apps/anu-team/team/WorkingHours')),
     layout:"BlankLayout"
   },
   {
-    path: '/team/openingHours',
+    path: '/anuTeam/openingHours',
     component: lazy(() => import('../../views/apps/anu-team/team/OpeningHours')),
     layout:"BlankLayout"
   },
   {
-    path: '/team/permissions',
+    path: '/anuTeam/permissions',
     component: lazy(() => import('../../views/apps/anu-team/team/Permissions')),
     layout:"BlankLayout"
   },
   {
-    path: '/team/commission',
+    path: '/anuTeam/commission',
     component: lazy(() => import('../../views/apps/anu-team/team/Commission')),
     layout:"BlankLayout"
   }

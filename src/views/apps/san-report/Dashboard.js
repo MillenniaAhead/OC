@@ -57,7 +57,7 @@ const SanReport = () => {
      return null
    }
     return (
-        <div className='report-container h-100'>
+        <div className='report-container'>
       <SideMenu link1='/san-reports/dashboard' link2='/san-reports/reports' />
       <div id="dashboard-container">
             <div className='text-eee1'>Dashboard</div>
