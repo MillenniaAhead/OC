@@ -14,7 +14,6 @@ const OverviewRoutes = [
     component: lazy(() => import('../../views/groups/users')),
     exact: true
   }
-
   
 ]
 

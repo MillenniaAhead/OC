@@ -13,6 +13,7 @@ import PageLayoutsRoutes from './PageLayouts'
 Customization Routes
 */
 import OverviewRoutes from './Overview'
+import SanOnlineBookingRoutes from './SanOnlineBooking'
 import GroupRoutes from './Groups'
 import OrganizationRoutes from './Organization'
 // ** Document title
@@ -38,7 +39,8 @@ const Routes = [
   ...PageLayoutsRoutes,
   ...FormRoutes,
   ...TablesRoutes,
-  ...ChartsRoutes
+  ...ChartsRoutes,
+  ...SanOnlineBookingRoutes
 ]
 
 export { DefaultRoute, TemplateTitle, Routes }

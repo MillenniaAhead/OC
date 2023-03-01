@@ -13,7 +13,7 @@ import AdminForm from '@src/views/ui-elements/overview/AdminForm'
 import DetailedReport from './DetailedReport'
 import RecentCheck from './RecentCheck'
 import Groups from './Groups'
-//import axios from 'axios'
+// import axios from 'axios'
 // ** Custom Hooks
 import { useRTL } from '@hooks/useRTL'
 
@@ -35,7 +35,7 @@ const Overview = () => {
   }, [dispatch, store.allData.length])
 
   return (
-    <div id='dashboard-analytics'>
+    <div >
       
       <div style = {{fontSize:"26px", color:"#09477D", fontWeight:"bold"}}>
         Welcome, Dr.{name}
