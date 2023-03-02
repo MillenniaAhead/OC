@@ -10,7 +10,7 @@ const SalesByService = () => {
     const [picker, setPicker] = useState(new Date())
 
     return (
-        <div className='h-100 report-container'>
+        <div className='report-container'>
        <div className="side-menu-wrapper-aaa3">
       <SideMenu link1='/san-reports/dashboard' link2='/san-reports/reports' />
       </div>

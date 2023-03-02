@@ -64,7 +64,6 @@ const AddTeamMemberEditForm = () => {
   useEffect(() => {
       axios.get(`http://localhost:4000/api/teamMembers/${id}`)
       .then(res => {
-        console.log(res.data)
         const myCommission = res.data.commission[0]
         setCommissionData({commission_cycle:myCommission.commission_cycle, service_commission:myCommission.service_commission, product_commission:myCommission.product_commission, voucher_commission:myCommission.voucher_commission, membership_commission:myCommission.membership_commission})
         setPicker3(myCommission.effective_date)
@@ -192,21 +191,20 @@ const AddTeamMemberEditForm = () => {
           setVisible1(false)
         }, 3000)
     } else {
-    console.log({...formData, services:service, start_date:picker1, end_date:picker2, commission:[{ effective_date:picker3, commission_cycle:commissionData.commission_cycle, service_commission:commissionData.service_commission + rSelected1, product_commission:commissionData.product_commission + rSelected2, voucher_commission:commissionData.voucher_commission + rSelected3, membership_commission:commissionData.membership_commission + rSelected4}]})
 
     //Using put method to update a team member
     const myCommission = [{ effective_date:picker3, commission_cycle:commissionData.commission_cycle, service_commission:commissionData.service_commission, service_commission_type:rSelected1, product_commission:commissionData.product_commission, product_commission_type:rSelected2, voucher_commission:commissionData.voucher_commission, voucher_commission_type:rSelected3, membership_commission:commissionData.membership_commission, membership_commission_type:rSelected4}]
+    console.log(id)
     axios.put(`http://localhost:4000/api/teamMembers/${id}`, {...formData, services:service, allow_calendar_bookings:switch1, start_date:picker1, end_date:picker2, commission:myCommission})
     .then((res) => {
       console.log(res)
       setVisible2(true)
       setTimeout(() => {
         setVisible2(false)
-        history.push('/team/teamMembers')
+        history.push('/anuteam/teamMembers')
       }, 3000)
     })
     .catch((err) => console.log(err))
-    console.log({...commissionData, effective_date:picker3})
     }
   }
 
@@ -219,7 +217,7 @@ const AddTeamMemberEditForm = () => {
       setVisible3(true)
       setTimeout(() => {
         setVisible3(false)
-        history.push('/team/teamMembers')
+        history.push('/anuteam/teamMembers')
       }, 3000)
     })
     .catch(err => console.log(err))
@@ -250,7 +248,7 @@ const AddTeamMemberEditForm = () => {
       </Alert>
       </div>
             <div className="top-va">
-                <NavLink to="/team/teamMembers"><div><X size={45}  strokeWidth={1.2}/></div></NavLink>
+                <NavLink to="/anuteam/teamMembers"><div><X size={45}  strokeWidth={1.2}/></div></NavLink>
                 <div>
                 <UncontrolledButtonDropdown className='me-1'>
         <DropdownToggle outline color='dark' caret>
@@ -659,7 +657,7 @@ on different sales ranges for services, products, vouchers and memberships.</div
 <Label className='form-label text-vb' for='default-picker'>
         Effective date
       </Label>
-      <Flatpickr style={{fontSize:"800"}} className='form-control' value={picker3} onChange={date => setPicker3(date)} id='default-picker' />
+      <Flatpickr className='form-control' value={picker3} onChange={date => setPicker3(date)} id='default-picker' />
       <div className="text-ve fs-6" style={{marginTop:"5px"}}>The first day Kondeti gets commission.</div>
       </div>
       <div className='input-va'>

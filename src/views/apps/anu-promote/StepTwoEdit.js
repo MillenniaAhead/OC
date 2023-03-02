@@ -77,7 +77,6 @@ const StepTwo = () => {
   useEffect(() => {
     axios.get(`http://localhost:4000/api/deals/${id}`)
     .then((res) =>  {
-        console.log(res.data)
         setPromotionDetail({name:res.data.name, description:res.data.description})
         setService(res.data.services)
         setProduct(res.data.products)
@@ -120,7 +119,6 @@ const StepTwo = () => {
         setProduct(["Product1", "Product2", "Product3"])
       }
   } else { 
-    console.log()
     if (product.includes(event.target.value)) {
       const deselect = product.filter(
         (myproduct) => myproduct !== event.target.value
@@ -291,7 +289,6 @@ const StepTwo = () => {
       //Navigate
       nextStep.push(`/promote/stepthreeedit/${id}`)
       //Call action 
-      console.log([promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue, promotionValueType, maxUseValue, minPurchaseValue])
       CollectDealData(["", promotionDetail.name, promotionDetail.description, service, product, picker1, picker2, myPromotionValue,  promotionValueType, maxUseValue, minPurchaseValue])
     }
   }

@@ -125,7 +125,6 @@ const notesFun = (e) => {
          }, 3000)
     } else {
     const finalData = {date:picker, start_time:startTime, services:service, duration:myduration, team_member:teamMember, appointment_note:notes}
-    console.log(finalData)
     // Store data to backend with the help of axios
     axios.post('http://localhost:4000/api/newAppointments', finalData)
     .then(res => {

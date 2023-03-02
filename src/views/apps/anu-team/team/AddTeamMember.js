@@ -7,11 +7,11 @@ const AddTeamMember = () => {
 
   return (
     <div>
-        <div className='d-flex justify-content-end p-1'><NavLink to="/team/teamMembers" style={{color:"black"}}><X size={45} strokeWidth={1.2}/></NavLink></div>
+        <div className='d-flex justify-content-end p-1'><NavLink to="/anuteam/teamMembers" style={{color:"black"}}><X size={45} strokeWidth={1.2}/></NavLink></div>
         <div className="body-wa">
             <div className='fs-1 text-center mb-2 fw-bolder'>Add team members</div>
             {/* Add manually */}
-            <NavLink to='/team/addTeamMemberForm'>
+            <NavLink to='/anuteam/addTeamMemberForm'>
             <div className="box-wa mb-2">
                 <div>
                 <div className='fs-3 fw-bolder'>Add manually</div>
@@ -21,7 +21,7 @@ const AddTeamMember = () => {
             </div>
             </NavLink>
             {/* Invite via email */}
-            <NavLink to='/team/addViaEmail'>
+            <NavLink to='/anuteam/addViaEmail'>
             <div className="box-wb">
                 <div>
                 <div className='fs-3 fw-bolder'>Invite via email</div>

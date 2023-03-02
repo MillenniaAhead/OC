@@ -38,7 +38,6 @@ const OpeningHours = () => {
             }, 3000)
               })
         .catch(err => console.log(err))
-        console.log(daysTime)
     }
 
     //For time array

@@ -89,7 +89,6 @@ const StepThree = () => {
 
     //Checked option1
   } else if (toggle1 && !toggle2) {
-    console.log(data[5])
     //axios
     CollectDealData([toggle1, toggle2, discountCodeValue])
     axios.post("http://localhost:4000/api/deals", {deal_name:data[0], name:data[1], description:data[2], services:data[3], products:data[4], memberships:[], vouchers:[], start_date:data[5], end_date:data[6], promotion_value:data[7], promotion_value_type:data[8], max_use_limit:data[9], min_purchase_amount:data[10], promotion1:toggle1, promotion2:toggle2, discount_code:discountCodeValue})

@@ -55,7 +55,7 @@ const HandleSubmit = () => {
         setVisible2(true)
         setTimeout(() => {
            setVisible2(false) 
-           history.push('/team/teamMembers')
+           history.push('/anuteam/teamMembers')
         }, 3000)
 })
     .catch((err) => console.log(err))
@@ -80,7 +80,7 @@ const HandleSubmit = () => {
       </Alert>
       </div>
         <div className="top-va">
-                <div><NavLink to='/team/teamMembers'><X size={45} style={{color:'black'}}  strokeWidth={1.2}/></NavLink></div>
+                <div><NavLink to='/anuteam/teamMembers'><X size={45} style={{color:'black'}}  strokeWidth={1.2}/></NavLink></div>
                 <NavLink to='#'>
                 <Button.Ripple className="btn-va" color='dark' onClick={HandleSubmit}>Save</Button.Ripple>
                 </NavLink>

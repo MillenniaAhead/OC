@@ -65,7 +65,7 @@ export const DealsTwo = () => {
 
   return (
     <>
-      <div className="deal-list-container" style={{overflowY:"scroll"}}>
+      <div className="deal-list-container">
         {/* alert */}
       <div className="my-alert-comp my-alert-comp-2 my-alert-comp-3">
       <Alert isOpen={visible}>
@@ -234,7 +234,7 @@ export const DealsTwo = () => {
     </div>
     ) 
     })}
-        <div className='d-flex justify-content-center mt-1'>{dealLength} of {dealLength}</div>
+        <div className='d-flex justify-content-center mt-1'>{dealLength !== 0 ? `${dealLength} of ${dealLength}` : "No deals"}</div>
         </div>
       </div>
     </div>

@@ -58,7 +58,6 @@ setEvents(newEvents)
   useEffect(() => {
     axios.get('http://localhost:4000/api/newAppointments')
     .then(res => {
-      console.log(res.data)
       myFun(res.data)
     })
     .catch(err => console.log(err))

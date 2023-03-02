@@ -25,7 +25,6 @@ const CheckOut = () => {
     useEffect(() => {
         axios.get(`http://localhost:4000/api/newAppointments/${id}`)
         .then(res => {
-            console.log(res)
             setAppointment(res.data)
             const dateString = res.data.date
             const date = new Date(dateString)

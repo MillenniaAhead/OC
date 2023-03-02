@@ -16,7 +16,6 @@ const TeamMembers = () => {
   useEffect(() => {
     axios.get('http://localhost:4000/api/teamMembers')
     .then(res => {
-      console.log(res)
       setTeamMember(res.data)
     })
     .catch(err => console.log(err))
@@ -49,7 +48,7 @@ const TeamMembers = () => {
           </DropdownItem>
         </DropdownMenu>
       </UncontrolledButtonDropdown>
-      <NavLink to="/team/addTeamMember"><Button.Ripple className="btn-ua fs-3 fw-bolder" color='dark'>Add a team member</Button.Ripple></NavLink>
+      <NavLink to="/anuteam/addTeamMember"><Button.Ripple className="btn-ua fs-3 fw-bolder" color='dark'>Add a team member</Button.Ripple></NavLink>
       <Button.Ripple className='round btn-ub' color='primary'>
         +Add
       </Button.Ripple>
@@ -103,7 +102,7 @@ const TeamMembers = () => {
       </UncontrolledButtonDropdown>
         </div>
         <div className="team-member-body-ua row">
-          {teamMember.length === 0 ? "No team member" : teamMember.map((member, key) => <div key={key} className='col-md-4 col-sm-12'><NavLink to={`/team/addTeamMemberEditForm/${member._id}`}><Card style={{border:'1px solid rgba(0, 0, 0, 0.2)'}} className='p-2'>
+          {teamMember.length === 0 ? "No team member" : teamMember.map((member, key) => <div key={key} className='col-md-4 col-sm-12'><NavLink to={`/anuteam/addTeamMemberEditForm/${member._id}`}><Card style={{border:'1px solid rgba(0, 0, 0, 0.2)'}} className='p-2'>
             <div className='card-body-ua'>
           <Avatar color='light-success' content={`${member.first_name} ${member.last_name}`} size='xl' initials />
           <div className='text-ua'>{`${member.first_name} ${member.last_name}`}</div>

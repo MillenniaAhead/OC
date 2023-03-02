@@ -23,7 +23,6 @@ const AddTip = () => {
     useEffect(() => {
         axios.get(`http://localhost:4000/api/newAppointments/${id}`)
         .then(res => {
-            console.log(res)
             setAppointment(res.data)
             setMyPrice(myServices.filter(data => data.name === res.data.services[0])[0].price)
         })

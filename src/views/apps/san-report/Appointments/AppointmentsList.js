@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import Flatpickr from 'react-flatpickr'
-import { Filter, File, Search, ArrowLeft} from 'react-feather'
-import {  UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap'
+import { Search, File, Sliders, ArrowLeft} from 'react-feather'
+import {  UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, Input, InputGroup, InputGroupText } from 'reactstrap'
 import '../mycss2/PaymentSummary.css'
 import SideMenu from '../ReportsSideMenu'
 import { NavLink } from 'react-router-dom'
@@ -10,7 +10,7 @@ const AppointmentsList = () => {
     const [picker, setPicker] = useState(new Date())
 
     return (
-        <div className='h-100 report-container'>
+        <div className='report-container'>
        <div className="side-menu-wrapper-aaa3">
       <SideMenu link1='/san-reports/dashboard' link2='/san-reports/reports' />
       </div>
@@ -45,8 +45,12 @@ const AppointmentsList = () => {
                 </div>
                 <div className='my-top-xxx1 my-top-xxx3'>
                 <div className="search-field-aa5 text-bb5">
-                <span className="search-icon-aa5 ps-1 pe-1"><Search size={20}/></span><input type="text" name="new-sale" id="" placeholder="Search by client, team member or service name"/>
-            </div>
+                <InputGroup style={{height:'fit-content'}}>
+        <InputGroupText>
+          <Search size={14} />
+        </InputGroupText>
+        <Input style={{fontSize:'14px'}} placeholder='Search by client, team member or service name' />
+      </InputGroup>            </div>
             <div className='d-flex my-top-xxx4'>
              <Flatpickr
                value={picker}
@@ -58,7 +62,7 @@ const AppointmentsList = () => {
                  defaultDate: ['2020-02-01', '2020-02-15']
                }}
              />
-             <button className="filter-deals filter-aaa1"><div className="d-flex justify-content-center align-items-center"><span className='text-ddd1'>Filter</span><Filter size={20}/>
+             <button className="filter-deals filter-aaa1"><div className="d-flex justify-content-center align-items-center"><span className='text-ddd1'>Filter</span><Sliders size={20}/>
              </div>
              </button>
              </div>

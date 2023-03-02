@@ -56,7 +56,6 @@ const EditAppointment = () => {
   useEffect(() => {
     axios.get(`http://localhost:4000/api/newAppointments/${id}`)
     .then(res => {
-        console.log(res.data)
         setPicker(res.data.date)
         setStartTime(res.data.start_time)
         setService(res.data.services)

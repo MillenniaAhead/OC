@@ -171,11 +171,10 @@ const AddTeamMemberForm = () => {
       setVisible2(true)
       setTimeout(() => {
         setVisible2(false)
-        history.push('/team/teamMembers')
+        history.push('/anuteam/teamMembers')
       }, 3000)
     })
     .catch((err) => console.log(err))
-    console.log({...commissionData, effective_date:picker3})
     }
   }
 
@@ -197,7 +196,7 @@ const AddTeamMemberForm = () => {
       </Alert>
       </div>
             <div className="top-va">
-                <NavLink to="/team/teamMembers"><div><X size={45}  strokeWidth={1.2}/></div></NavLink>
+                <NavLink to="/anuteam/teamMembers"><div><X size={45}  strokeWidth={1.2}/></div></NavLink>
                 <Button.Ripple onClick={submitForm} className="btn-va" color='dark'>Add team member</Button.Ripple>
             </div>
             <div className="new-member-body-va">
@@ -588,7 +587,7 @@ on different sales ranges for services, products, vouchers and memberships.</div
 <Label className='form-label text-vb' for='default-picker'>
         Effective date
       </Label>
-      <Flatpickr style={{fontSize:"800"}} className='form-control' value={picker3} onChange={date => setPicker3(date)} id='default-picker' />
+      <Flatpickr className='form-control' value={picker3} onChange={date => setPicker3(date)} id='default-picker' />
       <div className="text-ve fs-6" style={{marginTop:"5px"}}>The first day Kondeti gets commission.</div>
       </div>
       <div className='input-va'>
