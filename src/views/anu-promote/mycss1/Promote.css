@@ -1,0 +1,23 @@
+.promote-container-wrapper{
+    width: 100%;
+    overflow: hidden;
+   }
+   .promote-container {
+       display: flex;
+       flex-direction: row;
+     }
+     .side-menu-toggle{
+       width:35px;
+       height:35px;
+       border-radius: 100%;
+       border:1px solid #d9d9d9;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       margin-top: 20px;
+     }
+     
+     .deals-component-wrapper{
+       width:100%;
+       height:100%;
+     }
