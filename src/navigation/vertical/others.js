@@ -16,7 +16,7 @@ export default [
     icon: <ExternalLink style={{width: '30px', height: '30px'}} color='black'/>,
     action: 'read',
     resource: 'ACL',
-    navLink: '/san-reports/client-list'
+    navLink: '/san-reports/dashboard'
   },
   {
     id: 'Settings',
@@ -24,7 +24,7 @@ export default [
     icon: <Settings style={{width: '30px', height: '30px'}} color='black'/>,
     action: 'read',
     resource: 'ACL',
-    navLink: '/sansetsale/saleinvoice'
+    navLink: '/businessSettings'
   },
   {
     id: 'Support',

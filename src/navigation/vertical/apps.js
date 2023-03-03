@@ -6,7 +6,7 @@ export default [
     id: 'calendar',
     title: 'Calendar',
     icon: <Calendar style={{width: '30px', height: '30px'}} color='black' />,
-    navLink: '/apps/calendar'
+    navLink: '/timegraph'
   },
   {
     id: 'sales',
