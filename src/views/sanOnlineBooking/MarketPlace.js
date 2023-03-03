@@ -193,7 +193,63 @@ const MarketPlace = () => {
           }}
           >
           </Box>
-    
+          <Box
+          sx={{
+            position: "absolute",
+            width: "300px",
+            height: "224px",
+            left: "1200px",
+            top: "150.33px",
+            background: "url(Rectangle35.png)",
+            borderRadius: "10px 10px 0px 0px"
+          }}>
+          </Box>
+          <Box
+          sx={{
+            position: "absolute",
+            width: "187px",
+            height: "24px",
+            left: "1220px",
+            top: "390.33px",
+            fontStyle: "normal",
+            fontWeight: "600",
+            fontSize: "20px",
+            lineHeight: "24px",
+            color: "#000000"
+          }}>Miller’s Barbers
+          </Box>
+          <Box
+          sx={{
+            position: "absolute",
+            width: "247px",
+            height: "17px",
+            left: "1220px",
+            top: "430.33px",
+            fontStyle: "normal",
+            fontWeight: "400",
+            fontSize: "14px",
+            lineHeight: "17px",
+            letterSpacing: "0.02em",
+            color: "#000000"
+          }}>192 Bleecker St, New York, United States
+          </Box>
+
+          <Box
+          sx={{
+            position: "absolute",
+            width: "128px",
+            height: "40px",
+            left: "1280px",
+            top: "690px",
+            background: "#4E4E4E",
+            borderRadius: "4px",
+            color: "white",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}>Book Now
+          </Box>
+
         </Box>
     )
 }

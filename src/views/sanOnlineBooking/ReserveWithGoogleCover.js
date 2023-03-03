@@ -8,7 +8,7 @@ const ReserveWithGoogleCover = () => {
         <Box width={"100vw"} height={"100vh"}>
      <Box
       position={"absolute"}
-      width="16%"
+      width="13%"
       height="100%"
       display={'flex'}
       flexDirection={"column"}
@@ -86,7 +86,7 @@ const ReserveWithGoogleCover = () => {
         </Link>
       </Box>
       
-          <Box position="absolute" width={"1600px"} height="100%" right="0px" borderLeft={"1px solid"}>
+          <Box position="absolute" width={"1650px"} height="100%" right="0px" borderLeft={"1px solid"}>
                 <ReserveWithGoogle></ReserveWithGoogle>
           </Box>
         </Box>

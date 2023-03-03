@@ -194,7 +194,30 @@ Search and Maps
           }}
           >
           </Box>
-    
+          
+          <Box
+          sx={{
+            position: "absolute",
+            width: "298px",
+            height: "178px", 
+            left: "1200px",
+            top: "150.33px",             
+            background: "url(Rectangle125.png)",
+            borderRadius: "20px 20px 0px 0px"
+          }}>
+          </Box>
+          <Box
+          sx={{
+            position: "absolute",
+            width: "292px",
+            height: "178px", 
+            left: "1203px",
+            top: "560px",             
+            background: "url(Rectangle153.png)",
+            borderRadius: "20px 20px 20px 20px"
+          }}>
+          </Box>
+
         </Box>
       )
 }
