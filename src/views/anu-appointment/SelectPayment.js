@@ -3,8 +3,8 @@ import "./mycss/AddTip.css"
 import "./mycss/SelectPayment.css"
 import { Modal, ModalBody, Input, InputGroup, InputGroupText, Alert } from 'reactstrap'
 import { Settings, ArrowLeft, X, Search, Slash, DollarSign, Columns, User, Trash2, MoreHorizontal, Check } from 'react-feather'
-import cashpayment from '../images/cashpayment.svg'
-import voucherpayment from '../images/voucherpayment.svg'
+import cashpayment from '../../assets/images-shiv/cashpayment.svg'
+import voucherpayment from '../../assets/images-shiv/voucherpayment.svg'
 import { NavLink, useParams, useHistory } from 'react-router-dom'
 import { useSelector } from "react-redux"
 import axios from 'axios'

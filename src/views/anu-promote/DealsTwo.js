@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import modulo from '../images/modulo.svg'
+import modulo from '../../assets/images-shiv/modulo.svg'
 import './mycss1/DealsTwo.css'
 import { Filter, Sliders, Search, ChevronLeft, MoreHorizontal } from 'react-feather'
 import { UncontrolledButtonDropdown, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button, Input, InputGroup, InputGroupText, Alert  } from 'reactstrap'

@@ -1,7 +1,7 @@
 import React from 'react'
 import './mycss1/StepFour.css'
 import { NavLink } from 'react-router-dom'
-import ticketG from "../images/ticket-g.svg"
+import ticketG from "../../assets/images-shiv/ticket-g.svg"
 import { CheckCircle, X, Calendar, Tag } from 'react-feather'
 import { actionCreators } from "./promoteRedux"
 import { useDispatch, useSelector } from "react-redux"

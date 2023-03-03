@@ -60,13 +60,13 @@ const FinancesSummary = () => {
                     <td style={{fontWeight:'900'}}>₹270.00</td>
                 </tr>
                 <tr className='tr-aaa3'>
-                    <td><NavLink  to='#' >Taxes</NavLink></td>
+                    <td><NavLink  to='/san-reports/taxes-summary' >Taxes</NavLink></td>
                     <td>₹0.00</td>
                 </tr>
             </tbody>
             <tfoot className='tfoot-aaa3'>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#' >Total sales</NavLink></td>
+                    <td><NavLink to='/san-reports/sales-by-type' >Total sales</NavLink></td>
                     <td>₹270.00</td>
                 </tr>
             </tfoot>
@@ -81,15 +81,15 @@ const FinancesSummary = () => {
             </thead>
             <tbody className='tbody-aaa3'>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#' >Voucher sales</NavLink></td>
+                    <td><NavLink to='/san-reports/voucher-sales' >Voucher sales</NavLink></td>
                     <td>₹0.00</td>
                 </tr>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#' >Voucher redemptions</NavLink></td>
+                    <td><NavLink to='/san-reports/voucher-redemptions' >Voucher redemptions</NavLink></td>
                     <td>₹0.00</td>
                 </tr>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#' >Vouchers outstanding balance</NavLink></td>
+                    <td><NavLink to='/san-reports/vouchers-outstanding-sales' >Vouchers outstanding balance</NavLink></td>
                     <td>₹0.00</td>
                 </tr>
             </tbody>
@@ -104,15 +104,15 @@ const FinancesSummary = () => {
             </thead>
             <tbody className='tbody-aaa3'>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#' >Deposits collections</NavLink></td>
+                    <td><NavLink to='/san-reports/deposits-activity' >Deposits collections</NavLink></td>
                     <td>₹0.00</td>
                 </tr>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#' >Deposits redemptions</NavLink></td>
+                    <td><NavLink to='/san-reports/deposits-activity' >Deposits redemptions</NavLink></td>
                     <td>₹0.00</td>
                 </tr>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#' >Deposits outstanding balance</NavLink></td>
+                    <td><NavLink to='/san-reports/deposits-outstanding-balance' >Deposits outstanding balance</NavLink></td>
                     <td>₹0.00</td>
                 </tr>
             </tbody>
@@ -135,7 +135,7 @@ const FinancesSummary = () => {
             </tbody>
             <tfoot className='tfoot-aaa3'>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#' >Total payments</NavLink></td>
+                    <td><NavLink to='/san-reports/payment-summary' >Total payments</NavLink></td>
                     <td>₹126.50</td>
                 </tr>
             </tfoot>
@@ -150,7 +150,7 @@ const FinancesSummary = () => {
             </thead>
             <tbody className='tbody-aaa3'>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#'>Tips collected</NavLink></td>
+                    <td><NavLink to='/san-reports/tips-collected'>Tips collected</NavLink></td>
                     <td>₹11.50</td>
                 </tr>
             </tbody>
@@ -175,7 +175,7 @@ const FinancesSummary = () => {
                 </tbody>
             <tfoot className='tfoot-aaa3'>
                 <tr className='tr-aaa3'>
-                    <td><NavLink to='#' >Total service charges</NavLink></td>
+                    <td><NavLink to='/san-reports/service-charges' >Total service charges</NavLink></td>
                     <td>₹0.00</td>
                 </tr>
             </tfoot>

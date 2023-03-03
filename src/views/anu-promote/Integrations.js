@@ -1,10 +1,10 @@
 import React, { useState} from "react"
-import facebook from "../images/facebook.png"
-import facebookadd1 from "../images/facebookadd1.png"
-import facebookadd2 from "../images/facebookadd2.png"
-import facebookadd3 from "../images/facebookadd3.png"
-import facebookadd4 from "../images/facebookadd4.png"
-import facebookadd5 from "../images/facebookadd5.png"
+import facebook from "../../assets/images-shiv/facebook.png"
+import facebookadd1 from "../../assets/images-shiv/facebookadd1.png"
+import facebookadd2 from "../../assets/images-shiv/facebookadd2.png"
+import facebookadd3 from "../../assets/images-shiv/facebookadd3.png"
+import facebookadd4 from "../../assets/images-shiv/facebookadd4.png"
+import facebookadd5 from "../../assets/images-shiv/facebookadd5.png"
 import { Check, Search, Star, Clock, ArrowRight, Users, DollarSign, X, ChevronLeft } from 'react-feather'
 import { Modal, ModalBody, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import { NavLink } from "react-router-dom"

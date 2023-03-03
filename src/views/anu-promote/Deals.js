@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
-import chair from "../images/chair.png"
-import modulo from "../images/modulo.svg"
-import database from "../images/database.svg"
+import chair from "../../assets/images-shiv/chair.png"
+import modulo from "../../assets/images-shiv/modulo.svg"
+import database from "../../assets/images-shiv/database.svg"
 import { Check, Clock, ChevronLeft } from "react-feather"
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 
