@@ -45,13 +45,13 @@ const AddACustom = () => {
               <Label className='form-label text-dark fs-4 fw-bolder' for='basicInput'>
               Section title
               </Label>
-              <Input type='text' name='cashPay' id='basicInput'  placeholder='Cash'/>
+              <Input type='text' name='cashPay' id='basicInput'  placeholder='Add title'/>
               </div>
              <div>
               <Label className='form-label text-dark fs-4 mt-2 fw-bolder' for='basicInput'>
               Section description <span className='text-secondary'>(Optional)</span>
               </Label>
-              <Input type='text' name='cashPay' id='basicInput'  placeholder='Cash'/>
+              <Input type='text' name='cashPay' id='basicInput'  placeholder='Add description'/>
               </div>
           
           </ModalBody>

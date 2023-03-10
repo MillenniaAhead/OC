@@ -4,10 +4,11 @@ import '../CSS/ClientList.css'
 // ** Styles
 import '@styles/react/apps/app-users.scss'
 import client from '../../../images/ClientList/client.jpg'
-import filter from '../../../images/ClientList/filers.jpg'
+
 import FirstName from '../../../images/ClientList/FirstName.jpg'
 import { Link, NavLink } from 'react-router-dom'
 import axios from 'axios'
+import ClientFilter from './ClientFilter'
 
 
 const ClientList = () => { 
@@ -81,10 +82,7 @@ online.</h3>
                               text-center text-secondary py-2' type="text" placeholder='Search by 
                                name, email or mobile number'/>
                            </div>
-                           <div style={{width: '150px', height:'48px'}} className=' ms-3 bg-white d-flex justify-content-around align-items-center border-0 rounded-pill'>
-                                <h6 className='fs-5 mt-1'>Filters</h6>
-                                <img  style={{width:"24px", height:'24px'}} src={filter} alt="" />
-                           </div>
+                          <ClientFilter/>
                            </div>
                            <div style={{width:'225px', height:"48px"}}  className=' bg-white d-flex justify-content-around align-items-center border-0 rounded-pill me-3'>
                             <h6 className='fs-5 mt-1'>First name(A-Z)</h6> 
@@ -123,20 +121,22 @@ online.</h3>
       {
           data.map(row => (
             
-        <tr  key = {row._id}>
+        <NavLink to=''>
+          <tr  key = {row._id}>
          
-          <td className='text-nowrap'><div  spacing={2} className=" d-flex">
-                      <div className=' fs-2 w-40 h-40' > {row.avatar}</div>
-                    <div className='ms-1 '>
-                      <Link to="#" >{row.firstName} {row.lastName} </Link><br/>{row.email}
-                      </div>
-                  </div></td>
-          <td className='text-nowrap'>{row.Mobile_number}</td>
-          <td className='text-nowrap'>{row.gender}</td>
-          <td className='text-nowrap'>{row.reviews}</td>
-          <td className='text-nowrap'>{row.total_sales}</td>
-          
-        </tr>
+         <td className='text-nowrap'><div  spacing={2} className=" d-flex">
+                     <div className=' fs-2 w-40 h-40' > {row.avatar}</div>
+                   <div className='ms-1 '>
+                     <Link to="#" >{row.firstName ? row.firstName : "-"} {row.lastName} </Link><br/>{row.email}
+                     </div>
+                 </div></td>
+         <td className='text-nowrap'>{row.phone}</td>
+         <td className='text-nowrap'>{row.gender}</td>
+         <td className='text-nowrap'>{row.reviews}</td>
+         <td className='text-nowrap'>{row.total_sales}</td>
+         
+       </tr>
+        </NavLink>
         ))
       }
       </tbody>

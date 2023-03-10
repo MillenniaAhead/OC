@@ -25,11 +25,11 @@ const AddClient = () => {
       language:""
     })
     const setData = (e) => {
-      console.log(e?.target?.value)
+   
       const {name, value} = e?.target
       setClient((preval) => {
           return {
-              ...preval,
+              ...preval, 
               [name]: value
           }
        })
